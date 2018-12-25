@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.12.24)  25 DEC 2018 07:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.12.24)  25 DEC 2018 10:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -534,72 +534,80 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 
 ]
 
-LaTeX Warning: Reference `fig:workflow' on page 2 undefined on input line 477.
+pdfTeX warning: pdflatex.exe (file ./architecture.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<architecture.pdf, id=12, 794.97pt x 614.295pt>
+File: architecture.pdf Graphic file (type pdf)
+<use architecture.pdf>
+Package pdftex.def Info: architecture.pdf  used on input line 468.
+(pdftex.def)             Requested size: 361.19843pt x 279.11098pt.
+
+Overfull \hbox (109.19843pt too wide) in paragraph at lines 468--469
+[][] 
+ []
 
 
-LaTeX Warning: Reference `fig:IBMmethodIPMfullTable' on page 2 undefined on input line 499.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-LaTeX Warning: Reference `fig:IBMmethodBlocks' on page 2 undefined on input line 531.
-
-[2]
-
-LaTeX Warning: Reference `fig:IBMmethodBlocks' on page 3 undefined on input line 559.
+LaTeX Warning: Reference `fig:IBMmethodBlocks' on page 2 undefined on input line 492.
 
 
-Underfull \hbox (badness 2269) in paragraph at lines 617--618
+LaTeX Warning: Reference `fig:IBMmethodBlocks' on page 2 undefined on input line 520.
+
+[2 <./architecture.pdf>]
+Underfull \hbox (badness 2269) in paragraph at lines 578--579
 \OT1/ptm/m/sl/10 Set-pointOr-Feed-back-Prop-Type = N/A, Set-pointOr-Feed-back-
  []
 
 
-Underfull \hbox (badness 2521) in paragraph at lines 623--624
+Underfull \hbox (badness 2521) in paragraph at lines 584--585
 \OT1/ptm/m/sl/10 IAOAVBOMO = FALSE, Set-pointOr-Feed-back-Prop-Type =
  []
 
 
-LaTeX Warning: Reference `fig:coverageIBM-UH' on page 3 undefined on input line 725.
+LaTeX Warning: Reference `fig:coverageIBM-UH' on page 3 undefined on input line 686.
 
 
-LaTeX Warning: Reference `fig:coverageIBM-UH_noConstraints' on page 3 undefined on input line 725.
+LaTeX Warning: Reference `fig:coverageIBM-UH_noConstraints' on page 3 undefined on input line 686.
 
 
-LaTeX Warning: Reference `fig:coverageIBM-UH' on page 3 undefined on input line 726.
+LaTeX Warning: Reference `fig:coverageIBM-UH' on page 3 undefined on input line 687.
 
 
-LaTeX Warning: Reference `fig:coverageIBM-UH_noConstraints' on page 3 undefined on input line 726.
+LaTeX Warning: Reference `fig:coverageIBM-UH_noConstraints' on page 3 undefined on input line 687.
 
 
-LaTeX Warning: Reference `fig:coverageIBM-UH_noConstraints' on page 3 undefined on input line 743.
+LaTeX Warning: Reference `fig:coverageIBM-UH_noConstraints' on page 3 undefined on input line 704.
 
 
-LaTeX Warning: Reference `fig:coverageSBA' on page 3 undefined on input line 746.
+LaTeX Warning: Reference `fig:coverageSBA' on page 3 undefined on input line 707.
 
 
-LaTeX Warning: Reference `fig:coverageSBA_noConstraints' on page 3 undefined on input line 746.
+LaTeX Warning: Reference `fig:coverageSBA_noConstraints' on page 3 undefined on input line 707.
 
 
-LaTeX Warning: Reference `fig:coverageSBA' on page 3 undefined on input line 747.
+LaTeX Warning: Reference `fig:coverageSBA' on page 3 undefined on input line 708.
 
 
-LaTeX Warning: Reference `fig:coverageSBA_noConstraints' on page 3 undefined on input line 747.
+LaTeX Warning: Reference `fig:coverageSBA_noConstraints' on page 3 undefined on input line 708.
 
 
-LaTeX Warning: Reference `fig:coverageSBA_noConstraints' on page 3 undefined on input line 748.
-
-[3]
-
-LaTeX Warning: Reference `fig:coverageSBA' on page 4 undefined on input line 769.
+LaTeX Warning: Reference `fig:coverageSBA_noConstraints' on page 3 undefined on input line 709.
 
 
-LaTeX Warning: Reference `fig:step4 and 5' on page 4 undefined on input line 775.
+LaTeX Warning: Reference `fig:coverageSBA' on page 3 undefined on input line 730.
 
 
-LaTeX Warning: Reference `fig:constraintsIBM-UH' on page 4 undefined on input line 794.
+LaTeX Warning: Reference `fig:step4 and 5' on page 3 undefined on input line 736.
 
 
-Underfull \vbox (badness 1107) has occurred while \output is active []
+Underfull \vbox (badness 1242) has occurred while \output is active []
 
- (./cloud.bbl)
+ [3]
+
+LaTeX Warning: Reference `fig:constraintsIBM-UH' on page 4 undefined on input line 755.
+
+(./cloud.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -617,18 +625,18 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 15216 strings out of 492616
- 290949 string characters out of 6132767
- 360352 words of memory out of 5000000
- 18868 multiletter control sequences out of 15000+600000
+ 15219 strings out of 492616
+ 291035 string characters out of 6132767
+ 360358 words of memory out of 5000000
+ 18870 multiletter control sequences out of 15000+600000
  36892 words of font info for 66 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
  55i,8n,54p,837b,245s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on cloud.pdf (4 pages, 93688 bytes).
+Output written on cloud.pdf (4 pages, 138957 bytes).
 PDF statistics:
- 41 PDF objects out of 1000 (max. 8388607)
- 29 compressed objects within 1 object stream
+ 44 PDF objects out of 1000 (max. 8388607)
+ 30 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 18 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,13 +1,14 @@
 # Fdb version 3
-["bibtex cloud"] 1545745860 "cloud.aux" "cloud.bbl" "cloud" 1545746083
+["bibtex cloud"] 1545755437 "cloud.aux" "cloud.bbl" "cloud" 1545755440
   "c:/texlive/2018/texmf-dist/bibtex/bst/IEEEtran/IEEEtran.bst" 1545666499 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "cloud.aux" 1545746082 3310 2552a395d182e2fa5e1b134603b78809 ""
+  "cloud.aux" 1545755439 3353 84dffed2add7d8e946177f6a02b094c1 ""
   "cloud.bib" 1509554987 4358 791297ce3462184ed30bfba9f517bac2 ""
   (generated)
   "cloud.bbl"
   "cloud.blg"
-["pdflatex"] 1545746080 "c:/UserData/ozcanm/Documents/CT/2018/Paper/cloud.tex" "cloud.pdf" "cloud" 1545746083
-  "c:/UserData/ozcanm/Documents/CT/2018/Paper/cloud.tex" 1545746080 45975 44c770c41d60146106f8d116767e91c1 ""
+["pdflatex"] 1545755437 "c:/UserData/ozcanm/Documents/CT/2018/Paper/cloud.tex" "cloud.pdf" "cloud" 1545755440
+  "architecture.pdf" 1545755016 47868 886310f593f830351f78ab8a8426516f ""
+  "c:/UserData/ozcanm/Documents/CT/2018/Paper/cloud.tex" 1545755430 42693 946faf89548a4588fe45bb6c64c4950e ""
   "c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc" 1545668007 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "c:/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1545668414 3332 103109f5612ad95229751940c61aada0 ""
   "c:/texlive/2018/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1545671352 2172 fd0c924230362ff848a33632ed45dc23 ""
@@ -133,10 +134,10 @@
   "c:/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1545671981 3065569 c0100866a2168225e01a6ee8893b9056 ""
   "c:/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt" 1545672085 4223238 8bb9fcdb857f8a867f6fd6aedaacb89d ""
   "c:/texlive/2018/texmf.cnf" 1545671953 673 2e5aa3ac564c6f70f54d6752d765c05d ""
-  "cloud.aux" 1545746082 3310 2552a395d182e2fa5e1b134603b78809 ""
-  "cloud.bbl" 1545745180 2505 5f56dd4b1832a3d14fe0e0c4ee5a83a6 "bibtex cloud"
-  "cloud.tex" 1545746080 45975 44c770c41d60146106f8d116767e91c1 ""
+  "cloud.aux" 1545755439 3353 84dffed2add7d8e946177f6a02b094c1 ""
+  "cloud.bbl" 1545755437 2342 74cd09f78c7ee21725457c46947c5ee0 "bibtex cloud"
+  "cloud.tex" 1545755430 42693 946faf89548a4588fe45bb6c64c4950e ""
   (generated)
-  "cloud.pdf"
   "cloud.aux"
+  "cloud.pdf"
   "cloud.log"

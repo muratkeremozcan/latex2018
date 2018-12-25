@@ -43,10 +43,6 @@ R.~Nussbaumer and G.~Waters, ``Bacnet support for epics.''
 H.~M. Newman, ``Bacnet celebrates 20 years,'' \emph{ASHRAE Journal}, vol.~57,
   no.~6, p.~36, 2015.
 
-\bibitem{kuhn2008practical}
-R.~Kuhn, Y.~Lei, and R.~Kacker, ``Practical combinatorial testing: Beyond
-  pairwise,'' \emph{It Professional}, vol.~10, no.~3, 2008.
-
 \bibitem{kuhn2013combinatorial}
 D.~R. Kuhn, I.~D. Mendoza, R.~N. Kacker, and Y.~Lei, ``Combinatorial coverage
   measurement concepts and applications,'' in \emph{Software Testing,

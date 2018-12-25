@@ -323,7 +323,7 @@
 
 
 \author{\IEEEauthorblockN{Murat Ozcan}
-\IEEEauthorblockA{Siemens Building Technologies CPS Software House\\
+\IEEEauthorblockA{Siemens Building Technologies CPS Software Hub\\
 Chicago, USA\\
 murat.ozcan@siemens.com}
 }
@@ -453,66 +453,27 @@ One example will include a scenario where a sequence of actions will be incorpor
 
 	\subsection{Description of the Architecture}
 	
-	A BACnet Event can be characterized as any change in the value of any property of any object
-that meets a particular criteria. The purpose of an Event Enrollment Object (EEO) is to define an
-event and offer the engineer an association with the occurring event and the transmission of notification messages.
+	Horizon Cloud program is composed of many teams and microservice architectural applications.
+	The application / system under test in this study will be Building Operator IC (BOIC).
+	BOIC is used for \todo {describe BOIC , also insert what IC means} . BOI is being development by the Chicago team at Siemens Software Hub. 
 
-Vendors and building control products of those vendors may have varying implementations
-for EEO configurations in the user interface (UI).
-Until recently, the Siemens legacy building control product,
-Siemens APOGEE Insight Workstation, could have above 5 million ways to configure an EEO.
-Due to its complicated nature
-the EEO configuration was previously left open for the user and most of these configurations could be invalid.
-If the configuration was invalid at the workstation, once the EEO was downloaded the field panel, it would show a configuration error for the EEO. The EEO would then need to be modified at the field panel or it would have to be 
-modified at the workstation and re-downloaded to the panel.
+	Figure~\ref{fig:BOIC architecture} represents the BOIC architecture.
+	The front-end is an Angular framework, in TypeScript.
+	The back-end is an ExpressJS application on top of NodeJS platform. 
+	At the time of this study, there is an effort to move some of this functionality to other microservices - implemented in GoLang (Go) - to reduce operating costs.
+	The Protocol Adapter (in C\#) and Gateway (in NodeJS and Java) serve the purpose of exposing Siemens or third party edge-devices to the cloud. 
+	This enables the hardware and the gateway at a customer site to be controlled from a web browser, anywhere in the globe.
 
-	Recent enhancements made the correct configuration of EEOs enforced and streamlined in the UI of the workstation, where one EEO at a time can be configured and then later downloaded to the field panel. 
-Another enhancement, the Harmonization Tool, was introduced to provide the ability to mass-configure many
-EEOs in Excel and feed them to the field panels.
-
-	These enhancements created the need to test correct configuration of EEOs at the workstation and the mass configuration alternative to the workstation; the Excel based Harmonization Tool.  
-The answer was to create a meta test suite that would be utilized for round-trip testing EEOs in the system.
-For practical testing of BACnet, one needs to be able to mass-feed EEOs into the system somewhere (Harmonization Tool),
-be able to move it around in the system, finally verify configuration authenticity at the panels and the workstation.
-Figure~\ref{fig:workflow} displays the work flow of testing EEOs. 
-                
-	\begin{enumerate}
-		\item Test suites are fed to the Harmonization Tool. 
-		\item The EEO configurations are pushed/downloaded to the field panels, where the field
-		panels should show configuration OK if the EEOs were configured correctly. 		
-		\item Finally the EEO configurations can be bulk-uploaded to the workstation from the panel.
-		EEOs should show configuration OK if they were configured correctly. 
-	\end{enumerate}
-
-%\begin{figure}[!h]
-%	\centering
-%		\includegraphics[width=0.50\textwidth]{workflow.pdf}
-%	\caption{Apogee Insight, Harmonization Tool, Field Panels}
-%	\label{fig:workflow}
-%\end{figure}
+\begin{figure}[!h]
+		\includegraphics[width=0.70\textwidth,]{architecture.pdf}
+	\caption{BOIC architecture}
+	\label{fig:BOIC architecture}
+\end{figure}
 
 	\subsection{Description of the Continuous Deployment Environment }
-  In software not all parameters are available simultaneously:
-	some parameters can be enabled over time based on user choices,
-	and these parameters can have covering arrays of their own values \cite{kuhn2008practical}. 
 	
-	In Figure~\ref{fig:IBMmethodIPMfullTable} you see a color coded, pseudo input parameter model (IPM) of BACnet EEO configuration in
-	\textit{Siemens APOGEE Insight Workstation}. Here, the green path signifies
-	a group of related parameters: ObjectType, ObjectPropertyReferenceAIAOAVBOMO,
-	SetPointOrFeedbackPropType, SetPointOrFeedbackPropProperty.
-	Here ObjectPropertyReferenceAIAOAVBOMO with true/false value is used
-	to control parameter group sequences as mentioned in section II B item 3.
-	The parameters relevant to the sequence are allowed to have values, 
-	while the parameters in other sequences are disabled by assigning 
-	a N/A value as mentioned in section II B item 1.
-	The parameter SetPointOrFeedbackPropProperty
-	which had 208 possible values was reduced utilizing ideas from section II B item 2.
-	Value partitions that had similar uses, for example ASHRAEproperty223 to ASHRAEproperty334, were treated as a single partition and the boundaries were utilized.
-	Value partitions that were variations of a common logic were also grouped together and single values were chosen to represent those partitions.
-	These represented cases that were equivalent to each other with respect to the testing scenario \cite{segall2012common}.
-	At a final step of refinement, it was ensured to cover the values users most commonly utilize.
-  These represented the corner cases that need to be captured by the model and tested explicitly \cite{segall2012common}.
-	The effort reduced the possible values of this parameter from 207 to 37.
+
+
 
 % Ludwig: If these have been addressed, we can remove them.
 %\todo{How did you reduce the number of values of these 2 Parameters !?! This is crucial!
