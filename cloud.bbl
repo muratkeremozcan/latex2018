@@ -21,6 +21,12 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{segall2012common}
+I.~Segall, R.~Tzoref-Brill, and A.~Zlotnick, ``Common patterns in combinatorial
+  models,'' in \emph{Software Testing, Verification and Validation (ICST), 2012
+  IEEE Fifth International Conference on}.\hskip 1em plus 0.5em minus
+  0.4em\relax IEEE, 2012, pp. 624--629.
+
 \bibitem{bushby1997bacnettm}
 S.~T. Bushby, ``Bacnettm: a standard communication infrastructure for
   intelligent buildings,'' \emph{Automation in Construction}, vol.~6, no. 5-6,
@@ -36,18 +42,6 @@ R.~Nussbaumer and G.~Waters, ``Bacnet support for epics.''
 \bibitem{newman2015bacnet}
 H.~M. Newman, ``Bacnet celebrates 20 years,'' \emph{ASHRAE Journal}, vol.~57,
   no.~6, p.~36, 2015.
-
-\bibitem{segall2012common}
-I.~Segall, R.~Tzoref-Brill, and A.~Zlotnick, ``Common patterns in combinatorial
-  models,'' in \emph{Software Testing, Verification and Validation (ICST), 2012
-  IEEE Fifth International Conference on}.\hskip 1em plus 0.5em minus
-  0.4em\relax IEEE, 2012, pp. 624--629.
-
-\bibitem{kampel2017combinatorial}
-L.~Kampel, B.~Garn, and D.~E. Simos, ``Combinatorial methods for modelling
-  composed software systems,'' in \emph{Software Testing, Verification and
-  Validation Workshops (ICSTW), 2017 IEEE International Conference on}.\hskip
-  1em plus 0.5em minus 0.4em\relax IEEE, 2017, pp. 229--238.
 
 \bibitem{kuhn2008practical}
 R.~Kuhn, Y.~Lei, and R.~Kacker, ``Practical combinatorial testing: Beyond

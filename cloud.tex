@@ -332,7 +332,7 @@ murat.ozcan@siemens.com}
 
 
 \begin{abstract}
-The overall purpose of the presentation is to describe the new paradigms achieved in testing,
+The overall purpose of this study is to describe the new paradigms achieved in testing,
 in lieu of the transition of applications from the desktop, to web and to cloud. 
 We study the Siemens Building Technologies Horizon Cloud Program,
 where products are enabled by the Horizon ecosystem with a focus on speed, independence and small complexity.
@@ -345,67 +345,73 @@ We start by describing the architecture of the Horizon Cloud program; the compon
 technologies being used in each layer and how they are being tested individually and as a whole. 	
 
 We continue by describing the continuous delivery process; Dockerization of the continuous integration pipeline,
-the architectural components being built as Docker images and being run as Docker containers, being deployed and tested in the cloud at unit, API and UI levels. Later, we describe how the components that make the architecture are orchestrated in AWS hosted OpenShift. 
+the architectural components being built as Docker images and being run as Docker containers, being deployed and tested in the cloud at unit, API and UI levels. 
+Later, we describe how the components that make the architecture are orchestrated in AWS hosted OpenShift. 
 
 We describe the abstraction and the structure of the test code, the page object model, 
-how specifications are separated from the page object / service / logic layer and the test data. We also describe the test design, test modeling process, UML in relation to test functions and its close proximity to the test code in the repository.
+how specifications are separated from the page object / service / logic layer and the test data. 
 
-Finally, we analyze three applications of combinatorial testing (CT),
+Finally, we analyze three applications of combinatorial testing (CT) in this modern development environment,
 incorporating the CT model into automation using BDD style Jasmine framework’s Protractor end to end UI tests. 
-We go through the CT modeling process using newly released, open source, cloud based
-CTWedge: Combinatorial Testing Web-based Editor and Generator. 
+We go through the CT modeling process using newly released, open source, cloud based CTWedge: Combinatorial Testing Web-based Editor and Generator. 
 We describe how the model translates into functions in the code and its utilization in behavioral driven tests.
+
 Finally, we analyze a scenario where a sequence of actions are incorporated into a CT model;
 with a focus on verification of these sequences, compositions of the actions and streamlining the expected assertions,
 in line, per the data-manipulated test oracle.
-
-Rick : A number of things I think would be of particular interest. 
-One would be your comments on how CT fits into container/Docker development and some of the other platforms that are used a lot today. 
-Most researchers don’t know a lot about modern development environments, so your experience and recommendations on how to use CT for these would be very valuable, e.g., what sort of extra tooling would be helpful, characteristics that are good or poor fits for existing CT tools.
-
-Also of interest is the way you integrate covering arrays and sequence testing.
-This is something that isn’t always handled well, and yet very important for an awful lot of applications.
-The measurements of coverage at the end of the presentation are also of interest,
-in particular how to use coverage to determine when it’s cost effective to complete testing. 
-
-
 
 \end{abstract}
 
 
 
 \begin{IEEEkeywords}
-Combinatorial testing, Input parameter model, Sequence, EEO, BACnet
+Combinatorial testing, Input parameter model, Sequence, Angular, Protractor, UI automation
 \end{IEEEkeywords}
 
 
 
-\todo{Update copyright?}
+\todo{ Add comments from Rcik 
+Rick : A number of things I think would be of particular interest. 
+One would be your comments on how CT fits into container/Docker development and some of the other platforms that are used a lot today. 
+Most researchers don’t know a lot about modern development environments, so your experience and recommendations on how to use CT for these would be very valuable, e.g., 
+what sort of extra tooling would be helpful, characteristics that are good or poor fits for existing CT tools.
+
+Also of interest is the way you integrate covering arrays and sequence testing.
+This is something that isn’t always handled well, and yet very important for an awful lot of applications.
+The measurements of coverage at the end of the presentation are also of interest,
+in particular how to use coverage to determine when it’s cost effective to complete testing.
+}
 
 
 \section{Introduction}
-Building Automation and Control Networks Protocol (BACnet) is an interoperable communication
-protocol for building automation and control networks. When a piece of hardware or software is BACnet compliant,
-this means it can communicate with the hardware and software of any other BACnet compliant vendor.
-BACnet compliance is an essential aspect every research and development
-project at Siemens Building Technologies as well as any competitor such as Honeywell, Johnson Controls,
-Schneider Electric etc.
+Modern web development typically falls into a design pattern. In the front-end there can be a JavaScript (JS) framework, some popular ones being Angular, React and Vue.
+The back-end preferences are varied, there is a plethora of choices in language : JS (NodeJS), GoLang, Python, C\#, Java to name a few. 
+This is coupled by a database, examples include MySQL, MongoDB, Elasticsearch.
 
+Previous to cloud technologies, such an application would be hosted on a dedicated web server, or a hosting company.
+In contrast, cloud computing adopts a concept called “virtualization,” where hardware resources can be further optimized through software functionality.
+As a result, not only application performance is optimized but also hosting the application is more cost effective.
 
+A challenge for cloud computing is the resource intensive operating system (OS) usage, where the size of the OS image can be in gigabytes while the application is much smaller. 
+Consequently virtual machines, sinfce they have to host an OS, do not solve this problem.
+Containerization is one proposed solution, and Docker is one example of a program that performs operating-system-level virtualization. 
+\todo {insert Docker reference}
+In containerization, a layer between OS and applications is introduced to optimize resource usage and eliminate the need for an OS.
 
+This is highly valuable for application development because it enables the application be hosted in a minimal, resource and cost effective "container" which 
+allows the application to be built, deployed and tested faster. Throughout the paper we will refer to this paradigm as Cloud Computing.
+
+In this paper, we will study how Combinatorial Testing (CT) fits in the front-end test automation and continuous deployment of cloud computing paradigm.
+Examples will include modeling of the input parameter model (IPM), how the model translates to fields and methods in page objects \todo{insert reference}, 
+and the utilization of it all in behavioral driven test specifications.
+One example will include a scenario where a sequence of actions will be incorporated into a CT model, a problem that has been addressed in a variety of ways in previous works.
 
 \section{Related Work}
 
-	\subsection{Previous works on BACnet}
-	There has been hundreds of papers on BACnet since early 90s. 
-	While many papers have touched on testing. Generally, the testing of Event Enrollment Objects has not been a topic of focus.
-	To get a better understanding on BACnet and Event Enrollment, some of the previous work can be reviewed in \cite{bushby1997bacnettm}, \cite{bushby2002bacnet}, \cite{nussbaumerbacnet} and \cite{newman2015bacnet}. 
-					
-					
-\subsection{Introduction to Combinatorial Testing}
-\todo{@Ludwig: small intro to CT}.
+	\subsection{Introduction to Combinatorial Testing}
+	\todo{@Ludwig: small intro to CT}.
 
-	\subsection{Description of IBM-Method}
+	\subsection{Previous works on sequences}
 	The method of modeling sequenced parameter groups applied in this paper borrows ideas from a combination of the modeling patterns found in \cite{segall2012common}.
 	These modeling patterns include: 
 	\begin{enumerate}
@@ -413,29 +419,39 @@ Schneider Electric etc.
 		\item \textit{Ranges and boundaries:} the reduction of parameter values for certain parameters with over 100 possibilities
 		\item	\textit{Multi-selection \& Order and padding:} a variation of these ideas was used for control parameters which enable/disable the parameter groups per the sequence.
 	\end{enumerate}
+
+	\subsection{Previous works on page objects}
+	There has been hundreds of papers on BACnet since early 90s. 
+	While many papers have touched on testing. Generally, the testing of Event Enrollment Objects has not been a topic of focus.
+	To get a better understanding on BACnet and Event Enrollment, some of the previous work can be reviewed in \cite{bushby1997bacnettm}, \cite{bushby2002bacnet}, \cite{nussbaumerbacnet} and \cite{newman2015bacnet}. 
 	
+	\subsection{Previous works on cloud computing}
+	There has been hundreds of papers on BACnet since early 90s. 
+	While many papers have touched on testing. Generally, the testing of Event Enrollment Objects has not been a topic of focus.
+	To get a better understanding on BACnet and Event Enrollment, some of the previous work can be reviewed in \cite{bushby1997bacnettm}, \cite{bushby2002bacnet}, \cite{nussbaumerbacnet} and \cite{newman2015bacnet}. 
 
-\subsection{Description of SBA-Method}
-  In \cite{kampel2017combinatorial} a combinatorial methodology to model composed software systems is presented.
-	The main idea behind this methodology is to combine legacy test suites of components of an SUT,
-	via a so called \emph{meta-array}, to get a test suite for the whole SUT.
-	It is also shown that, if the legacy test suites, as well as the meta-array fulfill certain combinatorial criteria,
-	so does the test suite for the whole SUT (for details see \cite{kampel2017combinatorial}.)
-	The generation of a combinatorial test suite for an SUT with the \todo{to be defined in into to CT:} IPM $(v_1,\ldots,v_g)$ can be described as follows:
-	\begin{itemize}
-    \item [] \textit{Step 1}: Partition the given parameter configuration $(v_1,\ldots,v_g)$ into classes $V_1,\ldots,V_k$.
-    \item [] \textit{Step 2}: For each $i=1,\ldots,k$ construct legacy test suites that are covering arrays of a certain strength $t$:
-		$S_i=\mathit{MCA}(N_i;t,|V_i|,V_i)$.
-    \item [] \textit{Step 3}: Construct a meta array $\mathcal M = \mathit{MCA}(N_m;t,k,(N_1,\ldots,N_k))$.
-    \item [] \textit{Step 4}: For all columns of $\mathcal M$ do the following:
-		in column $j$ of $\mathcal M$ replace all occurrences of $n$ with the $n$-th row of $\mathcal S_j$.
-		%Apply the plug-in construction to the seed arrays $(S_i)_{i=1}^k$ and the meta array $\mathcal M$.
-\end{itemize}
-The result of this construction is again a covering array of strength $t$.
 
-\section{Modelling of BACnet}
+% \subsection{Description of SBA-Method}
+%   In \cite{kampel2017combinatorial} a combinatorial methodology to model composed software systems is presented.
+% 	The main idea behind this methodology is to combine legacy test suites of components of an SUT,
+% 	via a so called \emph{meta-array}, to get a test suite for the whole SUT.
+% 	It is also shown that, if the legacy test suites, as well as the meta-array fulfill certain combinatorial criteria,
+% 	so does the test suite for the whole SUT (for details see \cite{kampel2017combinatorial}.)
+% 	The generation of a combinatorial test suite for an SUT with the \todo{to be defined in into to CT:} IPM $(v_1,\ldots,v_g)$ can be described as follows:
+% 	\begin{itemize}
+%     \item [] \textit{Step 1}: Partition the given parameter configuration $(v_1,\ldots,v_g)$ into classes $V_1,\ldots,V_k$.
+%     \item [] \textit{Step 2}: For each $i=1,\ldots,k$ construct legacy test suites that are covering arrays of a certain strength $t$:
+% 		$S_i=\mathit{MCA}(N_i;t,|V_i|,V_i)$.
+%     \item [] \textit{Step 3}: Construct a meta array $\mathcal M = \mathit{MCA}(N_m;t,k,(N_1,\ldots,N_k))$.
+%     \item [] \textit{Step 4}: For all columns of $\mathcal M$ do the following:
+% 		in column $j$ of $\mathcal M$ replace all occurrences of $n$ with the $n$-th row of $\mathcal S_j$.
+% 		%Apply the plug-in construction to the seed arrays $(S_i)_{i=1}^k$ and the meta array $\mathcal M$.
+% \end{itemize}
+% The result of this construction is again a covering array of strength $t$.
 
-	\subsection{Description of BACnet}
+\section{The System Under Test}
+
+	\subsection{Description of the Architecture}
 	
 	A BACnet Event can be characterized as any change in the value of any property of any object
 that meets a particular criteria. The purpose of an Event Enrollment Object (EEO) is to define an
@@ -475,7 +491,7 @@ Figure~\ref{fig:workflow} displays the work flow of testing EEOs.
 %	\label{fig:workflow}
 %\end{figure}
 
-	\subsection{Modeling BACnet EEO's with IBM-Method}
+	\subsection{Description of the Continuous Deployment Environment }
   In software not all parameters are available simultaneously:
 	some parameters can be enabled over time based on user choices,
 	and these parameters can have covering arrays of their own values \cite{kuhn2008practical}. 
@@ -607,15 +623,15 @@ Figure~\ref{fig:workflow} displays the work flow of testing EEOs.
 	ValueBinary = N/A}
 
 		
-	\subsection{Ideas to reduce parameter values}
-	In addition to equivalence-partitioning parameter values in block 1
-	(refer to block 1 example from the previous section) 
-	
-	While configuring for a MV (refer to block 2 example from the previous section) 
-	another idea came to mind. For the parameter ValueUnsigned, instead of many possible configurations, 
-	it appeared that a covering array can be utilized. 
-	Figure shows the UI for what configures the parameter named ValueUnsigned in the IPM: when the object of concern is an MV, 
-	the PropertyStateType is set to Unsigned and these are the values the user is presented with for the configuration.	
+%	\subsection{Ideas to reduce parameter values}
+%	In addition to equivalence-partitioning parameter values in block 1
+%	(refer to block 1 example from the previous section) 
+%	
+%	While configuring for a MV (refer to block 2 example from the previous section) 
+%	another idea came to mind. For the parameter ValueUnsigned, instead of many possible configurations, 
+%	it appeared that a covering array can be utilized. 
+%	Figure shows the UI for what configures the parameter named ValueUnsigned in the IPM: when the object of concern is an MV, 
+%	the PropertyStateType is set to Unsigned and these are the values the user is presented with for the configuration.	
 
 	
 %	\begin{figure}[!h]
@@ -634,26 +650,26 @@ Figure~\ref{fig:workflow} displays the work flow of testing EEOs.
 %	\end{figure}
 	
 
-	\subsection{Modeling BACnet with SBA-Method}
-	In \cite{kampel2017combinatorial} a combinatorial methodology to model composed software systems is presented.
-	The main idea behind this methodology is to combine legacy test suites of the components,
-	via a so called \emph{meta-array}, to get a test suite for the whole SUT.
-	It is also shown that, if the legacy test suites, as well as the meta-array fulfill certain combinatorial creteria,
-	so does the test suite for the whole SUT (for details see \cite{kampel2017combinatorial}.)
-	
-	
-	The SBA-Method \cite{kampel2017combinatorial}, can be summarized in 5 core steps. Each step will be detailed in subsequently.
-	
-	\subsubsection{ Generate seed covering array (CA) for strength t=1 for each of the parameter partitions} 
-	We start by dividing the interrelated parameter groups into seeds.
-	 \todo{Ludwig, please insert a short description of what seeds are, perhaps make a reference to a paper, maybe this one? \cite{kampel2017combinatorial}  } 
-	In identifying the seeds for an EEO, we borrow initial ideas from the IBM method for separating the sequenced parameter groups. 
-	The parameters and values that make possible the IBM method; parameters that enable/disable blocks (using TRUE and FALSE), parameter values that are 'N/A' which disable blocks, are not needed.
-	Refer to the IPM in Figure~\ref{fig:IBMmethodIPMfullTable}. 
-	The second important point is that each seed gets its unique parameters whether they are common in the other seeds or not: in the figure these are ObjectType and EventType parameters which are common in the seeds but their parameter values are different based on user selection. 
-	For example in seed2: if ObjectType is BI or BO, EventType is set to changeOfState immediately and the ValueBinary can have values from 00 to 11. 
-	Another example is in seed3: if ObjectType is MV, EventType is set to changeOfValue and ValueUnsigned is one of the 8 configurations, of which we are using 4 as described in Figure~\ref{fig:subCoveringArrayTable}. 
-	Once the seeds are defined, we start generating a CA for strength t=1. In Figure~\ref{fig:Step2} 1-way covering arrays are shown in ACTS screenshots: seed1 has 37 tests, seed2 and seed 3 have 4 tests each.
+%	\subsection{Modeling BACnet with SBA-Method}
+%	In \cite{kampel2017combinatorial} a combinatorial methodology to model composed software systems is presented.
+%	The main idea behind this methodology is to combine legacy test suites of the components,
+%	via a so called \emph{meta-array}, to get a test suite for the whole SUT.
+%	It is also shown that, if the legacy test suites, as well as the meta-array fulfill certain combinatorial creteria,
+%	so does the test suite for the whole SUT (for details see \cite{kampel2017combinatorial}.)
+%	
+%	
+%	The SBA-Method \cite{kampel2017combinatorial}, can be summarized in 5 core steps. Each step will be detailed in subsequently.
+%	
+%	\subsubsection{ Generate seed covering array (CA) for strength t=1 for each of the parameter partitions} 
+%	We start by dividing the interrelated parameter groups into seeds.
+%	 \todo{Ludwig, please insert a short description of what seeds are, perhaps make a reference to a paper, maybe this one? \cite{kampel2017combinatorial}  } 
+%	In identifying the seeds for an EEO, we borrow initial ideas from the IBM method for separating the sequenced parameter groups. 
+%	The parameters and values that make possible the IBM method; parameters that enable/disable blocks (using TRUE and FALSE), parameter values that are 'N/A' which disable blocks, are not needed.
+%	Refer to the IPM in Figure~\ref{fig:IBMmethodIPMfullTable}. 
+%	The second important point is that each seed gets its unique parameters whether they are common in the other seeds or not: in the figure these are ObjectType and EventType parameters which are common in the seeds but their parameter values are different based on user selection. 
+%	For example in seed2: if ObjectType is BI or BO, EventType is set to changeOfState immediately and the ValueBinary can have values from 00 to 11. 
+%	Another example is in seed3: if ObjectType is MV, EventType is set to changeOfValue and ValueUnsigned is one of the 8 configurations, of which we are using 4 as described in Figure~\ref{fig:subCoveringArrayTable}. 
+%	Once the seeds are defined, we start generating a CA for strength t=1. In Figure~\ref{fig:Step2} 1-way covering arrays are shown in ACTS screenshots: seed1 has 37 tests, seed2 and seed 3 have 4 tests each.
 	
 	
 %	\begin{figure}[h]
@@ -664,7 +680,7 @@ Figure~\ref{fig:workflow} displays the work flow of testing EEOs.
 %	\end{figure}
 	
 	
-	\subsubsection {Generate a meta CA of strength t=2; the input is an IPM where each parameter corresponds to a partition and the parameter values are integers from 1 to the size of the respective seed CA (from step 1) } Here seed1 corresponds to partition M1, seed 2 to M2 and so on. Each test in the seed is represented by an integer: 37 in M1, 4 in M2 and 4 in M3. Following this a meta CA is generated of strength 2 (t=2 : 2-way). The meta array in our example has 148 tests as shown in the ACTS screen shot in Figure~\ref{fig:Step2}
+% \subsubsection {Generate a meta CA of strength t=2; the input is an IPM where each parameter corresponds to a partition and the parameter values are integers from 1 to the size of the respective seed CA (from step 1) } Here seed1 corresponds to partition M1, seed 2 to M2 and so on. Each test in the seed is represented by an integer: 37 in M1, 4 in M2 and 4 in M3. Following this a meta CA is generated of strength 2 (t=2 : 2-way). The meta array in our example has 148 tests as shown in the ACTS screen shot in Figure~\ref{fig:Step2}
 	
 		
 %	\begin{figure}[!h]
@@ -675,12 +691,12 @@ Figure~\ref{fig:workflow} displays the work flow of testing EEOs.
 %	\end{figure}
 	
 	
-	\subsubsection {Expand step 1 and 2 with real values instead of numbers: apply the plug-in construction: } In this step we take our meta array with 148 tests and expand it with real values. In Figure~\ref{fig:step3} shows the entirety of parameters:  
-	M1: ObjectType, EventType, SetPointOrFeedbackPropType, SetPointOrFeedbackPropProperty; 
-	M2: ObjectType, EventType, ValueBinary; 
-	M3:ObjectType, EventType, ValueUnsigned .
-	Parameter M1 has 37 possible values used in 148 tests (refer to step 1 and 2), so the integers 1 to 317 get replaced with the tests in step1. 
-	Parameter M2 has 4 possible values in 148 tests, so the integers 1 to 4 get replaced with the tests in step1 and so on for M3.
+%	\subsubsection {Expand step 1 and 2 with real values instead of numbers: apply the plug-in construction: } In this step we take our meta array with 148 tests and expand it with real values. In Figure~\ref{fig:step3} shows the entirety of parameters:  
+%	M1: ObjectType, EventType, SetPointOrFeedbackPropType, SetPointOrFeedbackPropProperty; 
+%	M2: ObjectType, EventType, ValueBinary; 
+%	M3:ObjectType, EventType, ValueUnsigned .
+%	Parameter M1 has 37 possible values used in 148 tests (refer to step 1 and 2), so the integers 1 to 317 get replaced with the tests in step1. 
+%	Parameter M2 has 4 possible values in 148 tests, so the integers 1 to 4 get replaced with the tests in step1 and so on for M3.
 		
 	
 %	\begin{figure}[!h]
@@ -691,9 +707,9 @@ Figure~\ref{fig:workflow} displays the work flow of testing EEOs.
 %	\end{figure}
 	
 	
-	\subsubsection {Generate juxtaposed CAs of strength 2 for each of the partitions: } Refer back to step1 where we created seed CAs for strength t=1 (seed out) as shown in Figure~\ref{fig:Step2}. 
-	In this step we have a parallel effort where we create the same CAs with strength t=2 (jux out: juxtaposed out) instead. 
-	In Figure~\ref{fig:step4 and 5} these 2-way CAs can be observed: 925 2-way tests for seed1, 8 2-way tests for seed2 and 4 2-way tests for seed3. 
+%	\subsubsection {Generate juxtaposed CAs of strength 2 for each of the partitions: } Refer back to step1 where we created seed CAs for strength t=1 (seed out) as shown in Figure~\ref{fig:Step2}. 
+%	In this step we have a parallel effort where we create the same CAs with strength t=2 (jux out: juxtaposed out) instead. 
+%	In Figure~\ref{fig:step4 and 5} these 2-way CAs can be observed: 925 2-way tests for seed1, 8 2-way tests for seed2 and 4 2-way tests for seed3. 
 	
 %	\begin{figure}[!h]
 %		\centering
@@ -702,21 +718,13 @@ Figure~\ref{fig:workflow} displays the work flow of testing EEOs.
 %		\label{fig:step4 and 5}
 %	\end{figure}
 
+\subsection{Description of the Test Code Structure}
 	
-	\subsubsection {Vertically juxtapose the juxtaposed CAs in step 4 to the result of step 3. This guarantees that the final result is again a 2-way covering array: } We simply add the 2-way CA under the 1-way CA as shown in Figure~\ref{fig:step4 and 5}. Here the first seed has 925 tests while the others have 8 and 4 respectively, this may seem challenging at first. 
-	For seed 2 and 3 we simply, repeatedly keep adding in blocks (of 8 and 4 respectively) until we cannot add anymore. If the final addition is not a multiple of 925, then we add the remainders. 
+All t-way coverage measurements were made using NIST's coverage measurement tool Combinatorial Coverage Measurement (CCM) command line version \cite{kuhn2013combinatorial}.
 
-\section{Experiments}
-	
-	In the following sections the coverage measurements, the pro's and con's of the IBM and the SBA methods will be evaluated. 
-		
-	\subsection{Coverage measurement comparison}
-	
-	All t-way coverage measurements were made using NIST's coverage measurement tool Combinatorial Coverage Measurement (CCM) command line version \cite{kuhn2013combinatorial}.
-	
-		For IBM method, the coverage with constraints factored in and the coverage without constraints are examined in figures~\ref{fig:coverageIBM-UH} and~\ref{fig:coverageIBM-UH_noConstraints}.
-	Figure~\ref{fig:coverageIBM-UH} shows the 2, 3, 4-way coverage measurement of the IBM method, respectively figure~\ref{fig:coverageIBM-UH_noConstraints} shows the coverage measurement without constraints. 
-	
+	For IBM method, the coverage with constraints factored in and the coverage without constraints are examined in figures~\ref{fig:coverageIBM-UH} and~\ref{fig:coverageIBM-UH_noConstraints}.
+Figure~\ref{fig:coverageIBM-UH} shows the 2, 3, 4-way coverage measurement of the IBM method, respectively figure~\ref{fig:coverageIBM-UH_noConstraints} shows the coverage measurement without constraints. 
+
 %	\begin{figure}[h]
 %		\centering
 %			\includegraphics[width=0.50\textwidth]{coverageIBM-UH.pdf}
@@ -730,41 +738,49 @@ Figure~\ref{fig:workflow} displays the work flow of testing EEOs.
 %		\caption{Coverage: IBM method without constraints}
 %		\label{fig:coverageIBM-UH_noConstraints}
 %	\end{figure}
+
+As mentioned in Section III B, the use of constraints are at the foundation of the IBM method. 
+The 2-way coverage without constraints is at 100\% as seen in figure~\ref{fig:coverageIBM-UH_noConstraints}.
+The application of constraints, which make the method possible, reduces the 2-way coverage measurement to 58.1\%. Because constraints are an integral part of the method, in this evaluation we believe that the coverage measurement of the IBM method is inconsequential. 
+
+For SBA method, the coverage with constraints factored in and the coverage without constraints are examined in figures~\ref{fig:coverageSBA} and~\ref{fig:coverageSBA_noConstraints}.
+Figure~\ref{fig:coverageSBA} shows the 2, 3, 4-way coverage measurement of the SBA method, respectively figure~\ref{fig:coverageSBA_noConstraints} shows the coverage measurement without constraints.
+The 2-way coverage without constraints is at 100\% as seen in figure~\ref{fig:coverageSBA_noConstraints}. The minimum 2-way coverage without constraints is also at 100\%. 
+
+The significance and the impact of minimum t-way coverage on branch coverage conditions in the code is discussed in paper \cite{kuhn2016measuring}. 
+Label M as the minimum 2-way coverage; i.e., the lowest proportion of settings covered for all t-way combinations of variables. 
+For example, 2-way combinations of binary variables have four possible settings: 00, 01, 10, 11. Some variable pairs may have all four settings covered, but others may have less. 
+M is the smallest proportion of coverage among all of the t-way variable combinations.  M is also viewable as the rightmost line in the coverage strength meters in Figure 1 and 3. 
+
+%\begin{figure}[h]
+%	\centering
+%		\includegraphics[width=0.50\textwidth]{coverageSBA.pdf}
+%	\caption{Coverage: SBA method}
+%	\label{fig:coverageSBA}
+%\end{figure}
+%
+%	\begin{figure}[h]
+%	\centering
+%		\includegraphics[width=0.50\textwidth]{coverageSBA_noConstraints.pdf}
+%	\caption{Coverage: SBA method without constraints}
+%	\label{fig:coverageSBA_noConstraints}
+%\end{figure}
+
+Applying the constraints to the SBA method has a miniscule impact on the overall 2-way coverage: down from 100\% to 99.76\% as seen in figure~\ref{fig:coverageSBA}. 
+The effect on 3 and 4-way coverage is similar. 
+\todo{Ludwig, do you want to insert a sentence on why this is?}
+The impact of constraints on the minimum 3-way and 4-way coverage is non-existent, however on minimum 2-way coverage the difference is 40\%. \todo{Ludwig, do you want to insert a sentence on why this is?}.
+Overall, t-way coverage analysis is valid on the SBA method. 
 	
-	As mentioned in Section III B, the use of constraints are at the foundation of the IBM method. 
-	The 2-way coverage without constraints is at 100\% as seen in figure~\ref{fig:coverageIBM-UH_noConstraints}.
-	The application of constraints, which make the method possible, reduces the 2-way coverage measurement to 58.1\%. Because constraints are an integral part of the method, in this evaluation we believe that the coverage measurement of the IBM method is inconsequential. 
+	\subsubsection {Vertically juxtapose the juxtaposed CAs in step 4 to the result of step 3. This guarantees that the final result is again a 2-way covering array: } We simply add the 2-way CA under the 1-way CA as shown in Figure~\ref{fig:step4 and 5}. Here the first seed has 925 tests while the others have 8 and 4 respectively, this may seem challenging at first. 
+	For seed 2 and 3 we simply, repeatedly keep adding in blocks (of 8 and 4 respectively) until we cannot add anymore. If the final addition is not a multiple of 925, then we add the remainders. 
+
+\section{Test Methodology}
 	
-	For SBA method, the coverage with constraints factored in and the coverage without constraints are examined in figures~\ref{fig:coverageSBA} and~\ref{fig:coverageSBA_noConstraints}.
-	Figure~\ref{fig:coverageSBA} shows the 2, 3, 4-way coverage measurement of the SBA method, respectively figure~\ref{fig:coverageSBA_noConstraints} shows the coverage measurement without constraints.
-	The 2-way coverage without constraints is at 100\% as seen in figure~\ref{fig:coverageSBA_noConstraints}. The minimum 2-way coverage without constraints is also at 100\%. 
-	
-	The significance and the impact of minimum t-way coverage on branch coverage conditions in the code is discussed in paper \cite{kuhn2016measuring}. 
-	Label M as the minimum 2-way coverage; i.e., the lowest proportion of settings covered for all t-way combinations of variables. 
-	For example, 2-way combinations of binary variables have four possible settings: 00, 01, 10, 11. Some variable pairs may have all four settings covered, but others may have less. 
-	M is the smallest proportion of coverage among all of the t-way variable combinations.  M is also viewable as the rightmost line in the coverage strength meters in Figure 1 and 3. 
-	
-	%\begin{figure}[h]
-	%	\centering
-	%		\includegraphics[width=0.50\textwidth]{coverageSBA.pdf}
-	%	\caption{Coverage: SBA method}
-	%	\label{fig:coverageSBA}
-	%\end{figure}
-	%
-	%	\begin{figure}[h]
-	%	\centering
-	%		\includegraphics[width=0.50\textwidth]{coverageSBA_noConstraints.pdf}
-	%	\caption{Coverage: SBA method without constraints}
-	%	\label{fig:coverageSBA_noConstraints}
-	%\end{figure}
-	
-	Applying the constraints to the SBA method has a miniscule impact on the overall 2-way coverage: down from 100\% to 99.76\% as seen in figure~\ref{fig:coverageSBA}. 
-	The effect on 3 and 4-way coverage is similar. 
-	\todo{Ludwig, do you want to insert a sentence on why this is?}
-	The impact of constraints on the minimum 3-way and 4-way coverage is non-existent, however on minimum 2-way coverage the difference is 40\%. \todo{Ludwig, do you want to insert a sentence on why this is?}.
-	Overall, t-way coverage analysis is valid on the SBA method. 
+	In the following sections the coverage measurements, the pro's and con's of the IBM and the SBA methods will be evaluated. 
 		
-	\subsection{Pro's and Con's }
+	
+	\subsection{Input driven testing of hardware}
 	
 	Considering t-way coverage measurement, SBA method provides evidence of the measurement while coverage measurement in IBM method is inconsequential as explained in the previous section. 
 		
@@ -787,6 +803,12 @@ Figure~\ref{fig:workflow} displays the work flow of testing EEOs.
 
 	Considering the above factors, IBM method may be preferred for smaller systems under test while SBA method may be preferred for larger systems.
 	However, the significance of the above factors for the system and/or the test team may effect the preferences for the method of use.
+
+	\subsection{Filtering Points by Tag Combinations }
+
+	\subsection{State Transitions Between Combinations of Alarm Data, With a Variable Oracle}
+
+	\subsection{Sequenced Filtering, Searching, Sorting of Geo-located Sites}
 	
 \section{Conclusion and future work}
 	
@@ -796,7 +818,7 @@ the Combinatorial Input Parameter Model (IPM) are not simultaneously available, 
 Future work on this front may incorporate system test ideas where each seed (in the SBA method) or different color (in the IBM method) being a different module of functionality.
 
 \textbf{Acknowledgments.}
-This research was carried out in the context of the Austrian COMET K1
+This research was carried out in the context of Austrian COMET K1
 program and publicly funded by the Austrian Research Promotion Agency
 (FFG) and the Vienna Business Agency (WAW).
 

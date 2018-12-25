@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.12.24)  24 DEC 2018 12:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.12.24)  25 DEC 2018 07:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -529,112 +529,77 @@ Package grfext Info: Graphics extension search list:
 (grfext)             \AppendGraphicsExtensions on input line 456.
  (c:/texlive/2018/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-)) ABD: EveryShipout initializing macros
-LaTeX Font Info:    Try loading font information for U+msa on input line 424.
- (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 424.
- (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1{c:/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+)) ABD: EveryShipout initializing macros [1{c:/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-Underfull \hbox (badness 1953) in paragraph at lines 426--427
-[]\OT1/ptm/m/it/10 Step 1\OT1/ptm/m/n/10 : Par-ti-tion the given pa-ram-e-ter con-fig-u-ra-tion
- []
+
+LaTeX Warning: Reference `fig:workflow' on page 2 undefined on input line 477.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 429--430
-[]\OT1/ptm/m/it/10 Step 3\OT1/ptm/m/n/10 : Con-struct a meta ar-ray $\OMS/cmsy/m/n/10 M \OT1/cmr/m/n/10 =
- []
+LaTeX Warning: Reference `fig:IBMmethodIPMfullTable' on page 2 undefined on input line 499.
 
 
-LaTeX Warning: Reference `fig:workflow' on page 2 undefined on input line 461.
-
-
-LaTeX Warning: Reference `fig:IBMmethodIPMfullTable' on page 2 undefined on input line 483.
-
-
-LaTeX Warning: Reference `fig:IBMmethodBlocks' on page 2 undefined on input line 515.
+LaTeX Warning: Reference `fig:IBMmethodBlocks' on page 2 undefined on input line 531.
 
 [2]
 
-LaTeX Warning: Reference `fig:IBMmethodBlocks' on page 3 undefined on input line 543.
+LaTeX Warning: Reference `fig:IBMmethodBlocks' on page 3 undefined on input line 559.
 
 
-Underfull \hbox (badness 2269) in paragraph at lines 601--602
+Underfull \hbox (badness 2269) in paragraph at lines 617--618
 \OT1/ptm/m/sl/10 Set-pointOr-Feed-back-Prop-Type = N/A, Set-pointOr-Feed-back-
  []
 
 
-Underfull \hbox (badness 2521) in paragraph at lines 607--608
+Underfull \hbox (badness 2521) in paragraph at lines 623--624
 \OT1/ptm/m/sl/10 IAOAVBOMO = FALSE, Set-pointOr-Feed-back-Prop-Type =
  []
 
 
-LaTeX Warning: Reference `fig:IBMmethodIPMfullTable' on page 3 undefined on input line 652.
+LaTeX Warning: Reference `fig:coverageIBM-UH' on page 3 undefined on input line 725.
 
 
-LaTeX Warning: Reference `fig:subCoveringArrayTable' on page 3 undefined on input line 655.
+LaTeX Warning: Reference `fig:coverageIBM-UH_noConstraints' on page 3 undefined on input line 725.
 
 
-LaTeX Warning: Reference `fig:Step2' on page 3 undefined on input line 656.
+LaTeX Warning: Reference `fig:coverageIBM-UH' on page 3 undefined on input line 726.
+
+
+LaTeX Warning: Reference `fig:coverageIBM-UH_noConstraints' on page 3 undefined on input line 726.
+
+
+LaTeX Warning: Reference `fig:coverageIBM-UH_noConstraints' on page 3 undefined on input line 743.
+
+
+LaTeX Warning: Reference `fig:coverageSBA' on page 3 undefined on input line 746.
+
+
+LaTeX Warning: Reference `fig:coverageSBA_noConstraints' on page 3 undefined on input line 746.
+
+
+LaTeX Warning: Reference `fig:coverageSBA' on page 3 undefined on input line 747.
+
+
+LaTeX Warning: Reference `fig:coverageSBA_noConstraints' on page 3 undefined on input line 747.
+
+
+LaTeX Warning: Reference `fig:coverageSBA_noConstraints' on page 3 undefined on input line 748.
 
 [3]
 
-LaTeX Warning: Reference `fig:Step2' on page 4 undefined on input line 667.
+LaTeX Warning: Reference `fig:coverageSBA' on page 4 undefined on input line 769.
 
 
-LaTeX Warning: Reference `fig:step3' on page 4 undefined on input line 678.
+LaTeX Warning: Reference `fig:step4 and 5' on page 4 undefined on input line 775.
 
 
-LaTeX Warning: Reference `fig:Step2' on page 4 undefined on input line 694.
+LaTeX Warning: Reference `fig:constraintsIBM-UH' on page 4 undefined on input line 794.
 
 
-LaTeX Warning: Reference `fig:step4 and 5' on page 4 undefined on input line 696.
+Underfull \vbox (badness 1107) has occurred while \output is active []
 
-
-LaTeX Warning: Reference `fig:step4 and 5' on page 4 undefined on input line 706.
-
-
-LaTeX Warning: Reference `fig:coverageIBM-UH' on page 4 undefined on input line 717.
-
-
-LaTeX Warning: Reference `fig:coverageIBM-UH_noConstraints' on page 4 undefined on input line 717.
-
-
-LaTeX Warning: Reference `fig:coverageIBM-UH' on page 4 undefined on input line 718.
-
-
-LaTeX Warning: Reference `fig:coverageIBM-UH_noConstraints' on page 4 undefined on input line 718.
-
-
-LaTeX Warning: Reference `fig:coverageIBM-UH_noConstraints' on page 4 undefined on input line 735.
-
-
-LaTeX Warning: Reference `fig:coverageSBA' on page 4 undefined on input line 738.
-
-
-LaTeX Warning: Reference `fig:coverageSBA_noConstraints' on page 4 undefined on input line 738.
-
-
-LaTeX Warning: Reference `fig:coverageSBA' on page 4 undefined on input line 739.
-
-
-LaTeX Warning: Reference `fig:coverageSBA_noConstraints' on page 4 undefined on input line 739.
-
-
-LaTeX Warning: Reference `fig:coverageSBA_noConstraints' on page 4 undefined on input line 740.
-
-
-LaTeX Warning: Reference `fig:coverageSBA' on page 4 undefined on input line 761.
-
-
-LaTeX Warning: Reference `fig:constraintsIBM-UH' on page 4 undefined on input line 778.
-
-[4] (./cloud.bbl)
+ (./cloud.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -646,26 +611,24 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[5
-
-] (./cloud.aux)
+[4] (./cloud.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 15252 strings out of 492616
- 291520 string characters out of 6132767
- 361356 words of memory out of 5000000
- 18889 multiletter control sequences out of 15000+600000
- 39635 words of font info for 77 fonts, out of 8000000 for 9000
+ 15216 strings out of 492616
+ 290949 string characters out of 6132767
+ 360352 words of memory out of 5000000
+ 18868 multiletter control sequences out of 15000+600000
+ 36892 words of font info for 66 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
  55i,8n,54p,837b,245s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on cloud.pdf (5 pages, 147923 bytes).
+{c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on cloud.pdf (4 pages, 93688 bytes).
 PDF statistics:
- 68 PDF objects out of 1000 (max. 8388607)
- 49 compressed objects within 1 object stream
+ 41 PDF objects out of 1000 (max. 8388607)
+ 29 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

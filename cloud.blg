@@ -15,45 +15,45 @@ Warning--empty journal in nussbaumerbacnet
 Warning--empty year in nussbaumerbacnet
 
 Done.
-You've used 9 entries,
+You've used 8 entries,
             4087 wiz_defined-function locations,
-            877 strings with 8853 characters,
-and the built_in function-call counts, 6627 in all, are:
-= -- 544
-> -- 130
-< -- 57
-+ -- 72
-- -- 21
-* -- 328
-:= -- 1018
-add.period$ -- 21
-call.type$ -- 9
-change.case$ -- 9
-chr.to.int$ -- 120
-cite$ -- 11
-duplicate$ -- 486
-empty$ -- 532
-format.name$ -- 27
-if$ -- 1533
+            871 strings with 8600 characters,
+and the built_in function-call counts, 5707 in all, are:
+= -- 474
+> -- 109
+< -- 48
++ -- 60
+- -- 18
+* -- 285
+:= -- 895
+add.period$ -- 18
+call.type$ -- 8
+change.case$ -- 8
+chr.to.int$ -- 96
+cite$ -- 10
+duplicate$ -- 423
+empty$ -- 449
+format.name$ -- 23
+if$ -- 1311
 int.to.chr$ -- 0
-int.to.str$ -- 9
-missing$ -- 80
-newline$ -- 50
-num.names$ -- 9
-pop$ -- 173
+int.to.str$ -- 8
+missing$ -- 70
+newline$ -- 47
+num.names$ -- 8
+pop$ -- 147
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 513
+skip$ -- 443
 stack$ -- 0
-substring$ -- 299
-swap$ -- 390
-text.length$ -- 17
+substring$ -- 242
+swap$ -- 338
+text.length$ -- 16
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 9
+type$ -- 8
 warning$ -- 2
-while$ -- 31
-width$ -- 10
-write$ -- 109
+while$ -- 26
+width$ -- 9
+write$ -- 100
 (There were 2 warnings)
