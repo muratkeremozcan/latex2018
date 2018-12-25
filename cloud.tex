@@ -471,213 +471,31 @@ One example will include a scenario where a sequence of actions will be incorpor
 \end{figure}
 
 	\subsection{Description of the Continuous Deployment Environment }
+	In a traditional configuration management scenario, there may be a plethora of servers needed for web development activities.
+	Staging, committing, packaging the developed code, testing at each stage, source controlling and finally publishing at production server(s) may take place on a number of machines.
+	This can end up in high costs of operation and maintenance in order to enable development activities.
+
+	In cloud computing, utilizing containerization, each one of these development activities can be operated in a docker container.
+	Figure~\ref{fig:UIpipeline} shows the GitLab pipeline for the UI component developed in Angular.
+	GitLab is a continuous integration tool that supports the teams by hosting code repositories (similar to GitHub), providing defect tracking, enabling code reviews and continuous integration support. 
+	Another example of a continuous integration tool is Jenkins, which can serve the same purpose thorough is extensions.
+
+	\begin{figure*}[!ht]
+		\centering
+			\includegraphics[width=1.00\textwidth]{UIpipeline.pdf}
+		\caption{UI component pipeline}
+		\label{fig:UIpipeline}
+		\end{figure*}
 	
 
+	The team uses Git for source control. \todo{about git}. 
+	When any code is submitted, the application is built in a docker container, OSS Clearing for licensing is executed, unit testing and linting are done, the application is deployed to an cloud-hosted container and automated UI tests are run targeting the deployment.
+	If testing passes, the code can get merged to the master branch. 
+	This automated testing process ensures that after any code commit, the application is tested end to end and the quality is ensured. 
+	To give a sense of scale, at the time of writing, the front end is over 15k lines of TypeScript code in Angular, over 1k lines of unit tests in Karma, over 4k lines of end to end (e2e) UI tests Protractor. 
+	There are over 200 unit tests that execute in seconds, over 300 e2e UI tests that execute under 10 minutes. 
 
 
-% Ludwig: If these have been addressed, we can remove them.
-%\todo{How did you reduce the number of values of these 2 Parameters !?! This is crucial!
-%You applied some methodologies from Rachels paper - good, but which were those?, why did you choose exactly those?
-%I propose a structure like this:
-%\begin{itemize}
-%	\item You describe the IPM for these two parameters before you modified them.
-%	\item You describe which patterns (in rachles terms) you identified
-%	\item ``This justifies to apply pattern X and/or pattern Y, to modify the parameter values.
-%	... and we need to add this, and that constraint.''
-%	\item So that the out coming IPM for these parameters looks like this: ....
-%	\item This means we reduced the parameter sizes from 123 to 23 and 123 to 37 respectively (note these are dummy values).
-%\end{itemize}
-%}
-
-		Refer to figure~\ref{fig:IBMmethodBlocks}. 
-	Related parameter groups are henceforth referred to by color groups.
-	In the figure the green path is described as when the Object Type is either analog input (AI), analog output (AO),
-	analog value (AV), binary output (BO) or multisate output (MO). 
-	When this is the case the related fields are enabled and the others are disabled.
-  The teal path signifies another group of related parameters: binary input (BI), binary value (BV). 
-	The blue path with multistate value (MV) works with the same logic.
-	
-		The 'enabling' of related parameters occurs as the parameter used for control of that parameter group is set to TRUE.
-	Since only a single parameter group should be enabled at a time,
-	through constraints, the other control parameters which control other groups are set to FALSE. 
-	In turn, the parameter groups that are controlled by those control parameters are forced to have values equal to N/A.
-	Here the use of N/A value for parameters that are not a part of the active parameter group in the current sequence 
-	is an idea inspired from the modeling pattern referred to in section II C 1.
-	The use of control parameters with values TRUE \& FALSE, 
-	the use of the control logic to identify the sequence in which the parameter group is occurring 
-	are ideas inspired from the modeling patterns referred to in section II C 3.
-	
-
-%	\begin{figure*}[!ht]
-%	\centering
-%		\includegraphics[width=1.00\textwidth]{IBMmethodIPMfullTable.pdf}
-%	\caption{IPM of IBM method, full table}
-%	\label{fig:IBMmethodIPMfullTable}
-%	\end{figure*}
-%
-
-	A better way to represent this sequence logic would be to separate them in blocks.
-	Figure~\ref{fig:IBMmethodBlocks} pictures how this can be structured.
-	These blocks represent different UIs
-	the user is presented with based on their parameter choices for the base block.
-	The base block contains the parameters ObjectType and EventType,
-	which are common to all paths. ObjectType's parameter values
-	AI, AO, AV, BO, MO enable block 1 highlighted in green. ObjectType's parameter values BI
-	and BV enable to block 2 highlighted in teal.
-	ObjectType's last parameter value MV relates to block 3 highlighted in blue.
-	
-	Block 1 (in green) contains the parameters SetPointOrFeedbackPropType, SetPointOrFeedbackPropProperty.
-	
-	Block 2 (in teal) contains the parameters ObjectPropertyReferenceMV, PropertyStateType, ValueUnsigned.
-	
-	Block 3 (in blue) contains the parameters ObjectPropertyReferenceBVBI, PropertyStateType, ValueBinary.
-	
-	Notice PropertyStateType being common in both blocks. Depending on the choices in ObjectType
-	of the base block, a default parameter value gets selected for PropertyStateType:
-	binary when ObjectType is binary-input or binary-value, Unsigned when ObjectType is Unsigned.
-	We will exemplify the 3 different sequences that may occur based on the initial choices of the user in the base block.
-	
-	Example 1: User selects ObjectType = 'AO', EventType = 'floating-limit' or 'out-of-range',
-	the next set of configurations can only be for SetPointOrFeedbackPropType (over 2 choices under it)
-	and SetPointOrFeedbackPropProperty (25 choices under it). 
-	All other parameters set to N/A utilizing constraints. 
-	
-	Example 2: User selects ObjectType = 'MV', EventType = 'change-of-value',
-	the next set of configurations can only be for ObjectPropertyReferenceMV (True or False),
-	PropertyStateType (only Unsigned), ValueUnsigned (4 configurations). 
-	All other parameters set to N/A utilizing constraints. 
-	
-	Example 3: User selects ObjectType = 'BV', EventType = 'change-of-state',
-	the next set of configuration con only be for ObjectPropertyReferenceBVBI (True or False),
-	PropertyStateType (only Binary), ValueBinary (00, 01, 10, 11).
-	All other parameters set to N/A utilizing constraints. 
-
-%	\begin{figure*}[!th]
-%		\centering
-%			\includegraphics[width=1.00\textwidth]{IBMmethodBlocks.pdf}
-%		\caption{IBM method, blocks}
-%		\label{fig:IBMmethodBlocks}
-%	\end{figure*}
-	
-	A better understanding can be achieved by observing the verbal constraints.
-	The Javascript code will be revealed in a later section while analyzing the pros and cons of the method. 
-		
-	\textsl{If ObjectType = AI,AO,AV  then  EventType = floating-limit	OR  out-of-range}
-				
-	\textsl{If ObjectType = BO,MO then EventType = command-failure	}			
-	
-	\textsl{If ObjectType = MV then EventType = change-of-value}
-	
-	\textsl{If ObjectType = AI,AO,AV,BO,MO then ObjectPropertyReferenceAIAOAVBOMO = TRUE
-	ObjectPropertyReferenceMV = FALSE, ObjectPropertyReferenceBVBI = FALSE, PropertyStateType = N/A,
-	ValueBinary = N/A, ValueUnsigned = N/A	}		
-	
-
-	\textsl{If ObjectType = BI,BV then EventType =change-of-state,  ObjectPropertyReferenceBVBI = TRUE,
-	PropertyStateType = Binary, ObjectPropertyReferenceAIAOAVBOMO = FALSE, SetpointOrFeedbackPropType = N/A,
-	SetpointOrFeedbackPropProperty = N/A, ObjectPropertyReferenceMV = FALSE,  ValueBinary != N/A, ValueUnsigned = N/A} 				
-	
-
-	\textsl{If ObjectType = MV then EventType = change-of-value, ObjectPropertyReferenceMV =  TRUE,
-	PropertyStateType = Unsigned, ValueUnsigned != N/A, ObjectPropertyReferenceAIAOAVBOMO = FALSE,
-	SetpointOrFeedbackPropType = N/A, SetpointOrFeedbackPropProperty = N/A, ObjectPropertyReferenceBVBI = FALSE,
-	ValueBinary = N/A}
-
-		
-%	\subsection{Ideas to reduce parameter values}
-%	In addition to equivalence-partitioning parameter values in block 1
-%	(refer to block 1 example from the previous section) 
-%	
-%	While configuring for a MV (refer to block 2 example from the previous section) 
-%	another idea came to mind. For the parameter ValueUnsigned, instead of many possible configurations, 
-%	it appeared that a covering array can be utilized. 
-%	Figure shows the UI for what configures the parameter named ValueUnsigned in the IPM: when the object of concern is an MV, 
-%	the PropertyStateType is set to Unsigned and these are the values the user is presented with for the configuration.	
-
-	
-%	\begin{figure}[!h]
-%		\includegraphics[width=0.50\textwidth]{subCoveringArray.pdf}
-%		\caption{configuring parameter values in the UI}
-%		\label{fig:subCoveringArray}
-%	\end{figure}
-%	
-%	Evaluating the configurations in a table, it was realized that there are in fact 8 possible ways to configure the value. The states that lead to the configurations are detailed in Figure~\ref{fig:subCoveringArrayTable}. In a sub-IPM, the states were then taken as parameters themselves, their True/False states as parameter values and plugged in NIST's Automated Combinatorial Testing for Software tool (ACTS) \cite{o2009automated} .  The resulting covering array showing the 4 configurations (Config6, 5, 3, 0) can be observed in Figure~\ref{fig:subCoveringArrayTable}.
-%	
-%	\begin{figure}[!h]
-%		\centering
-%			\includegraphics[width=.50\textwidth]{subCoveringArrayTable.pdf}
-%		\caption{8 possible configurations in UI, reduced to a covering array}
-%		\label{fig:subCoveringArrayTable}
-%	\end{figure}
-	
-
-%	\subsection{Modeling BACnet with SBA-Method}
-%	In \cite{kampel2017combinatorial} a combinatorial methodology to model composed software systems is presented.
-%	The main idea behind this methodology is to combine legacy test suites of the components,
-%	via a so called \emph{meta-array}, to get a test suite for the whole SUT.
-%	It is also shown that, if the legacy test suites, as well as the meta-array fulfill certain combinatorial creteria,
-%	so does the test suite for the whole SUT (for details see \cite{kampel2017combinatorial}.)
-%	
-%	
-%	The SBA-Method \cite{kampel2017combinatorial}, can be summarized in 5 core steps. Each step will be detailed in subsequently.
-%	
-%	\subsubsection{ Generate seed covering array (CA) for strength t=1 for each of the parameter partitions} 
-%	We start by dividing the interrelated parameter groups into seeds.
-%	 \todo{Ludwig, please insert a short description of what seeds are, perhaps make a reference to a paper, maybe this one? \cite{kampel2017combinatorial}  } 
-%	In identifying the seeds for an EEO, we borrow initial ideas from the IBM method for separating the sequenced parameter groups. 
-%	The parameters and values that make possible the IBM method; parameters that enable/disable blocks (using TRUE and FALSE), parameter values that are 'N/A' which disable blocks, are not needed.
-%	Refer to the IPM in Figure~\ref{fig:IBMmethodIPMfullTable}. 
-%	The second important point is that each seed gets its unique parameters whether they are common in the other seeds or not: in the figure these are ObjectType and EventType parameters which are common in the seeds but their parameter values are different based on user selection. 
-%	For example in seed2: if ObjectType is BI or BO, EventType is set to changeOfState immediately and the ValueBinary can have values from 00 to 11. 
-%	Another example is in seed3: if ObjectType is MV, EventType is set to changeOfValue and ValueUnsigned is one of the 8 configurations, of which we are using 4 as described in Figure~\ref{fig:subCoveringArrayTable}. 
-%	Once the seeds are defined, we start generating a CA for strength t=1. In Figure~\ref{fig:Step2} 1-way covering arrays are shown in ACTS screenshots: seed1 has 37 tests, seed2 and seed 3 have 4 tests each.
-	
-	
-%	\begin{figure}[h]
-%		\centering
-%			\includegraphics[width=.50\textwidth]{step1.pdf}
-%		\caption{SBA method Step 1}
-%		\label{fig:step1}
-%	\end{figure}
-	
-	
-% \subsubsection {Generate a meta CA of strength t=2; the input is an IPM where each parameter corresponds to a partition and the parameter values are integers from 1 to the size of the respective seed CA (from step 1) } Here seed1 corresponds to partition M1, seed 2 to M2 and so on. Each test in the seed is represented by an integer: 37 in M1, 4 in M2 and 4 in M3. Following this a meta CA is generated of strength 2 (t=2 : 2-way). The meta array in our example has 148 tests as shown in the ACTS screen shot in Figure~\ref{fig:Step2}
-	
-		
-%	\begin{figure}[!h]
-%		\centering
-%			\includegraphics[width=0.50\textwidth]{Step2.pdf}
-%		\caption{SBA method Step 2}
-%		\label{fig:Step2}
-%	\end{figure}
-	
-	
-%	\subsubsection {Expand step 1 and 2 with real values instead of numbers: apply the plug-in construction: } In this step we take our meta array with 148 tests and expand it with real values. In Figure~\ref{fig:step3} shows the entirety of parameters:  
-%	M1: ObjectType, EventType, SetPointOrFeedbackPropType, SetPointOrFeedbackPropProperty; 
-%	M2: ObjectType, EventType, ValueBinary; 
-%	M3:ObjectType, EventType, ValueUnsigned .
-%	Parameter M1 has 37 possible values used in 148 tests (refer to step 1 and 2), so the integers 1 to 317 get replaced with the tests in step1. 
-%	Parameter M2 has 4 possible values in 148 tests, so the integers 1 to 4 get replaced with the tests in step1 and so on for M3.
-		
-	
-%	\begin{figure}[!h]
-%		\centering
-%			\includegraphics[width=0.50\textwidth]{step3.pdf}
-%		\caption{SBA method Step 3}
-%		\label{fig:step3}
-%	\end{figure}
-	
-	
-%	\subsubsection {Generate juxtaposed CAs of strength 2 for each of the partitions: } Refer back to step1 where we created seed CAs for strength t=1 (seed out) as shown in Figure~\ref{fig:Step2}. 
-%	In this step we have a parallel effort where we create the same CAs with strength t=2 (jux out: juxtaposed out) instead. 
-%	In Figure~\ref{fig:step4 and 5} these 2-way CAs can be observed: 925 2-way tests for seed1, 8 2-way tests for seed2 and 4 2-way tests for seed3. 
-	
-%	\begin{figure}[!h]
-%		\centering
-%			\includegraphics[width=0.50\textwidth]{step4&5.pdf}
-%		\caption{SBA method Steps 4 and 5}
-%		\label{fig:step4 and 5}
-%	\end{figure}
 
 \subsection{Description of the Test Code Structure}
 	

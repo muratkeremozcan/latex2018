@@ -1,14 +1,13 @@
 # Fdb version 3
-["bibtex cloud"] 1545755437 "cloud.aux" "cloud.bbl" "cloud" 1545755440
-  "c:/texlive/2018/texmf-dist/bibtex/bst/IEEEtran/IEEEtran.bst" 1545666499 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "cloud.aux" 1545755439 3353 84dffed2add7d8e946177f6a02b094c1 ""
-  "cloud.bib" 1509554987 4358 791297ce3462184ed30bfba9f517bac2 ""
+["bibtex cloud"] 1545758979 "cloud.aux" "cloud.bbl" "cloud" 1545758980
+  "cloud.aux" 1545758978 3509 43c35a21e25ea3ebfbf212bb836b5fda ""
   (generated)
   "cloud.bbl"
   "cloud.blg"
-["pdflatex"] 1545755437 "c:/UserData/ozcanm/Documents/CT/2018/Paper/cloud.tex" "cloud.pdf" "cloud" 1545755440
+["pdflatex"] 1545758976 "c:/UserData/ozcanm/Documents/CT/2018/Paper/cloud.tex" "cloud.pdf" "cloud" 1545758980
+  "UIpipeline.pdf" 1545757337 24716 e5fb607e5d2040239bfccd6a5e680ee7 ""
   "architecture.pdf" 1545755016 47868 886310f593f830351f78ab8a8426516f ""
-  "c:/UserData/ozcanm/Documents/CT/2018/Paper/cloud.tex" 1545755430 42693 946faf89548a4588fe45bb6c64c4950e ""
+  "c:/UserData/ozcanm/Documents/CT/2018/Paper/cloud.tex" 1545758974 32231 249e56e47fac698e18d0ed09b15834ae ""
   "c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc" 1545668007 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "c:/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1545668414 3332 103109f5612ad95229751940c61aada0 ""
   "c:/texlive/2018/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1545671352 2172 fd0c924230362ff848a33632ed45dc23 ""
@@ -20,8 +19,6 @@
   "c:/texlive/2018/texmf-dist/fonts/tfm/adobe/times/ptmrc7t.tfm" 1545671352 2680 312a2d12b1f1df8ee0212e7ba1962402 ""
   "c:/texlive/2018/texmf-dist/fonts/tfm/adobe/times/ptmri7t.tfm" 1545671352 2288 f478fc8fed18759effb59f3dad7f3084 ""
   "c:/texlive/2018/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm" 1545671352 4640 532ca3305aad10cc01d769f3f91f1029 ""
-  "c:/texlive/2018/texmf-dist/fonts/tfm/adobe/times/ptmro7t.tfm" 1545671352 2212 ddd058020f70d31af08b213e40125079 ""
-  "c:/texlive/2018/texmf-dist/fonts/tfm/adobe/times/ptmro8r.tfm" 1545671352 4548 f370a182a02c40d95c5554802dc0f174 ""
   "c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb" 1545671353 44729 fea0975e20ec51c992338362f05f1146 ""
   "c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb" 1545671353 44656 0cbca70e0534538582128f6b54593cca ""
   "c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb" 1545671353 46026 687528a208fbfc1f00832bb96cccebbb ""
@@ -31,7 +28,6 @@
   "c:/texlive/2018/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf" 1545671353 1380 0ea3a3370054be6da6acd929ec569f06 ""
   "c:/texlive/2018/texmf-dist/fonts/vf/adobe/times/ptmrc7t.vf" 1545671353 1948 7330aeef3af211edff3b35fb2c12a0fd ""
   "c:/texlive/2018/texmf-dist/fonts/vf/adobe/times/ptmri7t.vf" 1545671353 1384 a9d8adaf491ce34e5fba99dc7bbe5f39 ""
-  "c:/texlive/2018/texmf-dist/fonts/vf/adobe/times/ptmro7t.vf" 1545671353 1384 5daa35f30ad788d676a07a579b5db7fa ""
   "c:/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1545669740 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "c:/texlive/2018/texmf-dist/tex/generic/oberdiek/etexcmds.sty" 1545669955 7612 729a8cc22a1ee0029997c7f74717ae05 ""
   "c:/texlive/2018/texmf-dist/tex/generic/oberdiek/ifluatex.sty" 1545668790 7324 2310d1247db0114eb4726807c8837a0e ""
@@ -134,10 +130,10 @@
   "c:/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1545671981 3065569 c0100866a2168225e01a6ee8893b9056 ""
   "c:/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt" 1545672085 4223238 8bb9fcdb857f8a867f6fd6aedaacb89d ""
   "c:/texlive/2018/texmf.cnf" 1545671953 673 2e5aa3ac564c6f70f54d6752d765c05d ""
-  "cloud.aux" 1545755439 3353 84dffed2add7d8e946177f6a02b094c1 ""
-  "cloud.bbl" 1545755437 2342 74cd09f78c7ee21725457c46947c5ee0 "bibtex cloud"
-  "cloud.tex" 1545755430 42693 946faf89548a4588fe45bb6c64c4950e ""
+  "cloud.aux" 1545758978 3509 43c35a21e25ea3ebfbf212bb836b5fda ""
+  "cloud.bbl" 1545758980 2342 74cd09f78c7ee21725457c46947c5ee0 "bibtex cloud"
+  "cloud.tex" 1545758974 32231 249e56e47fac698e18d0ed09b15834ae ""
   (generated)
-  "cloud.aux"
-  "cloud.pdf"
   "cloud.log"
+  "cloud.pdf"
+  "cloud.aux"
