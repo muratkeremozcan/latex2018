@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.12.24)  25 DEC 2018 11:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.12.24)  26 DEC 2018 08:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -558,45 +558,51 @@ Package pdftex.def Info: UIpipeline.pdf  used on input line 485.
 (pdftex.def)             Requested size: 516.0pt x 57.93991pt.
 [2 <./architecture.pdf>]
 
-LaTeX Warning: Reference `fig:coverageIBM-UH' on page 3 undefined on input line 504.
+pdfTeX warning: pdflatex.exe (file ./angular.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<angular.pdf, id=20, 314.91652pt x 197.2971pt>
+File: angular.pdf Graphic file (type pdf)
+<use angular.pdf>
+Package pdftex.def Info: angular.pdf  used on input line 528.
+(pdftex.def)             Requested size: 232.19843pt x 145.47675pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-LaTeX Warning: Reference `fig:coverageIBM-UH_noConstraints' on page 3 undefined on input line 504.
+
+pdfTeX warning: pdflatex.exe (file ./codeSample.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<codeSample.pdf, id=21, 715.47299pt x 204.70477pt>
+File: codeSample.pdf Graphic file (type pdf)
+<use codeSample.pdf>
+Package pdftex.def Info: codeSample.pdf  used on input line 541.
+(pdftex.def)             Requested size: 516.0pt x 147.63719pt.
 
 
-LaTeX Warning: Reference `fig:coverageIBM-UH' on page 3 undefined on input line 505.
+pdfTeX warning: pdflatex.exe (file ./stateBasedScenario.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<stateBasedScenario.pdf, id=22, 794.97pt x 614.295pt>
+File: stateBasedScenario.pdf Graphic file (type pdf)
+<use stateBasedScenario.pdf>
+Package pdftex.def Info: stateBasedScenario.pdf  used on input line 548.
+(pdftex.def)             Requested size: 309.60315pt x 239.246pt.
+
+Overfull \hbox (57.60315pt too wide) in paragraph at lines 548--549
+[][] 
+ []
 
 
-LaTeX Warning: Reference `fig:coverageIBM-UH_noConstraints' on page 3 undefined on input line 505.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+LaTeX Font Info:    Try loading font information for U+msa on input line 565.
+(c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 565.
+ (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [3 <./UIpipeline.pdf> <./angular.pdf>]
 
-LaTeX Warning: Reference `fig:coverageIBM-UH_noConstraints' on page 3 undefined on input line 522.
+LaTeX Warning: Reference `fig:constraintsIBM-UH' on page 4 undefined on input line 607.
 
-
-LaTeX Warning: Reference `fig:coverageSBA' on page 3 undefined on input line 525.
-
-
-LaTeX Warning: Reference `fig:coverageSBA_noConstraints' on page 3 undefined on input line 525.
-
-
-LaTeX Warning: Reference `fig:coverageSBA' on page 3 undefined on input line 526.
-
-
-LaTeX Warning: Reference `fig:coverageSBA_noConstraints' on page 3 undefined on input line 526.
-
-
-LaTeX Warning: Reference `fig:coverageSBA_noConstraints' on page 3 undefined on input line 527.
-
-
-LaTeX Warning: Reference `fig:coverageSBA' on page 3 undefined on input line 548.
-
-
-LaTeX Warning: Reference `fig:step4 and 5' on page 3 undefined on input line 554.
-
-
-LaTeX Warning: Reference `fig:constraintsIBM-UH' on page 3 undefined on input line 573.
-
-[3 <./UIpipeline.pdf>] (./cloud.bbl)
+(./cloud.bbl [4 <./codeSample.pdf> <./stateBasedScenario.pdf>])
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -608,7 +614,7 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[4
+[5
 
 ] (./cloud.aux)
 
@@ -616,18 +622,18 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 15221 strings out of 492616
- 291114 string characters out of 6132767
- 359366 words of memory out of 5000000
- 18873 multiletter control sequences out of 15000+600000
- 35250 words of font info for 64 fonts, out of 8000000 for 9000
+ 15259 strings out of 492616
+ 291813 string characters out of 6132767
+ 359384 words of memory out of 5000000
+ 18895 multiletter control sequences out of 15000+600000
+ 36949 words of font info for 72 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
  55i,8n,54p,837b,245s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on cloud.pdf (4 pages, 147022 bytes).
+Output written on cloud.pdf (5 pages, 197495 bytes).
 PDF statistics:
- 43 PDF objects out of 1000 (max. 8388607)
- 28 compressed objects within 1 object stream
+ 59 PDF objects out of 1000 (max. 8388607)
+ 35 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 23 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 38 words of extra memory for PDF output out of 10000 (max. 10000000)
 

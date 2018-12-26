@@ -352,7 +352,7 @@ We describe the abstraction and the structure of the test code, the page object 
 how specifications are separated from the page object / service / logic layer and the test data. 
 
 Finally, we analyze three applications of combinatorial testing (CT) in this modern development environment,
-incorporating the CT model into automation using BDD style Jasmine framework’s Protractor end to end UI tests. 
+incorporating the CT model into automation using BDD style Protractor end to end UI tests. 
 We go through the CT modeling process using newly released, open source, cloud based CTWedge: Combinatorial Testing Web-based Editor and Generator. 
 We describe how the model translates into functions in the code and its utilization in behavioral driven tests.
 
@@ -485,7 +485,7 @@ One example will include a scenario where a sequence of actions will be incorpor
 			\includegraphics[width=1.00\textwidth]{UIpipeline.pdf}
 		\caption{UI component pipeline}
 		\label{fig:UIpipeline}
-		\end{figure*}
+	\end{figure*}
 	
 
 	The team uses Git for source control. \todo{about git}. 
@@ -498,61 +498,95 @@ One example will include a scenario where a sequence of actions will be incorpor
 
 
 \subsection{Description of the Test Code Structure}
+
+	\subsubsection{Page Object Pattern}
+
+	Released in 2011, Angular is popular front-end JavaScript framework for designing dynamic web applications.
+	It is maintained by Google with the help of the open source community.
+	It recommends the use of Microsoft's TypeScript language, which introduces class-based object oriented programming, static typing and generics. \todo{refer to wiki}.
+
+	Components are the building blocks of Angular applications and they easily nest inside each other.
+	Each component may have its own class, html and css file. This structure provides a way to design dynamic web applications while keeping the front-end code clean. 
+
+	Page object pattern is a popular UI test automation design pattern in the industry. \todo{refer to Fowler and selenium paper}.
+	In Fowler's proposed terminology, we refer to web pages as 'pages' and Angular components as 'panels'.
+	Each panel is a class. A page can be made up of many panels, which have a class-based object oriented structure.   
+
+	Designing the test automation architecture, it became clear that it would not only be straightforward but also efficient to replicate the structure of Angular components in page objects as pictured in Figure~\ref{fig:angular}.
+	One advantage of this is easier maintenance of the automation code as the development code changes.
+	The other advantage is its benefits with asynchronous test execution.
+
+	In a panel object, the element selectors become the fields and the methods become test actions within the component / panel. 
+	TypeScript is a superset of JavaScript. It complies into JavaScript and includes the latest EcmaScript features \todo{reference to EcmaScript} .
+	The latest EcmaScript features allow developers to write sequential looking asynchronous code.
+
+	With regards to test automation this means clean code that executes as fast as the environment allows, resistant to flakey tests and stale elements on the page. 
+	This is because the page components load with panel-object-classes simultaneously, while the page element selectors get instantiated.
+	We plan to study this design pattern in a future paper. For the purpose of the current study, it is sufficient to understand that all test relevant methods are housed in classes that represent panel objects / Angular components.
 	
-All t-way coverage measurements were made using NIST's coverage measurement tool Combinatorial Coverage Measurement (CCM) command line version \cite{kuhn2013combinatorial}.
+	\begin{figure}[!h]
+		\includegraphics[width=0.45\textwidth,]{angular.pdf}
+	\caption{Angular components as page and panel objects}
+	\label{fig:angular}
+	\end{figure}
 
-	For IBM method, the coverage with constraints factored in and the coverage without constraints are examined in figures~\ref{fig:coverageIBM-UH} and~\ref{fig:coverageIBM-UH_noConstraints}.
-Figure~\ref{fig:coverageIBM-UH} shows the 2, 3, 4-way coverage measurement of the IBM method, respectively figure~\ref{fig:coverageIBM-UH_noConstraints} shows the coverage measurement without constraints. 
+	\subsubsection{Test data}
+	The test data is stored in JSON files. This allows parameterization of test inputs, input-driven tests, as well as ease of maintenance as the UI changes.
+	Another perk of using JSON is being able to convert test suites generated with CT tools - ex: ACTS, CTWedge \todo{references }- from csv format to JSON format.
 
-%	\begin{figure}[h]
-%		\centering
-%			\includegraphics[width=0.50\textwidth]{coverageIBM-UH.pdf}
-%		\caption{Coverage: IBM method}
-%		\label{fig:coverageIBM-UH}
-%	\end{figure}
-%	
-%	\begin{figure}[h]
-%		\centering
-%			\includegraphics[width=0.50\textwidth]{coverageIBM-UH_noConstraints.pdf}
-%		\caption{Coverage: IBM method without constraints}
-%		\label{fig:coverageIBM-UH_noConstraints}
-%	\end{figure}
+	\subsubsection{Test Specifications}
 
-As mentioned in Section III B, the use of constraints are at the foundation of the IBM method. 
-The 2-way coverage without constraints is at 100\% as seen in figure~\ref{fig:coverageIBM-UH_noConstraints}.
-The application of constraints, which make the method possible, reduces the 2-way coverage measurement to 58.1\%. Because constraints are an integral part of the method, in this evaluation we believe that the coverage measurement of the IBM method is inconsequential. 
+	\begin{figure*}[!ht]
+		\centering
+			\includegraphics[width=1.00\textwidth]{codeSample.pdf}
+		\caption{Protractor test code sample in State-based, Behavior-driven Acceptance format}
+		\label{fig:codeSample}
+	\end{figure*}	
 
-For SBA method, the coverage with constraints factored in and the coverage without constraints are examined in figures~\ref{fig:coverageSBA} and~\ref{fig:coverageSBA_noConstraints}.
-Figure~\ref{fig:coverageSBA} shows the 2, 3, 4-way coverage measurement of the SBA method, respectively figure~\ref{fig:coverageSBA_noConstraints} shows the coverage measurement without constraints.
-The 2-way coverage without constraints is at 100\% as seen in figure~\ref{fig:coverageSBA_noConstraints}. The minimum 2-way coverage without constraints is also at 100\%. 
 
-The significance and the impact of minimum t-way coverage on branch coverage conditions in the code is discussed in paper \cite{kuhn2016measuring}. 
-Label M as the minimum 2-way coverage; i.e., the lowest proportion of settings covered for all t-way combinations of variables. 
-For example, 2-way combinations of binary variables have four possible settings: 00, 01, 10, 11. Some variable pairs may have all four settings covered, but others may have less. 
-M is the smallest proportion of coverage among all of the t-way variable combinations.  M is also viewable as the rightmost line in the coverage strength meters in Figure 1 and 3. 
-
-%\begin{figure}[h]
-%	\centering
-%		\includegraphics[width=0.50\textwidth]{coverageSBA.pdf}
-%	\caption{Coverage: SBA method}
-%	\label{fig:coverageSBA}
-%\end{figure}
-%
-%	\begin{figure}[h]
-%	\centering
-%		\includegraphics[width=0.50\textwidth]{coverageSBA_noConstraints.pdf}
-%	\caption{Coverage: SBA method without constraints}
-%	\label{fig:coverageSBA_noConstraints}
-%\end{figure}
-
-Applying the constraints to the SBA method has a miniscule impact on the overall 2-way coverage: down from 100\% to 99.76\% as seen in figure~\ref{fig:coverageSBA}. 
-The effect on 3 and 4-way coverage is similar. 
-\todo{Ludwig, do you want to insert a sentence on why this is?}
-The impact of constraints on the minimum 3-way and 4-way coverage is non-existent, however on minimum 2-way coverage the difference is 40\%. \todo{Ludwig, do you want to insert a sentence on why this is?}.
-Overall, t-way coverage analysis is valid on the SBA method. 
+	\begin{figure}[!h]
+		\includegraphics[width=0.60\textwidth,]{stateBasedScenario.pdf}
+		\caption{State-based, Behavior-driven Acceptance Scenario}
+		\label{fig:stateBasedScenario}
+	\end{figure}
 	
-	\subsubsection {Vertically juxtapose the juxtaposed CAs in step 4 to the result of step 3. This guarantees that the final result is again a 2-way covering array: } We simply add the 2-way CA under the 1-way CA as shown in Figure~\ref{fig:step4 and 5}. Here the first seed has 925 tests while the others have 8 and 4 respectively, this may seem challenging at first. 
-	For seed 2 and 3 we simply, repeatedly keep adding in blocks (of 8 and 4 respectively) until we cannot add anymore. If the final addition is not a multiple of 925, then we add the remainders. 
+	The team uses Protractor test framework, which is the default end-to-end test framework for Angular applications. \todo{insert reference}
+	It runs tests against application running in a real browser, interacting with it as a user would.
+	It combines technologies from Selenium webDriver, NodeJS and allows tests to be described in a BDD format -\textit{Given, When, Then}-, describing the overall behavior of a system at a low level.
+	
+	The tests specifications are stored in Protractor spec files written in TypeScript. 
+	The aforementioned benefits of the technology stack allow developers in test to write clean, simple, synchronous looking asynchronous code, without hard-waits or sleeps, resistant to stale elements and flakey tests.
+
+	Over time during our development, the test specification came to be described in State-based, Behavior-driven Acceptance Scenarios \todo{reference blog post}. 
+	Generally, these are in the format:
+
+
+	\begin{itemize}
+		\item [] \textit{Given I have arrived in some state} 
+		\item [] \textit{When I trigger a particular event} 
+		\item [] \textit{Then the application conducts an action}
+		\item [] \textit{And the application moves to another state}
+	\end{itemize}
+
+	It was found out that this style of expression is not only descriptive at a meta level, but also maps well to the page object pattern.
+	Figure~\ref{fig:codeSample} and Figure~\ref{fig:stateBasedScenario} show an a Protractor test spec sample with a state-based, behavior-driven acceptance scenario.
+	As observed from the sample code, \textit{tunnelPage} class / page-object is utilized for:
+	
+	\begin{itemize}
+		\item [] - setup, using the \textit{setDropDown()} class method. 
+		\item [] - test action, using the \textit{startButton} class field.
+		\item [] - test assertion, verifying that \textit{tunnelConnectionStateText} class field / selector shows the correct text.
+	\end{itemize}
+
+	The code also samples the Protractor BDD style where a test workflow scenario is covered. 
+	The \textit{it} block is one test in the workflow, the \textit{describe} block houses more tests / \textit{it} blocks that lead to the completion of the workflow - not shown in this example for the sake of simplicity.
+	
+
+
+
+
+
+
 
 \section{Test Methodology}
 	
