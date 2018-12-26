@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.12.24)  26 DEC 2018 08:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.12.24)  26 DEC 2018 08:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -538,10 +538,10 @@ pdfTeX warning: pdflatex.exe (file ./architecture.pdf): PDF inclusion: found PDF
 <architecture.pdf, id=12, 794.97pt x 614.295pt>
 File: architecture.pdf Graphic file (type pdf)
 <use architecture.pdf>
-Package pdftex.def Info: architecture.pdf  used on input line 468.
+Package pdftex.def Info: architecture.pdf  used on input line 469.
 (pdftex.def)             Requested size: 361.19843pt x 279.11098pt.
 
-Overfull \hbox (109.19843pt too wide) in paragraph at lines 468--469
+Overfull \hbox (109.19843pt too wide) in paragraph at lines 469--470
 [][] 
  []
 
@@ -554,7 +554,7 @@ pdfTeX warning: pdflatex.exe (file ./UIpipeline.pdf): PDF inclusion: found PDF v
 <UIpipeline.pdf, id=13, 758.835pt x 85.20499pt>
 File: UIpipeline.pdf Graphic file (type pdf)
 <use UIpipeline.pdf>
-Package pdftex.def Info: UIpipeline.pdf  used on input line 485.
+Package pdftex.def Info: UIpipeline.pdf  used on input line 486.
 (pdftex.def)             Requested size: 516.0pt x 57.93991pt.
 [2 <./architecture.pdf>]
 
@@ -562,7 +562,7 @@ pdfTeX warning: pdflatex.exe (file ./angular.pdf): PDF inclusion: found PDF vers
 <angular.pdf, id=20, 314.91652pt x 197.2971pt>
 File: angular.pdf Graphic file (type pdf)
 <use angular.pdf>
-Package pdftex.def Info: angular.pdf  used on input line 528.
+Package pdftex.def Info: angular.pdf  used on input line 529.
 (pdftex.def)             Requested size: 232.19843pt x 145.47675pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -573,7 +573,7 @@ pdfTeX warning: pdflatex.exe (file ./codeSample.pdf): PDF inclusion: found PDF v
 <codeSample.pdf, id=21, 715.47299pt x 204.70477pt>
 File: codeSample.pdf Graphic file (type pdf)
 <use codeSample.pdf>
-Package pdftex.def Info: codeSample.pdf  used on input line 541.
+Package pdftex.def Info: codeSample.pdf  used on input line 542.
 (pdftex.def)             Requested size: 516.0pt x 147.63719pt.
 
 
@@ -581,26 +581,26 @@ pdfTeX warning: pdflatex.exe (file ./stateBasedScenario.pdf): PDF inclusion: fou
 <stateBasedScenario.pdf, id=22, 794.97pt x 614.295pt>
 File: stateBasedScenario.pdf Graphic file (type pdf)
 <use stateBasedScenario.pdf>
-Package pdftex.def Info: stateBasedScenario.pdf  used on input line 548.
+Package pdftex.def Info: stateBasedScenario.pdf  used on input line 549.
 (pdftex.def)             Requested size: 309.60315pt x 239.246pt.
 
-Overfull \hbox (57.60315pt too wide) in paragraph at lines 548--549
+Overfull \hbox (57.60315pt too wide) in paragraph at lines 549--550
 [][] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 565.
+LaTeX Font Info:    Try loading font information for U+msa on input line 566.
 (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 565.
+LaTeX Font Info:    Try loading font information for U+msb on input line 566.
  (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [3 <./UIpipeline.pdf> <./angular.pdf>]
 
-LaTeX Warning: Reference `fig:constraintsIBM-UH' on page 4 undefined on input line 607.
+LaTeX Warning: Reference `fig:constraintsIBM-UH' on page 4 undefined on input line 608.
 
 (./cloud.bbl [4 <./codeSample.pdf> <./stateBasedScenario.pdf>])
 
@@ -630,7 +630,7 @@ Here is how much of TeX's memory you used:
  1144 hyphenation exceptions out of 8191
  55i,8n,54p,837b,245s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on cloud.pdf (5 pages, 197495 bytes).
+Output written on cloud.pdf (5 pages, 197633 bytes).
 PDF statistics:
  59 PDF objects out of 1000 (max. 8388607)
  35 compressed objects within 1 object stream

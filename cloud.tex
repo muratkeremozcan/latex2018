@@ -455,10 +455,11 @@ One example will include a scenario where a sequence of actions will be incorpor
 	
 	Horizon Cloud program is composed of many teams and microservice architectural applications.
 	The application / system under test in this study will be Building Operator IC (BOIC).
-	BOIC is used for \todo {describe BOIC , also insert what IC means} . BOI is being development by the Chicago team at Siemens Software Hub. 
+	BOIC is used for \todo {describe BOIC , also insert what IC means} . BOIC is being development by the Chicago team at Siemens Software Hub. 
 
 	Figure~\ref{fig:BOIC architecture} represents the BOIC architecture.
 	The front-end is an Angular framework, in TypeScript.
+	Note that, this study will focus on black box test automation of the front-end. Testing at different levels of the architecture is planned to be studied in a future paper. 
 	The back-end is an ExpressJS application on top of NodeJS platform. 
 	At the time of this study, there is an effort to move some of this functionality to other microservices - implemented in GoLang (Go) - to reduce operating costs.
 	The Protocol Adapter (in C\#) and Gateway (in NodeJS and Java) serve the purpose of exposing Siemens or third party edge-devices to the cloud. 
@@ -549,7 +550,7 @@ One example will include a scenario where a sequence of actions will be incorpor
 		\caption{State-based, Behavior-driven Acceptance Scenario}
 		\label{fig:stateBasedScenario}
 	\end{figure}
-	
+
 	The team uses Protractor test framework, which is the default end-to-end test framework for Angular applications. \todo{insert reference}
 	It runs tests against application running in a real browser, interacting with it as a user would.
 	It combines technologies from Selenium webDriver, NodeJS and allows tests to be described in a BDD format -\textit{Given, When, Then}-, describing the overall behavior of a system at a low level.
