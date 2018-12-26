@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.12.24)  26 DEC 2018 08:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.12.24)  26 DEC 2018 14:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -456,23 +456,23 @@ Package csquotes Info: ... none found.
 
 
 Package csquotes Warning: No multilingual support.
-(csquotes)                Cannot enable multilingual quotes on input line 319.
+(csquotes)                Cannot enable multilingual quotes on input line 321.
 
 (./cloud.aux)
 \openout1 = `cloud.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 319.
-LaTeX Font Info:    ... okay on input line 319.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 319.
-LaTeX Font Info:    ... okay on input line 319.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 319.
-LaTeX Font Info:    ... okay on input line 319.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 319.
-LaTeX Font Info:    ... okay on input line 319.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 319.
-LaTeX Font Info:    ... okay on input line 319.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 319.
-LaTeX Font Info:    ... okay on input line 319.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 321.
+LaTeX Font Info:    ... okay on input line 321.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 321.
+LaTeX Font Info:    ... okay on input line 321.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 321.
+LaTeX Font Info:    ... okay on input line 321.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 321.
+LaTeX Font Info:    ... okay on input line 321.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 321.
+LaTeX Font Info:    ... okay on input line 321.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 321.
+LaTeX Font Info:    ... okay on input line 321.
 
 -- Lines per column: 56 (exact).
 \c@lstlisting=\count151
@@ -538,10 +538,10 @@ pdfTeX warning: pdflatex.exe (file ./architecture.pdf): PDF inclusion: found PDF
 <architecture.pdf, id=12, 794.97pt x 614.295pt>
 File: architecture.pdf Graphic file (type pdf)
 <use architecture.pdf>
-Package pdftex.def Info: architecture.pdf  used on input line 469.
+Package pdftex.def Info: architecture.pdf  used on input line 473.
 (pdftex.def)             Requested size: 361.19843pt x 279.11098pt.
 
-Overfull \hbox (109.19843pt too wide) in paragraph at lines 469--470
+Overfull \hbox (109.19843pt too wide) in paragraph at lines 473--474
 [][] 
  []
 
@@ -554,7 +554,7 @@ pdfTeX warning: pdflatex.exe (file ./UIpipeline.pdf): PDF inclusion: found PDF v
 <UIpipeline.pdf, id=13, 758.835pt x 85.20499pt>
 File: UIpipeline.pdf Graphic file (type pdf)
 <use UIpipeline.pdf>
-Package pdftex.def Info: UIpipeline.pdf  used on input line 486.
+Package pdftex.def Info: UIpipeline.pdf  used on input line 490.
 (pdftex.def)             Requested size: 516.0pt x 57.93991pt.
 [2 <./architecture.pdf>]
 
@@ -562,7 +562,7 @@ pdfTeX warning: pdflatex.exe (file ./angular.pdf): PDF inclusion: found PDF vers
 <angular.pdf, id=20, 314.91652pt x 197.2971pt>
 File: angular.pdf Graphic file (type pdf)
 <use angular.pdf>
-Package pdftex.def Info: angular.pdf  used on input line 529.
+Package pdftex.def Info: angular.pdf  used on input line 534.
 (pdftex.def)             Requested size: 232.19843pt x 145.47675pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -573,7 +573,7 @@ pdfTeX warning: pdflatex.exe (file ./codeSample.pdf): PDF inclusion: found PDF v
 <codeSample.pdf, id=21, 715.47299pt x 204.70477pt>
 File: codeSample.pdf Graphic file (type pdf)
 <use codeSample.pdf>
-Package pdftex.def Info: codeSample.pdf  used on input line 542.
+Package pdftex.def Info: codeSample.pdf  used on input line 547.
 (pdftex.def)             Requested size: 516.0pt x 147.63719pt.
 
 
@@ -581,28 +581,68 @@ pdfTeX warning: pdflatex.exe (file ./stateBasedScenario.pdf): PDF inclusion: fou
 <stateBasedScenario.pdf, id=22, 794.97pt x 614.295pt>
 File: stateBasedScenario.pdf Graphic file (type pdf)
 <use stateBasedScenario.pdf>
-Package pdftex.def Info: stateBasedScenario.pdf  used on input line 549.
+Package pdftex.def Info: stateBasedScenario.pdf  used on input line 554.
 (pdftex.def)             Requested size: 309.60315pt x 239.246pt.
 
-Overfull \hbox (57.60315pt too wide) in paragraph at lines 549--550
+Overfull \hbox (57.60315pt too wide) in paragraph at lines 554--555
 [][] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 566.
+LaTeX Font Info:    Try loading font information for U+msa on input line 571.
 (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 566.
+LaTeX Font Info:    Try loading font information for U+msb on input line 571.
  (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [3 <./UIpipeline.pdf> <./angular.pdf>]
+<commandingIPM.pdf, id=32, 471.7625pt x 273.02pt>
+File: commandingIPM.pdf Graphic file (type pdf)
+<use commandingIPM.pdf>
+Package pdftex.def Info: commandingIPM.pdf  used on input line 609.
+(pdftex.def)             Requested size: 283.80157pt x 164.24652pt.
 
-LaTeX Warning: Reference `fig:constraintsIBM-UH' on page 4 undefined on input line 608.
+Overfull \hbox (31.80157pt too wide) in paragraph at lines 609--610
+[][] 
+ []
 
-(./cloud.bbl [4 <./codeSample.pdf> <./stateBasedScenario.pdf>])
+[4 <./codeSample.pdf> <./stateBasedScenario.pdf> <./commandingIPM.pdf>]
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 637.
+ (c:/texlive/2018/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+<csvOutputCommanding.pdf, id=44, 414.54875pt x 363.3575pt>
+File: csvOutputCommanding.pdf Graphic file (type pdf)
+<use csvOutputCommanding.pdf>
+Package pdftex.def Info: csvOutputCommanding.pdf  used on input line 685.
+(pdftex.def)             Requested size: 232.19843pt x 203.52315pt.
+<pointCommandingTestCode.pdf, id=45, 757.83125pt x 522.95375pt>
+File: pointCommandingTestCode.pdf Graphic file (type pdf)
+<use pointCommandingTestCode.pdf>
+Package pdftex.def Info: pointCommandingTestCode.pdf  used on input line 705.
+(pdftex.def)             Requested size: 541.80157pt x 373.88515pt.
+
+Overfull \hbox (25.80157pt too wide) in paragraph at lines 705--706
+ [][] 
+ []
+
+<modelCommanding.pdf, id=46, 721.69624pt x 427.5975pt>
+File: modelCommanding.pdf Graphic file (type pdf)
+<use modelCommanding.pdf>
+Package pdftex.def Info: modelCommanding.pdf  used on input line 713.
+(pdftex.def)             Requested size: 541.80157pt x 321.01051pt.
+
+Overfull \hbox (25.80157pt too wide) in paragraph at lines 713--714
+ [][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5 <./csvOutputCommanding.pdf>] (./cloud.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -614,26 +654,20 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[5
-
-] (./cloud.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+[6 <./pointCommandingTestCode.pdf>] [7 <./modelCommanding.pdf>] (./cloud.aux) ) 
 Here is how much of TeX's memory you used:
- 15259 strings out of 492616
- 291813 string characters out of 6132767
- 359384 words of memory out of 5000000
- 18895 multiletter control sequences out of 15000+600000
- 36949 words of font info for 72 fonts, out of 8000000 for 9000
+ 15580 strings out of 492616
+ 294953 string characters out of 6132767
+ 478416 words of memory out of 5000000
+ 19207 multiletter control sequences out of 15000+600000
+ 37464 words of font info for 74 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 55i,8n,54p,837b,245s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on cloud.pdf (5 pages, 197633 bytes).
+ 55i,8n,54p,837b,1084s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on cloud.pdf (7 pages, 706951 bytes).
 PDF statistics:
- 59 PDF objects out of 1000 (max. 8388607)
- 35 compressed objects within 1 object stream
+ 83 PDF objects out of 1000 (max. 8388607)
+ 48 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 38 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 58 words of extra memory for PDF output out of 10000 (max. 10000000)
 
