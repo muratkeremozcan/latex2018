@@ -760,10 +760,66 @@ One example will include a scenario where a sequence of actions will be incorpor
 	Each site has a unique address. The building operator has the ability to filter and sort the sites they have administration over:
 
 	\begin{itemize}
-		\item [] - 
-		\item [] -  
-		\item [] - 
+		\item [] - Sites can be filtered by their status: \textit{Working Well, In Alarm, Disconnected}: 3 boolean states.
+		\item [] - Sites can be filtered by any string entered in the text box.
+		\item [] - Sites can be sorted by \textit{Status, Name, Street, Country, Creation Time}
+		\item [] - The above actions can happen in any order and should give the same resulting list of filtered and sorted sites.
 	\end{itemize}
+
+	Figure~\ref{fig:siteFilterModel} shows the alarm filtering menu as well as the search text box and sorting buttons. 
+	Alarm filters are modeled as 3 boolean states and the resulting covering array includes 4 configurations. 
+	This result are plugged in to the next model, a technique from \todo{refer to your own paper} to reduce the number of tests and still provide cost effective coverage.
+	The parameter \textit{filter-workingWell-inAlarm-disconnected} includes the the 4 configurations of these checkboxes as values. 
+
+	The \textit{search} parameter is a text-box, which is open ended. For this, possible values were contemplated to be any string, and different fields of an address.
+
+	The \textit{sortBy} parameter simply replicated the names of the columns. 
+	In order to keep the number of tests low, instead of being a parameter in the model, reverse sorting of columns got covered in each automated test.
+	This was also utilized as a setup \& cleanup in tests since sort order of the previous column gets retained; not utilizing this behaviour would cause tests to be non-modular.
+
+	In order to have a deterministic test oracle, an array of sites were generated with varying data parameters - all stored in JSON - so that after filtering by site status and a search string, there would be at least 2 sites to test sorting with.
+	
+	Generating the tests, it was promptly realized that if sorting sites by column - possible values being \textit{Status, Name, Street, Country, Creation Time} - matches the search string -possible values being fields of an address - sorting became redundant.
+	These redundancies were addressed by adding constraints, for instance \textit{if sorting sites by Street, search string cannot be street name}. The end result became a test suite of 19 tests.
+	
+	Finally the sequence of the user actions needed to be addressed. Previous research on this topic has been vast and is referred to in section \todo{insert section} .
+	The two filtering operations and the sorting can happen in any order, and there 6 possible ways of ordering them.
+	If the sequence of the 3 actions \textit{filter, search, sort} were represented as 3 parameters \textit{filterBeforeSearch, searchBeforeSort, filterBeforeSearch}, they could be simplified as \textit{AbeforeB, BbeforeC, AbeforeC}.
+	Figure~\ref{fig:sorting} displays this logic in a table.
+	As observed, case 1 and case 6 are impossible; if \textit{AbeforeB} and \textit{BbeforeC} have the same boolean value, \textit{AbeforeC} has to match that value.
+	This logic of sequence was addressed with 2 constaints:
+
+	\begin{itemize}
+	\item [] \textit{if filterBeforeSearch is TRUE \&\& searchBeoreSort is TRUE then filterBeforeSort is FALSE}
+	\item [] \textit{if filterBeforeSearch is FALSE \&\& searchBeoreSort is FALSE then filterBeforeSort is TRUE}
+	\end{itemize}
+
+	\begin{figure}[!t]
+		\includegraphics[width=0.50\textwidth,]{sorting.pdf}
+		\caption{sequences of test actions}
+		\label{fig:sorting}
+	\end{figure}
+
+	\begin{figure}[!b]
+		\includegraphics[width=0.50\textwidth,]{sortingTestCode.pdf}
+		\caption{CT model of tag filtering in CTWedge}
+		\label{fig:sortingTestCode}
+	\end{figure}
+
+	Introducing the boolean parameters for sequencing and the constraints did not impact the number of test cases; the final number was still 19.
+	At a small scale this technique was effective; for 3 parameters, the 6 sequences were possible to be incorporated into the input parameter model without increasing the number of tests. 
+	Also the cost of creating the constraint logic was low since only two constraints had to be written.
+	However, it can be observed that with a higher number of parameters this approach can get less cost effective. 
+	The team has not encountered such a problem yet and is looking forward to the challenge in a future study.
+	
+	Figure~\ref{fig:sortingTestCode} displays autormated Protractor test code for one of the 19 tests.
+	The test actions are in the sequence \textit{search} (by text string), set \textit{site status} dropdown and \textit{sort} (by country). 
+	The 3 functions execute these actions.
+	In turn, status pills are verified, verifying site status.
+	Following that, the sorting and reverse sorting of the sites are verified.
+	Finally, the test oracle is verified to verify the sites that are displayed in the filter.
+		
+
 
 	\begin{figure*}[!hb]
 		\centering
@@ -771,6 +827,9 @@ One example will include a scenario where a sequence of actions will be incorpor
 			\caption{CT model of site filtering in CTWedge \& screen capture}
 			\label{fig:siteFilterModel}
 	\end{figure*}
+
+
+
 
 	
 	\begin{figure*}[!h]
