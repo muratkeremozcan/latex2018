@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.12.24)  26 DEC 2018 14:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.12.24)  27 DEC 2018 07:07
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -623,26 +623,38 @@ Package pdftex.def Info: csvOutputCommanding.pdf  used on input line 685.
 File: pointCommandingTestCode.pdf Graphic file (type pdf)
 <use pointCommandingTestCode.pdf>
 Package pdftex.def Info: pointCommandingTestCode.pdf  used on input line 705.
-(pdftex.def)             Requested size: 541.80157pt x 373.88515pt.
+(pdftex.def)             Requested size: 438.60315pt x 302.66704pt.
+ [5 <./csvOutputCommanding.pdf>]
+<tagFilterModel.pdf, id=52, 718.685pt x 542.025pt>
+File: tagFilterModel.pdf Graphic file (type pdf)
+<use tagFilterModel.pdf>
+Package pdftex.def Info: tagFilterModel.pdf  used on input line 724.
+(pdftex.def)             Requested size: 258.0pt x 194.58298pt.
 
-Overfull \hbox (25.80157pt too wide) in paragraph at lines 705--706
- [][] 
+Overfull \hbox (6.0pt too wide) in paragraph at lines 724--725
+[][] 
  []
 
-<modelCommanding.pdf, id=46, 721.69624pt x 427.5975pt>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[6 <./pointCommandingTestCode.pdf> <./tagFilterModel.pdf>]
+<tagFilterCoveringArray.pdf, id=60, 299.1175pt x 542.025pt>
+File: tagFilterCoveringArray.pdf Graphic file (type pdf)
+<use tagFilterCoveringArray.pdf>
+Package pdftex.def Info: tagFilterCoveringArray.pdf  used on input line 748.
+(pdftex.def)             Requested size: 154.80157pt x 280.51477pt.
+<modelCommanding.pdf, id=61, 721.69624pt x 427.5975pt>
 File: modelCommanding.pdf Graphic file (type pdf)
 <use modelCommanding.pdf>
-Package pdftex.def Info: modelCommanding.pdf  used on input line 713.
+Package pdftex.def Info: modelCommanding.pdf  used on input line 757.
 (pdftex.def)             Requested size: 541.80157pt x 321.01051pt.
 
-Overfull \hbox (25.80157pt too wide) in paragraph at lines 713--714
+Overfull \hbox (25.80157pt too wide) in paragraph at lines 757--758
  [][] 
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [5 <./csvOutputCommanding.pdf>] (./cloud.bbl)
+(./cloud.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -654,20 +666,20 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[6 <./pointCommandingTestCode.pdf>] [7 <./modelCommanding.pdf>] (./cloud.aux) ) 
+[7 <./tagFilterCoveringArray.pdf>] [8 <./modelCommanding.pdf>] (./cloud.aux) ) 
 Here is how much of TeX's memory you used:
- 15580 strings out of 492616
- 294953 string characters out of 6132767
- 478416 words of memory out of 5000000
- 19207 multiletter control sequences out of 15000+600000
+ 15592 strings out of 492616
+ 295307 string characters out of 6132767
+ 477433 words of memory out of 5000000
+ 19217 multiletter control sequences out of 15000+600000
  37464 words of font info for 74 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
  55i,8n,54p,837b,1084s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on cloud.pdf (7 pages, 706951 bytes).
+Output written on cloud.pdf (8 pages, 759773 bytes).
 PDF statistics:
- 83 PDF objects out of 1000 (max. 8388607)
- 48 compressed objects within 1 object stream
+ 92 PDF objects out of 1000 (max. 8388607)
+ 52 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 58 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 68 words of extra memory for PDF output out of 10000 (max. 10000000)
 

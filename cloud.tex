@@ -702,25 +702,63 @@ One example will include a scenario where a sequence of actions will be incorpor
 	
 	\begin{figure*}[!ht]
 	\centering
-		\includegraphics[width=1.05\textwidth,]{pointCommandingTestCode.pdf}
+		\includegraphics[width=0.85\textwidth,]{pointCommandingTestCode.pdf}
 		\caption{Protractor \textit{describe} block for Analog Value point commanding in Desigo Classic panel}
 		\label{fig:pointCommandingTestCode}
 	\end{figure*}
 
-
-	\begin{figure*}[!ht]
-	\centering
-		\includegraphics[width=1.05\textwidth,]{modelCommanding.pdf}
-		\caption{CT model of panel and point commanding in CTWedge}
-		\label{fig:modelCommanding}
-	\end{figure*}
-
 	\subsection{Filtering Points by Tag Combinations }
 
-	\subsection{State Transitions Between Combinations of Alarm Data, With a Variable Oracle}
+	In BOIC, tag filtering functionality is used to filter points in the system, by the devices the points are in.
+	There are 13 possible tags, up to 5 tags can be chosen, tag choices cannot repeat, the final tag has only one tag choice, and there can be less than 5 tags for certain tag combinations if so is the nature of the points in the system.
+	Figure~\ref{fig:tagFilterModel} displays an input parameter model of the functionality with a screen capture. 
+	Note that due to space restrictions not all tags are displayed and only 2 blocks of 13 blocks of constraints are shown.
+	
+	Since the 5th tag is always a single choice, there is no need to represent it in the model and it is automated to be selected in the tests.
+	The constraint logic is that no tag can repeat, with 4 constraints for each tag.
+	For example one block of constraints is: \textit{if tag1 is 'cooling' then tag2 through tag 4 cannot be 'cooling', if tag2 is 'cooling' then tag 1, 3, 4 cannot be 'cooling'} and so on.
+	CTWedge scripting provided cost savings while implementing the constraint logic. 
+	Being able to copy the 4 lines of constraint logic, to replace the tag name, paste and repeat for each tag saved considerable amount of time.
+
+	\begin{figure}[!h]
+		\includegraphics[width=0.50\textwidth,]{tagFilterModel.pdf}
+		\caption{CT model of tag filtering in CTWedge}
+		\label{fig:tagFilterModel}
+	\end{figure}
+
+	With 4 parameters -final tag being default-selected due to a single tag choice being left in the tag dropdown menu- and 13 values each, the amount of tests generated could be vast. 
+	However there were three factors that reduced the number of tests to the covering array of Figure~\ref{fig:tagFilterCoveringArray}:
+	
+	\begin{itemize}
+		\item [] - 13 x 4 lines of constraint logic.
+		\item [] - the final tag always being a single choice in the tag-dropdown menu. For example \textit{humidity} tag has 1 more tag choice available in the dropdown menu, but since it is a single choice it does not effect the number of tests.
+		\item [] - certain points having only so many tags. For example any point with \textit{fan} or \textit{humidity} having a single tag (+1 tag), and certain combinations of tags - \textit{cmd} \& \textit{fan} or \textit{cmd} \& \textit{lighting} having at most 3 tags (+1 tag).
+	\end{itemize}
+
+	With the test suite of Figure~\ref{fig:tagFilterCoveringArray} generated, only one automation method had to be written and repeated for each test:
+	
+	\begin{itemize}
+		\item [] - the method takes a single argument: a JSON parameter with a predefined string of delimeted tags. For example \textit{tagTest1 = "air,cmd,sensor,temp"}. 14 varieties, one for each test. These are infinately flexible, simply a different string can be passed in for a different set of tags.
+		\item [] - in the method, the string of tags get split by the delimeter. Using these tags, the tag selection is done in an asynchronous for loop. 
+		\item [] - as the tags are selected, the panel \& point combinations get filtered. The tag details of the points are verified to match the tags chosen in the filter.
+	\end{itemize}
+
+	
+	\begin{figure}[!h]
+		\includegraphics[width=0.30\textwidth,]{tagFilterCoveringArray.pdf}
+		\caption{Covering array for tag filtering}
+		\label{fig:tagFilterCoveringArray}
+	\end{figure}
 
 	\subsection{Sequenced Filtering, Searching, Sorting of Geo-located Sites}
 	
+	\begin{figure*}[!ht]
+		\centering
+			\includegraphics[width=1.05\textwidth,]{modelCommanding.pdf}
+			\caption{CT model of panel and point commanding in CTWedge}
+			\label{fig:modelCommanding}
+	\end{figure*}
+
 \section{Conclusion and future work}
 	
 The initial challenge in this study was how to best test EEO configurations in the most efficient manner.
