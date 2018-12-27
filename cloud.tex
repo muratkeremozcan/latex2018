@@ -544,7 +544,7 @@ One example will include a scenario where a sequence of actions will be incorpor
 
 	\begin{figure*}[!ht]
 		\centering
-			\includegraphics[width=1.00\textwidth]{codeSample.pdf}
+			\includegraphics[width=0.90\textwidth]{codeSample.pdf}
 		\caption{Protractor test code sample in State-based, Behavior-driven Acceptance format}
 		\label{fig:codeSample}
 	\end{figure*}	
@@ -605,7 +605,7 @@ One example will include a scenario where a sequence of actions will be incorpor
 	
 	\subsection{Input driven testing of hardware}
 
-	\begin{figure}[!h]
+	\begin{figure}[!b]
 		\includegraphics[width=0.55\textwidth,]{commandingIPM.pdf}
 	\caption{Input Parameter Model for hardware setup}
 	\label{fig:commandingIPM}
@@ -681,11 +681,18 @@ One example will include a scenario where a sequence of actions will be incorpor
 	Partial script example for constraints can be viewed in Figure~\ref{fig:modelCommanding}. 
 	It is our opinion that the test code snippet in Figure~\ref{fig:pointCommandingTestCode} will solidify the understanding of the application of constraints for analog points.
 
-	\begin{figure}[!h]
-		\includegraphics[width=0.45\textwidth,]{csvOutputCommanding.pdf}
-	\caption{Input driven commanding test suite - partial}
-	\label{fig:csvOutputCommanding}
+	\begin{figure}[!t]
+		\includegraphics[width=0.50\textwidth,]{csvOutputCommanding.pdf}
+		\caption{Input driven commanding test suite - partial}
+		\label{fig:csvOutputCommanding}
 	\end{figure}
+
+	\begin{figure}[!b]
+		\includegraphics[width=0.50\textwidth,]{pointCommandingTestCode.pdf}
+		\caption{Protractor \textit{describe} block for Analog Value point commanding in Desigo Classic panel}
+		\label{fig:pointCommandingTestCode}
+	\end{figure}
+
 
 	The generic CT test design and test automation workflow is as such:
 	\begin{itemize}
@@ -699,13 +706,7 @@ One example will include a scenario where a sequence of actions will be incorpor
 	For example the function \textit{commandTestAnalogPointWithSliderToFarRight()} does boundary value testing using the slider, and can be applied to any kind of analog point.
 	Similarly the function \textit{commandTestAnalogPointWithTextBox()} continues boundary value analysis by passing in an integer to the text box, with a value greater than the boundary.
 
-	
-	\begin{figure*}[!ht]
-	\centering
-		\includegraphics[width=0.85\textwidth,]{pointCommandingTestCode.pdf}
-		\caption{Protractor \textit{describe} block for Analog Value point commanding in Desigo Classic panel}
-		\label{fig:pointCommandingTestCode}
-	\end{figure*}
+
 
 	\subsection{Filtering Points by Tag Combinations }
 
@@ -726,6 +727,14 @@ One example will include a scenario where a sequence of actions will be incorpor
 		\label{fig:tagFilterModel}
 	\end{figure}
 
+	\begin{figure}[!hb]
+		\centering
+		\includegraphics[width=0.32\textwidth,]{tagFilterCoveringArray.pdf}
+		\caption{Covering array for tag filtering}
+		\label{fig:tagFilterCoveringArray}
+	\end{figure}
+
+
 	With 4 parameters -final tag being default-selected due to a single tag choice being left in the tag dropdown menu- and 13 values each, the amount of tests generated could be vast. 
 	However there were three factors that reduced the number of tests to the covering array of Figure~\ref{fig:tagFilterCoveringArray}:
 	
@@ -744,15 +753,27 @@ One example will include a scenario where a sequence of actions will be incorpor
 	\end{itemize}
 
 	
-	\begin{figure}[!h]
-		\includegraphics[width=0.30\textwidth,]{tagFilterCoveringArray.pdf}
-		\caption{Covering array for tag filtering}
-		\label{fig:tagFilterCoveringArray}
-	\end{figure}
 
 	\subsection{Sequenced Filtering, Searching, Sorting of Geo-located Sites}
+
+	BOIC is designed so that the building operater can control a number of geo-located sites. 
+	Each site has a unique address. The building operator has the ability to filter and sort the sites they have administration over:
+
+	\begin{itemize}
+		\item [] - 
+		\item [] -  
+		\item [] - 
+	\end{itemize}
+
+	\begin{figure*}[!hb]
+		\centering
+			\includegraphics[width=0.95\textwidth,]{siteFilterModel.pdf}
+			\caption{CT model of site filtering in CTWedge \& screen capture}
+			\label{fig:siteFilterModel}
+	\end{figure*}
+
 	
-	\begin{figure*}[!ht]
+	\begin{figure*}[!h]
 		\centering
 			\includegraphics[width=1.05\textwidth,]{modelCommanding.pdf}
 			\caption{CT model of panel and point commanding in CTWedge}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.12.24)  27 DEC 2018 07:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.12.24)  27 DEC 2018 08:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -574,7 +574,7 @@ pdfTeX warning: pdflatex.exe (file ./codeSample.pdf): PDF inclusion: found PDF v
 File: codeSample.pdf Graphic file (type pdf)
 <use codeSample.pdf>
 Package pdftex.def Info: codeSample.pdf  used on input line 547.
-(pdftex.def)             Requested size: 516.0pt x 147.63719pt.
+(pdftex.def)             Requested size: 464.39685pt x 132.86911pt.
 
 
 pdfTeX warning: pdflatex.exe (file ./stateBasedScenario.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
@@ -618,41 +618,56 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 File: csvOutputCommanding.pdf Graphic file (type pdf)
 <use csvOutputCommanding.pdf>
 Package pdftex.def Info: csvOutputCommanding.pdf  used on input line 685.
-(pdftex.def)             Requested size: 232.19843pt x 203.52315pt.
-<pointCommandingTestCode.pdf, id=45, 757.83125pt x 522.95375pt>
+(pdftex.def)             Requested size: 258.0pt x 226.14423pt.
+
+Overfull \hbox (6.0pt too wide) in paragraph at lines 685--686
+[][] 
+ []
+
+<pointCommandingTestCode.pdf, id=45, 590.205pt x 477.785pt>
 File: pointCommandingTestCode.pdf Graphic file (type pdf)
 <use pointCommandingTestCode.pdf>
-Package pdftex.def Info: pointCommandingTestCode.pdf  used on input line 705.
-(pdftex.def)             Requested size: 438.60315pt x 302.66704pt.
- [5 <./csvOutputCommanding.pdf>]
-<tagFilterModel.pdf, id=52, 718.685pt x 542.025pt>
+Package pdftex.def Info: pointCommandingTestCode.pdf  used on input line 691.
+(pdftex.def)             Requested size: 258.0pt x 208.86273pt.
+
+Overfull \hbox (6.0pt too wide) in paragraph at lines 691--692
+[][] 
+ []
+
+[5 <./csvOutputCommanding.pdf> <./pointCommandingTestCode.pdf>]
+<tagFilterModel.pdf, id=54, 718.685pt x 542.025pt>
 File: tagFilterModel.pdf Graphic file (type pdf)
 <use tagFilterModel.pdf>
-Package pdftex.def Info: tagFilterModel.pdf  used on input line 724.
+Package pdftex.def Info: tagFilterModel.pdf  used on input line 725.
 (pdftex.def)             Requested size: 258.0pt x 194.58298pt.
 
-Overfull \hbox (6.0pt too wide) in paragraph at lines 724--725
+Overfull \hbox (6.0pt too wide) in paragraph at lines 725--726
 [][] 
+ []
+
+<tagFilterCoveringArray.pdf, id=55, 299.1175pt x 542.025pt>
+File: tagFilterCoveringArray.pdf Graphic file (type pdf)
+<use tagFilterCoveringArray.pdf>
+Package pdftex.def Info: tagFilterCoveringArray.pdf  used on input line 732.
+(pdftex.def)             Requested size: 165.12378pt x 299.22293pt.
+[6 <./tagFilterModel.pdf> <./tagFilterCoveringArray.pdf>]
+<siteFilterModel.pdf, id=63, 721.69624pt x 293.095pt>
+File: siteFilterModel.pdf Graphic file (type pdf)
+<use siteFilterModel.pdf>
+Package pdftex.def Info: siteFilterModel.pdf  used on input line 770.
+(pdftex.def)             Requested size: 490.19843pt x 199.07834pt.
+<modelCommanding.pdf, id=64, 721.69624pt x 427.5975pt>
+File: modelCommanding.pdf Graphic file (type pdf)
+<use modelCommanding.pdf>
+Package pdftex.def Info: modelCommanding.pdf  used on input line 778.
+(pdftex.def)             Requested size: 541.80157pt x 321.01051pt.
+
+Overfull \hbox (25.80157pt too wide) in paragraph at lines 778--779
+ [][] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[6 <./pointCommandingTestCode.pdf> <./tagFilterModel.pdf>]
-<tagFilterCoveringArray.pdf, id=60, 299.1175pt x 542.025pt>
-File: tagFilterCoveringArray.pdf Graphic file (type pdf)
-<use tagFilterCoveringArray.pdf>
-Package pdftex.def Info: tagFilterCoveringArray.pdf  used on input line 748.
-(pdftex.def)             Requested size: 154.80157pt x 280.51477pt.
-<modelCommanding.pdf, id=61, 721.69624pt x 427.5975pt>
-File: modelCommanding.pdf Graphic file (type pdf)
-<use modelCommanding.pdf>
-Package pdftex.def Info: modelCommanding.pdf  used on input line 757.
-(pdftex.def)             Requested size: 541.80157pt x 321.01051pt.
-
-Overfull \hbox (25.80157pt too wide) in paragraph at lines 757--758
- [][] 
- []
 
 (./cloud.bbl)
 
@@ -666,20 +681,22 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[7 <./tagFilterCoveringArray.pdf>] [8 <./modelCommanding.pdf>] (./cloud.aux) ) 
+[7
+
+] [8 <./siteFilterModel.pdf> <./modelCommanding.pdf>] (./cloud.aux) ) 
 Here is how much of TeX's memory you used:
- 15592 strings out of 492616
- 295307 string characters out of 6132767
- 477433 words of memory out of 5000000
- 19217 multiletter control sequences out of 15000+600000
+ 15598 strings out of 492616
+ 295466 string characters out of 6132767
+ 478443 words of memory out of 5000000
+ 19222 multiletter control sequences out of 15000+600000
  37464 words of font info for 74 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
  55i,8n,54p,837b,1084s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on cloud.pdf (8 pages, 759773 bytes).
+Output written on cloud.pdf (8 pages, 802801 bytes).
 PDF statistics:
- 92 PDF objects out of 1000 (max. 8388607)
- 52 compressed objects within 1 object stream
+ 95 PDF objects out of 1000 (max. 8388607)
+ 53 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 68 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 73 words of extra memory for PDF output out of 10000 (max. 10000000)
 
