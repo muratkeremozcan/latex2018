@@ -768,10 +768,10 @@ One example will include a scenario where a sequence of actions will be incorpor
 
 	Figure~\ref{fig:siteFilterModel} shows the alarm filtering menu as well as the search text box and sorting buttons. 
 	Alarm filters are modeled as 3 boolean states and the resulting covering array includes 4 configurations. 
-	This result are plugged in to the next model, a technique from \todo{refer to your own paper} to reduce the number of tests and still provide cost effective coverage.
+	This result is plugged in to the next model, a technique from \todo{refer to your own paper} to reduce the number of tests and still provide cost effective coverage.
 	The parameter \textit{filter-workingWell-inAlarm-disconnected} includes the the 4 configurations of these checkboxes as values. 
 
-	The \textit{search} parameter is a text-box, which is open ended. For this, possible values were contemplated to be any string, and different fields of an address.
+	The \textit{search} parameter is a text-box, which is open ended. For this, possible values were contemplated to be any string, address fields.
 
 	The \textit{sortBy} parameter simply replicated the names of the columns. 
 	In order to keep the number of tests low, instead of being a parameter in the model, reverse sorting of columns got covered in each automated test.
@@ -779,8 +779,10 @@ One example will include a scenario where a sequence of actions will be incorpor
 
 	In order to have a deterministic test oracle, an array of sites were generated with varying data parameters - all stored in JSON - so that after filtering by site status and a search string, there would be at least 2 sites to test sorting with.
 	
-	Generating the tests, it was promptly realized that if sorting sites by column - possible values being \textit{Status, Name, Street, Country, Creation Time} - matches the search string -possible values being fields of an address - sorting became redundant.
-	These redundancies were addressed by adding constraints, for instance \textit{if sorting sites by Street, search string cannot be street name}. The end result became a test suite of 19 tests.
+	Generating the tests, it was promptly realized that if sorting sites by column - possible values being \textit{Status, Name, Street, Country, Creation Time} - matches the search string -possible values being fields of an address - sorting became redundant and had no effect.
+	These redundancies were addressed by adding constraints, for instance \textit{if sorting sites by Street, search string cannot be street name}. 
+	CAMetrics was used \todo{reference to CAMetrics} to measure pairwise coverage gain per test: Figure~\ref{fig:coverageGainPerTest} and Figure~\ref{fig:coverageGainPerTest_withConstraints} show coverage before and after constraints being applied.
+	The constraints eliminated 5 redundant test cases and the end result became a test suite of 19 tests. With this, a 20.8\% cost savings was achieved while developing automation test code.
 	
 	Finally the sequence of the user actions needed to be addressed. Previous research on this topic has been vast and is referred to in section \todo{insert section} .
 	The two filtering operations and the sorting can happen in any order, and there 6 possible ways of ordering them.
@@ -800,27 +802,56 @@ One example will include a scenario where a sequence of actions will be incorpor
 		\label{fig:sorting}
 	\end{figure}
 
-	\begin{figure}[!b]
-		\includegraphics[width=0.50\textwidth,]{sortingTestCode.pdf}
-		\caption{CT model of tag filtering in CTWedge}
-		\label{fig:sortingTestCode}
+	\begin{figure}[!h]
+		\includegraphics[width=0.50\textwidth,]{CompletenessCoverage.pdf}
+		\caption{2-way and 3-way completeness coverage, measured with CCM}
+		\label{fig:CompletenessCoverage}
+	\end{figure}
+
+	\begin{figure}[!h]
+		\includegraphics[width=0.50\textwidth,]{coverageGainPerTest.pdf}
+		\caption{No constraints : relative gain (red) vs cumulative gain (blue) per test}
+		\label{fig:coverageGainPerTest}
+	\end{figure}
+
+	\begin{figure}[!h]
+		\includegraphics[width=0.50\textwidth,]{coverageGainPerTest_withConstraints.pdf}
+		\caption{Constraints applied to Figure~\ref{fig:coverageGainPerTest}}
+		\label{fig:coverageGainPerTest_withConstraints}
 	\end{figure}
 
 	Introducing the boolean parameters for sequencing and the constraints did not impact the number of test cases; the final number was still 19.
+	Figure~\ref{fig:CompletenessCoverage} shows 2-way and 3-way completeness coverage using CCM \todo{reference to CCM}. 
+	For the 2-way covering array, completeness coverage of 2-way combinations was found to be as such: 100\% of 2 tuples covered to 100\%. 
+	To elaborate, of the 158 2-way tuples, all are included in the covering array for this test suite to have full pairwise / 2-way coverage.
+	For reference, 3-way completeness coverage is also shown: 25\% of 3-way combinations are covered to 100\%, 50\% of 3-way combinations were covered to 95\%.
+	To elaborate, of the 629 3 tuples, 25\% of them provide 3-way coverage at 100\%, 50\% of them provide 95\% 3-way coverage and so on.
+
+	The significance and the impact of minimum t-way coverage on branch coverage conditions in the code is discussed in the paper \todo{insert reference} Measuring and Specifying Combinatorial Coverage of Test Input Configurations.
+	Label M as the minimum 2-way coverage; i.e., the lowest proportion of settings covered for all t-way combinations of variables.
+	For example, 2-way combinations of binary variables have four possible settings:00, 01, 10, 11.
+	Some variable pairs may have all four settings covered, but others may have less.
+	M is the smallest proportion of coverage among all of the t-way variable combinations.
+	M is also viewable as the rightmost line in the coverage strength meters.
+
 	At a small scale this technique was effective; for 3 parameters, the 6 sequences were possible to be incorporated into the input parameter model without increasing the number of tests. 
 	Also the cost of creating the constraint logic was low since only two constraints had to be written.
 	However, it can be observed that with a higher number of parameters this approach can get less cost effective. 
 	The team has not encountered such a problem yet and is looking forward to the challenge in a future study.
 	
-	Figure~\ref{fig:sortingTestCode} displays autormated Protractor test code for one of the 19 tests.
+	\begin{figure}[!h]
+		\includegraphics[width=0.50\textwidth,]{sortingTestCode.pdf}
+		\caption{One of the 19 automated Protractor tests in site filtering test suite}
+		\label{fig:sortingTestCode}
+	\end{figure}
+
+	To conclude this sections, Figure~\ref{fig:sortingTestCode} displays autormated Protractor test code for one of the 19 tests.
 	The test actions are in the sequence \textit{search} (by text string), set \textit{site status} dropdown and \textit{sort} (by country). 
 	The 3 functions execute these actions.
 	In turn, status pills are verified, verifying site status.
 	Following that, the sorting and reverse sorting of the sites are verified.
-	Finally, the test oracle is verified to verify the sites that are displayed in the filter.
+	Finally, the test oracle is verified to verify that the sites that are displayed in the filter.
 		
-
-
 	\begin{figure*}[!hb]
 		\centering
 			\includegraphics[width=0.95\textwidth,]{siteFilterModel.pdf}
@@ -828,16 +859,14 @@ One example will include a scenario where a sequence of actions will be incorpor
 			\label{fig:siteFilterModel}
 	\end{figure*}
 
-
-
-
-	
 	\begin{figure*}[!h]
 		\centering
 			\includegraphics[width=1.05\textwidth,]{modelCommanding.pdf}
 			\caption{CT model of panel and point commanding in CTWedge}
 			\label{fig:modelCommanding}
 	\end{figure*}
+
+	
 
 \section{Conclusion and future work}
 	

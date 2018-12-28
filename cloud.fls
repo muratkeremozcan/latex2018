@@ -279,6 +279,15 @@ INPUT ./tagFilterCoveringArray.pdf
 INPUT sorting.pdf
 INPUT ./sorting.pdf
 INPUT ./sorting.pdf
+INPUT CompletenessCoverage.pdf
+INPUT ./CompletenessCoverage.pdf
+INPUT ./CompletenessCoverage.pdf
+INPUT coverageGainPerTest.pdf
+INPUT ./coverageGainPerTest.pdf
+INPUT ./coverageGainPerTest.pdf
+INPUT coverageGainPerTest_withConstraints.pdf
+INPUT ./coverageGainPerTest_withConstraints.pdf
+INPUT ./coverageGainPerTest_withConstraints.pdf
 INPUT sortingTestCode.pdf
 INPUT ./sortingTestCode.pdf
 INPUT ./sortingTestCode.pdf
