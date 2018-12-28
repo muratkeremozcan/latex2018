@@ -334,24 +334,23 @@ murat.ozcan@siemens.com}
 
 
 \begin{abstract}
-The overall purpose of this study is to describe the new paradigms achieved in testing,
-in lieu of the transition of applications from the desktop, to web and to cloud. 
-We study the Siemens Building Technologies Horizon Cloud Program,
-where products are enabled by the Horizon ecosystem with a focus on speed, independence and small complexity.
+The overall purpose of this study is to describe the new paradigms in testing,
+in lieu of the transition of applications from the desktop, to web and to cloud, and how combinatorial testing (CT) fits in this modern development environment. 
+We study the Siemens Building Technologies Horizon Cloud Program's \todo{insert long version} (BOIC) application. \todo{ insert short sentence about BOIC}
+In Horizon Cloud, products are enabled by the Horizon ecosystem with a focus on speed, independence and small complexity.
 Horizon Cloud provides widespread connectivity to legacy \& new controls, 3rd party, IoT, 
 edge devices and a step-wise covering of on-site, real-time requirements. 
 Horizon Cloud features its own apps based on building integration framework, along with themes, with an open API for ecosystem and SSP. 
-The program also provides a common data model and API to BT Building Integration Framework to map southbound data against model.
+The program also provides a common data model and API to Building Technologies Building Integration Framework to map southbound data against model.
 
-We start by describing the architecture of the Horizon Cloud program; the components that make up the whole, how they relate, 
+We start by describing the architecture of BOIC the components that make up the whole, how they relate, 
 technologies being used in each layer and how they are being tested individually and as a whole. 	
 
 We continue by describing the continuous delivery process; Dockerization of the continuous integration pipeline,
-the architectural components being built as Docker images and being run as Docker containers, being deployed and tested in the cloud at unit, API and UI levels. 
-Later, we describe how the components that make the architecture are orchestrated in AWS hosted OpenShift. 
+the architectural components being built as Docker images and being run as Docker containers, being deployed and tested in the cloud at different test levels. 
 
 We describe the abstraction and the structure of the test code, the page object model, 
-how specifications are separated from the page object / service / logic layer and the test data. 
+how test specifications relate to the test code architecture and the test data. 
 
 Finally, we analyze three applications of combinatorial testing (CT) in this modern development environment,
 incorporating the CT model into automation using BDD style Protractor end to end UI tests. 
@@ -359,15 +358,14 @@ We go through the CT modeling process using newly released, open source, cloud b
 We describe how the model translates into functions in the code and its utilization in behavioral driven tests.
 
 Finally, we analyze a scenario where a sequence of actions are incorporated into a CT model;
-with a focus on verification of these sequences, compositions of the actions and streamlining the expected assertions,
-in line, per the data-manipulated test oracle.
+with a focus on verification of these sequences, compositions of the actions and streamlining the expected assertions per the data-manipulated test oracle.
 
 \end{abstract}
 
 
 
 \begin{IEEEkeywords}
-Combinatorial testing, Input parameter model, Sequence, Angular, Protractor, UI automation
+Cloud, Combinatorial testing, Sequence, Angular, Protractor, test automation
 \end{IEEEkeywords}
 
 
@@ -400,18 +398,36 @@ Containerization is one proposed solution, and Docker is one example of a progra
 \todo {insert Docker reference}
 In containerization, a layer between OS and applications is introduced to optimize resource usage and eliminate the need for an OS.
 
-This is highly valuable for application development because it enables the application be hosted in a minimal, resource and cost effective "container" which 
-allows the application to be built, deployed and tested faster. Throughout the paper we will refer to this paradigm as Cloud Computing.
+This is highly valuable for application development because it enables the application to be hosted in a minimal, resource and cost effective "container" which 
+allows the application to be built, deployed and tested faster.
 
 In this paper, we will study how Combinatorial Testing (CT) fits in the front-end test automation and continuous deployment of cloud computing paradigm.
 Examples will include modeling of the input parameter model (IPM), how the model translates to fields and methods in page objects \todo{insert reference}, 
-and the utilization of it all in behavioral driven test specifications.
+and the utilization of these in behavioral driven test specifications.
 One example will include a scenario where a sequence of actions will be incorporated into a CT model, a problem that has been addressed in a variety of ways in previous works.
 
 \section{Related Work}
 
 	\subsection{Introduction to Combinatorial Testing}
-	\todo{@Ludwig: small intro to CT}.
+	\todo{work on paraphrasing this}.
+	Combinatorial testing (CT) is a highly sophisticated testing methodology,
+	that is capable of producing comparable small test sets (e.g. when compared to exhaustive testing),
+	while at the same time providing guarantees of (certain) input space coverage.
+	To apply CT to a system under test (SUT), it is necessary to have an \emph{input parameter model} (IPM) of the SUT \cite{OffuttIPM}.
+	To devise an IPM for an SUT it is necessary to identify \emph{input parameters} and their respective \emph{values},
+	such that an input to such a model can be represented by parameter-value assignments.
+	Engineering an IPM can be a tedious and time intensive task itself \cite{rework}.
+	The underlying mathematical primitives of CT are covering arrays (CAs), which are discrete structures appearing in \emph{combinatorial design theory},
+	and can be represented as matrices with specific coverage properties \cite{NISTpractical}.
+	To further apply CT, the parameters of the IPM are matched with the columns of an appropriate CA,
+	such that a row of the CA can be interpreted as an assignment of values to the parameters of the IPM.
+	Translating all rows of a CA in such a way, the mathematical properties of CAs guarantee that the generated test set
+	is a \emph{$t$-way test set}, i.e.\ a test set which ensures that all $t$-way combinations of parameter-value assignments are tested,
+	once all tests have been executed \cite{NISTpractical}. Note that the general problem of constructing a t-way test set is believed to be NP-hard as it is tightly coupled with hard combinatorial optimization problems (see \cite{CHENG20071943}).
+	A study from the National Institute of Standards and Technology (NIST) \cite{NISTpractical} shows
+	that in all tested software products all faults rely on the interaction of at most six input parameters.
+	This means that all faults in the tested software products can be triggered using a $6$-way interaction test set,
+	which is generally much smaller than an exhaustive test set, but yet achieving the same testing quality.
 
 	\subsection{Previous works on sequences}
 	The method of modeling sequenced parameter groups applied in this paper borrows ideas from a combination of the modeling patterns found in \cite{segall2012common}.
@@ -423,33 +439,10 @@ One example will include a scenario where a sequence of actions will be incorpor
 	\end{enumerate}
 
 	\subsection{Previous works on page objects}
-	There has been hundreds of papers on BACnet since early 90s. 
-	While many papers have touched on testing. Generally, the testing of Event Enrollment Objects has not been a topic of focus.
-	To get a better understanding on BACnet and Event Enrollment, some of the previous work can be reviewed in \cite{bushby1997bacnettm}, \cite{bushby2002bacnet}, \cite{nussbaumerbacnet} and \cite{newman2015bacnet}. 
+	\todo{insert some papers about Page objects}
 	
 	\subsection{Previous works on cloud computing}
-	There has been hundreds of papers on BACnet since early 90s. 
-	While many papers have touched on testing. Generally, the testing of Event Enrollment Objects has not been a topic of focus.
-	To get a better understanding on BACnet and Event Enrollment, some of the previous work can be reviewed in \cite{bushby1997bacnettm}, \cite{bushby2002bacnet}, \cite{nussbaumerbacnet} and \cite{newman2015bacnet}. 
-
-
-% \subsection{Description of SBA-Method}
-%   In \cite{kampel2017combinatorial} a combinatorial methodology to model composed software systems is presented.
-% 	The main idea behind this methodology is to combine legacy test suites of components of an SUT,
-% 	via a so called \emph{meta-array}, to get a test suite for the whole SUT.
-% 	It is also shown that, if the legacy test suites, as well as the meta-array fulfill certain combinatorial criteria,
-% 	so does the test suite for the whole SUT (for details see \cite{kampel2017combinatorial}.)
-% 	The generation of a combinatorial test suite for an SUT with the \todo{to be defined in into to CT:} IPM $(v_1,\ldots,v_g)$ can be described as follows:
-% 	\begin{itemize}
-%     \item [] \textit{Step 1}: Partition the given parameter configuration $(v_1,\ldots,v_g)$ into classes $V_1,\ldots,V_k$.
-%     \item [] \textit{Step 2}: For each $i=1,\ldots,k$ construct legacy test suites that are covering arrays of a certain strength $t$:
-% 		$S_i=\mathit{MCA}(N_i;t,|V_i|,V_i)$.
-%     \item [] \textit{Step 3}: Construct a meta array $\mathcal M = \mathit{MCA}(N_m;t,k,(N_1,\ldots,N_k))$.
-%     \item [] \textit{Step 4}: For all columns of $\mathcal M$ do the following:
-% 		in column $j$ of $\mathcal M$ replace all occurrences of $n$ with the $n$-th row of $\mathcal S_j$.
-% 		%Apply the plug-in construction to the seed arrays $(S_i)_{i=1}^k$ and the meta array $\mathcal M$.
-% \end{itemize}
-% The result of this construction is again a covering array of strength $t$.
+	\todo{insert some papers about Cloud}
 
 \section{The System Under Test}
 
@@ -476,22 +469,23 @@ One example will include a scenario where a sequence of actions will be incorpor
 \end{figure}
 
 	\subsection{Description of the Continuous Deployment Environment }
-	In a traditional configuration management scenario, there may be a plethora of servers needed for web development activities.
-	Staging, committing, packaging the developed code, testing at each stage, source controlling and finally publishing at production server(s) may take place on a number of machines.
-	This can end up in high costs of operation and maintenance in order to enable development activities.
-
-	In cloud computing, utilizing containerization, each one of these development activities can be operated in a docker container.
-	Figure~\ref{fig:UIpipeline} shows the GitLab pipeline for the UI component developed in Angular.
-	GitLab is a continuous integration tool that supports the teams by hosting code repositories (similar to GitHub), providing defect tracking, enabling code reviews and continuous integration support. 
-	Another example of a continuous integration tool is Jenkins, which can serve the same purpose thorough is extensions.
-
-	\begin{figure*}[!ht]
+	
+	\begin{figure*}[!t]
 		\centering
 			\includegraphics[width=1.00\textwidth]{UIpipeline.pdf}
 		\caption{UI component pipeline}
 		\label{fig:UIpipeline}
 	\end{figure*}
 	
+	In a traditional configuration management scenario, there may be a plethora of servers needed for web development activities.
+	Staging, committing, packaging the developed code, testing at each stage, source controlling and finally publishing at production server(s) may take place on a number of machines.
+	This can end up in high costs of operation and maintenance in order to enable development activities.
+	
+	In cloud computing, utilizing containerization, each one of these development activities can be operated in a docker container.
+	Figure~\ref{fig:UIpipeline} shows the GitLab pipeline for the UI component developed in Angular.
+	GitLab is a continuous integration tool that supports the teams by hosting code repositories (similar to GitHub), providing defect tracking, enabling code reviews and continuous integration support. 
+	Another example of a continuous integration tool is Jenkins, which can serve the same purpose thorough is extensions.
+
 
 	The team uses Git for source control. \todo{about git}. 
 	When any code is submitted, the application is built in a docker container, OSS Clearing for licensing is executed, unit testing and linting are done, the application is deployed to an cloud-hosted container and automated UI tests are run targeting this deployment.
@@ -515,16 +509,17 @@ One example will include a scenario where a sequence of actions will be incorpor
 	Each component may have its own class, html and css file. This structure provides a way to design dynamic web applications while keeping the front-end code clean. 
 
 	Page object pattern is a popular UI test automation design pattern in the industry. \todo{refer to Fowler and selenium paper}.
-	In Fowler's proposed terminology, we refer to web pages as 'pages' and Angular components as 'panels'.
+	In the spirit of Fowler's proposed terminology, we refer to web pages as 'pages' and Angular components as 'panels'.
 	Each panel is a class. A page can be made up of many panels, which have a class-based object oriented structure.   
 
 	Designing the test automation architecture, it became clear that it would not only be straightforward but also efficient to replicate the structure of Angular components in page objects as pictured in Figure~\ref{fig:angular}.
 	One advantage of this is easier maintenance of the automation code as the development code changes.
 	The other advantage is its benefits with asynchronous test execution.
 
-	In a panel object, the element selectors become the fields and the methods become test actions within the component / panel. 
+	In a panel object, the element selectors become the class fields and the test actions become class methods within the component / panel.
+	Enabling this class-based object oriented structure is TypeScript \todo{insert reference}
 	TypeScript is a superset of JavaScript. It complies into JavaScript and includes the latest EcmaScript features \todo{reference to EcmaScript} .
-	The latest EcmaScript features allow developers to write sequential looking asynchronous code.
+	One of the recent advantages in the latest EcmaScript features is how it helps developers write sequential looking asynchronous code \todo{refer to async awaits}.
 
 	With regards to test automation this means clean code that executes as fast as the environment allows, resistant to flakey tests and stale elements on the page. 
 	This is because the page components load with panel-object-classes simultaneously, while the page element selectors get instantiated.
@@ -550,14 +545,14 @@ One example will include a scenario where a sequence of actions will be incorpor
 	\end{figure*}	
 
 
-	\begin{figure}[!h]
+	\begin{figure}[!b]
 		\includegraphics[width=0.60\textwidth,]{stateBasedScenario.pdf}
 		\caption{State-based, Behavior-driven Acceptance Scenario}
 		\label{fig:stateBasedScenario}
 	\end{figure}
 
 	The team uses Protractor test framework, which is the default end-to-end test framework for Angular applications. \todo{insert reference}
-	It runs tests against application running in a real browser, interacting with it as a user would.
+	It runs tests against the application running in a real browser, interacting with it as a user would.
 	It combines technologies from Selenium webDriver, NodeJS and allows tests to be described in a BDD format -\textit{Given, When, Then}-, describing the overall behavior of a system at a low level.
 	
 	The test specifications are stored in Protractor spec files written in TypeScript. 
@@ -593,8 +588,8 @@ One example will include a scenario where a sequence of actions will be incorpor
 	In the following sections test designs using combinatorial testing techniques will be described. 
 	Note that, this study will focus on black box test automation of the front-end. Testing at different levels of the architecture is planned to be studied in a future paper.
 
-	For all combinatorial test suite generation CTWedge was used and for coverage measuring CAMetrics was used \todo{reference}.
-	Traditionally, ACTS and CCM has been used in the organization during previous studies \todo{reference own paper}
+	For all combinatorial test suite generation CTWedge was used and for coverage measuring CAMetrics and CCM were used \todo{reference}.
+	Traditionally, ACTS has been used in the organization during previous work.
 	CTWedge and CAmetrics were preferred over their desktop contenders for a few reasons.
 
 	\begin{itemize}
@@ -606,7 +601,7 @@ One example will include a scenario where a sequence of actions will be incorpor
 	\subsection{Input driven testing of hardware}
 
 	\begin{figure}[!b]
-		\includegraphics[width=0.55\textwidth,]{commandingIPM.pdf}
+		\includegraphics[width=0.50\textwidth,]{commandingIPM.pdf}
 	\caption{Input Parameter Model for hardware setup}
 	\label{fig:commandingIPM}
 	\end{figure}
@@ -659,6 +654,7 @@ One example will include a scenario where a sequence of actions will be incorpor
 			"MV": "AS03'Ala'Per'MulObj'MV001",
 			"BI": "AS03'PTP'BinObj'BI001",	
 	\end{lstlisting}
+
 	
 	Figure~\ref{fig:modelCommanding} details the CT model scripted in CTWedge.
 	It can be observed that the parameters \textit{subsystemType} and \textit{pointType} map directly from JSON data.
@@ -681,18 +677,11 @@ One example will include a scenario where a sequence of actions will be incorpor
 	Partial script example for constraints can be viewed in Figure~\ref{fig:modelCommanding}. 
 	It is our opinion that the test code snippet in Figure~\ref{fig:pointCommandingTestCode} will solidify the understanding of the application of constraints for analog points.
 
-	\begin{figure}[!t]
+	\begin{figure}[!h]
 		\includegraphics[width=0.50\textwidth,]{csvOutputCommanding.pdf}
 		\caption{Input driven commanding test suite - partial}
 		\label{fig:csvOutputCommanding}
 	\end{figure}
-
-	\begin{figure}[!b]
-		\includegraphics[width=0.50\textwidth,]{pointCommandingTestCode.pdf}
-		\caption{Protractor \textit{describe} block for Analog Value point commanding in Desigo Classic panel}
-		\label{fig:pointCommandingTestCode}
-	\end{figure}
-
 
 	The generic CT test design and test automation workflow is as such:
 	\begin{itemize}
@@ -700,6 +689,12 @@ One example will include a scenario where a sequence of actions will be incorpor
 		\item [] - Generation of test suite in csv as in Figure~\ref{fig:csvOutputCommanding}, conversion into JSON as needed.
 		\item [] - Based on the test suite, writing the automated test code as in Figure~\ref{fig:pointCommandingTestCode}.
 	\end{itemize}
+
+	\begin{figure}[!h]
+		\includegraphics[width=0.50\textwidth,]{pointCommandingTestCode.pdf}
+		\caption{Protractor \textit{describe} block for Analog Value point commanding in Desigo Classic panel}
+		\label{fig:pointCommandingTestCode}
+	\end{figure}
 
 	Note that Figure~\ref{fig:pointCommandingTestCode} shows a part of the test spec in Protractor. 
 	For ease of readability and confidentiality, test actions and assertions are handled under the functions in the code snippet. 

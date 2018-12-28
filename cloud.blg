@@ -11,49 +11,46 @@ Database file #1: cloud.bib
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
-Warning--empty journal in nussbaumerbacnet
-Warning--empty year in nussbaumerbacnet
 
 Done.
 You've used 5 entries,
             4087 wiz_defined-function locations,
-            852 strings with 7990 characters,
-and the built_in function-call counts, 3296 in all, are:
-= -- 276
-> -- 50
-< -- 26
-+ -- 28
-- -- 8
-* -- 166
-:= -- 538
-add.period$ -- 11
+            858 strings with 8144 characters,
+and the built_in function-call counts, 4171 in all, are:
+= -- 333
+> -- 81
+< -- 40
++ -- 46
+- -- 11
+* -- 206
+:= -- 615
+add.period$ -- 12
 call.type$ -- 5
 change.case$ -- 5
-chr.to.int$ -- 48
-cite$ -- 7
-duplicate$ -- 250
-empty$ -- 259
-format.name$ -- 10
-if$ -- 746
+chr.to.int$ -- 99
+cite$ -- 5
+duplicate$ -- 287
+empty$ -- 335
+format.name$ -- 15
+if$ -- 966
 int.to.chr$ -- 0
 int.to.str$ -- 5
-missing$ -- 40
+missing$ -- 46
 newline$ -- 38
 num.names$ -- 5
-pop$ -- 82
+pop$ -- 105
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 257
+skip$ -- 318
 stack$ -- 0
-substring$ -- 127
-swap$ -- 193
-text.length$ -- 10
+substring$ -- 236
+swap$ -- 241
+text.length$ -- 7
 text.prefix$ -- 0
 top$ -- 5
 type$ -- 5
-warning$ -- 2
-while$ -- 15
+warning$ -- 0
+while$ -- 20
 width$ -- 6
 write$ -- 70
-(There were 2 warnings)

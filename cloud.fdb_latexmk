@@ -1,17 +1,17 @@
 # Fdb version 3
-["bibtex cloud"] 1545998122 "cloud.aux" "cloud.bbl" "cloud" 1545998125
+["bibtex cloud"] 1546001500 "cloud.aux" "cloud.bbl" "cloud" 1546001607
   "c:/texlive/2018/texmf-dist/bibtex/bst/IEEEtran/IEEEtran.bst" 1545666499 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "cloud.aux" 1545998124 6272 0893b723783eec450aef13e201d80b50 ""
-  "cloud.bib" 1509554987 4358 791297ce3462184ed30bfba9f517bac2 ""
+  "cloud.aux" 1546001606 6162 4419a259d35776cef4d054c0ce9b818f ""
+  "cloud.bib" 1545999750 7909 7f6a2fb09fdf3e345f9d3c0ecb339705 ""
   (generated)
   "cloud.blg"
   "cloud.bbl"
-["pdflatex"] 1545998123 "c:/UserData/ozcanm/Documents/CT/2018/Paper/cloud.tex" "cloud.pdf" "cloud" 1545998125
+["pdflatex"] 1546001605 "c:/UserData/ozcanm/Documents/CT/2018/Paper/cloud.tex" "cloud.pdf" "cloud" 1546001607
   "CompletenessCoverage.pdf" 1545995238 59483 e0e4ef08ce4c513a4d9eb9202d34598c ""
   "UIpipeline.pdf" 1545757337 24716 e5fb607e5d2040239bfccd6a5e680ee7 ""
   "angular.pdf" 1545823879 24754 225327ed3a403a652f15a06a4dff917f ""
   "architecture.pdf" 1545755016 47868 886310f593f830351f78ab8a8426516f ""
-  "c:/UserData/ozcanm/Documents/CT/2018/Paper/cloud.tex" 1545998118 50790 34b116808d36ee8ed1aba57fbec327d9 ""
+  "c:/UserData/ozcanm/Documents/CT/2018/Paper/cloud.tex" 1546001603 50706 707836ce61fcdf54321b751edc239a54 ""
   "c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc" 1545668007 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "c:/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1545668414 3332 103109f5612ad95229751940c61aada0 ""
   "c:/texlive/2018/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm" 1545667717 960 379cc0019370a9e0208a0a3f949f847a ""
@@ -32,6 +32,8 @@
   "c:/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm" 1545666643 908 2921f8a10601f252058503cc6570e581 ""
   "c:/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm" 1545666643 940 75ac932a52f80982a9f8ea75d03a34cf ""
   "c:/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm" 1545666643 940 228d6584342e91276bf566bcf9716b83 ""
+  "c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1545666644 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
+  "c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1545666644 35752 024fb6c41858982481f6968b5fc26508 ""
   "c:/texlive/2018/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb" 1545667717 45758 19968a0990191524e34e1994d4a31cb6 ""
   "c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb" 1545671353 44729 fea0975e20ec51c992338362f05f1146 ""
   "c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb" 1545671353 44656 0cbca70e0534538582128f6b54593cca ""
@@ -148,9 +150,9 @@
   "c:/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1545671981 3065569 c0100866a2168225e01a6ee8893b9056 ""
   "c:/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt" 1545672085 4223238 8bb9fcdb857f8a867f6fd6aedaacb89d ""
   "c:/texlive/2018/texmf.cnf" 1545671953 673 2e5aa3ac564c6f70f54d6752d765c05d ""
-  "cloud.aux" 1545998124 6272 0893b723783eec450aef13e201d80b50 ""
-  "cloud.bbl" 1545998122 1752 c0028ede9b306b057e755dfe1aa018d7 "bibtex cloud"
-  "cloud.tex" 1545998118 50790 34b116808d36ee8ed1aba57fbec327d9 ""
+  "cloud.aux" 1546001606 6162 4419a259d35776cef4d054c0ce9b818f ""
+  "cloud.bbl" 1546000558 1991 351d495910f5f07b5aded562b39baf1a "bibtex cloud"
+  "cloud.tex" 1546001603 50706 707836ce61fcdf54321b751edc239a54 ""
   "codeSample.pdf" 1545832818 17520 05aabe9d5c1802c0765a67907f4daa09 ""
   "commandingIPM.pdf" 1545843653 35101 d077af03b98dba0e8db3b8826b99a71d ""
   "coverageGainPerTest.pdf" 1545995290 52006 e5367c289ea8a4890beed76d3d502352 ""
@@ -165,6 +167,6 @@
   "tagFilterCoveringArray.pdf" 1545912994 21346 5cb4511f3127dd521ee81c26b4d2180a ""
   "tagFilterModel.pdf" 1545911144 29704 c62aeef0e208e476a68e13f6f7c949b1 ""
   (generated)
-  "cloud.aux"
   "cloud.log"
   "cloud.pdf"
+  "cloud.aux"

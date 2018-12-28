@@ -21,26 +21,30 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{OffuttIPM}
+M.~Grindal and J.~Offutt, ``Input parameter modeling for combination
+  strategies,'' in \emph{Proceedings of the 25th Conference on IASTED
+  International Multi-Conference: Software Engineering}, ser. SE'07.\hskip 1em
+  plus 0.5em minus 0.4em\relax Anaheim, CA, USA: ACTA Press, 2007, pp.
+  255--260.
+
+\bibitem{rework}
+R.~Bartholomew and R.~Collins, ``Using combinatorial testing to reduce software
+  rework,'' \emph{CrossTalk}, vol.~23, pp. 23--26, 2014.
+
+\bibitem{NISTpractical}
+D.~Kuhn, R.~Kacker, and Y.~Lei, ``Practical combinatorial testing,'' NIST
+  Special Publication 800-142, 2010.
+
+\bibitem{CHENG20071943}
+C.~T. Cheng, ``The test suite generation problem: Optimal instances and their
+  implications,'' \emph{Discrete Applied Mathematics}, vol. 155, no.~15, pp.
+  1943 -- 1957, 2007.
+
 \bibitem{segall2012common}
 I.~Segall, R.~Tzoref-Brill, and A.~Zlotnick, ``Common patterns in combinatorial
   models,'' in \emph{Software Testing, Verification and Validation (ICST), 2012
   IEEE Fifth International Conference on}.\hskip 1em plus 0.5em minus
   0.4em\relax IEEE, 2012, pp. 624--629.
-
-\bibitem{bushby1997bacnettm}
-S.~T. Bushby, ``Bacnettm: a standard communication infrastructure for
-  intelligent buildings,'' \emph{Automation in Construction}, vol.~6, no. 5-6,
-  pp. 529--540, 1997.
-
-\bibitem{bushby2002bacnet}
-------, ``Bacnet today: Significant new features and future enhancements,''
-  \emph{ASHRAE journal}, vol.~44, no.~10, p. S10, 2002.
-
-\bibitem{nussbaumerbacnet}
-R.~Nussbaumer and G.~Waters, ``Bacnet support for epics.''
-
-\bibitem{newman2015bacnet}
-H.~M. Newman, ``Bacnet celebrates 20 years,'' \emph{ASHRAE Journal}, vol.~57,
-  no.~6, p.~36, 2015.
 
 \end{thebibliography}

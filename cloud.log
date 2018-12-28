@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.12.24)  28 DEC 2018 05:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.12.24)  28 DEC 2018 06:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -533,20 +533,25 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 
 
 ]
+LaTeX Font Info:    Try loading font information for U+msa on input line 425.
+ (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 425.
+ (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
 
 pdfTeX warning: pdflatex.exe (file ./architecture.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 <architecture.pdf, id=12, 794.97pt x 614.295pt>
 File: architecture.pdf Graphic file (type pdf)
 <use architecture.pdf>
-Package pdftex.def Info: architecture.pdf  used on input line 473.
+Package pdftex.def Info: architecture.pdf  used on input line 466.
 (pdftex.def)             Requested size: 361.19843pt x 279.11098pt.
 
-Overfull \hbox (109.19843pt too wide) in paragraph at lines 473--474
+Overfull \hbox (109.19843pt too wide) in paragraph at lines 466--467
 [][] 
  []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
@@ -554,179 +559,169 @@ pdfTeX warning: pdflatex.exe (file ./UIpipeline.pdf): PDF inclusion: found PDF v
 <UIpipeline.pdf, id=13, 758.835pt x 85.20499pt>
 File: UIpipeline.pdf Graphic file (type pdf)
 <use UIpipeline.pdf>
-Package pdftex.def Info: UIpipeline.pdf  used on input line 490.
+Package pdftex.def Info: UIpipeline.pdf  used on input line 475.
 (pdftex.def)             Requested size: 516.0pt x 57.93991pt.
 [2 <./architecture.pdf>]
 
 pdfTeX warning: pdflatex.exe (file ./angular.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<angular.pdf, id=20, 314.91652pt x 197.2971pt>
+<angular.pdf, id=22, 314.91652pt x 197.2971pt>
 File: angular.pdf Graphic file (type pdf)
 <use angular.pdf>
-Package pdftex.def Info: angular.pdf  used on input line 534.
+Package pdftex.def Info: angular.pdf  used on input line 529.
 (pdftex.def)             Requested size: 232.19843pt x 145.47675pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 
 
 pdfTeX warning: pdflatex.exe (file ./codeSample.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<codeSample.pdf, id=21, 715.47299pt x 204.70477pt>
+<codeSample.pdf, id=23, 715.47299pt x 204.70477pt>
 File: codeSample.pdf Graphic file (type pdf)
 <use codeSample.pdf>
-Package pdftex.def Info: codeSample.pdf  used on input line 547.
+Package pdftex.def Info: codeSample.pdf  used on input line 542.
 (pdftex.def)             Requested size: 464.39685pt x 132.86911pt.
 
 
 pdfTeX warning: pdflatex.exe (file ./stateBasedScenario.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<stateBasedScenario.pdf, id=22, 794.97pt x 614.295pt>
+<stateBasedScenario.pdf, id=24, 794.97pt x 614.295pt>
 File: stateBasedScenario.pdf Graphic file (type pdf)
 <use stateBasedScenario.pdf>
-Package pdftex.def Info: stateBasedScenario.pdf  used on input line 554.
+Package pdftex.def Info: stateBasedScenario.pdf  used on input line 549.
 (pdftex.def)             Requested size: 309.60315pt x 239.246pt.
 
-Overfull \hbox (57.60315pt too wide) in paragraph at lines 554--555
+Overfull \hbox (57.60315pt too wide) in paragraph at lines 549--550
 [][] 
  []
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-LaTeX Font Info:    Try loading font information for U+msa on input line 571.
-(c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 571.
- (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [3 <./UIpipeline.pdf> <./angular.pdf>]
-<commandingIPM.pdf, id=32, 471.7625pt x 273.02pt>
+[3 <./UIpipeline.pdf> <./angular.pdf>]
+<commandingIPM.pdf, id=34, 471.7625pt x 273.02pt>
 File: commandingIPM.pdf Graphic file (type pdf)
 <use commandingIPM.pdf>
-Package pdftex.def Info: commandingIPM.pdf  used on input line 609.
-(pdftex.def)             Requested size: 283.80157pt x 164.24652pt.
+Package pdftex.def Info: commandingIPM.pdf  used on input line 604.
+(pdftex.def)             Requested size: 258.0pt x 149.3116pt.
 
-Overfull \hbox (31.80157pt too wide) in paragraph at lines 609--610
+Overfull \hbox (6.0pt too wide) in paragraph at lines 604--605
 [][] 
  []
 
-[4 <./codeSample.pdf> <./stateBasedScenario.pdf> <./commandingIPM.pdf>]
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 637.
+[4 <./codeSample.pdf> <./stateBasedScenario.pdf>]
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 632.
  (c:/texlive/2018/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 <csvOutputCommanding.pdf, id=44, 414.54875pt x 363.3575pt>
 File: csvOutputCommanding.pdf Graphic file (type pdf)
 <use csvOutputCommanding.pdf>
-Package pdftex.def Info: csvOutputCommanding.pdf  used on input line 685.
+Package pdftex.def Info: csvOutputCommanding.pdf  used on input line 681.
 (pdftex.def)             Requested size: 258.0pt x 226.14423pt.
 
-Overfull \hbox (6.0pt too wide) in paragraph at lines 685--686
+Overfull \hbox (6.0pt too wide) in paragraph at lines 681--682
 [][] 
  []
 
-<pointCommandingTestCode.pdf, id=45, 590.205pt x 477.785pt>
+[5 <./commandingIPM.pdf> <./csvOutputCommanding.pdf>]
+<pointCommandingTestCode.pdf, id=53, 590.205pt x 477.785pt>
 File: pointCommandingTestCode.pdf Graphic file (type pdf)
 <use pointCommandingTestCode.pdf>
-Package pdftex.def Info: pointCommandingTestCode.pdf  used on input line 691.
+Package pdftex.def Info: pointCommandingTestCode.pdf  used on input line 694.
 (pdftex.def)             Requested size: 258.0pt x 208.86273pt.
 
-Overfull \hbox (6.0pt too wide) in paragraph at lines 691--692
+Overfull \hbox (6.0pt too wide) in paragraph at lines 694--695
 [][] 
  []
 
-[5 <./csvOutputCommanding.pdf> <./pointCommandingTestCode.pdf>]
 <tagFilterModel.pdf, id=54, 718.685pt x 542.025pt>
 File: tagFilterModel.pdf Graphic file (type pdf)
 <use tagFilterModel.pdf>
-Package pdftex.def Info: tagFilterModel.pdf  used on input line 725.
+Package pdftex.def Info: tagFilterModel.pdf  used on input line 720.
 (pdftex.def)             Requested size: 258.0pt x 194.58298pt.
 
-Overfull \hbox (6.0pt too wide) in paragraph at lines 725--726
+Overfull \hbox (6.0pt too wide) in paragraph at lines 720--721
 [][] 
  []
 
 <tagFilterCoveringArray.pdf, id=55, 299.1175pt x 542.025pt>
 File: tagFilterCoveringArray.pdf Graphic file (type pdf)
 <use tagFilterCoveringArray.pdf>
-Package pdftex.def Info: tagFilterCoveringArray.pdf  used on input line 732.
+Package pdftex.def Info: tagFilterCoveringArray.pdf  used on input line 727.
 (pdftex.def)             Requested size: 165.12378pt x 299.22293pt.
-[6 <./tagFilterModel.pdf> <./tagFilterCoveringArray.pdf>]
-<sorting.pdf, id=63, 721.69624pt x 378.41376pt>
+[6 <./pointCommandingTestCode.pdf> <./tagFilterModel.pdf> <./tagFilterCoveringArray.pdf>]
+<sorting.pdf, id=65, 721.69624pt x 378.41376pt>
 File: sorting.pdf Graphic file (type pdf)
 <use sorting.pdf>
-Package pdftex.def Info: sorting.pdf  used on input line 800.
+Package pdftex.def Info: sorting.pdf  used on input line 795.
 (pdftex.def)             Requested size: 258.0pt x 135.27611pt.
 
-Overfull \hbox (6.0pt too wide) in paragraph at lines 800--801
+Overfull \hbox (6.0pt too wide) in paragraph at lines 795--796
 [][] 
  []
 
-<CompletenessCoverage.pdf, id=64, 717.68124pt x 479.7925pt>
+<CompletenessCoverage.pdf, id=66, 717.68124pt x 479.7925pt>
 File: CompletenessCoverage.pdf Graphic file (type pdf)
 <use CompletenessCoverage.pdf>
-Package pdftex.def Info: CompletenessCoverage.pdf  used on input line 806.
+Package pdftex.def Info: CompletenessCoverage.pdf  used on input line 801.
 (pdftex.def)             Requested size: 258.0pt x 172.48357pt.
 
-Overfull \hbox (6.0pt too wide) in paragraph at lines 806--807
+Overfull \hbox (6.0pt too wide) in paragraph at lines 801--802
 [][] 
  []
 
-<coverageGainPerTest.pdf, id=65, 721.69624pt x 511.9125pt>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<coverageGainPerTest.pdf, id=67, 721.69624pt x 511.9125pt>
 File: coverageGainPerTest.pdf Graphic file (type pdf)
 <use coverageGainPerTest.pdf>
-Package pdftex.def Info: coverageGainPerTest.pdf  used on input line 812.
+Package pdftex.def Info: coverageGainPerTest.pdf  used on input line 807.
 (pdftex.def)             Requested size: 258.0pt x 182.99951pt.
 
-Overfull \hbox (6.0pt too wide) in paragraph at lines 812--813
+Overfull \hbox (6.0pt too wide) in paragraph at lines 807--808
 [][] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<coverageGainPerTest_withConstraints.pdf, id=66, 715.67375pt x 510.90875pt>
+<coverageGainPerTest_withConstraints.pdf, id=68, 715.67375pt x 510.90875pt>
 File: coverageGainPerTest_withConstraints.pdf Graphic file (type pdf)
 <use coverageGainPerTest_withConstraints.pdf>
-Package pdftex.def Info: coverageGainPerTest_withConstraints.pdf  used on input line 818.
+Package pdftex.def Info: coverageGainPerTest_withConstraints.pdf  used on input line 813.
 (pdftex.def)             Requested size: 258.0pt x 184.18427pt.
 
-Overfull \hbox (6.0pt too wide) in paragraph at lines 818--819
+Overfull \hbox (6.0pt too wide) in paragraph at lines 813--814
 [][] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[7 <./sorting.pdf> <./CompletenessCoverage.pdf>]
+[7 <./sorting.pdf>]
 <sortingTestCode.pdf, id=75, 740.7675pt x 522.95375pt>
 File: sortingTestCode.pdf Graphic file (type pdf)
 <use sortingTestCode.pdf>
-Package pdftex.def Info: sortingTestCode.pdf  used on input line 843.
+Package pdftex.def Info: sortingTestCode.pdf  used on input line 838.
 (pdftex.def)             Requested size: 258.0pt x 182.13486pt.
 
-Overfull \hbox (6.0pt too wide) in paragraph at lines 843--844
+Overfull \hbox (6.0pt too wide) in paragraph at lines 838--839
 [][] 
  []
 
 <siteFilterModel.pdf, id=76, 721.69624pt x 293.095pt>
 File: siteFilterModel.pdf Graphic file (type pdf)
 <use siteFilterModel.pdf>
-Package pdftex.def Info: siteFilterModel.pdf  used on input line 857.
+Package pdftex.def Info: siteFilterModel.pdf  used on input line 852.
 (pdftex.def)             Requested size: 490.19843pt x 199.07834pt.
 <modelCommanding.pdf, id=77, 721.69624pt x 427.5975pt>
 File: modelCommanding.pdf Graphic file (type pdf)
 <use modelCommanding.pdf>
-Package pdftex.def Info: modelCommanding.pdf  used on input line 864.
+Package pdftex.def Info: modelCommanding.pdf  used on input line 859.
 (pdftex.def)             Requested size: 541.80157pt x 321.01051pt.
 
-Overfull \hbox (25.80157pt too wide) in paragraph at lines 864--865
+Overfull \hbox (25.80157pt too wide) in paragraph at lines 859--860
  [][] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-(./cloud.bbl)
+[8 <./CompletenessCoverage.pdf> <./coverageGainPerTest.pdf> <./coverageGainPerTest_withConstraints.pdf> <./sortingTestCode.pdf>] (./cloud.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -738,20 +733,22 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[8 <./coverageGainPerTest.pdf> <./coverageGainPerTest_withConstraints.pdf> <./sortingTestCode.pdf>] [9 <./siteFilterModel.pdf> <./modelCommanding.pdf>] (./cloud.aux) ) 
+[9
+
+] [10 <./siteFilterModel.pdf> <./modelCommanding.pdf>] (./cloud.aux) ) 
 Here is how much of TeX's memory you used:
  15628 strings out of 492616
- 296387 string characters out of 6132767
- 478487 words of memory out of 5000000
+ 296362 string characters out of 6132767
+ 476489 words of memory out of 5000000
  19247 multiletter control sequences out of 15000+600000
  37464 words of font info for 74 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
  55i,8n,54p,837b,1084s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on cloud.pdf (9 pages, 1041509 bytes).
+{c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on cloud.pdf (10 pages, 1058119 bytes).
 PDF statistics:
- 113 PDF objects out of 1000 (max. 8388607)
- 60 compressed objects within 1 object stream
+ 124 PDF objects out of 1000 (max. 8388607)
+ 68 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  98 words of extra memory for PDF output out of 10000 (max. 10000000)
 
