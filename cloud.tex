@@ -674,15 +674,12 @@ One example will include a scenario where a sequence of actions will be incorpor
 	Compared to  Binary and Multistate points, Analog points are more complex and have a variety of command options.
 	They can be commanded via slider, text box, incremented or decremented. 
 	They are prime candidates for boundary value analysis and equivalance partitioning in CT \todo{reference paper}.
-	Partial script example for constraints can be viewed in Figure~\ref{fig:modelCommanding}. 
-	It is our opinion that the test code snippet in Figure~\ref{fig:pointCommandingTestCode} will solidify the understanding of the application of constraints for analog points.
-
+	
 	\begin{figure}[!b]
 		\includegraphics[width=0.50\textwidth,]{csvOutputCommanding.pdf}
 		\caption{Input driven commanding test suite - partial}
 		\label{fig:csvOutputCommanding}
 	\end{figure}
-
 
 	\begin{figure*}[!ht]
 		\centering
@@ -691,7 +688,6 @@ One example will include a scenario where a sequence of actions will be incorpor
 			\label{fig:modelCommanding}
 	\end{figure*}
 
-
 	The CT test design and test automation workflow is as such:
 	\begin{itemize}
 		\item [] - CT modeling of the IPM as in Figure~\ref{fig:modelCommanding}.
@@ -699,16 +695,20 @@ One example will include a scenario where a sequence of actions will be incorpor
 		\item [] - Based on the test suite, writing the automated test code as in Figure~\ref{fig:pointCommandingTestCode}.
 	\end{itemize}
 
-	\begin{figure}[!h]
+	\begin{figure}[!b]
 		\includegraphics[width=0.50\textwidth,]{pointCommandingTestCode.pdf}
 		\caption{Protractor \textit{describe} block for Analog Value point commanding in Desigo Classic panel}
 		\label{fig:pointCommandingTestCode}
 	\end{figure}
 
-	Note that Figure~\ref{fig:pointCommandingTestCode} shows a part of the test spec in Protractor. 
+	Partial script example for constraints can be viewed in Figure~\ref{fig:modelCommanding}. 
+	It is our opinion that the test suite in Figure~\ref{fig:csvOutputCommanding} and test code snippet in Figure~\ref{fig:pointCommandingTestCode} will solidify the understanding of the application of constraints for analog points.
+	Figure~\ref{fig:pointCommandingTestCode} shows a part of the test spec in Protractor, automating the tests in the test suite of Figure~\ref{fig:csvOutputCommanding} for \textit{subsystemType = DesigoClassic} and \textit{pointType = AV}.
+	
 	For ease of readability and confidentiality, test actions and assertions are handled under the functions in the code snippet. 
-	For example the function \textit{commandTestAnalogPointWithSliderToFarRight()} does boundary value testing using the slider, and can be applied to any kind of analog point.
-	Similarly the function \textit{commandTestAnalogPointWithTextBox()} continues boundary value analysis by passing in an integer to the text box, with a value greater than the boundary.
+	For example functions \textit{commandTestAnalogPointWithButtonMinusOne()} and \textit{...PlusOne()} test incrementing and decrementing the point with (+) and (-) buttons.
+	Functions \textit{commandTestAnalogPointWithSliderToFarRight()} and \textit{...Left()} do boundary value testing using the slider, and can be applied to any kind of analog point.
+	Function \textit{commandTestAnalogPointWithTextBox()} can be used to pass any integer to the text box, helping with equivalance partitions and boundaries.
 
 	\subsection{Filtering Points by Tag Combinations }
 
@@ -721,15 +721,15 @@ One example will include a scenario where a sequence of actions will be incorpor
 	The constraint logic is that no tag can repeat, with 4 constraints for each tag.
 	For example one block of constraints is: \textit{if tag1 is 'cooling' then tag2 through tag 4 cannot be 'cooling', if tag2 is 'cooling' then tag 1, 3, 4 cannot be 'cooling'} and so on.
 	CTWedge scripting provided cost savings while implementing the constraint logic. 
-	Being able to copy the 4 lines of constraint logic, to replace the tag name, paste and repeat for each tag saved considerable amount of time.
+	Being able to copy the 4 lines of constraint logic, to replace the tag name, paste and repeat for each tag while the web application applies intellisense for the syntax, saved considerable amount of time in implementation of constraints.
 
-	\begin{figure}[!h]
+	\begin{figure}[!ht]
 		\includegraphics[width=0.50\textwidth,]{tagFilterModel.pdf}
 		\caption{CT model of tag filtering in CTWedge}
 		\label{fig:tagFilterModel}
 	\end{figure}
 
-	\begin{figure}[!hb]
+	\begin{figure}[!ht]
 		\centering
 		\includegraphics[width=0.32\textwidth,]{tagFilterCoveringArray.pdf}
 		\caption{Covering array for tag filtering}
@@ -773,6 +773,13 @@ One example will include a scenario where a sequence of actions will be incorpor
 	This result is plugged in to the next model, a technique from \todo{refer to your own paper} to reduce the number of tests and still provide cost effective coverage.
 	The parameter \textit{filter-workingWell-inAlarm-disconnected} includes the the 4 configurations of these checkboxes as values. 
 
+	\begin{figure*}[!ht]
+		\centering
+			\includegraphics[width=0.95\textwidth,]{siteFilterModel.pdf}
+			\caption{CT model of site filtering in CTWedge \& screen capture}
+			\label{fig:siteFilterModel}
+	\end{figure*}
+
 	The \textit{search} parameter is a text-box, which is open ended. For this, possible values were contemplated to be any string, address fields.
 
 	The \textit{sortBy} parameter simply replicated the names of the columns. 
@@ -781,11 +788,24 @@ One example will include a scenario where a sequence of actions will be incorpor
 
 	In order to have a deterministic test oracle, an array of sites were generated with varying data parameters - all stored in JSON - so that after filtering by site status and a search string, there would be at least 2 sites to test sorting with.
 	
+	\begin{figure}[!b]
+		\includegraphics[width=0.50\textwidth,]{coverageGainPerTest.pdf}
+		\caption{No constraints : relative gain (red) vs cumulative gain (blue) per test}
+		\label{fig:coverageGainPerTest}
+	\end{figure}
+
 	Generating the tests, it was promptly realized that if sorting sites by column - possible values being \textit{Status, Name, Street, Country, Creation Time} - matches the search string -possible values being fields of an address - sorting became redundant and had no effect.
 	These redundancies were addressed by adding constraints, for instance \textit{if sorting sites by Street, search string cannot be street name}. 
 	CAMetrics was used \todo{reference to CAMetrics} to measure pairwise coverage gain per test: Figure~\ref{fig:coverageGainPerTest} and Figure~\ref{fig:coverageGainPerTest_withConstraints} show coverage before and after constraints being applied.
 	The constraints eliminated 5 redundant test cases and the end result became a test suite of 19 tests. With this, a 20.8\% cost savings was achieved while developing automation test code.
 	
+	\begin{figure}[!h]
+		\includegraphics[width=0.50\textwidth,]{coverageGainPerTest_withConstraints.pdf}
+		\caption{Constraints applied to Figure~\ref{fig:coverageGainPerTest}}
+		\label{fig:coverageGainPerTest_withConstraints}
+	\end{figure}
+
+	\newpage
 	Finally the sequence of the user actions needed to be addressed. Previous research on this topic has been vast and is referred to in section \todo{insert section} .
 	The two filtering operations and the sorting can happen in any order, and there 6 possible ways of ordering them.
 	If the sequence of the 3 actions \textit{filter, search, sort} were represented as 3 parameters \textit{filterBeforeSearch, searchBeforeSort, filterBeforeSearch}, they could be simplified as \textit{AbeforeB, BbeforeC, AbeforeC}.
@@ -793,16 +813,17 @@ One example will include a scenario where a sequence of actions will be incorpor
 	As observed, case 1 and case 6 are impossible; if \textit{AbeforeB} and \textit{BbeforeC} have the same boolean value, \textit{AbeforeC} has to match that value.
 	This logic of sequence was addressed with 2 constaints:
 
+	\begin{figure}[!h]
+		\includegraphics[width=0.50\textwidth,]{sorting.pdf}
+		\caption{sequences of test actions}
+		\label{fig:sorting}
+	\end{figure}
+
 	\begin{itemize}
 	\item [] \textit{if filterBeforeSearch is TRUE \&\& searchBeoreSort is TRUE then filterBeforeSort is FALSE}
 	\item [] \textit{if filterBeforeSearch is FALSE \&\& searchBeoreSort is FALSE then filterBeforeSort is TRUE}
 	\end{itemize}
 
-	\begin{figure}[!t]
-		\includegraphics[width=0.50\textwidth,]{sorting.pdf}
-		\caption{sequences of test actions}
-		\label{fig:sorting}
-	\end{figure}
 
 	\begin{figure}[!h]
 		\includegraphics[width=0.50\textwidth,]{CompletenessCoverage.pdf}
@@ -810,17 +831,6 @@ One example will include a scenario where a sequence of actions will be incorpor
 		\label{fig:CompletenessCoverage}
 	\end{figure}
 
-	\begin{figure}[!h]
-		\includegraphics[width=0.50\textwidth,]{coverageGainPerTest.pdf}
-		\caption{No constraints : relative gain (red) vs cumulative gain (blue) per test}
-		\label{fig:coverageGainPerTest}
-	\end{figure}
-
-	\begin{figure}[!h]
-		\includegraphics[width=0.50\textwidth,]{coverageGainPerTest_withConstraints.pdf}
-		\caption{Constraints applied to Figure~\ref{fig:coverageGainPerTest}}
-		\label{fig:coverageGainPerTest_withConstraints}
-	\end{figure}
 
 	Introducing the boolean parameters for sequencing and the constraints did not impact the number of test cases; the final number was still 19.
 	Figure~\ref{fig:CompletenessCoverage} shows 2-way and 3-way completeness coverage using CCM \todo{reference to CCM}. 
@@ -854,14 +864,9 @@ One example will include a scenario where a sequence of actions will be incorpor
 	Following that, the sorting and reverse sorting of the sites are verified.
 	Finally, the test oracle is verified to verify that the sites that are displayed in the filter.
 		
-	\begin{figure*}[!hb]
-		\centering
-			\includegraphics[width=0.95\textwidth,]{siteFilterModel.pdf}
-			\caption{CT model of site filtering in CTWedge \& screen capture}
-			\label{fig:siteFilterModel}
-	\end{figure*}
-	
 
+	
+\newpage
 \section{Conclusion and future work}
 	
 The initial challenge in this study was how to best test EEO configurations in the most efficient manner.

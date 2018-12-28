@@ -1,17 +1,17 @@
 # Fdb version 3
-["bibtex cloud"] 1546002138 "cloud.aux" "cloud.bbl" "cloud" 1546002167
+["bibtex cloud"] 1546005694 "cloud.aux" "cloud.bbl" "cloud" 1546005697
   "c:/texlive/2018/texmf-dist/bibtex/bst/IEEEtran/IEEEtran.bst" 1545666499 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "cloud.aux" 1546002166 6160 97d6e8b2703f6ed89844ade8a22602e6 ""
+  "cloud.aux" 1546005696 6160 87efe6ba8404fb007f55a9b4c158fdcc ""
   "cloud.bib" 1545999750 7909 7f6a2fb09fdf3e345f9d3c0ecb339705 ""
   (generated)
-  "cloud.blg"
   "cloud.bbl"
-["pdflatex"] 1546002164 "c:/UserData/ozcanm/Documents/CT/2018/Paper/cloud.tex" "cloud.pdf" "cloud" 1546002167
+  "cloud.blg"
+["pdflatex"] 1546005695 "c:/UserData/ozcanm/Documents/CT/2018/Paper/cloud.tex" "cloud.pdf" "cloud" 1546005697
   "CompletenessCoverage.pdf" 1545995238 59483 e0e4ef08ce4c513a4d9eb9202d34598c ""
   "UIpipeline.pdf" 1545757337 24716 e5fb607e5d2040239bfccd6a5e680ee7 ""
   "angular.pdf" 1545823879 24754 225327ed3a403a652f15a06a4dff917f ""
   "architecture.pdf" 1545755016 47868 886310f593f830351f78ab8a8426516f ""
-  "c:/UserData/ozcanm/Documents/CT/2018/Paper/cloud.tex" 1546002163 50700 99452710c78520832027e9b6dd179dc3 ""
+  "c:/UserData/ozcanm/Documents/CT/2018/Paper/cloud.tex" 1546005691 51164 ffea4d1eeee1e6e1b5c3f15e71135590 ""
   "c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc" 1545668007 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "c:/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1545668414 3332 103109f5612ad95229751940c61aada0 ""
   "c:/texlive/2018/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm" 1545667717 960 379cc0019370a9e0208a0a3f949f847a ""
@@ -150,9 +150,9 @@
   "c:/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1545671981 3065569 c0100866a2168225e01a6ee8893b9056 ""
   "c:/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt" 1545672085 4223238 8bb9fcdb857f8a867f6fd6aedaacb89d ""
   "c:/texlive/2018/texmf.cnf" 1545671953 673 2e5aa3ac564c6f70f54d6752d765c05d ""
-  "cloud.aux" 1546002166 6160 97d6e8b2703f6ed89844ade8a22602e6 ""
-  "cloud.bbl" 1546002138 1991 351d495910f5f07b5aded562b39baf1a "bibtex cloud"
-  "cloud.tex" 1546002163 50700 99452710c78520832027e9b6dd179dc3 ""
+  "cloud.aux" 1546005696 6160 87efe6ba8404fb007f55a9b4c158fdcc ""
+  "cloud.bbl" 1546005695 1991 351d495910f5f07b5aded562b39baf1a "bibtex cloud"
+  "cloud.tex" 1546005691 51164 ffea4d1eeee1e6e1b5c3f15e71135590 ""
   "codeSample.pdf" 1545832818 17520 05aabe9d5c1802c0765a67907f4daa09 ""
   "commandingIPM.pdf" 1545843653 35101 d077af03b98dba0e8db3b8826b99a71d ""
   "coverageGainPerTest.pdf" 1545995290 52006 e5367c289ea8a4890beed76d3d502352 ""
@@ -167,6 +167,6 @@
   "tagFilterCoveringArray.pdf" 1545912994 21346 5cb4511f3127dd521ee81c26b4d2180a ""
   "tagFilterModel.pdf" 1545911144 29704 c62aeef0e208e476a68e13f6f7c949b1 ""
   (generated)
-  "cloud.log"
-  "cloud.pdf"
   "cloud.aux"
+  "cloud.pdf"
+  "cloud.log"
