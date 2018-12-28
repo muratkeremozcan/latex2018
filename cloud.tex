@@ -600,10 +600,10 @@ One example will include a scenario where a sequence of actions will be incorpor
 	
 	\subsection{Input driven testing of hardware}
 
-	\begin{figure}[!b]
+	\begin{figure}[!t]
 		\includegraphics[width=0.50\textwidth,]{commandingIPM.pdf}
-	\caption{Input Parameter Model for hardware setup}
-	\label{fig:commandingIPM}
+		\caption{Input Parameter Model for hardware setup}
+		\label{fig:commandingIPM}
 	\end{figure}
 
 	BOIC provides widespread connectivity to legacy \& new controls, 3rd party, IoT and edge devices. The devices have no restriction to region; US, EU, Asia etc. 
@@ -677,13 +677,22 @@ One example will include a scenario where a sequence of actions will be incorpor
 	Partial script example for constraints can be viewed in Figure~\ref{fig:modelCommanding}. 
 	It is our opinion that the test code snippet in Figure~\ref{fig:pointCommandingTestCode} will solidify the understanding of the application of constraints for analog points.
 
-	\begin{figure}[!h]
+	\begin{figure}[!b]
 		\includegraphics[width=0.50\textwidth,]{csvOutputCommanding.pdf}
 		\caption{Input driven commanding test suite - partial}
 		\label{fig:csvOutputCommanding}
 	\end{figure}
 
-	The generic CT test design and test automation workflow is as such:
+
+	\begin{figure*}[!ht]
+		\centering
+			\includegraphics[width=1.00\textwidth,]{modelCommanding.pdf}
+			\caption{CT model of panel and point commanding in CTWedge}
+			\label{fig:modelCommanding}
+	\end{figure*}
+
+
+	The CT test design and test automation workflow is as such:
 	\begin{itemize}
 		\item [] - CT modeling of the IPM as in Figure~\ref{fig:modelCommanding}.
 		\item [] - Generation of test suite in csv as in Figure~\ref{fig:csvOutputCommanding}, conversion into JSON as needed.
@@ -700,8 +709,6 @@ One example will include a scenario where a sequence of actions will be incorpor
 	For ease of readability and confidentiality, test actions and assertions are handled under the functions in the code snippet. 
 	For example the function \textit{commandTestAnalogPointWithSliderToFarRight()} does boundary value testing using the slider, and can be applied to any kind of analog point.
 	Similarly the function \textit{commandTestAnalogPointWithTextBox()} continues boundary value analysis by passing in an integer to the text box, with a value greater than the boundary.
-
-
 
 	\subsection{Filtering Points by Tag Combinations }
 
@@ -853,14 +860,6 @@ One example will include a scenario where a sequence of actions will be incorpor
 			\caption{CT model of site filtering in CTWedge \& screen capture}
 			\label{fig:siteFilterModel}
 	\end{figure*}
-
-	\begin{figure*}[!h]
-		\centering
-			\includegraphics[width=1.05\textwidth,]{modelCommanding.pdf}
-			\caption{CT model of panel and point commanding in CTWedge}
-			\label{fig:modelCommanding}
-	\end{figure*}
-
 	
 
 \section{Conclusion and future work}
