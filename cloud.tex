@@ -334,41 +334,32 @@ murat.ozcan@siemens.com}
 
 
 \begin{abstract}
-The overall purpose of this study is to describe the new paradigms in testing,
+The purpose of this study is to describe the new paradigms in testing,
 in lieu of the transition of applications from the desktop, to web and to cloud, and how combinatorial testing (CT) fits in this modern development environment. 
 We study the Siemens Building Technologies Horizon Cloud Program's \todo{insert long version} (BOIC) application. \todo{ insert short sentence about BOIC}
 In Horizon Cloud, products are enabled by the Horizon ecosystem with a focus on speed, independence and small complexity.
 Horizon Cloud provides widespread connectivity to legacy \& new controls, 3rd party, IoT, 
 edge devices and a step-wise covering of on-site, real-time requirements. 
 Horizon Cloud features its own apps based on building integration framework, along with themes, with an open API for ecosystem and SSP. 
-The program also provides a common data model and API to Building Technologies Building Integration Framework to map southbound data against model.
 
-We start by describing the architecture of BOIC the components that make up the whole, how they relate, 
-technologies being used in each layer and how they are being tested individually and as a whole. 	
+We start by describing the architecture of BOIC the components that make up the whole, how they relate, the technologies being used in each layer. 
+We describe the continuous delivery process; Dockerizing the continuous integration pipeline,
+the architectural components being run in containers, being deployed and tested in the cloud. 
+We describe the architecture of the test system, the page object model, how test specifications relate to the test code structure and the test data. 
 
-We continue by describing the continuous delivery process; Dockerization of the continuous integration pipeline,
-the architectural components being built as Docker images and being run as Docker containers, being deployed and tested in the cloud at different test levels. 
-
-We describe the abstraction and the structure of the test code, the page object model, 
-how test specifications relate to the test code architecture and the test data. 
-
-Finally, we analyze three applications of combinatorial testing (CT) in this modern development environment,
+We analyze three applications of combinatorial testing (CT) in this modern development environment,
 incorporating the CT model into automation using BDD style Protractor end to end UI tests. 
 We go through the CT modeling process using newly released, open source, cloud based CTWedge: Combinatorial Testing Web-based Editor and Generator. 
-We describe how the model translates into functions in the code and its utilization in behavioral driven tests.
+We describe how the model translates into functions in the code and their utilization in behavioral driven tests.
 
 Finally, we analyze a scenario where a sequence of actions are incorporated into a CT model;
-with a focus on verification of these sequences, compositions of the actions and streamlining the expected assertions per the data-manipulated test oracle.
+with a focus on verification of these sequences, compositions of the actions and streamlining the expected assertions per the test oracle.
 
 \end{abstract}
 
-
-
 \begin{IEEEkeywords}
-Cloud, Combinatorial testing, Sequence, Angular, Protractor, test automation
+Cloud, Combinatorial testing, sequence, test automation, Docker, Angular, Protractor
 \end{IEEEkeywords}
-
-
 
 \todo{ Add comments from Rcik 
 Rick : A number of things I think would be of particular interest. 
@@ -385,15 +376,15 @@ in particular how to use coverage to determine when it’s cost effective to com
 
 \section{Introduction}
 Modern web development typically falls into a design pattern. In the front-end there can be a JavaScript (JS) framework, some popular ones being Angular, React and Vue.
-The back-end preferences are varied, there is a plethora of choices in language : JS (NodeJS), GoLang, Python, C\#, Java to name a few. 
+The back-end preferences are varied, there is a plethora of choices in language: JavaScript (NodeJS), GoLang, Python, C\# and Java to name a few. 
 This is coupled by a database, examples include MySQL, MongoDB, Elasticsearch.
 
-Previous to cloud technologies, such an application would be hosted on a dedicated web server, or a hosting company.
+Previous to cloud technologies, such an application would be hosted on a dedicated web server, on occasion by a hosting company.
 In contrast, cloud computing adopts a concept called “virtualization,” where hardware resources can be further optimized through software functionality.
 As a result, not only application performance is optimized but also hosting the application is more cost effective.
 
 A challenge for cloud computing is the resource intensive operating system (OS) usage, where the size of the OS image can be in gigabytes while the application is much smaller. 
-Consequently virtual machines, since they have to host an OS, do not solve this problem.
+Consequently, virtual machines, since they have to host an OS, do not solve this problem.
 Containerization is one proposed solution, and Docker is one example of a program that performs operating-system-level virtualization. 
 \todo {insert Docker reference}
 In containerization, a layer between OS and applications is introduced to optimize resource usage and eliminate the need for an OS.
@@ -405,25 +396,25 @@ In this paper, we will study how Combinatorial Testing (CT) fits in the front-en
 Examples will include modeling of the input parameter model (IPM), how the model translates to fields and methods in page objects \todo{insert reference}, 
 and the utilization of these in behavioral driven test specifications.
 One example will include a scenario where a sequence of actions will be incorporated into a CT model, a problem that has been addressed in a variety of ways in previous works.
+Note that, this study will focus on black box test automation of the front-end. Testing at different levels of the architecture is planned to be studied in a future paper. 
 
 \section{Related Work}
 
 	\subsection{Introduction to Combinatorial Testing}
-	\todo{work on paraphrasing this}.
-	Combinatorial testing (CT) is a highly sophisticated testing methodology,
-	that is capable of producing comparable small test sets (e.g. when compared to exhaustive testing),
-	while at the same time providing guarantees of (certain) input space coverage.
-	To apply CT to a system under test (SUT), it is necessary to have an \emph{input parameter model} (IPM) of the SUT \cite{OffuttIPM}.
-	To devise an IPM for an SUT it is necessary to identify \emph{input parameters} and their respective \emph{values},
-	such that an input to such a model can be represented by parameter-value assignments.
-	Engineering an IPM can be a tedious and time intensive task itself \cite{rework}.
+	Combinatorial testing (CT) is a test design technique that that provides cost effective test suite generation
+	while guaranteeing a certain input space coverage.
+	CT methodology starts by modeling the SUT in an \emph{input parameter model} (IPM) \cite{OffuttIPM}.
+	IPM is composed of \emph{parameters of input} and their respective \emph{values},
+	such that an input to this model can be represented by parameter-value assignments.
+	
 	The underlying mathematical primitives of CT are covering arrays (CAs), which are discrete structures appearing in \emph{combinatorial design theory},
 	and can be represented as matrices with specific coverage properties \cite{NISTpractical}.
 	To further apply CT, the parameters of the IPM are matched with the columns of an appropriate CA,
 	such that a row of the CA can be interpreted as an assignment of values to the parameters of the IPM.
 	Translating all rows of a CA in such a way, the mathematical properties of CAs guarantee that the generated test set
 	is a \emph{$t$-way test set}, i.e.\ a test set which ensures that all $t$-way combinations of parameter-value assignments are tested,
-	once all tests have been executed \cite{NISTpractical}. Note that the general problem of constructing a t-way test set is believed to be NP-hard as it is tightly coupled with hard combinatorial optimization problems (see \cite{CHENG20071943}).
+	once all tests have been executed \cite{NISTpractical}.
+	
 	A study from the National Institute of Standards and Technology (NIST) \cite{NISTpractical} shows
 	that in all tested software products all faults rely on the interaction of at most six input parameters.
 	This means that all faults in the tested software products can be triggered using a $6$-way interaction test set,
@@ -438,12 +429,6 @@ One example will include a scenario where a sequence of actions will be incorpor
 		\item	\textit{Multi-selection \& Order and padding:} a variation of these ideas was used for control parameters which enable/disable the parameter groups per the sequence.
 	\end{enumerate}
 
-	\subsection{Previous works on page objects}
-	\todo{insert some papers about Page objects}
-	
-	\subsection{Previous works on cloud computing}
-	\todo{insert some papers about Cloud}
-
 \section{The System Under Test}
 
 	\subsection{Description of the Architecture}
@@ -454,12 +439,10 @@ One example will include a scenario where a sequence of actions will be incorpor
 
 	Figure~\ref{fig:BOIC architecture} represents the BOIC architecture.
 	The front-end is an Angular framework, in TypeScript.
-	Note that, this study will focus on black box test automation of the front-end. Testing at different levels of the architecture is planned to be studied in a future paper. 
-	
 	The back-end is an ExpressJS application on top of NodeJS platform. 
 	At the time of this study, there is an effort to move some of this functionality to other microservices - implemented in GoLang (Go) - to reduce operating costs.
 	
-	The Protocol Adapter component (in C\#) and Gateway (in NodeJS and Java) serve the purpose of exposing Siemens or third party edge-devices to the cloud. 
+	The Protocol Adapter component (in C\#) and Gateway (in NodeJS and Java) serve the purpose of exposing Siemens or third-party edge-devices to the cloud. 
 	This enables the hardware and the gateway at a customer site to be controlled from a web browser, anywhere in the globe.
 
 \begin{figure}[!h]
@@ -488,7 +471,7 @@ One example will include a scenario where a sequence of actions will be incorpor
 
 
 	The team uses Git for source control. \todo{about git}. 
-	When any code is submitted, the application is built in a docker container, OSS Clearing for licensing is executed, unit testing and linting are done, the application is deployed to an cloud-hosted container and automated UI tests are run targeting this deployment.
+	When any code is submitted, the application is built in a docker container, OSS Clearing for licensing is executed, unit testing and linting are done, the application is deployed to a cloud-hosted container and automated UI tests are run targeting this deployment.
 	If testing passes, the code can get merged to the master branch. 
 	This automated testing process ensures that after any code commit, the application is tested end to end and the quality is ensured. 
 	
@@ -503,21 +486,21 @@ One example will include a scenario where a sequence of actions will be incorpor
 
 	Released in 2011, Angular is popular front-end JavaScript framework for designing dynamic web applications.
 	It is maintained by Google with the help of the open source community.
-	It recommends the use of Microsoft's TypeScript language, which introduces class-based object oriented programming, static typing and generics. \todo{refer to wiki}.
+	It recommends the use of Microsoft's TypeScript language, which introduces class-based object-oriented programming, static typing and generics. \todo{refer to wiki}.
 
 	Components are the building blocks of Angular applications and they easily nest inside each other.
-	Each component may have its own class, html and css file. This structure provides a way to design dynamic web applications while keeping the front-end code clean. 
+	Each component may have its own class, HTML and CSS file. This structure provides a way to design dynamic web applications while keeping the front-end code clean. 
 
 	Page object pattern is a popular UI test automation design pattern in the industry. \todo{refer to Fowler and selenium paper}.
 	In the spirit of Fowler's proposed terminology, we refer to web pages as 'pages' and Angular components as 'panels'.
-	Each panel is a class. A page can be made up of many panels, which have a class-based object oriented structure.   
+	Each panel is a class. A page can be made up of many panels, which have a class-based object-oriented structure.   
 
 	Designing the test automation architecture, it became clear that it would not only be straightforward but also efficient to replicate the structure of Angular components in page objects as pictured in Figure~\ref{fig:angular}.
 	One advantage of this is easier maintenance of the automation code as the development code changes.
 	The other advantage is its benefits with asynchronous test execution.
 
 	In a panel object, the element selectors become the class fields and the test actions become class methods within the component / panel.
-	Enabling this class-based object oriented structure is TypeScript \todo{insert reference}
+	Enabling this class-based object-oriented structure is TypeScript \todo{insert reference}
 	TypeScript is a superset of JavaScript. It complies into JavaScript and includes the latest EcmaScript features \todo{reference to EcmaScript} .
 	One of the recent advantages in the latest EcmaScript features is how it helps developers write sequential looking asynchronous code \todo{refer to async awaits}.
 
@@ -570,14 +553,14 @@ One example will include a scenario where a sequence of actions will be incorpor
 	\end{itemize}
 
 	It was found out that this style of expression is not only descriptive at a meta level, but also maps well to the page object pattern.
-	Figure~\ref{fig:codeSample} and Figure~\ref{fig:stateBasedScenario} show an a Protractor test spec sample with a state-based, behavior-driven acceptance scenario.
+	Figure~\ref{fig:codeSample} and Figure~\ref{fig:stateBasedScenario} show a Protractor test spec sample with a state-based, behavior-driven acceptance scenario.
 	
 	As can be observed in the sample code from Figure~\ref{fig:codeSample}, \textit{tunnelPage} class / page-object is utilized for:
 	
 	\begin{itemize}
-		\item [] - setup, using the \textit{setDropDown()} class method. 
-		\item [] - test action, using the \textit{startButton} class field.
-		\item [] - test assertion, verifying that \textit{tunnelConnectionStateText} class field / selector shows the correct text.
+		\item setup, using the \textit{setDropDown()} class method. 
+		\item test action, using the \textit{startButton} class field.
+		\item test assertion, verifying that \textit{tunnelConnectionStateText} class field / selector shows the correct text.
 	\end{itemize}
 
 	The code also samples the Protractor BDD style where a test workflow scenario is covered. 
@@ -593,9 +576,9 @@ One example will include a scenario where a sequence of actions will be incorpor
 	CTWedge and CAmetrics were preferred over their desktop contenders for a few reasons.
 
 	\begin{itemize}
-		\item [] - \textit{Portability and ease of use} : it is easier to copy a few lines of script and paste it at a url to generate a test suite in the case of CTWedge. It is also easier to upload a csv file to CAMetrics url and get a report quickly.
-		\item [] - \textit{Ease of model modification} : it takes a few hours to master CTWedge scripting, but once done so, scripting proves to be a more robust interface to address changing test conditions; parameters, values or complex constraints. Comments in the script is an added benefit to readability. 
-		\item [] - \textit{Cloud concept} : the entirety of the project is web-based and the web-based CT tools fit this concept.
+		\item \textit{Portability and ease of use}: it is easier to copy a few lines of script and paste it at a url to generate a test suite in the case of CTWedge. It is also easier to upload a csv file to CAMetrics url and get a report quickly.
+		\item \textit{Ease of model modification}: it takes a few hours to master CTWedge scripting, but once done so, scripting proves to be a more robust interface to address changing test conditions; parameters, values or complex constraints. Comments in the script is an added benefit to readability. 
+		\item \textit{Cloud concept}: the entirety of the project is web-based and the web-based CT tools fit this concept.
 	\end{itemize}
 	
 	\subsection{Input driven testing of hardware}
@@ -606,26 +589,25 @@ One example will include a scenario where a sequence of actions will be incorpor
 		\label{fig:commandingIPM}
 	\end{figure}
 
-	BOIC provides widespread connectivity to legacy \& new controls, 3rd party, IoT and edge devices. The devices have no restriction to region; US, EU, Asia etc. 
-	Consequently, the input parameter model (IPM) for the test setup needs to be agnostic to device types and control-points. This is achieved through parameters and values in JSON.
-	Figure~\ref{fig:commandingIPM} describes the possible parameters for the hardware setup.
-
-	The following code snippet shows how the input parameters and their values are represented in JSON. 
-	For example, a binary-output point (BO) which may control a digital light or a fan -depending on context- may be referred to as \textit{FanCmd} (Fan Command) or \textit{LDO} (Logical Digital Output).
-  Through parameterazation this complexity is abstracted. The test code only uses the parameters and the values of the parameters are easily manipulated depending on UI changes and or test configurations.
+	BOIC provides widespread connectivity to legacy \& new controls, 3rd party, IoT and edge devices. There is a variety of devices being used in different markets; US, EU and Asia. 
+	Consequently, the input parameter model (IPM) for the test setup needs to be agnostic to device types and building control points.
+	This is achieved through parameters and values in JavaScript Object Notation (JSON) format.
+	Figure~\ref{fig:commandingIPM} describes the possible parameters for the hardware setup and the following code snippet shows how the input parameters and their values are represented in JSON. 
+	For example,, a binary-output point (BO) which may control a digital light or a fan -depending on context- may be referred to as \textit{FanCmd} (Fan Command) or \textit{LDO} (Logical Digital Output).
+  Through parameterization this complexity is abstracted. The test code only uses the parameters and the values of the parameters are easily manipulated depending on UI changes and or test configurations.
 
 	\lstset{
     string=[s]{"}{"},
     stringstyle=\color{blue},
     comment=[l]{:},
 		commentstyle=\color{black},
-		tabsize = 2, %% Sets tab space width.
+		tabsize = 1, %% Sets tab space width.
 		showstringspaces = false, %% Prevents space marking in strings, string is defined as the text that is generally printed directly to the console.
 		%numbers = left, %% Displays line numbers on the left.
 		keywordstyle = \color{blue}, %% Sets  keyword color.
 		stringstyle = \color{red}, %% Sets  string color.
 		rulecolor = \color{black}, %% Sets frame color to avoid being affected by text color.
-		basicstyle = \small \ttfamily , %% Sets listing font and size.
+		basicstyle = \footnotesize  \ttfamily , %% Sets listing font and size.
 		breaklines = true, %% Enables line breaking.
 		numberstyle = \tiny,
 	}
@@ -657,8 +639,8 @@ One example will include a scenario where a sequence of actions will be incorpor
 
 	
 	Figure~\ref{fig:modelCommanding} details the CT model scripted in CTWedge.
-	It can be observed that the parameters \textit{subsystemType} and \textit{pointType} map directly from JSON data.
-	On the other hand, parameters such as \textit{commandType} and \textit{commandToPointValue} represent abstracted test actions.
+	It can be observed that the parameters \emph{subsystemType} and \emph{}{pointType} map directly from JSON data.
+	On the other hand, parameters such as \emph{commandType} and \emph{commandToPointValue} represent abstracted test actions.
 	All test actions are relaxed in the parameters and later, depending on the type of point, are restricted through constraints.
 	Note that due to space restrictions, the model is shown partially and the complete version can be provided upon request.
 	
@@ -673,7 +655,7 @@ One example will include a scenario where a sequence of actions will be incorpor
 
 	Compared to  Binary and Multistate points, Analog points are more complex and have a variety of command options.
 	They can be commanded via slider, text box, incremented or decremented. 
-	They are prime candidates for boundary value analysis and equivalance partitioning in CT \todo{reference paper}.
+	They are prime candidates for boundary value analysis and equivalence partitioning in CT \todo{reference paper}.
 	
 	\begin{figure}[!b]
 		\includegraphics[width=0.50\textwidth,]{csvOutputCommanding.pdf}
@@ -689,11 +671,11 @@ One example will include a scenario where a sequence of actions will be incorpor
 	\end{figure*}
 
 	The CT test design and test automation workflow is as such:
-	\begin{itemize}
-		\item [] - CT modeling of the IPM as in Figure~\ref{fig:modelCommanding}.
-		\item [] - Generation of test suite in csv as in Figure~\ref{fig:csvOutputCommanding}, conversion into JSON as needed.
-		\item [] - Based on the test suite, writing the automated test code as in Figure~\ref{fig:pointCommandingTestCode}.
-	\end{itemize}
+	\begin{enumerate}
+		\item CT modeling of the IPM as in Figure~\ref{fig:modelCommanding}.
+		\item Generation of test suite in csv as in Figure~\ref{fig:csvOutputCommanding}, conversion into JSON as needed.
+		\item Based on the test suite, writing the automated test code as in Figure~\ref{fig:pointCommandingTestCode}.
+	\end{enumerate}
 
 	\begin{figure}[!b]
 		\includegraphics[width=0.50\textwidth,]{pointCommandingTestCode.pdf}
@@ -706,9 +688,9 @@ One example will include a scenario where a sequence of actions will be incorpor
 	Figure~\ref{fig:pointCommandingTestCode} shows a part of the test spec in Protractor, automating the tests in the test suite of Figure~\ref{fig:csvOutputCommanding} for \textit{subsystemType = DesigoClassic} and \textit{pointType = AV}.
 	
 	For ease of readability and confidentiality, test actions and assertions are handled under the functions in the code snippet. 
-	For example functions \textit{commandTestAnalogPointWithButtonMinusOne()} and \textit{...PlusOne()} test incrementing and decrementing the point with (+) and (-) buttons.
+	For example, functions \textit{commandTestAnalogPointWithButtonMinusOne()} and \textit{...PlusOne()} test incrementing and decrementing the point with (+) and (-) buttons.
 	Functions \textit{commandTestAnalogPointWithSliderToFarRight()} and \textit{...Left()} do boundary value testing using the slider, and can be applied to any kind of analog point.
-	Function \textit{commandTestAnalogPointWithTextBox()} can be used to pass any integer to the text box, helping with equivalance partitions and boundaries.
+	Function \textit{commandTestAnalogPointWithTextBox()} can be used to pass any integer to the text box, helping with equivalence partitions and boundaries.
 
 	\subsection{Filtering Points by Tag Combinations }
 
@@ -719,9 +701,9 @@ One example will include a scenario where a sequence of actions will be incorpor
 	
 	Since the 5th tag is always a single choice, there is no need to represent it in the model and it is automated to be selected in the tests.
 	The constraint logic is that no tag can repeat, with 4 constraints for each tag.
-	For example one block of constraints is: \textit{if tag1 is 'cooling' then tag2 through tag 4 cannot be 'cooling', if tag2 is 'cooling' then tag 1, 3, 4 cannot be 'cooling'} and so on.
+	For example, one block of constraints is: \textit{if tag1 is 'cooling' then tag2 through tag 4 cannot be 'cooling', if tag2 is 'cooling' then tag 1, 3, 4 cannot be 'cooling'} and so on.
 	CTWedge scripting provided cost savings while implementing the constraint logic. 
-	Being able to copy the 4 lines of constraint logic, to replace the tag name, paste and repeat for each tag while the web application applies intellisense for the syntax, saved considerable amount of time in implementation of constraints.
+	Being able to copy the 4 lines of constraint logic, to replace the tag name, paste and repeat for each tag while the web application applies IntelliSense for the syntax, saved considerable amount of time in implementation of constraints.
 
 	\begin{figure}[!ht]
 		\includegraphics[width=0.50\textwidth,]{tagFilterModel.pdf}
@@ -740,36 +722,36 @@ One example will include a scenario where a sequence of actions will be incorpor
 	With 4 parameters -final tag being default-selected due to a single tag choice being left in the tag dropdown menu- and 13 values each, the amount of tests generated could be vast. 
 	However there were three factors that reduced the number of tests to the covering array of Figure~\ref{fig:tagFilterCoveringArray}:
 	
-	\begin{itemize}
-		\item [] - 13 x 4 lines of constraint logic.
-		\item [] - the final tag always being a single choice in the tag-dropdown menu. For example \textit{humidity} tag has 1 more tag choice available in the dropdown menu, but since it is a single choice it does not effect the number of tests.
-		\item [] - certain points having only so many tags. For example any point with \textit{fan} or \textit{humidity} having a single tag (+1 tag), and certain combinations of tags - \textit{cmd} \& \textit{fan} or \textit{cmd} \& \textit{lighting} having at most 3 tags (+1 tag).
-	\end{itemize}
+	\begin{enumerate}
+		\item 13 x 4 lines of constraint logic.
+		\item the final tag always being a single choice in the tag-dropdown menu. For example, \textit{humidity} tag has 1 more tag choice available in the dropdown menu, but since it is a single choice it does not affect  the number of tests.
+		\item certain points having only so many tags. For example, any point with \textit{fan} or \textit{humidity} having a single tag (+1 tag), and certain combinations of tags - \textit{cmd} \& \textit{fan} or \textit{cmd} \& \textit{lighting} having at most 3 tags (+1 tag).
+	\end{enumerate}
 
 	With the test suite of Figure~\ref{fig:tagFilterCoveringArray} generated, only one automation method had to be written and repeated for each test:
 	
 	\begin{itemize}
-		\item [] - the method takes a single argument: a JSON parameter with a predefined string of delimeted tags. For example \textit{tagTest1 = "air,cmd,sensor,temp"}. 14 varieties, one for each test. These are infinately flexible, simply a different string can be passed in for a different set of tags.
-		\item [] - in the method, the string of tags get split by the delimeter. Using these tags, the tag selection is done in an asynchronous for loop. 
-		\item [] - as the tags are selected, the panel \& point combinations get filtered. The tag details of the points are verified to match the tags chosen in the filter.
+		\item the method takes a single argument: a JSON parameter with a predefined string of delimitedtags. For example, \textit{tagTest1 = "air,cmd,sensor,temp"}. 14 varieties, one for each test. These are infinately flexible, simply a different string can be passed in for a different set of tags.
+		\item in the method, the string of tags get split by the delimiter. Using these tags, the tag selection is done in an asynchronous for loop. 
+		\item as the tags are selected, the panel \& point combinations get filtered. The tag details of the points are verified to match the tags chosen in the filter.
 	\end{itemize}
 
 	
 
 	\subsection{Sequenced Filtering, Searching, Sorting of Geo-located Sites}
 
-	BOIC is designed so that the building operater can control a number of geo-located sites. 
-	Each site has a unique address. The building operator has the ability to filter and sort the sites they have administration over:
-
+	BOIC is designed so that the building operatorcan control a number of geo-located sites. 
+	Each site has a unique address. The building operator has the ability to filter and sort the sites they have administration over.
+	The following functionality is available:
 	\begin{itemize}
-		\item [] - Sites can be filtered by their status: \textit{Working Well, In Alarm, Disconnected}: 3 boolean states.
-		\item [] - Sites can be filtered by any string entered in the text box.
-		\item [] - Sites can be sorted by \textit{Status, Name, Street, Country, Creation Time}
-		\item [] - The above actions can happen in any order and should give the same resulting list of filtered and sorted sites.
+		\item Sites can be filtered by their status: \textit{Working Well, In Alarm, Disconnected}: 3 Boolean states.
+		\item Sites can be filtered by any string entered in the text box.
+		\item Sites can be sorted by \textit{Status, Name, Street, Country, Creation Time}
+		\item The above actions can happen in any order and should give the same resulting list of filtered and sorted sites.
 	\end{itemize}
 
 	Figure~\ref{fig:siteFilterModel} shows the alarm filtering menu as well as the search text box and sorting buttons. 
-	Alarm filters are modeled as 3 boolean states and the resulting covering array includes 4 configurations. 
+	Alarm filters are modeled as 3 Boolean states and the resulting covering array includes 4 configurations. 
 	This result is plugged in to the next model, a technique from \todo{refer to your own paper} to reduce the number of tests and still provide cost effective coverage.
 	The parameter \textit{filter-workingWell-inAlarm-disconnected} includes the the 4 configurations of these checkboxes as values. 
 
@@ -784,7 +766,7 @@ One example will include a scenario where a sequence of actions will be incorpor
 
 	The \textit{sortBy} parameter simply replicated the names of the columns. 
 	In order to keep the number of tests low, instead of being a parameter in the model, reverse sorting of columns got covered in each automated test.
-	This was also utilized as a setup \& cleanup in tests since sort order of the previous column gets retained; not utilizing this behaviour would cause tests to be non-modular.
+	This was also utilized as a setup \& cleanup in tests since sort order of the previous column gets retained; not utilizing this behavior  would cause tests to be non-modular.
 
 	In order to have a deterministic test oracle, an array of sites were generated with varying data parameters - all stored in JSON - so that after filtering by site status and a search string, there would be at least 2 sites to test sorting with.
 	
@@ -810,7 +792,7 @@ One example will include a scenario where a sequence of actions will be incorpor
 	The two filtering operations and the sorting can happen in any order, and there 6 possible ways of ordering them.
 	If the sequence of the 3 actions \textit{filter, search, sort} were represented as 3 parameters \textit{filterBeforeSearch, searchBeforeSort, filterBeforeSearch}, they could be simplified as \textit{AbeforeB, BbeforeC, AbeforeC}.
 	Figure~\ref{fig:sorting} displays this logic in a table.
-	As observed, case 1 and case 6 are impossible; if \textit{AbeforeB} and \textit{BbeforeC} have the same boolean value, \textit{AbeforeC} has to match that value.
+	As observed, case 1 and case 6 are impossible; if \textit{AbeforeB} and \textit{BbeforeC} have the same Boolean value, \textit{AbeforeC} has to match that value.
 	This logic of sequence was addressed with 2 constaints:
 
 	\begin{figure}[!h]
@@ -820,8 +802,8 @@ One example will include a scenario where a sequence of actions will be incorpor
 	\end{figure}
 
 	\begin{itemize}
-	\item [] \textit{if filterBeforeSearch is TRUE \&\& searchBeoreSort is TRUE then filterBeforeSort is FALSE}
-	\item [] \textit{if filterBeforeSearch is FALSE \&\& searchBeoreSort is FALSE then filterBeforeSort is TRUE}
+	\item \textit{if filterBeforeSearch is TRUE \&\& searchBeoreSort is TRUE then filterBeforeSort is FALSE}
+	\item \textit{if filterBeforeSearch is FALSE \&\& searchBeoreSort is FALSE then filterBeforeSort is TRUE}
 	\end{itemize}
 
 
@@ -832,7 +814,7 @@ One example will include a scenario where a sequence of actions will be incorpor
 	\end{figure}
 
 
-	Introducing the boolean parameters for sequencing and the constraints did not impact the number of test cases; the final number was still 19.
+	Introducing the Boolean parameters for sequencing and the constraints did not impact the number of test cases; the final number was still 19.
 	Figure~\ref{fig:CompletenessCoverage} shows 2-way and 3-way completeness coverage using CCM \todo{reference to CCM}. 
 	For the 2-way covering array, completeness coverage of 2-way combinations was found to be as such: 100\% of 2 tuples covered to 100\%. 
 	To elaborate, of the 158 2-way tuples, all are included in the covering array for this test suite to have full pairwise / 2-way coverage.
@@ -841,7 +823,7 @@ One example will include a scenario where a sequence of actions will be incorpor
 
 	The significance and the impact of minimum t-way coverage on branch coverage conditions in the code is discussed in the paper \todo{insert reference} Measuring and Specifying Combinatorial Coverage of Test Input Configurations.
 	Label M as the minimum 2-way coverage; i.e., the lowest proportion of settings covered for all t-way combinations of variables.
-	For example, 2-way combinations of binary variables have four possible settings:00, 01, 10, 11.
+	For example,, 2-way combinations of binary variables have four possible settings:00, 01, 10, 11.
 	Some variable pairs may have all four settings covered, but others may have less.
 	M is the smallest proportion of coverage among all of the t-way variable combinations.
 	M is also viewable as the rightmost line in the coverage strength meters.
@@ -864,20 +846,14 @@ One example will include a scenario where a sequence of actions will be incorpor
 	Following that, the sorting and reverse sorting of the sites are verified.
 	Finally, the test oracle is verified to verify that the sites that are displayed in the filter.
 		
-
-	
-\newpage
 \section{Conclusion and future work}
-	
-The initial challenge in this study was how to best test EEO configurations in the most efficient manner.
-During the study it became apparent that the methods applied can be used to test any system where the parameter groups for
-the Combinatorial Input Parameter Model (IPM) are not simultaneously available, and instead may appear sequentially.
-Future work on this front may incorporate system test ideas where each seed (in the SBA method) or different color (in the IBM method) being a different module of functionality.
+In this paper, Siemens Building Technologies Horizon Cloud Program’s BOIC application was studied as the system under test.
+The system architecture, continuous deployment and test architecture were described in the paradigm of cloud computing.
+In this modern development environment, we explored a variety of combinatorial test design techniques driving end-to-end UI testing of the front-end.
+Coupled with latest technology, CT is helping the team write cost-effective automated tests and these disciplines are allowing a higher percentage of tests to be automated.
+At the time of writing, product and system end to end UI tests are entirely automated, executing under 10 minutes many times a day with every code commit.
 
-\textbf{Acknowledgments.}
-This research was carried out in the context of Austrian COMET K1
-program and publicly funded by the Austrian Research Promotion Agency
-(FFG) and the Vienna Business Agency (WAW).
+In the future we plan to study BOIC's architectural components beyond the UI and possibilities of CT being applied at different test levels. 
 
 \bibliographystyle{IEEEtran}
 \bibliography{cloud}

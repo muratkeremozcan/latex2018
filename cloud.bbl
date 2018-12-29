@@ -28,18 +28,9 @@ M.~Grindal and J.~Offutt, ``Input parameter modeling for combination
   plus 0.5em minus 0.4em\relax Anaheim, CA, USA: ACTA Press, 2007, pp.
   255--260.
 
-\bibitem{rework}
-R.~Bartholomew and R.~Collins, ``Using combinatorial testing to reduce software
-  rework,'' \emph{CrossTalk}, vol.~23, pp. 23--26, 2014.
-
 \bibitem{NISTpractical}
 D.~Kuhn, R.~Kacker, and Y.~Lei, ``Practical combinatorial testing,'' NIST
   Special Publication 800-142, 2010.
-
-\bibitem{CHENG20071943}
-C.~T. Cheng, ``The test suite generation problem: Optimal instances and their
-  implications,'' \emph{Discrete Applied Mathematics}, vol. 155, no.~15, pp.
-  1943 -- 1957, 2007.
 
 \bibitem{segall2012common}
 I.~Segall, R.~Tzoref-Brill, and A.~Zlotnick, ``Common patterns in combinatorial
