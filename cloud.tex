@@ -557,6 +557,18 @@ Note that, this study will focus on black box test automation of the front-end. 
 	The \textit{it} block is one test in the workflow, the \textit{describe} block houses more tests / \textit{it} blocks that lead to the completion of the workflow - not shown in this example for the sake of simplicity.
 
 \section{Test Methodology}
+\begin{figure}[!bh]
+	\includegraphics[width=0.50\textwidth,]{commandingIPM.pdf}
+	\caption{Input Parameter Model for hardware setup}
+	\label{fig:commandingIPM}
+\end{figure}
+
+\begin{figure*}[!t]
+	\centering
+		\includegraphics[width=1.00\textwidth,]{modelCommanding.pdf}
+		\caption{CT model of panel and point commanding in CTWedge}
+		\label{fig:modelCommanding}
+\end{figure*}
 	
 	In the following sections test designs using combinatorial testing techniques will be described. 
 	Note that, this study will focus on black box test automation of the front-end. Testing at different levels of the architecture is planned to be studied in a future paper.
@@ -570,14 +582,8 @@ Note that, this study will focus on black box test automation of the front-end. 
 		\item \textit{Ease of model modification}: it takes a few hours to master CTWedge scripting, but once done so, scripting proves to be a more robust interface to address changing test conditions; parameters, values or complex constraints. Comments in the script is an added benefit to readability. 
 		\item \textit{Cloud concept}: the entirety of the project is web-based and the web-based CT tools fit this concept.
 	\end{itemize}
-	
-	\subsection{Input driven testing of hardware} \label{Input driven testing of hardware}
 
-	\begin{figure}[!b]
-		\includegraphics[width=0.50\textwidth,]{commandingIPM.pdf}
-		\caption{Input Parameter Model for hardware setup}
-		\label{fig:commandingIPM}
-	\end{figure}
+	\subsection{Input driven testing of hardware} \label{Input driven testing of hardware}
 
 	BOIC provides widespread connectivity to legacy \& new controls, 3rd party, IoT and edge devices. There is a variety of devices being used in different markets; US, EU and Asia. 
 	Consequently, the input parameter model (IPM) for the test setup needs to be agnostic to device types and building control points.
@@ -646,19 +652,12 @@ Note that, this study will focus on black box test automation of the front-end. 
 	Compared to  Binary and Multistate points, Analog points are more complex and have a variety of command options.
 	They can be commanded via slider, text box, incremented or decremented. 
 	They are prime candidates for boundary value analysis and equivalence partitioning in CT \cite{segall2012common}.
-	
-	\begin{figure}[!b]
-		\includegraphics[width=0.50\textwidth,]{csvOutputCommanding.pdf}
+
+	\begin{figure}[!t]
+		\includegraphics[width=0.45\textwidth,]{csvOutputCommanding.pdf}
 		\caption{Input driven commanding test suite - partial}
 		\label{fig:csvOutputCommanding}
 	\end{figure}
-
-	\begin{figure*}[!ht]
-		\centering
-			\includegraphics[width=1.00\textwidth,]{modelCommanding.pdf}
-			\caption{CT model of panel and point commanding in CTWedge}
-			\label{fig:modelCommanding}
-	\end{figure*}
 
 	The CT test design and test automation workflow is as such:
 	\begin{enumerate}
@@ -668,7 +667,7 @@ Note that, this study will focus on black box test automation of the front-end. 
 	\end{enumerate}
 
 	\begin{figure}[!b]
-		\includegraphics[width=0.50\textwidth,]{pointCommandingTestCode.pdf}
+		\includegraphics[width=0.45\textwidth,]{pointCommandingTestCode.pdf}
 		\caption{Protractor \textit{describe} block for Analog Value point commanding in Desigo Classic panel}
 		\label{fig:pointCommandingTestCode}
 	\end{figure}
@@ -684,6 +683,12 @@ Note that, this study will focus on black box test automation of the front-end. 
 
 	\subsection{Filtering Points by Tag Combinations }
 
+	\begin{figure}[!b]
+		\includegraphics[width=0.50\textwidth,]{tagFilterModel.pdf}
+		\caption{CT model of tag filtering in CTWedge}
+		\label{fig:tagFilterModel}
+	\end{figure}
+
 	In BOIC, tag filtering functionality is used to filter points in the system, by the devices the points are in.
 	There are 13 possible tags, up to 5 tags can be chosen, tag choices cannot repeat, the final tag has only one tag choice, and there can be less than 5 tags for certain tag combinations if so is the nature of the points in the system.
 	Figure~\ref{fig:tagFilterModel} displays an input parameter model of the functionality with a screen capture. 
@@ -695,15 +700,16 @@ Note that, this study will focus on black box test automation of the front-end. 
 	CTWedge scripting provided cost savings while implementing the constraint logic. 
 	Being able to copy the 4 lines of constraint logic, to replace the tag name, paste and repeat for each tag while the web application applies IntelliSense for the syntax, saved considerable amount of time in implementation of constraints.
 
-	\begin{figure}[!ht]
-		\includegraphics[width=0.50\textwidth,]{tagFilterModel.pdf}
-		\caption{CT model of tag filtering in CTWedge}
-		\label{fig:tagFilterModel}
-	\end{figure}
-
-	\begin{figure}[!ht]
+	\begin{figure*}[!t]
 		\centering
-		\includegraphics[width=0.32\textwidth,]{tagFilterCoveringArray.pdf}
+			\includegraphics[width=0.95\textwidth,]{siteFilterModel.pdf}
+			\caption{CT model of site filtering in CTWedge \& screen capture}
+			\label{fig:siteFilterModel}
+	\end{figure*}
+
+	\begin{figure}[!b]
+		\centering
+		\includegraphics[width=0.30\textwidth,]{tagFilterCoveringArray.pdf}
 		\caption{Covering array for tag filtering}
 		\label{fig:tagFilterCoveringArray}
 	\end{figure}
@@ -725,9 +731,7 @@ Note that, this study will focus on black box test automation of the front-end. 
 		\item in the method, the string of tags get split by the delimiter. Using these tags, the tag selection is done in an asynchronous for loop. 
 		\item as the tags are selected, the panel \& point combinations get filtered. The tag details of the points are verified to match the tags chosen in the filter.
 	\end{itemize}
-
 	
-
 	\subsection{Sequenced Filtering, Searching, Sorting of Geo-located Sites}
 
 	BOIC is designed so that the building operatorcan control a number of geo-located sites. 
@@ -745,13 +749,6 @@ Note that, this study will focus on black box test automation of the front-end. 
 	This result is plugged in to the next model, a technique from \cite{ozcan2017applications} to reduce the number of tests and still provide cost effective coverage.
 	The parameter \textit{filter-workingWell-inAlarm-disconnected} includes the the 4 configurations of these checkboxes as values. 
 
-	\begin{figure*}[!ht]
-		\centering
-			\includegraphics[width=0.95\textwidth,]{siteFilterModel.pdf}
-			\caption{CT model of site filtering in CTWedge \& screen capture}
-			\label{fig:siteFilterModel}
-	\end{figure*}
-
 	The \textit{search} parameter is a text-box, which is open ended. For this, possible values were contemplated to be any string, address fields.
 
 	The \textit{sortBy} parameter simply replicated the names of the columns. 
@@ -760,10 +757,22 @@ Note that, this study will focus on black box test automation of the front-end. 
 
 	In order to have a deterministic test oracle, an array of sites were generated with varying data parameters - all stored in JSON - so that after filtering by site status and a search string, there would be at least 2 sites to test sorting with.
 	
-	\begin{figure}[!b]
+	\begin{figure}[!t]
 		\includegraphics[width=0.50\textwidth,]{coverageGainPerTest.pdf}
 		\caption{No constraints : relative gain (red) vs cumulative gain (blue) per test}
 		\label{fig:coverageGainPerTest}
+	\end{figure}
+
+	\begin{figure}[!t]
+		\includegraphics[width=0.50\textwidth,]{coverageGainPerTest_withConstraints.pdf}
+		\caption{Constraints applied to Figure~\ref{fig:coverageGainPerTest}}
+		\label{fig:coverageGainPerTest_withConstraints}
+	\end{figure}
+
+	\begin{figure}[!b]
+		\includegraphics[width=0.50\textwidth,]{sorting.pdf}
+		\caption{sequences of test actions}
+		\label{fig:sorting}
 	\end{figure}
 
 	Generating the tests, it was promptly realized that if sorting sites by column - possible values being \textit{Status, Name, Street, Country, Creation Time} - matches the search string -possible values being fields of an address - sorting became redundant and had no effect.
@@ -771,25 +780,12 @@ Note that, this study will focus on black box test automation of the front-end. 
 	CAMetrics was used to measure pairwise coverage gain per test: Figure~\ref{fig:coverageGainPerTest} and Figure~\ref{fig:coverageGainPerTest_withConstraints} show coverage before and after constraints being applied.
 	The constraints eliminated 5 redundant test cases and the end result became a test suite of 19 tests. With this, a 20.8\% cost savings was achieved while developing automation test code.
 	
-	\begin{figure}[!h]
-		\includegraphics[width=0.50\textwidth,]{coverageGainPerTest_withConstraints.pdf}
-		\caption{Constraints applied to Figure~\ref{fig:coverageGainPerTest}}
-		\label{fig:coverageGainPerTest_withConstraints}
-	\end{figure}
-
-	\newpage
 	Finally, the sequence of the user actions needed to be addressed. Previous research on this topic has been vast and is referred to in section \ref{Previous works on sequences} .
 	The two filtering operations and the sorting can happen in any order, and there 6 possible ways of ordering them.
 	If the sequences of the 3 actions \textit{filter, search, sort} were represented as 3 parameters \textit{filterBeforeSearch, searchBeforeSort, filterBeforeSearch}, they could be simplified as \textit{AbeforeB, BbeforeC, AbeforeC}.
 	Figure~\ref{fig:sorting} displays this logic in a table.
 	As observed, case 1 and case 6 are impossible; if \textit{AbeforeB} and \textit{BbeforeC} have the same Boolean value, \textit{AbeforeC} has to match that value.
 	This logic of sequence was addressed with 2 constaints:
-
-	\begin{figure}[!h]
-		\includegraphics[width=0.50\textwidth,]{sorting.pdf}
-		\caption{sequences of test actions}
-		\label{fig:sorting}
-	\end{figure}
 
 	\begin{itemize}
 	\item \textit{if filterBeforeSearch is TRUE \&\& searchBeoreSort is TRUE then filterBeforeSort is FALSE}
