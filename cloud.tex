@@ -336,23 +336,23 @@ murat.ozcan@siemens.com}
 \begin{abstract}
 The purpose of this study is to describe the new paradigms in testing,
 in lieu of the transition of applications from the desktop, to web and to cloud, and how combinatorial testing (CT) fits in this modern development environment. 
-We study the Siemens Building Technologies Horizon Cloud Program's \todo{insert long version} (BOIC) application. \todo{ insert short sentence about BOIC}
+We study the Siemens Building Technologies Horizon Cloud Program's \todo{insert long version} (BOIC) application. \todo{insert short sentence about BOIC}
 In Horizon Cloud, products are enabled by the Horizon ecosystem with a focus on speed, independence and small complexity.
 Horizon Cloud provides widespread connectivity to legacy \& new controls, 3rd party, IoT, 
 edge devices and a step-wise covering of on-site, real-time requirements. 
 Horizon Cloud features its own apps based on building integration framework, along with themes, with an open API for ecosystem and SSP. 
 
 We start by describing the architecture of BOIC the components that make up the whole, how they relate, the technologies being used in each layer. 
-We describe the continuous delivery process; Dockerizing the continuous integration pipeline,
+We describe the continuous delivery process; Dockerizing \cite{wiki:docker} the continuous integration pipeline,
 the architectural components being run in containers, being deployed and tested in the cloud. 
 We describe the architecture of the test system, the page object model, how test specifications relate to the test code structure and the test data. 
 
 We analyze three applications of combinatorial testing (CT) in this modern development environment,
 incorporating the CT model into automation using BDD style Protractor end to end UI tests. 
-We go through the CT modeling process using newly released, open source, cloud based CTWedge: Combinatorial Testing Web-based Editor and Generator. 
+We go through the CT modeling process using newly released, open source, cloud based CTWedge: Combinatorial Testing Web-based Editor and Generator \cite{gargantini2018migrating}. 
 We describe how the model translates into functions in the code and their utilization in behavioral driven tests.
 
-Finally, we analyze a scenario where a sequence of actions are incorporated into a CT model;
+Finally,, we analyze a scenario where a sequence of actions are incorporated into a CT model;
 with a focus on verification of these sequences, compositions of the actions and streamlining the expected assertions per the test oracle.
 
 \end{abstract}
@@ -360,19 +360,6 @@ with a focus on verification of these sequences, compositions of the actions and
 \begin{IEEEkeywords}
 Cloud, Combinatorial testing, sequence, test automation, Docker, Angular, Protractor
 \end{IEEEkeywords}
-
-\todo{ Add comments from Rcik 
-Rick : A number of things I think would be of particular interest. 
-One would be your comments on how CT fits into container/Docker development and some of the other platforms that are used a lot today. 
-Most researchers don’t know a lot about modern development environments, so your experience and recommendations on how to use CT for these would be very valuable, e.g., 
-what sort of extra tooling would be helpful, characteristics that are good or poor fits for existing CT tools.
-
-Also of interest is the way you integrate covering arrays and sequence testing.
-This is something that isn’t always handled well, and yet very important for an awful lot of applications.
-The measurements of coverage at the end of the presentation are also of interest,
-in particular how to use coverage to determine when it’s cost effective to complete testing.
-}
-
 
 \section{Introduction}
 Modern web development typically falls into a design pattern. In the front-end there can be a JavaScript (JS) framework, some popular ones being Angular, React and Vue.
@@ -386,17 +373,24 @@ As a result, not only application performance is optimized but also hosting the 
 A challenge for cloud computing is the resource intensive operating system (OS) usage, where the size of the OS image can be in gigabytes while the application is much smaller. 
 Consequently, virtual machines, since they have to host an OS, do not solve this problem.
 Containerization is one proposed solution, and Docker is one example of a program that performs operating-system-level virtualization. 
-\todo {insert Docker reference}
-In containerization, a layer between OS and applications is introduced to optimize resource usage and eliminate the need for an OS.
+In containerization, a layer between OS and applications is introduced to optimize resource usage and eliminate the need for an OS \cite{wiki:docker}.
 
 This is highly valuable for application development because it enables the application to be hosted in a minimal, resource and cost effective "container" which 
 allows the application to be built, deployed and tested faster.
 
-In this paper, we will study how Combinatorial Testing (CT) fits in the front-end test automation and continuous deployment of cloud computing paradigm.
-Examples will include modeling of the input parameter model (IPM), how the model translates to fields and methods in page objects \todo{insert reference}, 
+In this paper, we will study how Combinatorial Testing (CT) fits in with the front-end test automation and the continuous deployment of cloud computing paradigm.
+Examples will include modeling of the input parameter model (IPM), how the model translates to fields and methods in page objects \cite{fowler:pageobject}, 
 and the utilization of these in behavioral driven test specifications.
 One example will include a scenario where a sequence of actions will be incorporated into a CT model, a problem that has been addressed in a variety of ways in previous works.
+
 Note that, this study will focus on black box test automation of the front-end. Testing at different levels of the architecture is planned to be studied in a future paper. 
+
+\begin{figure*}[!t]
+	\centering
+	\includegraphics[width=1.00\textwidth]{UIpipeline.pdf}
+	\caption{UI component pipeline}
+	\label{fig:UIpipeline}
+\end{figure*}
 
 \section{Related Work}
 
@@ -420,17 +414,17 @@ Note that, this study will focus on black box test automation of the front-end. 
 	This means that all faults in the tested software products can be triggered using a $6$-way interaction test set,
 	which is generally much smaller than an exhaustive test set, but yet achieving the same testing quality.
 
-	\subsection{Previous works on sequences}
-	The method of modeling sequenced parameter groups applied in this paper borrows ideas from a combination of the modeling patterns found in \cite{segall2012common}.
-	These modeling patterns include: 
+	\subsection{Previous works on sequences in CT} \label{Previous works on sequences}
+	Existing studies have focused on integrating covering arrays and sequence testing \cite{kuhn2012combinatorial}, \cite{farchi2014combinatorial}, \cite{brain2012event}, \cite{yang2018effect}, \cite{erdem2011answer}
+	In comparison, the method of modeling sequenced parameter groups applied in this paper is to solve a simpler problem:
+	to incorporate testing three test actions in their varying sequences, without increasing the number of tests achieved using a covering array which does not factor-in sequences of these three test actions.
+	Constraints are the driving factor behind the logic. Implementation borrows ideas from a combination of the modeling patterns found in the previous work on sequences as well as other common patterns in CT \cite{segall2012common}, which include: 
 	\begin{enumerate}
 		\item \textit{Optional and conditionally-excluded values:} the use of N/A value for parameters that are not a part of the parameter group in the current sequence.
-		\item \textit{Ranges and boundaries:} the reduction of parameter values for certain parameters with over 100 possibilities
 		\item	\textit{Multi-selection \& Order and padding:} a variation of these ideas was used for control parameters which enable/disable the parameter groups per the sequence.
 	\end{enumerate}
 
 \section{The System Under Test}
-
 	\subsection{Description of the Architecture}
 	
 	Horizon Cloud program is composed of many teams and microservice architectural applications.
@@ -445,32 +439,26 @@ Note that, this study will focus on black box test automation of the front-end. 
 	The Protocol Adapter component (in C\#) and Gateway (in NodeJS and Java) serve the purpose of exposing Siemens or third-party edge-devices to the cloud. 
 	This enables the hardware and the gateway at a customer site to be controlled from a web browser, anywhere in the globe.
 
-\begin{figure}[!h]
-		\includegraphics[width=0.70\textwidth,]{architecture.pdf}
-	\caption{BOIC architecture}
-	\label{fig:BOIC architecture}
-\end{figure}
+	\begin{figure}[!b]
+			\includegraphics[width=0.70\textwidth,]{architecture.pdf}
+		\caption{BOIC architecture}
+		\label{fig:BOIC architecture}
+	\end{figure}
 
 	\subsection{Description of the Continuous Deployment Environment }
 	
-	\begin{figure*}[!t]
-		\centering
-			\includegraphics[width=1.00\textwidth]{UIpipeline.pdf}
-		\caption{UI component pipeline}
-		\label{fig:UIpipeline}
-	\end{figure*}
 	
 	In a traditional configuration management scenario, there may be a plethora of servers needed for web development activities.
-	Staging, committing, packaging the developed code, testing at each stage, source controlling and finally publishing at production server(s) may take place on a number of machines.
+	Staging, committing, packaging the developed code, testing at each stage, source controlling and Finally, publishing at production server(s) may take place on a number of machines.
 	This can end up in high costs of operation and maintenance in order to enable development activities.
 	
 	In cloud computing, utilizing containerization, each one of these development activities can be operated in a docker container.
 	Figure~\ref{fig:UIpipeline} shows the GitLab pipeline for the UI component developed in Angular.
-	GitLab is a continuous integration tool that supports the teams by hosting code repositories (similar to GitHub), providing defect tracking, enabling code reviews and continuous integration support. 
+	GitLab is a continuous integration tool that supports the teams by hosting code repositories, providing defect tracking, enabling code reviews and continuous integration support \cite{wiki:gitlab}. 
 	Another example of a continuous integration tool is Jenkins, which can serve the same purpose thorough is extensions.
 
 
-	The team uses Git for source control. \todo{about git}. 
+	The team uses Git for source control, a version-control system for tracking changes in files and coordinating work on those files among multiple people \cite{wiki:git}. 
 	When any code is submitted, the application is built in a docker container, OSS Clearing for licensing is executed, unit testing and linting are done, the application is deployed to a cloud-hosted container and automated UI tests are run targeting this deployment.
 	If testing passes, the code can get merged to the master branch. 
 	This automated testing process ensures that after any code commit, the application is tested end to end and the quality is ensured. 
@@ -484,76 +472,78 @@ Note that, this study will focus on black box test automation of the front-end. 
 
 	\subsubsection{Page Object Pattern}
 
-	Released in 2011, Angular is popular front-end JavaScript framework for designing dynamic web applications.
+	\begin{figure}[!b]
+		\includegraphics[width=0.45\textwidth,]{angular.pdf}
+	\caption{Angular components as page and panel objects}
+	\label{fig:angular}
+	\end{figure}
+
+	Released in 2011, Angular is popular front-end JavaScript framework for designing dynamic web applications \cite{wiki:angular}.
 	It is maintained by Google with the help of the open source community.
-	It recommends the use of Microsoft's TypeScript language, which introduces class-based object-oriented programming, static typing and generics. \todo{refer to wiki}.
+	It recommends the use of Microsoft's TypeScript language, which introduces class-based object-oriented programming, static typing and generics \cite{wiki:typescript}.
 
 	Components are the building blocks of Angular applications and they easily nest inside each other.
 	Each component may have its own class, HTML and CSS file. This structure provides a way to design dynamic web applications while keeping the front-end code clean. 
 
-	Page object pattern is a popular UI test automation design pattern in the industry. \todo{refer to Fowler and selenium paper}.
-	In the spirit of Fowler's proposed terminology, we refer to web pages as 'pages' and Angular components as 'panels'.
+	Page object pattern is a popular and cost-effective UI test automation design pattern in the software industry.
+	It increases the maintainability of the UI tests by abstracting the application's web pages in order to reduce the coupling between test cases and application under test \cite{leotta2013improving}.
+	In the spirit of Fowler's proposed terminology \cite{fowler:pageobject}, we refer to web pages as 'pages' and Angular components as 'panels'.
 	Each panel is a class. A page can be made up of many panels, which have a class-based object-oriented structure.   
 
 	Designing the test automation architecture, it became clear that it would not only be straightforward but also efficient to replicate the structure of Angular components in page objects as pictured in Figure~\ref{fig:angular}.
 	One advantage of this is easier maintenance of the automation code as the development code changes.
 	The other advantage is its benefits with asynchronous test execution.
 
-	In a panel object, the element selectors become the class fields and the test actions become class methods within the component / panel.
-	Enabling this class-based object-oriented structure is TypeScript \todo{insert reference}
-	TypeScript is a superset of JavaScript. It complies into JavaScript and includes the latest EcmaScript features \todo{reference to EcmaScript} .
-	One of the recent advantages in the latest EcmaScript features is how it helps developers write sequential looking asynchronous code \todo{refer to async awaits}.
+	In a panel object, the element selectors become the class fields and the test actions become class methods within the component / panel \cite{protractorstyleguide}.
+	Enabling this class-based object-oriented structure is Typescript.
+	TypeScript is a super-set of JavaScript. It complies into JavaScript and includes the latest EcmaScript features \cite{wiki:typescript}.
+	One of the recent advantages in the latest EcmaScript features is how it helps developers write sequential looking asynchronous code using \emph{Async Await} style \emph{Promises} \cite{wiki:ECMAscript}.
 
-	With regards to test automation this means clean code that executes as fast as the environment allows, resistant to flakey tests and stale elements on the page. 
+	With regards to test automation this means clean code that executes as fast as the environment allows, resistant to flakey tests \cite{fowler:flake} and stale elements on the page. 
 	This is because the page components load with panel-object-classes simultaneously, while the page element selectors get instantiated.
 	We plan to study this design pattern in a future paper. For the purpose of the current study, it is sufficient to understand that all test relevant methods are housed in classes that represent panel objects / Angular components.
-	
-	\begin{figure}[!h]
-		\includegraphics[width=0.45\textwidth,]{angular.pdf}
-	\caption{Angular components as page and panel objects}
-	\label{fig:angular}
-	\end{figure}
-
-	\subsubsection{Test data}
-	The test data is stored in JSON files. This allows parameterization of test inputs, input-driven tests, as well as ease of maintenance as the UI changes.
-	Another perk of using JSON is being able to convert test suites generated with CT tools - ex: ACTS, CTWedge \todo{references }- from csv format to JSON format.
-
-	\subsubsection{Test Specifications}
-
-	\begin{figure*}[!ht]
-		\centering
-			\includegraphics[width=0.90\textwidth]{codeSample.pdf}
-		\caption{Protractor test code sample in State-based, Behavior-driven Acceptance format}
-		\label{fig:codeSample}
-	\end{figure*}	
-
-
+		
 	\begin{figure}[!b]
 		\includegraphics[width=0.60\textwidth,]{stateBasedScenario.pdf}
 		\caption{State-based, Behavior-driven Acceptance Scenario}
 		\label{fig:stateBasedScenario}
 	\end{figure}
 
-	The team uses Protractor test framework, which is the default end-to-end test framework for Angular applications. \todo{insert reference}
+	\begin{figure*}[!h]
+		\centering
+			\includegraphics[width=0.90\textwidth]{codeSample.pdf}
+		\caption{Protractor test code sample in State-based, Behavior-driven Acceptance format}
+		\label{fig:codeSample}
+	\end{figure*}	
+
+	\subsubsection{Test data}
+	The test data is stored in JavaScript Object Notation (JSON) files. 
+	This allows parameterization of test inputs, input-driven tests, as well as ease of maintenance as the test configurations or the UI changes.
+	More on parameterization in section \ref{Input driven testing of hardware}.
+	
+	It was found that another perk of using JSON is being able to convert test suites generated with CT tools (\cite{gargantini2018migrating}, \cite{ACTS-tool}) from csv format to JSON format.
+
+	\subsubsection{Test Specifications}
+
+	The team uses Protractor test framework, which is the default end-to-end test framework for Angular applications \cite{protractor}.
 	It runs tests against the application running in a real browser, interacting with it as a user would.
 	It combines technologies from Selenium webDriver, NodeJS and allows tests to be described in a BDD format -\textit{Given, When, Then}-, describing the overall behavior of a system at a low level.
 	
 	The test specifications are stored in Protractor spec files written in TypeScript. 
 	The aforementioned benefits of the technology stack allow developers in test to write clean, simple, synchronous looking asynchronous code, without hard-waits or sleeps, resistant to stale elements and flakey tests.
 
-	Over time during our development, the test specification came to be described in State-based, Behavior-driven Acceptance Scenarios \todo{reference blog post}. 
+	Over time during our development, the test specification came to be described in State-based, Behavior-driven Acceptance Scenarios \cite{stateobjects}. 
 	Generally, these are in the format:
 
-
 	\begin{itemize}
-		\item [] \textit{Given I have arrived in some state} 
-		\item [] \textit{When I trigger a particular event} 
+		\item [] \textit{Given I have arrived in some state}
+		\item [] \textit{When I trigger a particular event}
 		\item [] \textit{Then the application conducts an action}
 		\item [] \textit{And the application moves to another state}
 	\end{itemize}
-
+	
 	It was found out that this style of expression is not only descriptive at a meta level, but also maps well to the page object pattern.
-	Figure~\ref{fig:codeSample} and Figure~\ref{fig:stateBasedScenario} show a Protractor test spec sample with a state-based, behavior-driven acceptance scenario.
+	Figure~\ref{fig:codeSample} shows a Protractor test spec sample, designed by using a state-based, behavior-driven acceptance scenario from Figure~\ref{fig:stateBasedScenario} .
 	
 	As can be observed in the sample code from Figure~\ref{fig:codeSample}, \textit{tunnelPage} class / page-object is utilized for:
 	
@@ -565,15 +555,15 @@ Note that, this study will focus on black box test automation of the front-end. 
 
 	The code also samples the Protractor BDD style where a test workflow scenario is covered. 
 	The \textit{it} block is one test in the workflow, the \textit{describe} block houses more tests / \textit{it} blocks that lead to the completion of the workflow - not shown in this example for the sake of simplicity.
-	
+
 \section{Test Methodology}
 	
 	In the following sections test designs using combinatorial testing techniques will be described. 
 	Note that, this study will focus on black box test automation of the front-end. Testing at different levels of the architecture is planned to be studied in a future paper.
 
-	For all combinatorial test suite generation CTWedge was used and for coverage measuring CAMetrics and CCM were used \todo{reference}.
-	Traditionally, ACTS has been used in the organization during previous work.
-	CTWedge and CAmetrics were preferred over their desktop contenders for a few reasons.
+	For all combinatorial test suite generation CTWedge \cite{gargantini2018migrating} was used and for coverage measuring CAMetrics \cite{leithner2018cametrics} and Combinatorial Test Coverage Measurement tool (CCM) \cite{kuhn2013combinatorial} were used.
+	Traditionally, ACTS \cite{ACTS-tool} has been used in the organization during previous work.
+	CTWedge and CAmetrics were preferred over their desktop contenders for a few reasons:
 
 	\begin{itemize}
 		\item \textit{Portability and ease of use}: it is easier to copy a few lines of script and paste it at a url to generate a test suite in the case of CTWedge. It is also easier to upload a csv file to CAMetrics url and get a report quickly.
@@ -581,9 +571,9 @@ Note that, this study will focus on black box test automation of the front-end. 
 		\item \textit{Cloud concept}: the entirety of the project is web-based and the web-based CT tools fit this concept.
 	\end{itemize}
 	
-	\subsection{Input driven testing of hardware}
+	\subsection{Input driven testing of hardware} \label{Input driven testing of hardware}
 
-	\begin{figure}[!t]
+	\begin{figure}[!b]
 		\includegraphics[width=0.50\textwidth,]{commandingIPM.pdf}
 		\caption{Input Parameter Model for hardware setup}
 		\label{fig:commandingIPM}
@@ -591,7 +581,7 @@ Note that, this study will focus on black box test automation of the front-end. 
 
 	BOIC provides widespread connectivity to legacy \& new controls, 3rd party, IoT and edge devices. There is a variety of devices being used in different markets; US, EU and Asia. 
 	Consequently, the input parameter model (IPM) for the test setup needs to be agnostic to device types and building control points.
-	This is achieved through parameters and values in JavaScript Object Notation (JSON) format.
+	This is achieved through parameters and values in JSON format.
 	Figure~\ref{fig:commandingIPM} describes the possible parameters for the hardware setup and the following code snippet shows how the input parameters and their values are represented in JSON. 
 	For example,, a binary-output point (BO) which may control a digital light or a fan -depending on context- may be referred to as \textit{FanCmd} (Fan Command) or \textit{LDO} (Logical Digital Output).
   Through parameterization this complexity is abstracted. The test code only uses the parameters and the values of the parameters are easily manipulated depending on UI changes and or test configurations.
@@ -651,11 +641,11 @@ Note that, this study will focus on black box test automation of the front-end. 
 	\textit{if pointType is MO or MV, you can only command it +1 (and another), -1 (and another), cancel, command type is fixed to buttons3stages and it's not readOnly}
 
 	Binary points and Multi-state points have two or more states, followed by confirm or cancel commands. 
-	Certain points such as inputs may be \textit{readOnly} and do not have a commandType. Such points have a N/A value for \textit{commandType}, and the parameter is \textit{negated} through its use; a CT technique inspired by \todo{reference Rachel's paper}	
+	Certain points such as inputs may be \textit{readOnly} and do not have a commandType. Such points have a N/A value for \textit{commandType}, and the parameter is \textit{negated} through its use; a CT technique described in \cite{segall2012common}.	
 
 	Compared to  Binary and Multistate points, Analog points are more complex and have a variety of command options.
 	They can be commanded via slider, text box, incremented or decremented. 
-	They are prime candidates for boundary value analysis and equivalence partitioning in CT \todo{reference paper}.
+	They are prime candidates for boundary value analysis and equivalence partitioning in CT \cite{segall2012common}.
 	
 	\begin{figure}[!b]
 		\includegraphics[width=0.50\textwidth,]{csvOutputCommanding.pdf}
@@ -752,7 +742,7 @@ Note that, this study will focus on black box test automation of the front-end. 
 
 	Figure~\ref{fig:siteFilterModel} shows the alarm filtering menu as well as the search text box and sorting buttons. 
 	Alarm filters are modeled as 3 Boolean states and the resulting covering array includes 4 configurations. 
-	This result is plugged in to the next model, a technique from \todo{refer to your own paper} to reduce the number of tests and still provide cost effective coverage.
+	This result is plugged in to the next model, a technique from \cite{ozcan2017applications} to reduce the number of tests and still provide cost effective coverage.
 	The parameter \textit{filter-workingWell-inAlarm-disconnected} includes the the 4 configurations of these checkboxes as values. 
 
 	\begin{figure*}[!ht]
@@ -778,7 +768,7 @@ Note that, this study will focus on black box test automation of the front-end. 
 
 	Generating the tests, it was promptly realized that if sorting sites by column - possible values being \textit{Status, Name, Street, Country, Creation Time} - matches the search string -possible values being fields of an address - sorting became redundant and had no effect.
 	These redundancies were addressed by adding constraints, for instance \textit{if sorting sites by Street, search string cannot be street name}. 
-	CAMetrics was used \todo{reference to CAMetrics} to measure pairwise coverage gain per test: Figure~\ref{fig:coverageGainPerTest} and Figure~\ref{fig:coverageGainPerTest_withConstraints} show coverage before and after constraints being applied.
+	CAMetrics was used to measure pairwise coverage gain per test: Figure~\ref{fig:coverageGainPerTest} and Figure~\ref{fig:coverageGainPerTest_withConstraints} show coverage before and after constraints being applied.
 	The constraints eliminated 5 redundant test cases and the end result became a test suite of 19 tests. With this, a 20.8\% cost savings was achieved while developing automation test code.
 	
 	\begin{figure}[!h]
@@ -788,9 +778,9 @@ Note that, this study will focus on black box test automation of the front-end. 
 	\end{figure}
 
 	\newpage
-	Finally the sequence of the user actions needed to be addressed. Previous research on this topic has been vast and is referred to in section \todo{insert section} .
+	Finally, the sequence of the user actions needed to be addressed. Previous research on this topic has been vast and is referred to in section \ref{Previous works on sequences} .
 	The two filtering operations and the sorting can happen in any order, and there 6 possible ways of ordering them.
-	If the sequence of the 3 actions \textit{filter, search, sort} were represented as 3 parameters \textit{filterBeforeSearch, searchBeforeSort, filterBeforeSearch}, they could be simplified as \textit{AbeforeB, BbeforeC, AbeforeC}.
+	If the sequences of the 3 actions \textit{filter, search, sort} were represented as 3 parameters \textit{filterBeforeSearch, searchBeforeSort, filterBeforeSearch}, they could be simplified as \textit{AbeforeB, BbeforeC, AbeforeC}.
 	Figure~\ref{fig:sorting} displays this logic in a table.
 	As observed, case 1 and case 6 are impossible; if \textit{AbeforeB} and \textit{BbeforeC} have the same Boolean value, \textit{AbeforeC} has to match that value.
 	This logic of sequence was addressed with 2 constaints:
@@ -815,13 +805,13 @@ Note that, this study will focus on black box test automation of the front-end. 
 
 
 	Introducing the Boolean parameters for sequencing and the constraints did not impact the number of test cases; the final number was still 19.
-	Figure~\ref{fig:CompletenessCoverage} shows 2-way and 3-way completeness coverage using CCM \todo{reference to CCM}. 
+	Figure~\ref{fig:CompletenessCoverage} shows 2-way and 3-way completeness coverage using CCM. 
 	For the 2-way covering array, completeness coverage of 2-way combinations was found to be as such: 100\% of 2 tuples covered to 100\%. 
 	To elaborate, of the 158 2-way tuples, all are included in the covering array for this test suite to have full pairwise / 2-way coverage.
 	For reference, 3-way completeness coverage is also shown: 25\% of 3-way combinations are covered to 100\%, 50\% of 3-way combinations were covered to 95\%.
 	To elaborate, of the 629 3 tuples, 25\% of them provide 3-way coverage at 100\%, 50\% of them provide 95\% 3-way coverage and so on.
 
-	The significance and the impact of minimum t-way coverage on branch coverage conditions in the code is discussed in the paper \todo{insert reference} Measuring and Specifying Combinatorial Coverage of Test Input Configurations.
+	The significance and the impact of minimum t-way coverage on branch coverage conditions in the code is discussed in the paper \cite{kuhn2016measuring}.
 	Label M as the minimum 2-way coverage; i.e., the lowest proportion of settings covered for all t-way combinations of variables.
 	For example,, 2-way combinations of binary variables have four possible settings:00, 01, 10, 11.
 	Some variable pairs may have all four settings covered, but others may have less.
@@ -839,12 +829,12 @@ Note that, this study will focus on black box test automation of the front-end. 
 		\label{fig:sortingTestCode}
 	\end{figure}
 
-	To conclude this sections, Figure~\ref{fig:sortingTestCode} displays autormated Protractor test code for one of the 19 tests.
+	To conclude this sections, Figure~\ref{fig:sortingTestCode} displays automated Protractor test code for one of the 19 tests.
 	The test actions are in the sequence \textit{search} (by text string), set \textit{site status} dropdown and \textit{sort} (by country). 
 	The 3 functions execute these actions.
 	In turn, status pills are verified, verifying site status.
 	Following that, the sorting and reverse sorting of the sites are verified.
-	Finally, the test oracle is verified to verify that the sites that are displayed in the filter.
+	Finally,, the test oracle is verified to verify that the sites that are displayed in the filter.
 		
 \section{Conclusion and future work}
 In this paper, Siemens Building Technologies Horizon Cloud Program’s BOIC application was studied as the system under test.

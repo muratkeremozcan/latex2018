@@ -11,46 +11,48 @@ Database file #1: cloud.bib
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty journal in erdem2011answer
 
 Done.
-You've used 3 entries,
+You've used 26 entries,
             4087 wiz_defined-function locations,
-            843 strings with 7872 characters,
-and the built_in function-call counts, 2402 in all, are:
-= -- 177
-> -- 51
-< -- 18
-+ -- 28
-- -- 8
-* -- 124
-:= -- 352
-add.period$ -- 8
-call.type$ -- 3
-change.case$ -- 3
-chr.to.int$ -- 48
-cite$ -- 3
-duplicate$ -- 166
-empty$ -- 210
-format.name$ -- 11
-if$ -- 549
+            948 strings with 11565 characters,
+and the built_in function-call counts, 16806 in all, are:
+= -- 1277
+> -- 374
+< -- 110
++ -- 204
+- -- 66
+* -- 756
+:= -- 2543
+add.period$ -- 63
+call.type$ -- 26
+change.case$ -- 26
+chr.to.int$ -- 288
+cite$ -- 27
+duplicate$ -- 1221
+empty$ -- 1513
+format.name$ -- 80
+if$ -- 3902
 int.to.chr$ -- 0
-int.to.str$ -- 3
-missing$ -- 30
-newline$ -- 32
-num.names$ -- 3
-pop$ -- 78
+int.to.str$ -- 26
+missing$ -- 232
+newline$ -- 123
+num.names$ -- 26
+pop$ -- 646
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 176
+skip$ -- 1269
 stack$ -- 0
-substring$ -- 115
-swap$ -- 129
-text.length$ -- 2
+substring$ -- 698
+swap$ -- 893
+text.length$ -- 14
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 3
-warning$ -- 0
-while$ -- 11
-width$ -- 4
-write$ -- 49
+type$ -- 26
+warning$ -- 1
+while$ -- 74
+width$ -- 28
+write$ -- 266
+(There was 1 warning)
