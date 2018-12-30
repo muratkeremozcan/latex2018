@@ -335,20 +335,18 @@ murat.ozcan@siemens.com}
 
 \begin{abstract}
 The purpose of this study is to describe the new paradigms in testing,
-in lieu of the transition of applications from the desktop, to web and to cloud, and how combinatorial testing (CT) fits in this modern development environment. 
-We study the Siemens Building Technologies Horizon Cloud Program's \todo{insert long version} (BOIC) application. \todo{insert short sentence about BOIC}
-In Horizon Cloud, products are enabled by the Horizon ecosystem with a focus on speed, independence and small complexity.
-Horizon Cloud provides widespread connectivity to legacy \& new controls, 3rd party, IoT, 
-edge devices and a step-wise covering of on-site, real-time requirements. 
-Horizon Cloud features its own apps based on building integration framework, along with themes, with an open API for ecosystem and SSP. 
+in lieu of the transition of applications from desktop, to web and to cloud, and how combinatorial testing (CT) fits in this modern development environment. 
+We study the Siemens Building Technologies Horizon Cloud Program's Building Operator (BO) application.
+Horizon Cloud provides widespread connectivity to legacy \& new controls, 3rd party, IoT, edge devices and a step-wise covering of on-site, real-time requirements. 
+BO is a cloud based application for monitoring and controlling building operations via a proprietary internet gateway.
 
-We start by describing the architecture of BOIC the components that make up the whole, how they relate, the technologies being used in each layer. 
+We start by describing the architecture of BO and the technologies being used in each layer. 
 We describe the continuous delivery process; Dockerizing \cite{wiki:docker} the continuous integration pipeline,
 the architectural components being run in containers, being deployed and tested in the cloud. 
 We describe the architecture of the test system, the page object model, how test specifications relate to the test code structure and the test data. 
 
-We analyze three applications of combinatorial testing (CT) in this modern development environment,
-incorporating the CT model into automation using BDD style Protractor end to end UI tests. 
+We analyze three applications of combinatorial testing in this modern development environment,
+incorporating the CT model into automation using Protractor test framework's end to end (e2e) UI tests in behavioral driven development (BDD) style. 
 We go through the CT modeling process using newly released, open source, cloud based CTWedge: Combinatorial Testing Web-based Editor and Generator \cite{gargantini2018migrating}. 
 We describe how the model translates into functions in the code and their utilization in behavioral driven tests.
 
@@ -358,11 +356,12 @@ with a focus on verification of these sequences, compositions of the actions and
 \end{abstract}
 
 \begin{IEEEkeywords}
-Cloud, Combinatorial testing, sequence, test automation, Docker, Angular, Protractor
+Cloud, combinatorial testing, sequence, test automation, Docker, Angular, Protractor
 \end{IEEEkeywords}
 
 \section{Introduction}
-Modern web development typically falls into a design pattern. In the front-end there can be a JavaScript (JS) framework, some popular ones being Angular, React and Vue.
+Modern web development technology stack has varieties in choices. 
+Typically, in the front-end there is a JavaScript (JS) framework, some popular ones being Angular, React and Vue.
 The back-end preferences are varied, there is a plethora of choices in language: JavaScript (NodeJS), GoLang, Python, C\# and Java to name a few. 
 This is coupled by a database, examples include MySQL, MongoDB, Elasticsearch.
 
@@ -378,12 +377,12 @@ In containerization, a layer between OS and applications is introduced to optimi
 This is highly valuable for application development because it enables the application to be hosted in a minimal, resource and cost effective "container" which 
 allows the application to be built, deployed and tested faster.
 
-In this paper, we will study how Combinatorial Testing (CT) fits in with the front-end test automation and the continuous deployment of cloud computing paradigm.
+In this paper, we will study how CT fits in with the front-end test automation and the continuous deployment of cloud computing paradigm.
 Examples will include modeling of the input parameter model (IPM), how the model translates to fields and methods in page objects \cite{fowler:pageobject}, 
 and the utilization of these in behavioral driven test specifications.
 One example will include a scenario where a sequence of actions will be incorporated into a CT model, a problem that has been addressed in a variety of ways in previous works.
 
-Note that, this study will focus on black box test automation of the front-end. Testing at different levels of the architecture is planned to be studied in a future paper. 
+Note that due to space constraints, this study will focus on black box test automation of the front-end. Testing at different levels of the architecture is planned to be studied in a future paper. 
 
 \begin{figure*}[!t]
 	\centering
@@ -397,7 +396,7 @@ Note that, this study will focus on black box test automation of the front-end. 
 	\subsection{Introduction to Combinatorial Testing}
 	Combinatorial testing (CT) is a test design technique that that provides cost effective test suite generation
 	while guaranteeing a certain input space coverage.
-	CT methodology starts by modeling the SUT in an \emph{input parameter model} (IPM) \cite{OffuttIPM}.
+	CT methodology starts by modeling the system under test (SUT) in an \emph{input parameter model} (IPM) \cite{OffuttIPM}.
 	IPM is composed of \emph{parameters of input} and their respective \emph{values},
 	such that an input to this model can be represented by parameter-value assignments.
 	
@@ -415,24 +414,29 @@ Note that, this study will focus on black box test automation of the front-end. 
 	which is generally much smaller than an exhaustive test set, but yet achieving the same testing quality.
 
 	\subsection{Previous works on sequences in CT} \label{Previous works on sequences}
-	Existing studies have focused on integrating covering arrays and sequence testing \cite{kuhn2012combinatorial}, \cite{farchi2014combinatorial}, \cite{brain2012event}, \cite{yang2018effect}, \cite{erdem2011answer}
+	Existing studies have focused on integrating covering arrays and sequence testing \cite{kuhn2012combinatorial}, \cite{farchi2014combinatorial}, \cite{brain2012event}, \cite{yang2018effect}, \cite{erdem2011answer}.
 	In comparison, the method of modeling sequenced parameter groups applied in this paper is to solve a simpler problem:
 	to incorporate testing three test actions in their varying sequences, without increasing the number of tests achieved using a covering array which does not factor-in sequences of these three test actions.
 	Constraints are the driving factor behind the logic. Implementation borrows ideas from a combination of the modeling patterns found in the previous work on sequences as well as other common patterns in CT \cite{segall2012common}, which include: 
-	\begin{enumerate}
+	\begin{itemize}
 		\item \textit{Optional and conditionally-excluded values:} the use of N/A value for parameters that are not a part of the parameter group in the current sequence.
 		\item	\textit{Multi-selection \& Order and padding:} a variation of these ideas was used for control parameters which enable/disable the parameter groups per the sequence.
-	\end{enumerate}
+	\end{itemize}
 
 \section{The System Under Test}
 	\subsection{Description of the Architecture}
 	
 	Horizon Cloud program is composed of many teams and microservice architectural applications.
-	The application / system under test in this study will be Building Operator IC (BOIC).
-	BOIC is used for \todo {describe BOIC , also insert what IC means} . BOIC is being development by the Chicago team at Siemens Software Hub. 
+	The application / system under test in this study will be Building Operator (BO).
+	BO is a cloud application that enables the users to connect to their buildings in a secure manner and allows them to monitor \& operate their building equipment remotely.
+	BO is being developed by the Chicago team at Siemens Software Hub. 
 
-	Figure~\ref{fig:BOIC architecture} represents the BOIC architecture.
+	Figure~\ref{fig:BOIC architecture} represents the BO architecture.
 	The front-end is an Angular framework, in TypeScript.
+	Released in 2011, Angular is popular front-end JavaScript framework for designing dynamic web applications \cite{wiki:angular}.
+	It is maintained by Google with the help of the open source community.
+	It recommends the use of Microsoft's TypeScript language, which introduces class-based object-oriented programming, static typing and generics \cite{wiki:typescript}.
+	
 	The back-end is an ExpressJS application on top of NodeJS platform. 
 	At the time of this study, there is an effort to move some of this functionality to other microservices - implemented in GoLang (Go) - to reduce operating costs.
 	
@@ -441,7 +445,7 @@ Note that, this study will focus on black box test automation of the front-end. 
 
 	\begin{figure}[!b]
 			\includegraphics[width=0.70\textwidth,]{architecture.pdf}
-		\caption{BOIC architecture}
+		\caption{BO architecture}
 		\label{fig:BOIC architecture}
 	\end{figure}
 
@@ -449,10 +453,10 @@ Note that, this study will focus on black box test automation of the front-end. 
 	
 	
 	In a traditional configuration management scenario, there may be a plethora of servers needed for web development activities.
-	Staging, committing, packaging the developed code, testing at each stage, source controlling and Finally, publishing at production server(s) may take place on a number of machines.
+	Staging, committing, packaging the developed code, testing at each stage, source controlling and finally, publishing at production server(s) may take place on a number of machines.
 	This can end up in high costs of operation and maintenance in order to enable development activities.
 	
-	In cloud computing, utilizing containerization, each one of these development activities can be operated in a docker container.
+	In cloud computing, utilizing containerization, each one of these development activities can be operated in a Docker container.
 	Figure~\ref{fig:UIpipeline} shows the GitLab pipeline for the UI component developed in Angular.
 	GitLab is a continuous integration tool that supports the teams by hosting code repositories, providing defect tracking, enabling code reviews and continuous integration support \cite{wiki:gitlab}. 
 	Another example of a continuous integration tool is Jenkins, which can serve the same purpose thorough is extensions.
@@ -467,7 +471,6 @@ Note that, this study will focus on black box test automation of the front-end. 
 	There are over 200 unit tests that execute in seconds, over 300 e2e UI tests that execute under 10 minutes. 
 
 
-
 \subsection{Description of the Test Code Structure}
 
 	\subsubsection{Page Object Pattern}
@@ -478,17 +481,13 @@ Note that, this study will focus on black box test automation of the front-end. 
 	\label{fig:angular}
 	\end{figure}
 
-	Released in 2011, Angular is popular front-end JavaScript framework for designing dynamic web applications \cite{wiki:angular}.
-	It is maintained by Google with the help of the open source community.
-	It recommends the use of Microsoft's TypeScript language, which introduces class-based object-oriented programming, static typing and generics \cite{wiki:typescript}.
-
 	Components are the building blocks of Angular applications and they easily nest inside each other.
-	Each component may have its own class, HTML and CSS file. This structure provides a way to design dynamic web applications while keeping the front-end code clean. 
+	Each component may have its own class, HTML and CSS file. This structure provides a way to design dynamic web applications while keeping the front-end code clean \cite{wiki:angular}. 
 
 	Page object pattern is a popular and cost-effective UI test automation design pattern in the software industry.
 	It increases the maintainability of the UI tests by abstracting the application's web pages in order to reduce the coupling between test cases and application under test \cite{leotta2013improving}.
 	In the spirit of Fowler's proposed terminology \cite{fowler:pageobject}, we refer to web pages as 'pages' and Angular components as 'panels'.
-	Each panel is a class. A page can be made up of many panels, which have a class-based object-oriented structure.   
+	Each panel is abstracted a class. A page can be made up of many panels, which have a class-based object-oriented structure.   
 
 	Designing the test automation architecture, it became clear that it would not only be straightforward but also efficient to replicate the structure of Angular components in page objects as pictured in Figure~\ref{fig:angular}.
 	One advantage of this is easier maintenance of the automation code as the development code changes.
@@ -532,7 +531,7 @@ Note that, this study will focus on black box test automation of the front-end. 
 	The test specifications are stored in Protractor spec files written in TypeScript. 
 	The aforementioned benefits of the technology stack allow developers in test to write clean, simple, synchronous looking asynchronous code, without hard-waits or sleeps, resistant to stale elements and flakey tests.
 
-	Over time during our development, the test specification came to be described in State-based, Behavior-driven Acceptance Scenarios \cite{stateobjects}. 
+	Over time during the development, some of the newer test specification came to be described in State-based, Behavior-driven Acceptance Scenarios \cite{stateobjects}. 
 	Generally, these are in the format:
 
 	\begin{itemize}
@@ -544,8 +543,7 @@ Note that, this study will focus on black box test automation of the front-end. 
 	
 	It was found out that this style of expression is not only descriptive at a meta level, but also maps well to the page object pattern.
 	Figure~\ref{fig:codeSample} shows a Protractor test spec sample, designed by using a state-based, behavior-driven acceptance scenario from Figure~\ref{fig:stateBasedScenario} .
-	
-	As can be observed in the sample code from Figure~\ref{fig:codeSample}, \textit{tunnelPage} class / page-object is utilized for:
+	As observed in the sample code from Figure~\ref{fig:codeSample}, \textit{tunnelPage} class / page-object is utilized for:
 	
 	\begin{itemize}
 		\item setup, using the \textit{setDropDown()} class method. 
@@ -585,13 +583,12 @@ Note that, this study will focus on black box test automation of the front-end. 
 
 	\subsection{Input driven testing of hardware} \label{Input driven testing of hardware}
 
-	BOIC provides widespread connectivity to legacy \& new controls, 3rd party, IoT and edge devices. There is a variety of devices being used in different markets; US, EU and Asia. 
+	BO provides widespread connectivity to legacy \& new controls, 3rd party, IoT and edge devices. There is a variety of devices being used in different markets; US, EU and Asia. 
 	Consequently, the input parameter model (IPM) for the test setup needs to be agnostic to device types and building control points.
 	This is achieved through parameters and values in JSON format.
 	Figure~\ref{fig:commandingIPM} describes the possible parameters for the hardware setup and the following code snippet shows how the input parameters and their values are represented in JSON. 
 	For example,, a binary-output point (BO) which may control a digital light or a fan -depending on context- may be referred to as \textit{FanCmd} (Fan Command) or \textit{LDO} (Logical Digital Output).
   Through parameterization this complexity is abstracted. The test code only uses the parameters and the values of the parameters are easily manipulated depending on UI changes and or test configurations.
-
 	\lstset{
     string=[s]{"}{"},
     stringstyle=\color{blue},
@@ -689,7 +686,14 @@ Note that, this study will focus on black box test automation of the front-end. 
 		\label{fig:tagFilterModel}
 	\end{figure}
 
-	In BOIC, tag filtering functionality is used to filter points in the system, by the devices the points are in.
+	\begin{figure*}[!t]
+		\centering
+			\includegraphics[width=0.95\textwidth,]{siteFilterModel.pdf}
+			\caption{CT model of site filtering in CTWedge \& screen capture}
+			\label{fig:siteFilterModel}
+	\end{figure*}
+
+	In BO, tag filtering functionality is used to filter points in the system, by the devices the points are in.
 	There are 13 possible tags, up to 5 tags can be chosen, tag choices cannot repeat, the final tag has only one tag choice, and there can be less than 5 tags for certain tag combinations if so is the nature of the points in the system.
 	Figure~\ref{fig:tagFilterModel} displays an input parameter model of the functionality with a screen capture. 
 	Note that due to space restrictions not all tags are displayed and only 2 blocks of 13 blocks of constraints are shown.
@@ -700,12 +704,7 @@ Note that, this study will focus on black box test automation of the front-end. 
 	CTWedge scripting provided cost savings while implementing the constraint logic. 
 	Being able to copy the 4 lines of constraint logic, to replace the tag name, paste and repeat for each tag while the web application applies IntelliSense for the syntax, saved considerable amount of time in implementation of constraints.
 
-	\begin{figure*}[!t]
-		\centering
-			\includegraphics[width=0.95\textwidth,]{siteFilterModel.pdf}
-			\caption{CT model of site filtering in CTWedge \& screen capture}
-			\label{fig:siteFilterModel}
-	\end{figure*}
+
 
 	\begin{figure}[!b]
 		\centering
@@ -727,14 +726,14 @@ Note that, this study will focus on black box test automation of the front-end. 
 	With the test suite of Figure~\ref{fig:tagFilterCoveringArray} generated, only one automation method had to be written and repeated for each test:
 	
 	\begin{itemize}
-		\item the method takes a single argument: a JSON parameter with a predefined string of delimitedtags. For example, \textit{tagTest1 = "air,cmd,sensor,temp"}. 14 varieties, one for each test. These are infinately flexible, simply a different string can be passed in for a different set of tags.
+		\item the method takes a single argument: a JSON parameter with a predefined string of delimited tags. For example, \textit{tagTest1 = "air,cmd,sensor,temp"}. 14 varieties, one for each test. These are infinately flexible, simply a different string can be passed in for a different set of tags.
 		\item in the method, the string of tags get split by the delimiter. Using these tags, the tag selection is done in an asynchronous for loop. 
 		\item as the tags are selected, the panel \& point combinations get filtered. The tag details of the points are verified to match the tags chosen in the filter.
 	\end{itemize}
 	
 	\subsection{Sequenced Filtering, Searching, Sorting of Geo-located Sites}
 
-	BOIC is designed so that the building operatorcan control a number of geo-located sites. 
+	BO is designed so that the building operator can control a number of geo-located sites. 
 	Each site has a unique address. The building operator has the ability to filter and sort the sites they have administration over.
 	The following functionality is available:
 	\begin{itemize}
@@ -825,21 +824,21 @@ Note that, this study will focus on black box test automation of the front-end. 
 		\label{fig:sortingTestCode}
 	\end{figure}
 
-	To conclude this sections, Figure~\ref{fig:sortingTestCode} displays automated Protractor test code for one of the 19 tests.
+	To conclude this section, Figure~\ref{fig:sortingTestCode} displays automated Protractor test code for one of the 19 tests.
 	The test actions are in the sequence \textit{search} (by text string), set \textit{site status} dropdown and \textit{sort} (by country). 
 	The 3 functions execute these actions.
 	In turn, status pills are verified, verifying site status.
 	Following that, the sorting and reverse sorting of the sites are verified.
-	Finally,, the test oracle is verified to verify that the sites that are displayed in the filter.
+	Finally, the test oracle is verified to check the sites that are displayed as a result of the filters.
 		
 \section{Conclusion and future work}
-In this paper, Siemens Building Technologies Horizon Cloud Program’s BOIC application was studied as the system under test.
-The system architecture, continuous deployment and test architecture were described in the paradigm of cloud computing.
+In this paper, Siemens Building Technologies Horizon Cloud Program’s Building Operator application was studied as the system under test.
+The system architecture, continuous deployment and test system architecture were described in the paradigm of cloud computing.
 In this modern development environment, we explored a variety of combinatorial test design techniques driving end-to-end UI testing of the front-end.
 Coupled with latest technology, CT is helping the team write cost-effective automated tests and these disciplines are allowing a higher percentage of tests to be automated.
 At the time of writing, product and system end to end UI tests are entirely automated, executing under 10 minutes many times a day with every code commit.
 
-In the future we plan to study BOIC's architectural components beyond the UI and possibilities of CT being applied at different test levels. 
+In the future we plan to study Building Operator's architectural components beyond the UI, design patterns in automation being applied at test layers and possibilities of CT being applied at different test levels. 
 
 \bibliographystyle{IEEEtran}
 \bibliography{cloud}

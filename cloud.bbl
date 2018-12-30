@@ -86,18 +86,6 @@ I.~Segall, R.~Tzoref-Brill, and A.~Zlotnick, ``Common patterns in combinatorial
   IEEE Fifth International Conference on}.\hskip 1em plus 0.5em minus
   0.4em\relax IEEE, 2012, pp. 624--629.
 
-\bibitem{wiki:gitlab}
-\BIBentryALTinterwordspacing
-{GitLab}, ``{W}ikipedia{,} the free encyclopedia,'' 2018. [Online]. Available:
-  \url{https://en.wikipedia.org/wiki/GitLab}
-\BIBentrySTDinterwordspacing
-
-\bibitem{wiki:git}
-\BIBentryALTinterwordspacing
-{Linus Torvalds}, ``{W}ikipedia{,} the free encyclopedia,'' 2005. [Online].
-  Available: \url{https://en.wikipedia.org/wiki/Git}
-\BIBentrySTDinterwordspacing
-
 \bibitem{wiki:angular}
 \BIBentryALTinterwordspacing
 {Google}, ``{W}ikipedia{,} the free encyclopedia,'' 2016. [Online]. Available:
@@ -108,6 +96,18 @@ I.~Segall, R.~Tzoref-Brill, and A.~Zlotnick, ``Common patterns in combinatorial
 \BIBentryALTinterwordspacing
 {Microsoft}, ``{W}ikipedia{,} the free encyclopedia,'' 2012. [Online].
   Available: \url{https://en.wikipedia.org/wiki/TypeScript}
+\BIBentrySTDinterwordspacing
+
+\bibitem{wiki:gitlab}
+\BIBentryALTinterwordspacing
+{GitLab}, ``{W}ikipedia{,} the free encyclopedia,'' 2018. [Online]. Available:
+  \url{https://en.wikipedia.org/wiki/GitLab}
+\BIBentrySTDinterwordspacing
+
+\bibitem{wiki:git}
+\BIBentryALTinterwordspacing
+{Linus Torvalds}, ``{W}ikipedia{,} the free encyclopedia,'' 2005. [Online].
+  Available: \url{https://en.wikipedia.org/wiki/Git}
 \BIBentrySTDinterwordspacing
 
 \bibitem{leotta2013improving}
