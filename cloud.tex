@@ -335,7 +335,7 @@ murat.ozcan@siemens.com}
 
 \begin{abstract}
 The purpose of this study is to describe the new paradigms in testing,
-in lieu of the transition of applications from desktop, to web and to cloud, and how combinatorial testing (CT) fits in this modern development environment. 
+in lieu of the transition of applications from desktop, to web, to cloud, and how combinatorial testing (CT) fits in this modern development environment. 
 We study the Siemens Building Technologies Horizon Cloud Program's Building Operator (BO) application.
 Horizon Cloud provides widespread connectivity to legacy \& new controls, 3rd party, IoT, edge devices and a step-wise covering of on-site, real-time requirements. 
 BO is a cloud based application for monitoring and controlling building operations via a proprietary internet gateway.
@@ -350,7 +350,7 @@ incorporating the CT model into automation using Protractor test framework's end
 We go through the CT modeling process using newly released, open source, cloud based CTWedge: Combinatorial Testing Web-based Editor and Generator \cite{gargantini2018migrating}. 
 We describe how the model translates into functions in the code and their utilization in behavioral driven tests.
 
-Finally,, we analyze a scenario where a sequence of actions are incorporated into a CT model;
+Finally, we analyze a scenario where a sequence of actions are incorporated into a CT model;
 with a focus on verification of these sequences, compositions of the actions and streamlining the expected assertions per the test oracle.
 
 \end{abstract}
@@ -360,7 +360,7 @@ Cloud, combinatorial testing, sequence, test automation, Docker, Angular, Protra
 \end{IEEEkeywords}
 
 \section{Introduction}
-Modern web development technology stack has varieties in choices. 
+Technology stack choices for modern web development are diverse. 
 Typically, in the front-end there is a JavaScript (JS) framework, some popular ones being Angular, React and Vue.
 The back-end preferences are varied, there is a plethora of choices in language: JavaScript (NodeJS), GoLang, Python, C\# and Java to name a few. 
 This is coupled by a database, examples include MySQL, MongoDB, Elasticsearch.
@@ -373,7 +373,6 @@ A challenge for cloud computing is the resource intensive operating system (OS) 
 Consequently, virtual machines, since they have to host an OS, do not solve this problem.
 Containerization is one proposed solution, and Docker is one example of a program that performs operating-system-level virtualization. 
 In containerization, a layer between OS and applications is introduced to optimize resource usage and eliminate the need for an OS \cite{wiki:docker}.
-
 This is highly valuable for application development because it enables the application to be hosted in a minimal, resource and cost effective "container" which 
 allows the application to be built, deployed and tested faster.
 
@@ -420,7 +419,8 @@ Note that due to space constraints, this study will focus on black box test auto
 	Constraints are the driving factor behind the logic. Implementation borrows ideas from a combination of the modeling patterns found in the previous work on sequences as well as other common patterns in CT \cite{segall2012common}, which include: 
 	\begin{itemize}
 		\item \textit{Optional and conditionally-excluded values:} the use of N/A value for parameters that are not a part of the parameter group in the current sequence.
-		\item	\textit{Multi-selection \& Order and padding:} a variation of these ideas was used for control parameters which enable/disable the parameter groups per the sequence.
+		\item	\textit{Multi-selection \& Order and padding:} a variation of these ideas was used for sequence control parameters.
+		\item \textit{Equivalence partitioning \& Boundary value analysis:} used in input parameter modeling.
 	\end{itemize}
 
 \section{The System Under Test}
@@ -438,7 +438,7 @@ Note that due to space constraints, this study will focus on black box test auto
 	It recommends the use of Microsoft's TypeScript language, which introduces class-based object-oriented programming, static typing and generics \cite{wiki:typescript}.
 	
 	The back-end is an ExpressJS application on top of NodeJS platform. 
-	At the time of this study, there is an effort to move some of this functionality to other microservices - implemented in GoLang (Go) - to reduce operating costs.
+	At the time of this study, there is an effort to move some of this functionality to other microservices - implemented in GoLang (Go) - in order to reduce operating costs.
 	
 	The Protocol Adapter component (in C\#) and Gateway (in NodeJS and Java) serve the purpose of exposing Siemens or third-party edge-devices to the cloud. 
 	This enables the hardware and the gateway at a customer site to be controlled from a web browser, anywhere in the globe.
@@ -487,13 +487,13 @@ Note that due to space constraints, this study will focus on black box test auto
 	Page object pattern is a popular and cost-effective UI test automation design pattern in the software industry.
 	It increases the maintainability of the UI tests by abstracting the application's web pages in order to reduce the coupling between test cases and application under test \cite{leotta2013improving}.
 	In the spirit of Fowler's proposed terminology \cite{fowler:pageobject}, we refer to web pages as 'pages' and Angular components as 'panels'.
-	Each panel is abstracted a class. A page can be made up of many panels, which have a class-based object-oriented structure.   
+	Each panel is abstracted as a class. A page can be made up of many panels, which have a class-based object-oriented structure.   
 
 	Designing the test automation architecture, it became clear that it would not only be straightforward but also efficient to replicate the structure of Angular components in page objects as pictured in Figure~\ref{fig:angular}.
 	One advantage of this is easier maintenance of the automation code as the development code changes.
 	The other advantage is its benefits with asynchronous test execution.
 
-	In a panel object, the element selectors become the class fields and the test actions become class methods within the component / panel \cite{protractorstyleguide}.
+	In a panel object, the UI element selectors become the class fields and the test actions become class methods within the component / panel \cite{protractorstyleguide}.
 	Enabling this class-based object-oriented structure is Typescript.
 	TypeScript is a super-set of JavaScript. It complies into JavaScript and includes the latest EcmaScript features \cite{wiki:typescript}.
 	One of the recent advantages in the latest EcmaScript features is how it helps developers write sequential looking asynchronous code using \emph{Async Await} style \emph{Promises} \cite{wiki:ECMAscript}.
@@ -748,7 +748,7 @@ Note that due to space constraints, this study will focus on black box test auto
 	This result is plugged in to the next model, a technique from \cite{ozcan2017applications} to reduce the number of tests and still provide cost effective coverage.
 	The parameter \textit{filter-workingWell-inAlarm-disconnected} includes the the 4 configurations of these checkboxes as values. 
 
-	The \textit{search} parameter is a text-box, which is open ended. For this, possible values were contemplated to be any string, address fields.
+	The \textit{search} parameter is a text-box, which is open ended. For this, possible values were contemplated to be any string as well as an assortment of address fields.
 
 	The \textit{sortBy} parameter simply replicated the names of the columns. 
 	In order to keep the number of tests low, instead of being a parameter in the model, reverse sorting of columns got covered in each automated test.
@@ -780,7 +780,7 @@ Note that due to space constraints, this study will focus on black box test auto
 	The constraints eliminated 5 redundant test cases and the end result became a test suite of 19 tests. With this, a 20.8\% cost savings was achieved while developing automation test code.
 	
 	Finally, the sequence of the user actions needed to be addressed. Previous research on this topic has been vast and is referred to in section \ref{Previous works on sequences} .
-	The two filtering operations and the sorting can happen in any order, and there 6 possible ways of ordering them.
+	The two filtering operations and the sorting can happen in any order, and there are 6 possible ways of ordering them.
 	If the sequences of the 3 actions \textit{filter, search, sort} were represented as 3 parameters \textit{filterBeforeSearch, searchBeforeSort, filterBeforeSearch}, they could be simplified as \textit{AbeforeB, BbeforeC, AbeforeC}.
 	Figure~\ref{fig:sorting} displays this logic in a table.
 	As observed, case 1 and case 6 are impossible; if \textit{AbeforeB} and \textit{BbeforeC} have the same Boolean value, \textit{AbeforeC} has to match that value.
@@ -808,7 +808,7 @@ Note that due to space constraints, this study will focus on black box test auto
 
 	The significance and the impact of minimum t-way coverage on branch coverage conditions in the code is discussed in the paper \cite{kuhn2016measuring}.
 	Label M as the minimum 2-way coverage; i.e., the lowest proportion of settings covered for all t-way combinations of variables.
-	For example,, 2-way combinations of binary variables have four possible settings:00, 01, 10, 11.
+	For example, 2-way combinations of binary variables have four possible settings:00, 01, 10, 11.
 	Some variable pairs may have all four settings covered, but others may have less.
 	M is the smallest proportion of coverage among all of the t-way variable combinations.
 	M is also viewable as the rightmost line in the coverage strength meters.
@@ -825,7 +825,7 @@ Note that due to space constraints, this study will focus on black box test auto
 	\end{figure}
 
 	To conclude this section, Figure~\ref{fig:sortingTestCode} displays automated Protractor test code for one of the 19 tests.
-	The test actions are in the sequence \textit{search} (by text string), set \textit{site status} dropdown and \textit{sort} (by country). 
+	The test actions are in the sequence: \textit{search} (by text string), set \textit{site status} dropdown and \textit{sort} (by country). 
 	The 3 functions execute these actions.
 	In turn, status pills are verified, verifying site status.
 	Following that, the sorting and reverse sorting of the sites are verified.
