@@ -383,14 +383,14 @@ One example will include a scenario where a sequence of actions will be incorpor
 
 Note that due to space constraints, this study will focus on black box test automation of the front-end. Testing at different levels of the architecture is planned to be studied in a future paper. 
 
-\begin{figure*}[!t]
-	\centering
-	\includegraphics[width=1.00\textwidth]{UIpipeline.pdf}
-	\caption{UI component pipeline}
-	\label{fig:UIpipeline}
-\end{figure*}
 
 \section{Related Work}
+
+	\begin{figure}[!b]
+		\includegraphics[width=0.65\textwidth,]{architecture.pdf}
+	\caption{BO architecture}
+	\label{fig:BOIC architecture}
+	\end{figure}
 
 	\subsection{Introduction to Combinatorial Testing}
 	Combinatorial testing (CT) is a test design technique that that provides cost effective test suite generation
@@ -411,6 +411,13 @@ Note that due to space constraints, this study will focus on black box test auto
 	that in all tested software products all faults rely on the interaction of at most six input parameters.
 	This means that all faults in the tested software products can be triggered using a $6$-way interaction test set,
 	which is generally much smaller than an exhaustive test set, but yet achieving the same testing quality.
+
+	\begin{figure*}[!t]
+		\centering
+		\includegraphics[width=1.00\textwidth]{UIpipeline.pdf}
+		\caption{UI component pipeline}
+		\label{fig:UIpipeline}
+	\end{figure*}
 
 	\subsection{Previous works on sequences in CT} \label{Previous works on sequences}
 	Existing studies have focused on integrating covering arrays and sequence testing \cite{kuhn2012combinatorial}, \cite{farchi2014combinatorial}, \cite{brain2012event}, \cite{yang2018effect}, \cite{erdem2011answer}.
@@ -443,14 +450,7 @@ Note that due to space constraints, this study will focus on black box test auto
 	The Protocol Adapter component (in C\#) and Gateway (in NodeJS and Java) serve the purpose of exposing Siemens or third-party edge-devices to the cloud. 
 	This enables the hardware and the gateway at a customer site to be controlled from a web browser, anywhere in the globe.
 
-	\begin{figure}[!b]
-			\includegraphics[width=0.70\textwidth,]{architecture.pdf}
-		\caption{BO architecture}
-		\label{fig:BOIC architecture}
-	\end{figure}
-
 	\subsection{Description of the Continuous Deployment Environment }
-	
 	
 	In a traditional configuration management scenario, there may be a plethora of servers needed for web development activities.
 	Staging, committing, packaging the developed code, testing at each stage, source controlling and finally, publishing at production server(s) may take place on a number of machines.
@@ -501,12 +501,6 @@ Note that due to space constraints, this study will focus on black box test auto
 	With regards to test automation this means clean code that executes as fast as the environment allows, resistant to flakey tests \cite{fowler:flake} and stale elements on the page. 
 	This is because the page components load with panel-object-classes simultaneously, while the page element selectors get instantiated.
 	We plan to study this design pattern in a future paper. For the purpose of the current study, it is sufficient to understand that all test relevant methods are housed in classes that represent panel objects / Angular components.
-		
-	\begin{figure}[!b]
-		\includegraphics[width=0.60\textwidth,]{stateBasedScenario.pdf}
-		\caption{State-based, Behavior-driven Acceptance Scenario}
-		\label{fig:stateBasedScenario}
-	\end{figure}
 
 	\begin{figure*}[!h]
 		\centering
@@ -515,6 +509,13 @@ Note that due to space constraints, this study will focus on black box test auto
 		\label{fig:codeSample}
 	\end{figure*}	
 
+			
+	\begin{figure}[!b]
+		\includegraphics[width=0.60\textwidth,]{stateBasedScenario.pdf}
+		\caption{State-based, Behavior-driven Acceptance Scenario}
+		\label{fig:stateBasedScenario}
+	\end{figure}
+	
 	\subsubsection{Test data}
 	The test data is stored in JavaScript Object Notation (JSON) files. 
 	This allows parameterization of test inputs, input-driven tests, as well as ease of maintenance as the test configurations or the UI changes.
@@ -555,7 +556,7 @@ Note that due to space constraints, this study will focus on black box test auto
 	The \textit{it} block is one test in the workflow, the \textit{describe} block houses more tests / \textit{it} blocks that lead to the completion of the workflow - not shown in this example for the sake of simplicity.
 
 \section{Test Methodology}
-\begin{figure}[!bh]
+\begin{figure}[!b]
 	\includegraphics[width=0.50\textwidth,]{commandingIPM.pdf}
 	\caption{Input Parameter Model for hardware setup}
 	\label{fig:commandingIPM}
@@ -663,8 +664,8 @@ Note that due to space constraints, this study will focus on black box test auto
 		\item Based on the test suite, writing the automated test code as in Figure~\ref{fig:pointCommandingTestCode}.
 	\end{enumerate}
 
-	\begin{figure}[!b]
-		\includegraphics[width=0.45\textwidth,]{pointCommandingTestCode.pdf}
+	\begin{figure}[!t]
+		\includegraphics[width=0.50\textwidth,]{pointCommandingTestCode.pdf}
 		\caption{Protractor \textit{describe} block for Analog Value point commanding in Desigo Classic panel}
 		\label{fig:pointCommandingTestCode}
 	\end{figure}
