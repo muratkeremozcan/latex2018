@@ -277,11 +277,11 @@ INPUT ./tagFilterModel.pdf
 INPUT siteFilterModel.pdf
 INPUT ./siteFilterModel.pdf
 INPUT ./siteFilterModel.pdf
+INPUT c:/texlive/2018/texmf-dist/fonts/vf/adobe/times/ptmri7t.vf
+INPUT c:/texlive/2018/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
 INPUT tagFilterCoveringArray.pdf
 INPUT ./tagFilterCoveringArray.pdf
 INPUT ./tagFilterCoveringArray.pdf
-INPUT c:/texlive/2018/texmf-dist/fonts/vf/adobe/times/ptmri7t.vf
-INPUT c:/texlive/2018/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
 INPUT coverageGainPerTest.pdf
 INPUT ./coverageGainPerTest.pdf
 INPUT ./coverageGainPerTest.pdf
