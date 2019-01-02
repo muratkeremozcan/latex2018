@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.12.24)  2 JAN 2019 13:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.12.24)  2 JAN 2019 13:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -576,7 +576,7 @@ pdfTeX warning: pdflatex.exe (file ./codeSample.pdf): PDF inclusion: found PDF v
 File: codeSample.pdf Graphic file (type pdf)
 <use codeSample.pdf>
 Package pdftex.def Info: codeSample.pdf  used on input line 508.
-(pdftex.def)             Requested size: 464.39685pt x 132.86911pt.
+(pdftex.def)             Requested size: 412.80157pt x 118.10725pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -652,9 +652,6 @@ File: tagFilterCoveringArray.pdf Graphic file (type pdf)
 <use tagFilterCoveringArray.pdf>
 Package pdftex.def Info: tagFilterCoveringArray.pdf  used on input line 713.
 (pdftex.def)             Requested size: 154.80157pt x 280.51477pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
  [7 <./siteFilterModel.pdf> <./tagFilterCoveringArray.pdf>]
 <coverageGainPerTest.pdf, id=78, 721.69624pt x 511.9125pt>
 File: coverageGainPerTest.pdf Graphic file (type pdf)
@@ -707,6 +704,9 @@ Overfull \hbox (6.0pt too wide) in paragraph at lines 824--825
 [][] 
  []
 
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 (./cloud.bbl [9 <./CompletenessCoverage.pdf> <./sortingTestCode.pdf>])
 
 ** Conference Paper **
@@ -729,9 +729,9 @@ Here is how much of TeX's memory you used:
  19284 multiletter control sequences out of 15000+600000
  39457 words of font info for 85 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 55i,8n,54p,837b,1475s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,8n,54p,837b,1481s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on cloud.pdf (10 pages, 952221 bytes).
+Output written on cloud.pdf (10 pages, 952273 bytes).
 PDF statistics:
  131 PDF objects out of 1000 (max. 8388607)
  71 compressed objects within 1 object stream
