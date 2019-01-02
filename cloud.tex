@@ -340,17 +340,17 @@ We study the Siemens Building Technologies Horizon Cloud Program's Building Oper
 Horizon Cloud provides widespread connectivity to legacy \& new controls, 3rd party, IoT, edge devices and a step-wise covering of on-site, real-time requirements. 
 BO is a cloud based application for monitoring and controlling building operations via a proprietary internet gateway.
 
-We start by describing the architecture of BO and the technologies being used in each layer. 
-We describe the continuous delivery process; Dockerizing \cite{wiki:docker} the continuous integration pipeline,
+First, the architecture of BO is described along with the technologies being used in each layer. 
+This is followed by a depiction of the continuous delivery process; Dockerizing \cite{wiki:docker} the continuous integration pipeline,
 the architectural components being run in containers, being deployed and tested in the cloud. 
 We describe the architecture of the test system, the page object model, how test specifications relate to the test code structure and the test data. 
 
-We analyze three applications of combinatorial testing in this modern development environment,
+Next, three applications of combinatorial testing in this modern development environment are analyzed,
 incorporating the CT model into automation using Protractor test framework's end to end (e2e) UI tests in behavioral driven development (BDD) style. 
 We go through the CT modeling process using newly released, open source, cloud based CTWedge: Combinatorial Testing Web-based Editor and Generator \cite{gargantini2018migrating}. 
-We describe how the model translates into functions in the code and their utilization in behavioral driven tests.
+The manner in which the model translates into functions in the code and their utilization in behavioral driven tests are studied.
 
-Finally, we analyze a scenario where a sequence of actions are incorporated into a CT model;
+Finally, a scenario where a sequence of actions are incorporated into a CT model is illustrated;
 with a focus on verification of these sequences, compositions of the actions and streamlining the expected assertions per the test oracle.
 
 \end{abstract}
@@ -363,11 +363,12 @@ Cloud, combinatorial testing, sequence, test automation, Docker, Angular, Protra
 Technology stack choices for modern web development are diverse. 
 Typically, in the front-end there is a JavaScript (JS) framework, some popular ones being Angular, React and Vue.
 The back-end preferences are varied, there is a plethora of choices in language: JavaScript (NodeJS), GoLang, Python, C\# and Java to name a few. 
-This is coupled by a database, examples include MySQL, MongoDB, Elasticsearch.
+This is mostly coupled by at least one database, examples include MySQL, MongoDB, Elasticsearch.
 
 Previous to cloud technologies, such an application would be hosted on a dedicated web server, on occasion by a hosting company.
 In contrast, cloud computing adopts a concept called “virtualization,” where hardware resources can be further optimized through software functionality.
-As a result, not only application performance is optimized but also hosting the application is more cost effective.
+As a result, not only application performance is optimized but also hosting the application is more cost effective and scalable on demand.
+Currently there are also serverless architecture solutions, a design pattern where applications are hosted by a third-party service, eliminating the need for server software and hardware management.
 
 A challenge for cloud computing is the resource intensive operating system (OS) usage, where the size of the OS image can be in gigabytes while the application is much smaller. 
 Consequently, virtual machines, since they have to host an OS, do not solve this problem.
@@ -393,7 +394,7 @@ Note that due to space constraints, this study will focus on black box test auto
 	\end{figure}
 
 	\subsection{Introduction to Combinatorial Testing}
-	Combinatorial testing (CT) is a test design technique that that provides cost effective test suite generation
+	Combinatorial testing (CT) is a test design technique that provides cost effective test suite generation
 	while guaranteeing a certain input space coverage.
 	CT methodology starts by modeling the system under test (SUT) in an \emph{input parameter model} (IPM) \cite{OffuttIPM}.
 	IPM is composed of \emph{parameters of input} and their respective \emph{values},
@@ -402,14 +403,14 @@ Note that due to space constraints, this study will focus on black box test auto
 	The underlying mathematical primitives of CT are covering arrays (CAs), which are discrete structures appearing in \emph{combinatorial design theory},
 	and can be represented as matrices with specific coverage properties \cite{NISTpractical}.
 	To further apply CT, the parameters of the IPM are matched with the columns of an appropriate CA,
-	such that a row of the CA can be interpreted as an assignment of values to the parameters of the IPM.
+	such that a row of the CA can be interpreted as an assignment of values to the parameters of the IPM - refer to Figure~\ref{fig:csvOutputCommanding} for an example.
 	Translating all rows of a CA in such a way, the mathematical properties of CAs guarantee that the generated test set
 	is a \emph{$t$-way test set}, i.e.\ a test set which ensures that all $t$-way combinations of parameter-value assignments are tested,
 	once all tests have been executed \cite{NISTpractical}.
 	
 	A study from the National Institute of Standards and Technology (NIST) \cite{NISTpractical} shows
-	that in all tested software products all faults rely on the interaction of at most six input parameters.
-	This means that all faults in the tested software products can be triggered using a $6$-way interaction test set,
+	that in all tested software products all faults found rely on the interaction of at most six input parameters.
+	This means that all faults found in the tested software products can be triggered using a $6$-way interaction test set,
 	which is generally much smaller than an exhaustive test set, but yet achieving the same testing quality.
 
 	\begin{figure*}[!t]
@@ -439,31 +440,31 @@ Note that due to space constraints, this study will focus on black box test auto
 	BO is being developed by the Chicago team at Siemens Software Hub. 
 
 	Figure~\ref{fig:BOIC architecture} represents the BO architecture.
-	The front-end is an Angular framework, in TypeScript.
-	Released in 2011, Angular is popular front-end JavaScript framework for designing dynamic web applications \cite{wiki:angular}.
+	The front-end is an Angular framework in TypeScript.
+	Released in 2011, Angular is a popular front-end JavaScript framework for designing dynamic web applications \cite{wiki:angular}.
 	It is maintained by Google with the help of the open source community.
 	It recommends the use of Microsoft's TypeScript language, which introduces class-based object-oriented programming, static typing and generics \cite{wiki:typescript}.
 	
-	The back-end is an ExpressJS application on top of NodeJS platform. 
+	The back-end is an ExpressJS application on top of the NodeJS platform. 
 	At the time of this study, there is an effort to move some of this functionality to other microservices - implemented in GoLang (Go) - in order to reduce operating costs.
 	
 	The Protocol Adapter component (in C\#) and Gateway (in NodeJS and Java) serve the purpose of exposing Siemens or third-party edge-devices to the cloud. 
-	This enables the hardware and the gateway at a customer site to be controlled from a web browser, anywhere in the globe.
+	This enables the hardware and the gateway at a customer site to be controlled from a web browser, anywhere around the globe.
 
 	\subsection{Description of the Continuous Deployment Environment }
 	
 	In a traditional configuration management scenario, there may be a plethora of servers needed for web development activities.
-	Staging, committing, packaging the developed code, testing at each stage, source controlling and finally, publishing at production server(s) may take place on a number of machines.
+	Staging, committing, packaging the developed code, testing at each stage, source controlling and finally, publishing to production server(s) may take place on a number of machines.
 	This can end up in high costs of operation and maintenance in order to enable development activities.
 	
 	In cloud computing, utilizing containerization, each one of these development activities can be operated in a Docker container.
 	Figure~\ref{fig:UIpipeline} shows the GitLab pipeline for the UI component developed in Angular.
 	GitLab is a continuous integration tool that supports the teams by hosting code repositories, providing defect tracking, enabling code reviews and continuous integration support \cite{wiki:gitlab}. 
-	Another example of a continuous integration tool is Jenkins, which can serve the same purpose thorough is extensions.
+	Another example of a continuous integration tool is Jenkins, which can serve the same purpose thorough its extensions.
 
 
 	The team uses Git for source control, a version-control system for tracking changes in files and coordinating work on those files among multiple people \cite{wiki:git}. 
-	When any code is submitted, the application is built in a docker container, OSS Clearing for licensing is executed, unit testing and linting are done, the application is deployed to a cloud-hosted container and automated UI tests are run targeting this deployment.
+	When any code is submitted, the application is built in a docker container, OSS Clearing for licensing is executed, unit testing and linting are done, the container containing the application is deployed and run in a cloud-hosted container and automated UI tests are run targeting this deployment.
 	If testing passes, the code can get merged to the master branch. 
 	This automated testing process ensures that after any code commit, the application is tested end to end and the quality is ensured. 
 	
@@ -495,7 +496,7 @@ Note that due to space constraints, this study will focus on black box test auto
 
 	In a panel object, the UI element selectors become the class fields and the test actions become class methods within the component / panel \cite{protractorstyleguide}.
 	Enabling this class-based object-oriented structure is Typescript.
-	TypeScript is a super-set of JavaScript. It complies into JavaScript and includes the latest EcmaScript features \cite{wiki:typescript}.
+	TypeScript is a super-set of JavaScript. It compiles into JavaScript and includes the latest EcmaScript features \cite{wiki:typescript}.
 	One of the recent advantages in the latest EcmaScript features is how it helps developers write sequential looking asynchronous code using \emph{Async Await} style \emph{Promises} \cite{wiki:ECMAscript}.
 
 	With regards to test automation this means clean code that executes as fast as the environment allows, resistant to flakey tests \cite{fowler:flake} and stale elements on the page. 
@@ -527,7 +528,7 @@ Note that due to space constraints, this study will focus on black box test auto
 
 	The team uses Protractor test framework, which is the default end-to-end test framework for Angular applications \cite{protractor}.
 	It runs tests against the application running in a real browser, interacting with it as a user would.
-	It combines technologies from Selenium webDriver, NodeJS and allows tests to be described in a BDD format -\textit{Given, When, Then}-, describing the overall behavior of a system at a low level.
+	It combines technologies from Selenium webDriver and NodeJS and allows tests to be described in a Behavioral Driven Development (BDD) format -\textit{Given, When, Then}-, describing the overall behavior of a system at a low level.
 	
 	The test specifications are stored in Protractor spec files written in TypeScript. 
 	The aforementioned benefits of the technology stack allow developers in test to write clean, simple, synchronous looking asynchronous code, without hard-waits or sleeps, resistant to stale elements and flakey tests.
@@ -542,7 +543,7 @@ Note that due to space constraints, this study will focus on black box test auto
 		\item [] \textit{And the application moves to another state}
 	\end{itemize}
 	
-	It was found out that this style of expression is not only descriptive at a meta level, but also maps well to the page object pattern.
+	It showed that this style of expression is not only descriptive at a meta level, but also maps well to the page object pattern.
 	Figure~\ref{fig:codeSample} shows a Protractor test spec sample, designed by using a state-based, behavior-driven acceptance scenario from Figure~\ref{fig:stateBasedScenario} .
 	As observed in the sample code from Figure~\ref{fig:codeSample}, \textit{tunnelPage} class / page-object is utilized for:
 	
@@ -570,7 +571,7 @@ Note that due to space constraints, this study will focus on black box test auto
 \end{figure*}
 	
 	In the following sections test designs using combinatorial testing techniques will be described. 
-	Note that, this study will focus on black box test automation of the front-end. Testing at different levels of the architecture is planned to be studied in a future paper.
+	Note that this study will focus on black box test automation of the front-end. Testing at different levels of the architecture is planned to be studied in a future paper.
 
 	For all combinatorial test suite generation CTWedge \cite{gargantini2018migrating} was used and for coverage measuring CAMetrics \cite{leithner2018cametrics} and Combinatorial Test Coverage Measurement tool (CCM) \cite{kuhn2013combinatorial} were used.
 	Traditionally, ACTS \cite{ACTS-tool} has been used in the organization during previous work.
