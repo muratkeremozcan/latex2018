@@ -1,4 +1,4 @@
- \documentclass[conference]{IEEEtran}
+\documentclass[conference]{IEEEtran}
 
 \IEEEoverridecommandlockouts
 % Add the compsoc option for Computer Society conferences.
@@ -346,7 +346,7 @@ the architectural components being run in containers, being deployed and tested 
 The architecture of the test system is detailed, the page object model, how test specifications relate to the test code structure and the test data is outlined. 
 
 Next, three applications of combinatorial testing in this modern development environment are analyzed,
-incorporating the CT model into automation using Protractor test framework's end to end (e2e) UI tests in behavioral driven development (BDD) style. 
+incorporating the CT model into automation using Protractor test framework's end-to-end (e2e) UI tests in behavioral driven development (BDD) style. 
 We go through the CT modeling process using newly released, open source, cloud based CTWedge: Combinatorial Testing Web-based Editor and Generator \cite{gargantini2018migrating}. 
 The manner in which the model translates into functions in the code and their utilization in behavioral driven tests are studied.
 
@@ -466,9 +466,9 @@ Note that due to space constraints, this study will focus on black box test auto
 	The team uses Git for source control, a version-control system for tracking changes in files and coordinating work on those files among multiple people \cite{wiki:git}. 
 	When any code is submitted, the application is built in a docker container, OSS Clearing for licensing is executed, unit testing and linting are done, the container containing the application is deployed and run in a cloud-hosted container and finally automated UI tests are executed targeting this deployment.
 	If testing passes, the code can get merged to the master branch. 
-	This automated testing process ensures that after any code commit, the application is tested end to end and the quality is ensured. 
+	This automated testing process ensures that after any code commit, the application is tested end-to-end and the quality is ensured. 
 	
-	To give a sense of scale, at the time of writing, the front end is over 15k lines of TypeScript code in Angular, over 1k lines of unit tests in Karma, over 4k lines of end to end (e2e) UI tests in Protractor. 
+	To give a sense of scale, at the time of writing, the front end is over 15k lines of TypeScript code in Angular, over 1k lines of unit tests in Karma, over 4k lines of end-to-end (e2e) UI tests in Protractor. 
 	There are over 200 unit tests that execute in seconds, over 300 e2e UI tests that execute under 10 minutes. 
 
 
@@ -575,10 +575,10 @@ Note that due to space constraints, this study will focus on black box test auto
 	\subsection{Input driven testing of hardware} \label{Input driven testing of hardware}
 	
 	BO provides widespread connectivity to legacy \& new controls, 3rd party, IoT and edge devices. There is a variety of devices being used in different markets; US, EU and Asia. 
-	Consequently, the input parameter model (IPM) for the test setup needs to be agnostic to device types and building control points.
+	Consequently, the IPM for the test setup needs to be agnostic to device types and building control points.
 	This is achieved through parameters and values in JSON format.
 	Figure~\ref{fig:commandingIPM} describes the possible parameters for the hardware setup and the following code snippet shows how the input parameters and their values are represented in JSON. 
-	For example,, a binary-output point (BO) which may control a digital light or a fan -depending on context- may be referred to as \textit{FanCmd} (Fan Command) or \textit{LDO} (Logical Digital Output).
+	For example, a binary-output point which may control a digital light or a fan -depending on context- may be referred to as \textit{FanCmd} (Fan Command) or \textit{LDO} (Logical Digital Output).
   Through parameterization this complexity is abstracted. The test code only uses the parameters and the values of the parameters are easily manipulated depending on UI changes and or test configurations.
 	
 	\begin{figure}[!t]
@@ -614,25 +614,25 @@ Note that due to space constraints, this study will focus on black box test auto
 			"ThirdPartyBACnet": "Viconics"
 		},
 		"PointType_SystemOne": {
-			"AV": "ECO CLG STPT",
-			"BO": "FAN 1 SPD 2",
-			"BV": "CMF BTN",
-			"MV": "RM OP MODE",
+			"AnalogValue": "ECO CLG STPT",
+			"BinaryOutput": "FAN 1 SPD 2",
+			"BinaryValue": "CMF BTN",
+			"MultiStateValue": "RM OP MODE",
 		},
 		"PointType_DesigoClassic": {
-			"AO": "AS03'PTP'AnaObj'AO001",
-			"BO": "AS03'Mis'CycTi'LED",
-			"MO": "AS03'PTP'MulObj'MO001",
-			"AV": "AS03'Ala'Per'AnaObj'AV001",
-			"BV": "AS03'Ala'AsSta.DsavSta",
-			"MV": "AS03'Ala'Per'MulObj'MV001",
-			"BI": "AS03'PTP'BinObj'BI001",	
+			"AnalogOutput": "AS03'PTP'AnaObj'AO001",
+			"BinaryOutput": "AS03'Mis'CycTi'LED",
+			"MultiStateOutput": "AS03'PTP'MulObj'MO001",
+			"AnalogValue": "AS03'Ala'Per'AnaObj'AV001",
+			"BinaryValue": "AS03'Ala'AsSta.DsavSta",
+			"MultiStateValue": "AS03'Ala'Per'MulObj'MV001",
+			"BinaryInput": "AS03'PTP'BinObj'BI001",	
 	\end{lstlisting}
 
 	Figure~\ref{fig:modelCommanding} samples the UI for commanding various point types and the following script details the CT model in CTWedge.
 	It can be observed that the parameters \emph{subsystemType} and \emph{}{pointType} map directly from JSON data.
 	On the other hand, parameters such as \emph{commandType} and \emph{commandToPointValue} represent abstracted test actions.
-	All test actions are relaxed in the parameters and later, depending on the type of point, are restricted through constraints.
+	All possible test actions are defined in the parameters and later, depending on the type of point, are restricted through constraints.
 	Note that due to space restrictions, the model is shown partially and the complete version can be provided upon request.
 	
 	\lstset{
@@ -640,7 +640,7 @@ Note that due to space constraints, this study will focus on black box test auto
     stringstyle=\color{blue},
     comment=[l]{:},
 		commentstyle=\color{black},
-		tabsize = 1, %% Sets tab space width.
+		tabsize = 1, %% Sets tab space width.W
 		showstringspaces = false, %% Prevents space marking in strings, string is defined as the text that is generally printed directly to the console.
 		%numbers = left, %% Displays line numbers on the left.
 		keywordstyle = \color{blue}, %% Sets  keyword color.
@@ -656,7 +656,7 @@ Note that due to space constraints, this study will focus on black box test auto
 			subsytemType : {ApogeeBACnet, ApogeeBACnetFLN, 3rdPartyBACnet, Modbus, DesigoClassic, SystemOne, SystemOneAX100}
 			pointType:  {BO, MO, AO, BV, MV, AV, BI, AI, HoldingReg1, HoldingReg2}  
 			commandType: {slider, buttons_plusMinus, textBox, buttonsOnOff, buttons3stages, NA}
-			commandToPointValue : { readOnly, cancel, anyValue, higherByOne, lowerByOne, lowBoundary, highBoundary, lowBoundaryBeyond, highBoundaryBeyond}
+			commandToPointValue: { readOnly, cancel, anyValue, higherByOne, lowerByOne, lowBoundary, highBoundary, lowBoundaryBeyond, highBoundaryBeyond}
 			
 	 Constraints:
 	 // if pointType is BO or BV, you can only command it +1, -1, cancel, command type is fixed to OnOff and it's not readOnly
@@ -672,16 +672,16 @@ Note that due to space constraints, this study will focus on black box test auto
 		\label{fig:modelCommanding}
 	\end{figure} 
 
-	A constraint for Binary Outputs (BO) and Binary Values (BV) is scripted in CTWedge and would verbally translate as such:
-	\textit{if pointType is BO or BV, you can only command it +1, -1, cancel, command type is fixed to OnOff and it's not readOnly}.
+	A constraint for binary-output or binary-value is scripted in CTWedge and would verbally translate as such:
+	\textit{if pointType is binary-output or binary-value, you can only command it +1, -1, cancel, command type is fixed to OnOff and it's not readOnly}.
 	
-	A constraint for MultiState Outputs (MO) and MultiState Values (MV) is scripted in CTWedge and would verbally translate as such:
-	\textit{if pointType is MO or MV, you can only command it +1 (and another), -1 (and another), cancel, command type is fixed to buttons3stages and it's not readOnly}
+	A constraint for multistate-output and multistate-value is scripted in CTWedge and would verbally translate as such:
+	\textit{if pointType is multistate-output or multistate-value, you can only command it +1 (and another), -1 (and another), cancel, command type is fixed to buttons3stages and it's not readOnly}
 
 	Binary points and Multi-state points have two or more states, followed by confirm or cancel commands. 
-	Certain points such as inputs may be \textit{readOnly} and do not have a commandType. Such points have a N/A value for \textit{commandType}, and the parameter is \textit{negated} through its use; a CT technique described in \cite{segall2012common}.	
+	Certain points such as inputs may be \textit{readOnly} and do not have a \textit{commandType}. Such points have a \textit{N/A} value for \textit{commandType}, and the parameter is \textit{negated} through its use; a CT technique described in \cite{segall2012common}.	
 
-	Compared to  Binary and Multistate points, Analog points are more complex and have a variety of command options.
+	Compared to binary and multistate points, analog points are more complex and have a variety of command options.
 	They can be commanded via slider, text box, incremented or decremented. 
 	They are prime candidates for boundary value analysis and equivalence partitioning in CT \cite{segall2012common}.
 
@@ -708,9 +708,9 @@ Note that due to space constraints, this study will focus on black box test auto
 	Figure~\ref{fig:pointCommandingTestCode} shows a part of the test spec in Protractor, automating the tests in the test suite of Figure~\ref{fig:csvOutputCommanding} for \textit{subsystemType = DesigoClassic} and \textit{pointType = AV}.
 	
 	For ease of readability and confidentiality, test actions and assertions are handled under the functions in the code snippet. 
-	For example, functions \textit{commandTestAnalogPointWithButtonMinusOne()} and \textit{...PlusOne()} test incrementing and decrementing the point with (+) and (-) buttons.
-	Functions \textit{commandTestAnalogPointWithSliderToFarRight()} and \textit{...Left()} do boundary value testing using the slider, and can be applied to any kind of analog point.
-	Function \textit{commandTestAnalogPointWithTextBox()} can be used to pass any integer to the text box, helping with equivalence partitions and boundaries.
+	For example, functions \textit{command...ButtonMinusOne()} and \textit{...PlusOne()} test incrementing and decrementing the point with (+) and (-) buttons.
+	Functions \textit{command...SliderToFarRight()} and \textit{...ToFarLeft()} do boundary value testing using the slider, and can be applied to any kind of analog point.
+	Function \textit{command...WithTextBox()} can be used to pass any integer to the text box, helping with equivalence partitions and boundaries.
 
 	\subsection{Filtering Points by Tag Combinations }
 
@@ -794,15 +794,15 @@ Note that due to space constraints, this study will focus on black box test auto
 	With the test suite of Figure~\ref{fig:tagFilterCoveringArray} generated, only one automation method had to be written and repeated for each test:
 	
 	\begin{itemize}
-		\item the method takes a single argument: a JSON parameter with a predefined string of delimited tags. For example, \textit{tagTest1 = "air,cmd,sensor,temp"}. 14 varieties, one for each test. These are infinately flexible, simply a different string can be passed in for a different set of tags.
-		\item in the method, the string of tags get split by the delimiter. Using these tags, the tag selection is done in an asynchronous for loop: \emph{for await(tag of tags) \{...\}}. 
+		\item the method takes a single argument: a JSON parameter with a predefined string of delimited tags. For example \textit{tagTest1 = "air,cmd,sensor,temp"}; there 14 similar varieties of tag tests. These are infinately flexible, simply a different string can be passed in for a different set of tags.
+		\item in the method, the string of tags get split by the delimiter. Using these tags, the tag selection is done in an asynchronous for-loop: \emph{for await(tag of tags) \{...\}}. 
 		\item as the tags are selected, the panel \& point combinations get filtered. The tag details of the points are verified to match the tags chosen in the filter.
 	\end{itemize}
 	
 	\subsection{Sequenced Filtering, Searching, Sorting of Geo-located Sites}
 
-	BO is designed so that the building operator can control a number of geo-located sites. 
-	Each site has a unique address. The building operator has the ability to filter and sort the sites they have administration over.
+	Building Operator is designed so that the building operator can control a number of geo-located sites. 
+	Each site has a unique address. The building operator has the ability to filter and sort the sites he/she has administration over.
 	The following functionality is available:
 	\begin{itemize}
 		\item Sites can be filtered by their status: \textit{Working Well, In Alarm, Disconnected}: 3 Boolean states.
@@ -815,7 +815,7 @@ Note that due to space constraints, this study will focus on black box test auto
 	The following CTWedge script shows the IPMs for the models of alarm filter and sequence tests - partial script shown due to space constraints. 
 	Alarm filters are modeled as 3 Boolean states and the resulting covering array includes 4 configurations. 
 	This result is plugged in to the next model, a technique from \cite{ozcan2017applications} to reduce the number of tests and still provide cost effective coverage.
-	The parameter \textit{filter-workingWell-inAlarm-disconnected} includes the the 4 configurations of these checkboxes as values. 
+	The parameter \textit{filter-workingWell-inAlarm-disconnected} includes the 4 configurations of these checkboxes as values. 
 
 	\begin{figure}[!b]
 		\centering
@@ -870,7 +870,7 @@ Note that due to space constraints, this study will focus on black box test auto
 	In order to keep the number of tests low, instead of being a parameter in the model, reverse sorting of columns gets covered in each automated test.
 	This is also utilized as a setup \& cleanup in tests since sort order of the previous column gets retained; not utilizing this behavior  would cause tests to be non-modular.
 
-	In order to have a deterministic test oracle, an array of sites were generated with varying data parameters - all stored in JSON - so that after filtering by site status and a search string, there would be at least 2 sites to test sorting with.
+	In order to have a deterministic test oracle, an array of sites was generated with varying data parameters - all stored in JSON - so that after filtering by site status and a search string, there would be at least 2 sites to test sorting with.
 	
 	\begin{figure}[!t]
 		\includegraphics[width=0.50\textwidth,]{coverageGainPerTest.pdf}
@@ -893,7 +893,7 @@ Note that due to space constraints, this study will focus on black box test auto
 	Generating the tests, it was promptly realized that if sorting sites by column - possible values being \textit{Status, Name, Street, Country, Creation Time} - matches the search string -possible values being fields of an address - sorting became redundant and had no effect.
 	These redundancies were addressed by adding constraints, for instance \textit{if sorting sites by Street, search string cannot be street name}. 
 	CAMetrics was used to measure pairwise coverage gain per test: Figure~\ref{fig:coverageGainPerTest} and Figure~\ref{fig:coverageGainPerTest_withConstraints} show coverage before and after constraints being applied.
-	The constraints eliminated 5 redundant test cases and the end result became a test suite of 19 tests. With this, a 20.8\% cost savings was achieved while developing automation test code.
+	The constraints eliminated 5 redundant test cases and the end result became a test suite of 19 tests. With this, a 20.8\% cost saving was achieved while developing automation test code.
 	
 	Finally, the sequence of the user actions needed to be addressed. Previous research on this topic has been vast and is referred to in section \ref{Previous works on sequences} .
 	The two filtering operations and the sorting can happen in any order, and there are 6 possible ways of ordering them.
@@ -903,8 +903,8 @@ Note that due to space constraints, this study will focus on black box test auto
 	This logic of sequence was addressed with 2 constaints:
 
 	\begin{itemize}
-	\item \textit{if filterBeforeSearch is TRUE \&\& searchBeoreSort is TRUE then filterBeforeSort is FALSE}
-	\item \textit{if filterBeforeSearch is FALSE \&\& searchBeoreSort is FALSE then filterBeforeSort is TRUE}
+	\item \textit{if filterBeforeSearch is TRUE \&\& searchBeforeSort is TRUE then filterBeforeSort is FALSE}
+	\item \textit{if filterBeforeSearch is FALSE \&\& searchBeforeSort is FALSE then filterBeforeSort is TRUE}
 	\end{itemize}
 
 
@@ -917,14 +917,14 @@ Note that due to space constraints, this study will focus on black box test auto
 
 	Introducing the Boolean parameters for sequencing and the constraints did not impact the number of test cases; the final number was still 19.
 	Figure~\ref{fig:CompletenessCoverage} shows 2-way and 3-way completeness coverage using CCM. 
-	For the 2-way covering array, completeness coverage of 2-way combinations was found to be as such: 100\% of 2 tuples covered to 100\%. 
+	For the 2-way covering array, completeness coverage of 2-way combinations was found to be as such: 100\% of 2-way tuples covered to 100\%. 
 	To elaborate, of the 158 2-way tuples, all are included in the covering array for this test suite to have full pairwise / 2-way coverage.
 	For reference, 3-way completeness coverage is also shown: 25\% of 3-way combinations are covered to 100\%, 50\% of 3-way combinations were covered to 95\%.
-	To elaborate, of the 629 3 tuples, 25\% of them provide 3-way coverage at 100\%, 50\% of them provide 95\% 3-way coverage and so on.
+	To elaborate, of the 629 3-way tuples, 25\% of them provide 3-way coverage at 100\%, 50\% of them provide 95\% 3-way coverage and so on.
 
 	The significance and the impact of minimum t-way coverage on branch coverage conditions in the code is discussed in the paper \cite{kuhn2016measuring}.
-	Label M as the minimum 2-way coverage; i.e., the lowest proportion of settings covered for all t-way combinations of variables.
-	For example, 2-way combinations of binary variables have four possible settings:00, 01, 10, 11.
+	Label 'M' as the minimum 2-way coverage; i.e., the lowest proportion of settings covered for all t-way combinations of variables.
+	For example, 2-way combinations of binary variables have four possible settings: 00, 01, 10, 11.
 	Some variable pairs may have all four settings covered, but others may have less.
 	M is the smallest proportion of coverage among all of the t-way variable combinations.
 	M is also viewable as the rightmost line in the coverage strength meters.
@@ -941,9 +941,9 @@ Note that due to space constraints, this study will focus on black box test auto
 	\end{figure}
 
 	To conclude this section, Figure~\ref{fig:sortingTestCode} displays automated Protractor test code for one of the 19 tests.
-	The test actions are in the sequence: \textit{search} (by text string), set \textit{site status} dropdown and \textit{sort} (by country). 
+	The test actions are in the sequence: \textit{search} (by text string), \textit{set site status} (dropdown) and \textit{sort} (by country). 
 	The 3 functions execute these actions.
-	In turn, status pills are verified, verifying site status.
+	After so, status pills are verified which verify the site status (In-Alarm, Disconnected, Normal).
 	Following that, the sorting and reverse sorting of the sites are verified.
 	Finally, the test oracle is verified to check the sites that are displayed as a result of the filters.
 		
@@ -951,8 +951,8 @@ Note that due to space constraints, this study will focus on black box test auto
 In this paper, Siemens Building Technologies Horizon Cloud Program’s Building Operator application was studied as the SUT.
 The system architecture, continuous deployment and test system architecture were described in the paradigm of cloud computing.
 In this modern development environment, we explored a variety of combinatorial test design techniques driving end-to-end UI testing of the front-end.
-Coupled with latest technology, CT is helping the team write cost-effective automated tests and these disciplines are allowing a higher percentage of tests to be automated.
-At the time of writing, product and system end to end UI tests are entirely automated, executing under 10 minutes many times a day with every code commit.
+Coupled with latest technology, CT is helping the team to write cost-effective automated tests and these disciplines are allowing a higher percentage of tests to be automated.
+At the time of writing, product and system end-to-end UI tests are entirely automated, executing under 10 minutes many times a day with every code commit.
 
 In the future we plan to study Building Operator's architectural components beyond the UI, design patterns in automation being applied at test layers and possibilities of CT being applied at different test levels. 
 

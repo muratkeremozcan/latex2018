@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.12.24)  3 JAN 2019 07:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.12.24)  3 JAN 2019 08:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -714,10 +714,7 @@ Overfull \hbox (6.0pt too wide) in paragraph at lines 938--939
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-
-Underfull \vbox (badness 1888) has occurred while \output is active []
-
- (./cloud.bbl [9 <./CompletenessCoverage.pdf> <./sortingTestCode.pdf>])
+(./cloud.bbl [9 <./CompletenessCoverage.pdf> <./sortingTestCode.pdf>])
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -735,13 +732,13 @@ Before submitting the final camera ready copy, remember to:
 Here is how much of TeX's memory you used:
  15689 strings out of 492616
  297324 string characters out of 6132767
- 538599 words of memory out of 5000000
+ 538600 words of memory out of 5000000
  19299 multiletter control sequences out of 15000+600000
  39457 words of font info for 85 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
  55i,8n,54p,837b,1567s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on cloud.pdf (10 pages, 779950 bytes).
+Output written on cloud.pdf (10 pages, 780044 bytes).
 PDF statistics:
  135 PDF objects out of 1000 (max. 8388607)
  74 compressed objects within 1 object stream
