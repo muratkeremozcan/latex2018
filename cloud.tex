@@ -336,7 +336,7 @@ murat.ozcan@siemens.com}
 \begin{abstract}
 The purpose of this study is to describe the new paradigms in testing,
 in lieu of the transition of applications from desktop, to web, to cloud, and how combinatorial testing (CT) fits in this modern development environment. 
-We study the Siemens Building Technologies Horizon Cloud Program's Building Operator (BO) application.
+We study Siemens Building Technologies Horizon Cloud Program's Building Operator (BO) application.
 Horizon Cloud provides widespread connectivity to legacy \& new controls, 3rd party, IoT, edge devices and a step-wise covering of on-site, real-time requirements. 
 BO is a cloud based application for monitoring and controlling building operations via a proprietary internet gateway.
 
@@ -387,12 +387,6 @@ Note that due to space constraints, this study will focus on black box test auto
 
 \section{Related Work}
 
-	\begin{figure}[!b]
-		\includegraphics[width=0.65\textwidth,]{architecture.pdf}
-	\caption{BO architecture}
-	\label{fig:BOIC architecture}
-	\end{figure}
-
 	\subsection{Introduction to Combinatorial Testing}
 	Combinatorial testing (CT) is a test design technique that provides cost effective test suite generation
 	while guaranteeing a certain input space coverage.
@@ -413,13 +407,6 @@ Note that due to space constraints, this study will focus on black box test auto
 	This means that all faults found in the tested software products can be triggered using a $6$-way interaction test set,
 	which is generally much smaller than an exhaustive test set, but yet achieving the same testing quality.
 
-	\begin{figure*}[!t]
-		\centering
-		\includegraphics[width=1.00\textwidth]{UIpipeline.pdf}
-		\caption{UI component pipeline}
-		\label{fig:UIpipeline}
-	\end{figure*}
-
 	\subsection{Previous works on sequences in CT} \label{Previous works on sequences}
 	Existing studies have focused on integrating covering arrays and sequence testing \cite{kuhn2012combinatorial}, \cite{farchi2014combinatorial}, \cite{brain2012event}, \cite{yang2018effect}, \cite{erdem2011answer}.
 	In comparison, the method of modeling sequenced parameter groups applied in this paper is to solve a simpler problem:
@@ -430,6 +417,19 @@ Note that due to space constraints, this study will focus on black box test auto
 		\item	\textit{Multi-selection \& Order and padding:} a variation of these ideas was used for sequence control parameters.
 		\item \textit{Equivalence partitioning \& Boundary value analysis:} used in input parameter modeling.
 	\end{itemize}
+
+	\begin{figure}[!b]
+		\includegraphics[width=0.65\textwidth,]{architecture.pdf}
+		\caption{BO architecture}
+		\label{fig:BOIC architecture}
+	\end{figure}
+
+	\begin{figure*}[!t]
+		\centering
+		\includegraphics[width=1.00\textwidth]{UIpipeline.pdf}
+		\caption{UI component pipeline}
+		\label{fig:UIpipeline}
+	\end{figure*}
 
 \section{The System Under Test}
 	\subsection{Description of the Architecture}
@@ -464,7 +464,7 @@ Note that due to space constraints, this study will focus on black box test auto
 
 
 	The team uses Git for source control, a version-control system for tracking changes in files and coordinating work on those files among multiple people \cite{wiki:git}. 
-	When any code is submitted, the application is built in a docker container, OSS Clearing for licensing is executed, unit testing and linting are done, the container containing the application is deployed and run in a cloud-hosted container and automated UI tests are run targeting this deployment.
+	When any code is submitted, the application is built in a docker container, OSS Clearing for licensing is executed, unit testing and linting are done, the container containing the application is deployed and run in a cloud-hosted container and finally automated UI tests are executed targeting this deployment.
 	If testing passes, the code can get merged to the master branch. 
 	This automated testing process ensures that after any code commit, the application is tested end to end and the quality is ensured. 
 	
@@ -512,7 +512,8 @@ Note that due to space constraints, this study will focus on black box test auto
 
 			
 	\begin{figure}[!b]
-		\includegraphics[width=0.60\textwidth,]{stateBasedScenario.pdf}
+		\centering
+		\includegraphics[width=0.45\textwidth,]{stateBasedScenario.pdf}
 		\caption{State-based, Behavior-driven Acceptance Scenario}
 		\label{fig:stateBasedScenario}
 	\end{figure}
@@ -528,7 +529,7 @@ Note that due to space constraints, this study will focus on black box test auto
 
 	The team uses Protractor test framework, which is the default end-to-end test framework for Angular applications \cite{protractor}.
 	It runs tests against the application running in a real browser, interacting with it as a user would.
-	It combines technologies from Selenium webDriver and NodeJS and allows tests to be described in a Behavioral Driven Development (BDD) format -\textit{Given, When, Then}-, describing the overall behavior of a system at a low level.
+	It combines technologies from Selenium webDriver and NodeJS and allows tests to be described in a behavioral driven development (BDD) format -\textit{Given, When, Then}-, describing the overall behavior of a system at a low level.
 	
 	The test specifications are stored in Protractor spec files written in TypeScript. 
 	The aforementioned benefits of the technology stack allow developers in test to write clean, simple, synchronous looking asynchronous code, without hard-waits or sleeps, resistant to stale elements and flakey tests.
@@ -557,19 +558,7 @@ Note that due to space constraints, this study will focus on black box test auto
 	The \textit{it} block is one test in the workflow, the \textit{describe} block houses more tests / \textit{it} blocks that lead to the completion of the workflow - not shown in this example for the sake of simplicity.
 
 \section{Test Methodology}
-\begin{figure}[!b]
-	\includegraphics[width=0.50\textwidth,]{commandingIPM.pdf}
-	\caption{Input Parameter Model for hardware setup}
-	\label{fig:commandingIPM}
-\end{figure}
 
-\begin{figure*}[!t]
-	\centering
-		\includegraphics[width=1.00\textwidth,]{modelCommanding.pdf}
-		\caption{CT model of panel and point commanding in CTWedge}
-		\label{fig:modelCommanding}
-\end{figure*}
-	
 	In the following sections test designs using combinatorial testing techniques will be described. 
 	Note that this study will focus on black box test automation of the front-end. Testing at different levels of the architecture is planned to be studied in a future paper.
 
@@ -584,13 +573,21 @@ Note that due to space constraints, this study will focus on black box test auto
 	\end{itemize}
 
 	\subsection{Input driven testing of hardware} \label{Input driven testing of hardware}
-
+	
 	BO provides widespread connectivity to legacy \& new controls, 3rd party, IoT and edge devices. There is a variety of devices being used in different markets; US, EU and Asia. 
 	Consequently, the input parameter model (IPM) for the test setup needs to be agnostic to device types and building control points.
 	This is achieved through parameters and values in JSON format.
 	Figure~\ref{fig:commandingIPM} describes the possible parameters for the hardware setup and the following code snippet shows how the input parameters and their values are represented in JSON. 
 	For example,, a binary-output point (BO) which may control a digital light or a fan -depending on context- may be referred to as \textit{FanCmd} (Fan Command) or \textit{LDO} (Logical Digital Output).
   Through parameterization this complexity is abstracted. The test code only uses the parameters and the values of the parameters are easily manipulated depending on UI changes and or test configurations.
+	
+	\begin{figure}[!t]
+		\includegraphics[width=0.50\textwidth,]{commandingIPM.pdf}
+		\caption{Input Parameter Model for hardware setup}
+		\label{fig:commandingIPM}
+	\end{figure}
+
+	
 	\lstset{
     string=[s]{"}{"},
     stringstyle=\color{blue},
@@ -632,13 +629,49 @@ Note that due to space constraints, this study will focus on black box test auto
 			"BI": "AS03'PTP'BinObj'BI001",	
 	\end{lstlisting}
 
-	
-	Figure~\ref{fig:modelCommanding} details the CT model scripted in CTWedge.
+	Figure~\ref{fig:modelCommanding} samples the UI for commanding various point types and the following script details the CT model in CTWedge.
 	It can be observed that the parameters \emph{subsystemType} and \emph{}{pointType} map directly from JSON data.
 	On the other hand, parameters such as \emph{commandType} and \emph{commandToPointValue} represent abstracted test actions.
 	All test actions are relaxed in the parameters and later, depending on the type of point, are restricted through constraints.
 	Note that due to space restrictions, the model is shown partially and the complete version can be provided upon request.
 	
+	\lstset{
+    string=[s]{"}{"},
+    stringstyle=\color{blue},
+    comment=[l]{:},
+		commentstyle=\color{black},
+		tabsize = 1, %% Sets tab space width.
+		showstringspaces = false, %% Prevents space marking in strings, string is defined as the text that is generally printed directly to the console.
+		%numbers = left, %% Displays line numbers on the left.
+		keywordstyle = \color{blue}, %% Sets  keyword color.
+		stringstyle = \color{red}, %% Sets  string color.
+		rulecolor = \color{black}, %% Sets frame color to avoid being affected by text color.
+		basicstyle = \footnotesize  \ttfamily , %% Sets listing font and size.
+		breaklines = true, %% Enables line breaking.
+		numberstyle = \tiny,
+	}
+	\begin{lstlisting}
+		Model Commanding
+		Parameters:
+			subsytemType : {ApogeeBACnet, ApogeeBACnetFLN, 3rdPartyBACnet, Modbus, DesigoClassic, SystemOne, SystemOneAX100}
+			pointType:  {BO, MO, AO, BV, MV, AV, BI, AI, HoldingReg1, HoldingReg2}  
+			commandType: {slider, buttons_plusMinus, textBox, buttonsOnOff, buttons3stages, NA}
+			commandToPointValue : { readOnly, cancel, anyValue, higherByOne, lowerByOne, lowBoundary, highBoundary, lowBoundaryBeyond, highBoundaryBeyond}
+			
+	 Constraints:
+	 // if pointType is BO or BV, you can only command it +1, -1, cancel, command type is fixed to OnOff and it's not readOnly
+	 # (pointType = BO) || (pointType = BV) => ((commandToPointValue = higherByOne) || (commandToPointValue = lowerByOne) || (commandToPointValue = cancel)) && (commandType = buttonsOnOff) && (commandToPointValue != readOnly) # 
+	 // if pointType is MO or MV, you can only command it +1 (and another), -1 (and another), cancel, command type is fixed to buttons3stages and it's not readOnly
+	 # (pointType = MO) || (pointType = MV) => ((commandToPointValue = higherByOne) || (commandToPointValue = lowerByOne) || (commandToPointValue = cancel)) && (commandType = buttons3stages) && (commandToPointValue != readOnly) # 
+	 // additional constraints
+	\end{lstlisting}
+
+	\begin{figure}[!t]
+		\includegraphics[width=0.50\textwidth,]{modelCommanding.pdf}
+		\caption{Commanding UI for various point types}
+		\label{fig:modelCommanding}
+	\end{figure} 
+
 	A constraint for Binary Outputs (BO) and Binary Values (BV) is scripted in CTWedge and would verbally translate as such:
 	\textit{if pointType is BO or BV, you can only command it +1, -1, cancel, command type is fixed to OnOff and it's not readOnly}.
 	
@@ -660,18 +693,17 @@ Note that due to space constraints, this study will focus on black box test auto
 
 	The CT test design and test automation workflow is as such:
 	\begin{enumerate}
-		\item CT modeling of the IPM as in Figure~\ref{fig:modelCommanding}.
-		\item Generation of test suite in csv as in Figure~\ref{fig:csvOutputCommanding}, conversion into JSON as needed.
+		\item CT modeling of the IPM as in CTWedge script snippet.
+		\item Generation of test suite / covering array in csv as in Figure~\ref{fig:csvOutputCommanding}, conversion into JSON as needed.
 		\item Based on the test suite, writing the automated test code as in Figure~\ref{fig:pointCommandingTestCode}.
 	\end{enumerate}
 
-	\begin{figure}[!t]
+	\begin{figure}[!b]
 		\includegraphics[width=0.50\textwidth,]{pointCommandingTestCode.pdf}
 		\caption{Protractor \textit{describe} block for Analog Value point commanding in Desigo Classic panel}
 		\label{fig:pointCommandingTestCode}
 	\end{figure}
 
-	Partial script example for constraints can be viewed in Figure~\ref{fig:modelCommanding}. 
 	It is our opinion that the test suite in Figure~\ref{fig:csvOutputCommanding} and test code snippet in Figure~\ref{fig:pointCommandingTestCode} will solidify the understanding of the application of constraints for analog points.
 	Figure~\ref{fig:pointCommandingTestCode} shows a part of the test spec in Protractor, automating the tests in the test suite of Figure~\ref{fig:csvOutputCommanding} for \textit{subsystemType = DesigoClassic} and \textit{pointType = AV}.
 	
@@ -683,22 +715,56 @@ Note that due to space constraints, this study will focus on black box test auto
 	\subsection{Filtering Points by Tag Combinations }
 
 	\begin{figure}[!b]
-		\includegraphics[width=0.50\textwidth,]{tagFilterModel.pdf}
-		\caption{CT model of tag filtering in CTWedge}
+		\centering
+		\includegraphics[width=0.40\textwidth,]{tagFilterModel.pdf}
+		\caption{Tag filtering UI}
 		\label{fig:tagFilterModel}
 	\end{figure}
 
-	\begin{figure*}[!t]
-		\centering
-			\includegraphics[width=0.95\textwidth,]{siteFilterModel.pdf}
-			\caption{CT model of site filtering in CTWedge \& screen capture}
-			\label{fig:siteFilterModel}
-	\end{figure*}
-
 	In BO, tag filtering functionality is used to filter points in the system, by the devices the points are in.
 	There are 13 possible tags, up to 5 tags can be chosen, tag choices cannot repeat, the final tag has only one tag choice, and there can be less than 5 tags for certain tag combinations if so is the nature of the points in the system.
-	Figure~\ref{fig:tagFilterModel} displays an input parameter model of the functionality with a screen capture. 
-	Note that due to space restrictions not all tags are displayed and only 2 blocks of 13 blocks of constraints are shown.
+	Figure~\ref{fig:tagFilterModel} displays a screen capture of tag filtering UI and the following CTWedge script samples IPM of the functionality. 
+	Note that due to space restrictions only 2 blocks of 13 blocks of constraints are shown.
+
+	\lstset{
+    string=[s]{"}{"},
+    stringstyle=\color{blue},
+    comment=[l]{:},
+		commentstyle=\color{black},
+		tabsize = 1, %% Sets tab space width.
+		showstringspaces = false, %% Prevents space marking in strings, string is defined as the text that is generally printed directly to the console.
+		%numbers = left, %% Displays line numbers on the left.
+		keywordstyle = \color{blue}, %% Sets  keyword color.
+		stringstyle = \color{red}, %% Sets  string color.
+		rulecolor = \color{black}, %% Sets frame color to avoid being affected by text color.
+		basicstyle = \footnotesize  \ttfamily , %% Sets listing font and size.
+		breaklines = true, %% Enables line breaking.
+		numberstyle = \tiny,
+	}
+	\begin{lstlisting}
+		Model tags
+		Parameters:
+			tag1 : {cmd, writable, sensor, temp, cooling, lighting, sp, effective, occ, unocc, fan, air, heating}
+			tag2 : {cmd, writable, sensor, temp, cooling, lighting, sp, effective, occ, unocc, fan, air, heating}
+			tag3 : {cmd, writable, sensor, temp, cooling, lighting, sp, effective, occ, unocc, fan, air, heating}
+			tag4 : {cmd, writable, sensor, temp, cooling, lighting, sp, effective, occ, unocc, fan, air, heating}
+	 
+	 
+		Constraints:
+		// can't duplicate tags!
+		# tag1=cmd => tag2!=cmd && tag3!=cmd && tag4!=cmd#
+		# tag2=cmd => tag1!=cmd && tag3!=cmd && tag4!=cmd#
+		# tag3=cmd => tag2!=cmd && tag1!=cmd && tag4!=cmd#
+		# tag4=cmd => tag2!=cmd && tag3!=cmd && tag1!=cmd#
+		# tag1=writable => tag2!=writable && tag3!=writable && tag4!=writable #
+		# tag2=writable => tag1!=writable && tag3!=writable && tag4!=writable #
+		# tag3=writable => tag2!=writable && tag1!=writable && tag4!=writable #
+		# tag4=writable => tag2!=writable && tag3!=writable && tag1!=writable #	
+		\\ additional blocks for each tag 
+	\end{lstlisting}
+
+
+
 	
 	Since the 5th tag is always a single choice, there is no need to represent it in the model and it is automated to be selected in the tests.
 	The constraint logic is that no tag can repeat, with 4 constraints for each tag.
@@ -729,7 +795,7 @@ Note that due to space constraints, this study will focus on black box test auto
 	
 	\begin{itemize}
 		\item the method takes a single argument: a JSON parameter with a predefined string of delimited tags. For example, \textit{tagTest1 = "air,cmd,sensor,temp"}. 14 varieties, one for each test. These are infinately flexible, simply a different string can be passed in for a different set of tags.
-		\item in the method, the string of tags get split by the delimiter. Using these tags, the tag selection is done in an asynchronous for loop. 
+		\item in the method, the string of tags get split by the delimiter. Using these tags, the tag selection is done in an asynchronous for loop: \emph{for await(tag of tags) \{...\}}. 
 		\item as the tags are selected, the panel \& point combinations get filtered. The tag details of the points are verified to match the tags chosen in the filter.
 	\end{itemize}
 	
@@ -745,16 +811,64 @@ Note that due to space constraints, this study will focus on black box test auto
 		\item The above actions can happen in any order and should give the same resulting list of filtered and sorted sites.
 	\end{itemize}
 
-	Figure~\ref{fig:siteFilterModel} shows the alarm filtering menu as well as the search text box and sorting buttons. 
+	Figure~\ref{fig:siteFilterModel} shows the UI for alarm filtering menu as well as the search text box and sorting buttons for site list. 
+	The following CTWedge script shows the IPMs for the models of alarm filter and sequence tests - partial script shown due to space constraints. 
 	Alarm filters are modeled as 3 Boolean states and the resulting covering array includes 4 configurations. 
 	This result is plugged in to the next model, a technique from \cite{ozcan2017applications} to reduce the number of tests and still provide cost effective coverage.
 	The parameter \textit{filter-workingWell-inAlarm-disconnected} includes the the 4 configurations of these checkboxes as values. 
 
+	\begin{figure}[!b]
+		\centering
+			\includegraphics[width=0.30\textwidth,]{siteFilterModel.pdf}
+			\caption{UI for site filtering}
+			\label{fig:siteFilterModel}
+	\end{figure}
+
+
+	\lstset{
+    string=[s]{"}{"},
+    stringstyle=\color{blue},
+    comment=[l]{:},
+		commentstyle=\color{black},
+		tabsize = 1, %% Sets tab space width.
+		showstringspaces = false, %% Prevents space marking in strings, string is defined as the text that is generally printed directly to the console.
+		%numbers = left, %% Displays line numbers on the left.
+		keywordstyle = \color{blue}, %% Sets  keyword color.
+		stringstyle = \color{red}, %% Sets  string color.
+		rulecolor = \color{black}, %% Sets frame color to avoid being affected by text color.
+		basicstyle = \footnotesize  \ttfamily , %% Sets listing font and size.
+		breaklines = true, %% Enables line breaking.
+		numberstyle = \tiny,
+	}
+	\begin{lstlisting}
+		Model alarmFilter
+	 	Parameters:
+			workingWell : Boolean
+			InAlarm:  Boolean
+			Disconnected : Boolean
+		// the result is {101, 011, 110, 000} and it is plugged in to the next model 	
+
+		Model Sequences
+		Parameters:
+			filter_WW_IA_DC: {101, 011, 110, 000}
+			filterBeforeSearch: Boolean
+			search : {searchString, siteStreet, siteCity, siteState, siteCountry }
+			searchBeforeSort: Boolean
+			sortBy:  {status, sName, sStreet, sCountry, createdAt}
+			filterBeforeSort: Boolean
+	 
+	 Constraints:
+	 # filterBeforeSearch=TRUE && searchBeforeSort=TRUE => filterBeforeSort=TRUE #
+	 # filterBeforeSearch=FALSE && searchBeforeSort=FALSE => filterBeforeSort=FALSE #
+	 // constraints to reduce address redundancies
+	\end{lstlisting}
+
+
 	The \textit{search} parameter is a text-box, which is open ended. For this, possible values were contemplated to be any string as well as an assortment of address fields.
 
-	The \textit{sortBy} parameter simply replicated the names of the columns. 
-	In order to keep the number of tests low, instead of being a parameter in the model, reverse sorting of columns got covered in each automated test.
-	This was also utilized as a setup \& cleanup in tests since sort order of the previous column gets retained; not utilizing this behavior  would cause tests to be non-modular.
+	The \textit{sortBy} parameter simply replicates the names of the columns. 
+	In order to keep the number of tests low, instead of being a parameter in the model, reverse sorting of columns gets covered in each automated test.
+	This is also utilized as a setup \& cleanup in tests since sort order of the previous column gets retained; not utilizing this behavior  would cause tests to be non-modular.
 
 	In order to have a deterministic test oracle, an array of sites were generated with varying data parameters - all stored in JSON - so that after filtering by site status and a search string, there would be at least 2 sites to test sorting with.
 	
@@ -815,7 +929,7 @@ Note that due to space constraints, this study will focus on black box test auto
 	M is the smallest proportion of coverage among all of the t-way variable combinations.
 	M is also viewable as the rightmost line in the coverage strength meters.
 
-	At a small scale this technique was effective; for 3 parameters, the 6 sequences were possible to be incorporated into the input parameter model without increasing the number of tests. 
+	At a small scale this technique was effective; for 3 parameters, the 6 sequences were possible to be incorporated into the IPM without increasing the number of tests. 
 	Also the cost of creating the constraint logic was low since only two constraints had to be written.
 	However, it can be observed that with a higher number of parameters this approach can get less cost effective. 
 	The team has not encountered such a problem yet and is looking forward to the challenge in a future study.
@@ -834,7 +948,7 @@ Note that due to space constraints, this study will focus on black box test auto
 	Finally, the test oracle is verified to check the sites that are displayed as a result of the filters.
 		
 \section{Conclusion and future work}
-In this paper, Siemens Building Technologies Horizon Cloud Program’s Building Operator application was studied as the system under test.
+In this paper, Siemens Building Technologies Horizon Cloud Program’s Building Operator application was studied as the SUT.
 The system architecture, continuous deployment and test system architecture were described in the paradigm of cloud computing.
 In this modern development environment, we explored a variety of combinatorial test design techniques driving end-to-end UI testing of the front-end.
 Coupled with latest technology, CT is helping the team write cost-effective automated tests and these disciplines are allowing a higher percentage of tests to be automated.
