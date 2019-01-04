@@ -373,7 +373,7 @@ Currently there are also serverless architecture solutions, a design pattern whe
 A challenge for cloud computing is the resource intensive operating system (OS) usage, where the size of the OS image can be in gigabytes while the application is much smaller. 
 Consequently, virtual machines, since they have to host an OS, do not solve this problem.
 Containerization is one proposed solution, and Docker is one example of a program that performs operating-system-level virtualization. 
-In containerization, a layer between OS and applications is introduced to optimize resource usage and eliminate the need for an OS \cite{wiki:docker}.
+In containerization, a layer between the OS and applications is introduced to optimize resource usage and eliminate the need for an OS \cite{wiki:docker}.
 This is highly valuable for application development because it enables the application to be hosted in a minimal, resource and cost effective "container" which 
 allows the application to be built, deployed and tested faster.
 
@@ -460,7 +460,7 @@ Note that due to space constraints, this study will focus on black box test auto
 	In cloud computing, utilizing containerization, each one of these development activities can be operated in a Docker container.
 	Figure~\ref{fig:UIpipeline} shows the GitLab pipeline for the UI component developed in Angular.
 	GitLab is a continuous integration tool that supports the teams by hosting code repositories, providing defect tracking, enabling code reviews and continuous integration support \cite{wiki:gitlab}. 
-	Another example of a continuous integration tool is Jenkins, which can serve the same purpose thorough its extensions.
+	Another example of a popular continuous integration tool used in the industry is Jenkins, which can serve the same purpose thorough its extensions.
 
 
 	The team uses Git for source control, a version-control system for tracking changes in files and coordinating work on those files among multiple people \cite{wiki:git}. 
@@ -794,14 +794,14 @@ Note that due to space constraints, this study will focus on black box test auto
 	With the test suite of Figure~\ref{fig:tagFilterCoveringArray} generated, only one automation method had to be written and repeated for each test:
 	
 	\begin{itemize}
-		\item the method takes a single argument: a JSON parameter with a predefined string of delimited tags. For example \textit{tagTest1 = "air,cmd,sensor,temp"}; there 14 similar varieties of tag tests. These are infinately flexible, simply a different string can be passed in for a different set of tags.
+		\item the method takes a single argument: a JSON parameter with a predefined string of delimited tags. For example \textit{tagTest1 = "air,cmd,sensor,temp"}; there are 14 similar varieties of tag tests. These are infinately flexible, simply a different string can be passed in for a different set of tags.
 		\item in the method, the string of tags get split by the delimiter. Using these tags, the tag selection is done in an asynchronous for-loop: \emph{for await(tag of tags) \{...\}}. 
 		\item as the tags are selected, the panel \& point combinations get filtered. The tag details of the points are verified to match the tags chosen in the filter.
 	\end{itemize}
 	
 	\subsection{Sequenced Filtering, Searching, Sorting of Geo-located Sites}
 
-	Building Operator is designed so that the building operator can control a number of geo-located sites. 
+	BO application is designed so that the building operator can control a number of geo-located sites. 
 	Each site has a unique address. The building operator has the ability to filter and sort the sites he/she has administration over.
 	The following functionality is available:
 	\begin{itemize}
