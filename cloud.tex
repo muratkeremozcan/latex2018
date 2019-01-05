@@ -345,7 +345,7 @@ This is followed by a depiction of the continuous delivery process; Dockerizing 
 the architectural components being run in containers, being deployed and tested in the cloud. 
 The architecture of the test system is detailed, the page object model, how test specifications relate to the test code structure and the test data is outlined. 
 
-Next, three applications of combinatorial testing in this modern development environment are analyzed,
+Next, three examples for the applications of combinatorial testing in this modern development environment are analyzed,
 incorporating the CT model into automation using Protractor test framework's end-to-end (e2e) UI tests in behavioral driven development (BDD) style. 
 We go through the CT modeling process using newly released, open source, cloud based CTWedge: Combinatorial Testing Web-based Editor and Generator \cite{gargantini2018migrating}. 
 The manner in which the model translates into functions in the code and their utilization in behavioral driven tests are studied.
@@ -954,8 +954,17 @@ Note that due to space constraints, this study will focus on black box test auto
 In this paper, Siemens Building Technologies Horizon Cloud Program’s Building Operator application was studied as the SUT.
 The system architecture, continuous deployment and test system architecture were described in the paradigm of cloud computing.
 In this modern development environment, we explored a variety of combinatorial test design techniques driving e2e UI testing of the front-end.
-Coupled with latest technology, CT is helping the team to write cost-effective automated tests and these disciplines are allowing a higher percentage of tests to be automated.
-At the time of writing, product and system e2e UI tests are entirely automated, executing under 10 minutes many times a day with every code commit.
+
+Traditionally in software development, requirement specifications are defined and testing -automated or manual- follows these requirements.
+CT is a test design methodology that goes beyond the requirement specifications of the application and by defining an IPM it covers most possibilities of user interactions with the application, depending on model quality.
+While testing interactions of at most six input parameters are needed to find all faults in a given functionality of a software product, \emph{2-way} testing still ensures cost-effective coverage of most possible faults \cite{NISTpractical}.
+
+In this study CT was used to drive test designs ensuring not only requirement but also high fault-coverage for the functionality under test.
+CT assured that the test design process lead to writing meaningful and cost-effective automated tests that are more likely to find defects, bolstering confidence in the quality of the SUT.
+After the test design, state-based, behavior-driven acceptance scenarios were used to create descriptive e2e test scenarios with a workflow.
+These test scenarios utilized page and panel objects, abstracting the relationship between the tests and the applicaton while reducing the coupling between them.
+Using latest features in ECMAscript, the overall test design was interpreted to sequential looking asynchronous test code that executes as fast as the environment allows, resistant to flakey tests and stale elements.
+Ending this process, all development and test code were unified in the continious integration pipeline in the cloud, utilizing containerization, where every code change results in a full exection of the automated test suite.
 
 In the future we plan to study Building Operator's architectural components beyond the UI, design patterns in automation being applied at test layers and possibilities of CT being applied at different test levels. 
 
