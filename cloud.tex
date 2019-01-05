@@ -460,15 +460,15 @@ Note that due to space constraints, this study will focus on black box test auto
 	In cloud computing, utilizing containerization, each one of these development activities can be operated in a Docker container.
 	Figure~\ref{fig:UIpipeline} shows the GitLab pipeline for the UI component developed in Angular.
 	GitLab is a continuous integration tool that supports the teams by hosting code repositories, providing defect tracking, enabling code reviews and continuous integration support \cite{wiki:gitlab}. 
-	Another example of a popular continuous integration tool used in the industry is Jenkins, which can serve the same purpose thorough its extensions.
+	Another example of a popular continuous integration tool used in the industry is Jenkins, which can serve the same purpose through its extensions.
 
 
 	The team uses Git for source control, a version-control system for tracking changes in files and coordinating work on those files among multiple people \cite{wiki:git}. 
 	When any code is submitted, the application is built in a docker container, OSS Clearing for licensing is executed, unit testing and linting are done, the container containing the application is deployed and run in a cloud-hosted container and finally automated UI tests are executed targeting this deployment.
 	If testing passes, the code can get merged to the master branch. 
-	This automated testing process ensures that after any code commit, the application is tested end-to-end and the quality is ensured. 
+	This automated testing process ensures that after any code commit, the application is tested quality is ensured. 
 	
-	To give a sense of scale, at the time of writing, the front end is over 15k lines of TypeScript code in Angular, over 1k lines of unit tests in Karma, over 4k lines of end-to-end (e2e) UI tests in Protractor. 
+	To give a sense of scale, at the time of writing, the front-end is over 15k lines of TypeScript code in Angular, over 1k lines of unit tests in Karma, over 4k lines of e2e UI tests in Protractor. 
 	There are over 200 unit tests that execute in seconds, over 300 e2e UI tests that execute under 10 minutes. 
 
 
@@ -477,6 +477,7 @@ Note that due to space constraints, this study will focus on black box test auto
 	\subsubsection{Page Object Pattern}
 
 	\begin{figure}[!b]
+		\centering
 		\includegraphics[width=0.45\textwidth,]{angular.pdf}
 	\caption{Angular components as page and panel objects}
 	\label{fig:angular}
@@ -527,7 +528,7 @@ Note that due to space constraints, this study will focus on black box test auto
 
 	\subsubsection{Test Specifications}
 
-	The team uses Protractor test framework, which is the default end-to-end test framework for Angular applications \cite{protractor}.
+	The team uses Protractor test framework, which is the default e2e test framework for Angular applications \cite{protractor}.
 	It runs tests against the application running in a real browser, interacting with it as a user would.
 	It combines technologies from Selenium webDriver and NodeJS and allows tests to be described in a behavioral driven development (BDD) format -\textit{Given, When, Then}-, describing the overall behavior of a system at a low level.
 	
@@ -699,7 +700,8 @@ Note that due to space constraints, this study will focus on black box test auto
 	\end{enumerate}
 
 	\begin{figure}[!b]
-		\includegraphics[width=0.50\textwidth,]{pointCommandingTestCode.pdf}
+		\centering
+		\includegraphics[width=0.49\textwidth,]{pointCommandingTestCode.pdf}
 		\caption{Protractor \textit{describe} block for Analog Value point commanding in Desigo Classic panel}
 		\label{fig:pointCommandingTestCode}
 	\end{figure}
@@ -909,7 +911,7 @@ Note that due to space constraints, this study will focus on black box test auto
 
 
 	\begin{figure}[!h]
-		\includegraphics[width=0.50\textwidth,]{CompletenessCoverage.pdf}
+		\includegraphics[width=0.49\textwidth,]{CompletenessCoverage.pdf}
 		\caption{2-way and 3-way completeness coverage, measured with CCM}
 		\label{fig:CompletenessCoverage}
 	\end{figure}
@@ -935,7 +937,8 @@ Note that due to space constraints, this study will focus on black box test auto
 	The team has not encountered such a problem yet and is looking forward to the challenge in a future study.
 	
 	\begin{figure}[!h]
-		\includegraphics[width=0.50\textwidth,]{sortingTestCode.pdf}
+		\centering
+		\includegraphics[width=0.49\textwidth,]{sortingTestCode.pdf}
 		\caption{One of the 19 automated Protractor tests in site filtering test suite}
 		\label{fig:sortingTestCode}
 	\end{figure}
@@ -950,9 +953,9 @@ Note that due to space constraints, this study will focus on black box test auto
 \section{Conclusion and future work}
 In this paper, Siemens Building Technologies Horizon Cloud Program’s Building Operator application was studied as the SUT.
 The system architecture, continuous deployment and test system architecture were described in the paradigm of cloud computing.
-In this modern development environment, we explored a variety of combinatorial test design techniques driving end-to-end UI testing of the front-end.
+In this modern development environment, we explored a variety of combinatorial test design techniques driving e2e UI testing of the front-end.
 Coupled with latest technology, CT is helping the team to write cost-effective automated tests and these disciplines are allowing a higher percentage of tests to be automated.
-At the time of writing, product and system end-to-end UI tests are entirely automated, executing under 10 minutes many times a day with every code commit.
+At the time of writing, product and system e2e UI tests are entirely automated, executing under 10 minutes many times a day with every code commit.
 
 In the future we plan to study Building Operator's architectural components beyond the UI, design patterns in automation being applied at test layers and possibilities of CT being applied at different test levels. 
 
