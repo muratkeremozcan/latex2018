@@ -466,7 +466,7 @@ Note that due to space constraints, this study will focus on black box test auto
 	The team uses Git for source control, a version-control system for tracking changes in files and coordinating work on those files among multiple people \cite{wiki:git}. 
 	When any code is submitted, the application is built in a docker container, OSS Clearing for licensing is executed, unit testing and linting are done, the container containing the application is deployed and run in a cloud-hosted container and finally automated UI tests are executed targeting this deployment.
 	If testing passes, the code can get merged to the master branch. 
-	This automated testing process ensures that after any code commit, the application is tested quality is ensured. 
+	This automated testing process ensures that after any code commit, the application is fully regression tested and quality is ensured. 
 	
 	To give a sense of scale, at the time of writing, the front-end is over 15k lines of TypeScript code in Angular, over 1k lines of unit tests in Karma, over 4k lines of e2e UI tests in Protractor. 
 	There are over 200 unit tests that execute in seconds, over 300 e2e UI tests that execute under 10 minutes. 

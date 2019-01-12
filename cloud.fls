@@ -1,8 +1,8 @@
-PWD c:/UserData/ozcanm/Documents/CT/2018/Paper
+PWD d:/CT/2018/Paper
 INPUT c:/texlive/2018/texmf.cnf
 INPUT c:/texlive/2018/texmf-dist/web2c/texmf.cnf
 INPUT c:/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT c:/UserData/ozcanm/Documents/CT/2018/Paper/cloud.tex
+INPUT d:/CT/2018/Paper/cloud.tex
 OUTPUT cloud.log
 INPUT c:/texlive/2018/texmf-dist/tex/latex/IEEEtran/IEEEtran.cls
 INPUT c:/texlive/2018/texmf-dist/tex/latex/IEEEtran/IEEEtran.cls
