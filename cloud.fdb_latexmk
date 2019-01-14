@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex cloud"] 1546700102 "cloud.aux" "cloud.bbl" "cloud" 1547293133
+["bibtex cloud"] 1547475878 "cloud.aux" "cloud.bbl" "cloud" 1547479528
   "c:/texlive/2018/texmf-dist/bibtex/bst/IEEEtran/IEEEtran.bst" 1545666499 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "cloud.aux" 1547293132 7477 4c0629e67f2ae487d718db3c276205b6 ""
+  "cloud.aux" 1547479527 7448 ead2ff5d5f925a29a3d9e3e37f00e807 ""
   "cloud.bib" 1546100774 7703 bacc9733460dc950e060426aaba1ac7b ""
   (generated)
-  "cloud.blg"
   "cloud.bbl"
-["pdflatex"] 1547293129 "d:/CT/2018/Paper/cloud.tex" "cloud.pdf" "cloud" 1547293133
+  "cloud.blg"
+["pdflatex"] 1547479526 "d:/CT/2018/Paper/cloud.tex" "cloud.pdf" "cloud" 1547479528
   "CompletenessCoverage.pdf" 1545995238 59483 e0e4ef08ce4c513a4d9eb9202d34598c ""
   "UIpipeline.pdf" 1545757337 24716 e5fb607e5d2040239bfccd6a5e680ee7 ""
   "angular.pdf" 1545823879 24754 225327ed3a403a652f15a06a4dff917f ""
@@ -159,15 +159,15 @@
   "c:/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1545671981 3065569 c0100866a2168225e01a6ee8893b9056 ""
   "c:/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt" 1545672085 4223238 8bb9fcdb857f8a867f6fd6aedaacb89d ""
   "c:/texlive/2018/texmf.cnf" 1545671953 673 2e5aa3ac564c6f70f54d6752d765c05d ""
-  "cloud.aux" 1547293132 7477 4c0629e67f2ae487d718db3c276205b6 ""
-  "cloud.bbl" 1546173162 7828 6a5797599ee0cad143acf85e650e7a8b "bibtex cloud"
-  "cloud.tex" 1547293126 58177 e883598f82cd365c17e6629c8be56081 ""
+  "cloud.aux" 1547479527 7448 ead2ff5d5f925a29a3d9e3e37f00e807 ""
+  "cloud.bbl" 1547475879 7828 e1c5f864aa65eac591a916ad348ee047 "bibtex cloud"
+  "cloud.tex" 1547479524 58872 82e79276cedeab7d7b6a45dd3300d676 ""
   "codeSample.pdf" 1545832818 17520 05aabe9d5c1802c0765a67907f4daa09 ""
   "commandingIPM.pdf" 1545843653 35101 d077af03b98dba0e8db3b8826b99a71d ""
   "coverageGainPerTest.pdf" 1545995290 52006 e5367c289ea8a4890beed76d3d502352 ""
   "coverageGainPerTest_withConstraints.pdf" 1545995315 57418 43853305295a2b83e0b1c57c947e243d ""
   "csvOutputCommanding.pdf" 1546378582 26573 ed785ebfe3334779d0c7b8fea4608f2a ""
-  "d:/CT/2018/Paper/cloud.tex" 1547293126 58177 e883598f82cd365c17e6629c8be56081 ""
+  "d:/CT/2018/Paper/cloud.tex" 1547479524 58872 82e79276cedeab7d7b6a45dd3300d676 ""
   "modelCommanding.pdf" 1546518480 30887 15ae68c12fdd94e97fc130d0d0d998c4 ""
   "pointCommandingTestCode.pdf" 1545920052 165327 09c76d9b8a9941c9ec5f3e586d728199 ""
   "siteFilterModel.pdf" 1546519211 15118 6fbfec9fe4876b8bea099211f152b671 ""
@@ -177,6 +177,6 @@
   "tagFilterCoveringArray.pdf" 1545912994 21346 5cb4511f3127dd521ee81c26b4d2180a ""
   "tagFilterModel.pdf" 1546518939 6021 29375d51e7b607407925c255a935b29c ""
   (generated)
+  "cloud.log"
   "cloud.pdf"
   "cloud.aux"
-  "cloud.log"

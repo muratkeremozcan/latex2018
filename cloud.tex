@@ -343,7 +343,7 @@ BO is a cloud based application for monitoring and controlling building operatio
 First, the architecture of BO is described along with the technologies being used in each layer. 
 This is followed by a depiction of the continuous delivery process; Dockerizing \cite{wiki:docker} the continuous integration pipeline,
 the architectural components being run in containers, being deployed and tested in the cloud. 
-The architecture of the test system is detailed, the page object model, how test specifications relate to the test code structure and the test data is outlined. 
+The architecture of the test system is detailed, how test specifications relate to the test code structure and the test data is outlined. 
 
 Next, three examples for the applications of combinatorial testing in this modern development environment are analyzed,
 incorporating the CT model into automation using Protractor test framework's end-to-end (e2e) UI tests in behavioral driven development (BDD) style. 
@@ -378,8 +378,8 @@ This is highly valuable for application development because it enables the appli
 allows the application to be built, deployed and tested faster.
 
 In this paper, we will study how CT fits in with the front-end test automation and the continuous deployment of cloud computing paradigm.
-Examples will include modeling of the input parameter model (IPM), how the model translates to fields and methods in page objects \cite{fowler:pageobject}, 
-and the utilization of these in behavioral driven test specifications.
+Examples will include modeling of the input parameter model (IPM), how the model translates to test specifications, 
+and the utilization of these in behavioral driven tests.
 One example will include a scenario where a sequence of actions will be incorporated into a CT model, a problem that has been addressed in a variety of ways in previous works.
 
 Note that due to space constraints, this study will focus on black box test automation of the front-end. Testing at different levels of the architecture is planned to be studied in a future paper. 
@@ -434,8 +434,8 @@ Note that due to space constraints, this study will focus on black box test auto
 \section{The System Under Test}
 	\subsection{Description of the Architecture}
 	
-	Horizon Cloud program is composed of many teams and microservice architectural applications.
-	The application / system under test in this study will be Building Operator (BO).
+	Horizon Cloud program is composed of many teams and applications.
+	The system under test in this study will be Building Operator (BO).
 	BO is a cloud application that enables the users to connect to their buildings in a secure manner and allows them to monitor \& operate their building equipment remotely.
 	BO is being developed by the Chicago team at Siemens Software Hub. 
 
@@ -575,7 +575,7 @@ Note that due to space constraints, this study will focus on black box test auto
 
 	\subsection{Input driven testing of hardware} \label{Input driven testing of hardware}
 	
-	BO provides widespread connectivity to legacy \& new controls, 3rd party, IoT and edge devices. There is a variety of devices being used in different markets; US, EU and Asia. 
+	BO provides widespread connectivity to legacy \& new controls, 3rd party, IoT and edge devices. There is a variety of devices being used in different markets; The Americas, EU and Asia. 
 	Consequently, the IPM for the test setup needs to be agnostic to device types and building control points.
 	This is achieved through parameters and values in JSON format.
 	Figure~\ref{fig:commandingIPM} describes the possible parameters for the hardware setup and the following code snippet shows how the input parameters and their values are represented in JSON. 
@@ -958,15 +958,22 @@ In this modern development environment, we explored a variety of combinatorial t
 Traditionally in software development, requirement specifications are defined and testing -automated or manual- follows these requirements.
 CT is a test design methodology that goes beyond the requirement specifications of the application and by defining an IPM it covers most possibilities of user interactions with the application, depending on model quality.
 While testing interactions of at most six input parameters are needed to find all faults in a given functionality of a software product, \emph{2-way} testing still ensures cost-effective coverage of most possible faults \cite{NISTpractical}.
-
 In this study CT was used to drive test designs ensuring not only requirement but also high fault-coverage for the functionality under test.
-CT assured that the test design process lead to writing meaningful and cost-effective automated tests that are more likely to find defects, bolstering confidence in the quality of the SUT.
-After the test design, state-based, behavior-driven acceptance scenarios were used to create descriptive e2e test scenarios with a workflow.
-These test scenarios utilized page and panel objects, abstracting the relationship between the tests and the applicaton while reducing the coupling between them.
-Using latest features in ECMAscript, the overall test design was interpreted to sequential looking asynchronous test code that executes as fast as the environment allows, resistant to flakey tests and stale elements.
-Ending this process, all development and test code were unified in the continious integration pipeline in the cloud, utilizing containerization, where every code change results in a full exection of the automated test suite.
+CT assured that the test design process lead to writing meaningful and cost-effective automated tests that are more likely to find defects, bolstering confidence in the build quality of the SUT.
 
-In the future we plan to study Building Operator's architectural components beyond the UI, design patterns in automation being applied at test layers and possibilities of CT being applied at different test levels. 
+After the test design, state-based, behavior-driven acceptance scenarios were used to create descriptive e2e test scenarios with a workflow.
+This method produced acceptance and workflow coverage by bridging verbose requirements to test code.
+The significance of this was the simultaneous verification and validation of the SUT build and SUT definition, respectively, boosting certainty that the right system is being built. 
+
+These test scenarios utilized page and panel objects, abstracting the relationship between the tests and the applicaton while reducing the coupling between them.
+Using latest features in ECMAscript, the overall test designs were interpreted to sequential looking asynchronous test code that executes as fast as the environment allows, resistant to flakey tests and stale page elements.
+In day to day automated test creation, the majority of the team's effort is invested in unriddling asynchronous logic and producing deterministic tests.
+Adopting cutting edge tech eased these challenges, resulting in daily performance increase and const savings. 
+
+Ending this process, all development and test code were unified in the continious integration pipeline in the cloud, utilizing containerization, where every code change results in a full exection of the automated test suite.
+Having automated, near-instant feedback with full regression, hundreds of tests running in minutes with each modular code change accellerated development daily.
+
+Consequent of the space restrictions, this study focused on the UI of the SUT. In the future we plan to study Building Operator's architectural components beyond the UI, design patterns in automation being applied at test layers and possibilities of CT being applied at different test levels. 
 
 \bibliographystyle{IEEEtran}
 \bibliography{cloud}

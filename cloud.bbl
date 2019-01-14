@@ -33,12 +33,6 @@ A.~Gargantini and M.~Radavelli, ``Migrating combinatorial interaction test
   Conference on Software Testing, Verification and Validation Workshops
   (ICSTW)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2018, pp. 308--317.
 
-\bibitem{fowler:pageobject}
-\BIBentryALTinterwordspacing
-{Martin Fowler}, ``Pageobject,'' 2013. [Online]. Available:
-  \url{https://martinfowler.com/bliki/PageObject.html}
-\BIBentrySTDinterwordspacing
-
 \bibitem{OffuttIPM}
 M.~Grindal and J.~Offutt, ``Input parameter modeling for combination
   strategies,'' in \emph{Proceedings of the 25th Conference on IASTED
@@ -116,6 +110,12 @@ M.~Leotta, D.~Clerissi, F.~Ricca, and C.~Spadaro, ``Improving test suites
   \emph{Software Testing, Verification and Validation Workshops (ICSTW), 2013
   IEEE Sixth International Conference on}.\hskip 1em plus 0.5em minus
   0.4em\relax IEEE, 2013, pp. 108--113.
+
+\bibitem{fowler:pageobject}
+\BIBentryALTinterwordspacing
+{Martin Fowler}, ``Pageobject,'' 2013. [Online]. Available:
+  \url{https://martinfowler.com/bliki/PageObject.html}
+\BIBentrySTDinterwordspacing
 
 \bibitem{protractorstyleguide}
 \BIBentryALTinterwordspacing
