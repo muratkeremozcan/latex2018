@@ -1,0 +1,123 @@
+Revise Title - 
+   The paper's title suggests an application to cloud computing; however,
+   testing a web UI is generally independent of the underlying
+   architecture. No architectural aspects are tested in this paper.
+
+abstract – 
+should concisely present the goal of the work and put it in context rather than outline the paper flow and the content of each of its parts. 
+
+Intro reduce – half a column
+   The introduction spends about half of a column on an introduction to
+   cloud computing and container technologies, which are similarly
+   irrelevant to the core contribution of the paper.
+
+section 2 related work – 
+this section is actually a background section, since it describes fundamental concepts and terms which this work builds upon. 
+
+section 2 A – half a column
+The introduction to CT section is not needed for IWCT.  The related work section should include a few case studies addressing similar testing problems, and section II B can also be included.
+
+section 3 reduce – 1 page
+too detailed, including dozens of low level implementation details many of which seem irrelevant to the stated goals of the work. could be deprived of
+   some of its technical detail without losing much value.
+
+section 4 – 
+It is unclear why the authors use both CAmetrics and CCM, which seem
+   to be applicable to the same task(s); I'm also unsure about the argument that "the
+   entirety of the project is web-based and the web-based CT tools fit
+   this concept".
+                
+Section 4 (Test Methodology) add overview – a few lines
+   provides no overview of its subsections.
+   This is not an absolute requirement in general, but with each of them
+   spanning multiple pages and presenting sudden shifts between their
+   topics, it is hard to mentally adapt to the flow of this section
+
+section 4A, 4B – half a column 
+                CI environment in CT context: description is somewhat hidden at the end of Sections 4.A and 4.B and is not well-connected to the details described in Section 3.B. 
+                - The embedding of CT into the continuous development environment should have a dedicated (sub) section of its own.
+                - How exactly is the automated connection being made between CT and Protractor BDD?
+
+section 4B – a few lines
+                The subsection "Filtering Points by Tag Combination" requires a proper
+                introduction, as the concept of a "point" is not explained before.
+
+Results section (need to add) – half a column
+                were the tests executed? What are their results? Analyzing combinatorial coverage is not a result by itself but rather validation of the CT algorithm. Without test results, what means are there to evaluate the quality of the modeling?
+
+				The paper does not sufficiently elaborate whether the resulting three
+				test sets produced in the aforementioned sections were only executed
+				independently or as part of some combined test set (in which case a
+				comparison between the resulting modular set and one produced from
+				scratch would be useful).
+				   
+				   No results (in terms of found bugs, test execution time, etc) are
+				   presented. This is a crucial component of any case study and should
+				   most definitely be included in a revised version of the paper.
+				   
+				   add t-way strength somewhere-  a few lines in results
+				6)One of the main questions in the use of CT is that of the appropriate
+				   strength. While the paper briefly discusses this topic in the
+				   introduction, it does not seem to mention or justify the combinatorial
+				   strength used for the generation of covering arrays. In my opinion,
+				   this is an absolute must for any case study pertaining to CT.
+				   Considering the output of CCM and CAmetrics in later subsections, it
+				   seems likely that 2-way testing was used, but no confirmation or
+				   reasoning for this choice is given.
+
+
+
+
+
+explain:
+                p. 3 – “resistant to flakey tests”.  Please explain.  The term “flakey” is colorful but not very precise, and a lot of different test problems could be included under this term.
+
+                “simultaneous verification and validation of the SUT build”. This needs clarification.  Not sure how the term validation is being used here, so please add a bit of explanation.  
+
+
+tweak:
+                “find all faults” -> “find all or nearly all faults”
+                
+                p. 7 typo:  “infinately"
+                
+                “process lead to” -> “process led to”
+
+take out Fig 9 and 17
+                p. 6 – Fig. 9 is hard to read, at least when printed.  It would be better to include the text of this figure in a text box instead of using a screen shot.  Also for Fig. 17.
+
+
+I do not get these yet –
+
+5) In the subsection "Input driven testing of hardware", an abstract
+   model is used that is seemingly applied to different types of hardware
+   that support a different number of values for some parameters. Without
+   knowing the exact details of these setups, this seems hardly
+   justified; for instance, testing the same number of input actions
+   against some hardware that takes four values vs 127 values seems
+   counterintuitive.
+
+8) In subsection "Sequenced Filtering, Searching, Sorting of Geo-Located
+   Sites", it is not clear why the sortBy parameter was not included as
+   part of the IPM. An attempt at an explanation is included, but it
+   still seems counter-intuitive to use CT and then simple multiply the
+   resulting CA by a new parameter.
+   
+Disregarding these...
+
+Because of constraints
+11) Finally, while it is always nice to see industrial applications of CT,
+   the last two subsections - which essentially encompass, in this order,
+   a 4-combination of 13 tags (minus a few special cases) and a
+   permutation of 3 steps - seem to be much more easily solvable using
+   basic combinatorics. In these cases, it would be interesting to know
+   why the authors chose CT (e.g. particular features of CA generation
+   tools that are beneficial to their use case).
+
+Generic conclusion
+                Section V.  “defining an IMP it covers most possibilities of user interaction”. Has this been shown for the system tested here?  Not clear
+
+
+----
+
+remove from the paper Siemens internal project names and reference to products that we haven’t released or formally marketed in the field
+

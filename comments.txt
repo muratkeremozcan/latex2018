@@ -1,0 +1,112 @@
+. Paper length including Appendix and references should not exceed 4 pages for short papers and follow the IEEE two-column publication formats. 
+
+----------- Overall evaluation ----------- This paper presents the application of CT to the Building Operator Cloud application within a continuous integration system. The architecture and test environment of the application are described, followed by the specific CT modeling challenges and how they were resolved.
+
+The paper presents two goals with respect to CT: its application to the BO Cloud application, and its embedding into a continuous integration tool/continuous development environment. Both are very interesting and important for the future use of CT in modern development environment and modern applications. The first goal is thoroughly and nicely described. The CT modeling is interesting and non-trivial. Decisions made are all explained and accounted for. However, the second goal is somewhat hidden at the end of Sections 4.A and 4.B and is not well-connected to the details described in Section 3.B. For example, how exactly is the automated connection being made between CT and Protractor BDD? The embedding of CT into the continuous development environment should have a dedicated (sub) section of its own.
+
+This is part of a general presentation problem. The abstract should concisely present the goal of the work and put it in context rather than outline the paper flow and the content of each of its parts. The related work section is actually a background section, since it describes fundamental concepts and terms which this work builds upon. Section 3 is too detailed, including dozens of low level implementation details many of which seem irrelevant to the stated goals of the work.
+
+I'm missing a results section - were the tests executed? What are their results? Analyzing combinatorial coverage is not a result by itself but rather validation of the CT algorithm. Without test results, what means are there to evaluate the quality of the modeling?
+
+
+
+----------- Overall evaluation ----------- The paper presents an industrial case study on the applicability of combinatorial testing to the web UI of a Siemens building automation application. Three different functions exposed by the application are modelled through IPMs: Hardware control, filtering devices through tags and sorting/filtering/searching. The IPMs are then used as input for CTWedge, which generates Covering Arrays, which are executed and also measured using both CAmetrics and CCM.
+
+The paper's contribution as a case study is appropriate and points towards several non-trivial practical considerations. However, a few improvements and clarifications would certainly be beneficial:
+
+1) The paper's title suggests an application to cloud computing; however,
+   testing a web UI is generally independent of the underlying
+   architecture. No architectural aspects are tested in this paper.
+2) The introduction spends about half of a column on an introduction to
+   cloud computing and container technologies, which are similarly
+   irrelevant to the core contribution of the paper.
+3) Sections 2 (Related Work) and 3 (System Under Test) are appropriate in
+   terms of content and volume, although the latter could be deprived of
+   some of its technical detail without losing much value.
+4) It is unclear why the authors use both CAmetrics and CCM, which seem
+   to be applicable to the same task(s); I'm also unsure about the argument that "the
+   entirety of the project is web-based and the web-based CT tools fit
+   this concept".
+5) Section 4 (Test Methodology) provides no overview of its subsections.
+   This is not an absolute requirement in general, but with each of them
+   spanning multiple pages and presenting sudden shifts between their
+   topics, it is hard to mentally adapt to the flow of this section.
+6) One of the main questions in the use of CT is that of the appropriate
+   strength. While the paper briefly discusses this topic in the
+   introduction, it does not seem to mention or justify the combinatorial
+   strength used for the generation of covering arrays. In my opinion,
+   this is an absolute must for any case study pertaining to CT.
+   Considering the output of CCM and CAmetrics in later subsections, it
+   seems likely that 2-way testing was used, but no confirmation or
+   reasoning for this choice is given.
+5) In the subsection "Input driven testing of hardware", an abstract
+   model is used that is seemingly applied to different types of hardware
+   that support a different number of values for some parameters. Without
+   knowing the exact details of these setups, this seems hardly
+   justified; for instance, testing the same number of input actions
+   against some hardware that takes four values vs 127 values seems
+   counterintuitive.
+7) The subsection "Filtering Points by Tag Combination" requires a proper
+   introduction, as the concept of a "point" is not explained before.
+8) In subsection "Sequenced Filtering, Searching, Sorting of Geo-Located
+   Sites", it is not clear why the sortBy parameter was not included as
+   part of the IPM. An attempt at an explanation is included, but it
+   still seems counter-intuitive to use CT and then simple multiply the
+   resulting CA by a new parameter.
+9)  The paper does not sufficiently elaborate whether the resulting three
+   test sets produced in the aforementioned sections were only executed
+   independently or as part of some combined test set (in which case a
+   comparison between the resulting modular set and one produced from
+   scratch would be useful).
+10) No results (in terms of found bugs, test execution time, etc) are
+   presented. This is a crucial component of any case study and should
+   most definitely be included in a revised version of the paper.
+11) Finally, while it is always nice to see industrial applications of CT,
+   the last two subsections - which essentially encompass, in this order,
+   a 4-combination of 13 tags (minus a few special cases) and a
+   permutation of 3 steps - seem to be much more easily solvable using
+   basic combinatorics. In these cases, it would be interesting to know
+   why the authors chose CT (e.g. particular features of CA generation
+   tools that are beneficial to their use case).
+
+
+----------- Overall evaluation ----------- This is an interesting case study of a significant industrial use of combinatorial testing. It is generally well written, although some clarification and reorganization is needed in some places.  With some editing it would be a valuable contribution to IWCT.
+
+II A – The introduction to CT section is not needed for IWCT.  The related work section should include a few case studies addressing similar testing problems, and section II B can also be included.
+
+Sect. III – Good description of the SUT, and the discussion will be very useful for test teams as it deals with many of the practical problems that must be solved to improve efficiency and reduce test cost.  
+
+p. 3 – “resistant to flakey tests”.  Please explain.  The term “flakey” is colorful but not very precise, and a lot of different test problems could be included under this term.
+
+Sect. IV – This is a well done description of how tests are developed, and will be of considerable value to others in the industry.  It includes the right level of detail regarding the input model, and a good explanation of the use of constraints.
+
+p. 6 – Fig. 9 is hard to read, at least when printed.  It would be better to include the text of this figure in a text box instead of using a screen shot.  Also for Fig. 17.
+
+p. 7 typo:  “infinately"
+
+V.  “defining an IMP it covers most possibilities of user interaction”. Has this been shown for the system tested here?  Not clear
+
+“process lead to” -> “process led to”
+
+
+
+
+
+----------- Overall evaluation -----------
+The reviewers agreed that the problem is relevant and of interest, but some of them thought that presentation of the paper could have been better by removing some unnecessary details. However, they found value in the idea as a whole and in its potential future work extensions. Therefore the committee is asking the author to revise it as a short paper on which he can build upon in future work.
+
+
+“find all faults” -> “find all or nearly all faults”
+
+“simultaneous verification and validation of the SUT build”. This needs clarification.  Not sure how the term validation is being used here, so please add a bit of explanation.  
+
+“resistant to flakey tests”. – needs explanation.
+
+-----------
+
+I believe that by removing the screenshots, CT preliminaries, limiting references to absolute minimum and some low-level technical details the reduction is feasible.
+I can help you with some feedback as soon as you have an edited version.
+
+----
+remove from the paper Siemens internal project names and reference to products that we haven’t released or formally marketed in the field
+

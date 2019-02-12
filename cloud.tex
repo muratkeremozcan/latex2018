@@ -500,7 +500,7 @@ Note that due to space constraints, this study will focus on black box test auto
 	TypeScript is a super-set of JavaScript. It compiles into JavaScript and includes the latest EcmaScript features \cite{wiki:typescript}.
 	One of the recent advantages in the latest EcmaScript features is how it helps developers write sequential looking asynchronous code using \emph{Async Await} style \emph{Promises} \cite{wiki:ECMAscript}.
 
-	With regards to test automation this means clean code that executes as fast as the environment allows, resistant to flakey tests \cite{fowler:flake} and stale elements on the page. 
+	With regards to test automation this means clean code that executes as fast as the environment allows, resistant resistant to flakey tests and flake in tests \cite{fowler:flake} - tests that give inconsistent results in subsequent executions. 
 	This is because the page components load with panel-object-classes simultaneously, while the page element selectors get instantiated.
 	We plan to study this design pattern in a future paper. For the purpose of the current study, it is sufficient to understand that all test relevant methods are housed in classes that represent panel objects / Angular components.
 
@@ -564,13 +564,12 @@ Note that due to space constraints, this study will focus on black box test auto
 	Note that this study will focus on black box test automation of the front-end. Testing at different levels of the architecture is planned to be studied in a future paper.
 
 	For all combinatorial test suite generation CTWedge \cite{gargantini2018migrating} was used and for coverage measuring CAMetrics \cite{leithner2018cametrics} and Combinatorial Test Coverage Measurement tool (CCM) \cite{kuhn2013combinatorial} were used.
-	Traditionally, ACTS \cite{ACTS-tool} has been used in the organization during previous work.
+	At the time of writing CAMetrics was under development, and CCM was used for its completeness coverage measurements. Traditionally, ACTS \cite{ACTS-tool} has been used in the organization during previous work.
 	CTWedge and CAmetrics were preferred over their desktop contenders for a few reasons:
 
 	\begin{itemize}
 		\item \textit{Portability and ease of use}: it is easier to copy a few lines of script and paste it at a url to generate a test suite in the case of CTWedge. It is also easier to upload a csv file to CAMetrics url and get a report quickly.
 		\item \textit{Ease of model modification}: it takes a few hours to master CTWedge scripting, but once done so, scripting proves to be a more robust interface to address changing test conditions; parameters, values or complex constraints. Comments in the script is an added benefit to readability. 
-		\item \textit{Cloud concept}: the entirety of the project is web-based and the web-based CT tools fit this concept.
 	\end{itemize}
 
 	\subsection{Input driven testing of hardware} \label{Input driven testing of hardware}
@@ -696,18 +695,41 @@ Note that due to space constraints, this study will focus on black box test auto
 	\begin{enumerate}
 		\item CT modeling of the IPM as in CTWedge script snippet.
 		\item Generation of test suite / covering array in csv as in Figure~\ref{fig:csvOutputCommanding}, conversion into JSON as needed.
-		\item Based on the test suite, writing the automated test code as in Figure~\ref{fig:pointCommandingTestCode}.
+		\item Based on the test suite, writing the automated test code, sampled below.
 	\end{enumerate}
 
-	\begin{figure}[!b]
-		\centering
-		\includegraphics[width=0.49\textwidth,]{pointCommandingTestCode.pdf}
-		\caption{Protractor \textit{describe} block for Analog Value point commanding in Desigo Classic panel}
-		\label{fig:pointCommandingTestCode}
-	\end{figure}
+	\lstset{
+    string=[s]{"}{"},
+    stringstyle=\color{blue},
+    comment=[l]{:},
+		commentstyle=\color{black},
+		tabsize = 1, %% Sets tab space width.
+		showstringspaces = false, %% Prevents space marking in strings, string is defined as the text that is generally printed directly to the console.
+		%numbers = left, %% Displays line numbers on the left.
+		keywordstyle = \color{blue}, %% Sets  keyword color.
+		stringstyle = \color{red}, %% Sets  string color.
+		rulecolor = \color{black}, %% Sets frame color to avoid being affected by text color.
+		basicstyle = \footnotesize  \ttfamily , %% Sets listing font and size.
+		breaklines = true, %% Enables line breaking.
+		numberstyle = \tiny,
+	}
+	\begin{lstlisting}
+	describe('Testing Write property', () => {
+		it('should command analog point with slider to high boundary', () => {
+			pointCommand.slider.highBoundary(); });
+		it('should command analog point with (+) button', () => {
+			pointCommand.button.incrementValue();	});
+	});
+	\end{lstlisting}
 
-	It is our opinion that the test suite in Figure~\ref{fig:csvOutputCommanding} and test code snippet in Figure~\ref{fig:pointCommandingTestCode} will solidify the understanding of the application of constraints for analog points.
-	Figure~\ref{fig:pointCommandingTestCode} shows a part of the test spec in Protractor, automating the tests in the test suite of Figure~\ref{fig:csvOutputCommanding} for \textit{subsystemType = DesigoClassic} and \textit{pointType = AV}.
+	% \begin{figure}[!b]
+	% 	\centering
+	% 	\includegraphics[width=0.49\textwidth,]{pointCommandingTestCode.pdf}
+	% 	\caption{Protractor \textit{describe} block for Analog Value point commanding in Desigo Classic panel}
+	% 	\label{fig:pointCommandingTestCode}
+	% \end{figure}
+
+	It is our opinion that the test suite in Figure~\ref{fig:csvOutputCommanding} and test code snippet will solidify the understanding of the application of constraints for analog points.
 	
 	For ease of readability and confidentiality, test actions and assertions are handled under the functions in the code snippet. 
 	For example, functions \textit{command...ButtonMinusOne()} and \textit{...PlusOne()} test incrementing and decrementing the point with (+) and (-) buttons.
@@ -723,7 +745,8 @@ Note that due to space constraints, this study will focus on black box test auto
 		\label{fig:tagFilterModel}
 	\end{figure}
 
-	In BO, tag filtering functionality is used to filter points in the system, by the devices the points are in.
+	In the building technologies domain, a point is any object used to control the building; i.e. a light switch can be a digital point, a thermostat can be an analog point.
+	In the SUT, tag filtering functionality is used to filter points in the system, by the devices the points are in.
 	There are 13 possible tags, up to 5 tags can be chosen, tag choices cannot repeat, the final tag has only one tag choice, and there can be less than 5 tags for certain tag combinations if so is the nature of the points in the system.
 	Figure~\ref{fig:tagFilterModel} displays a screen capture of tag filtering UI and the following CTWedge script samples IPM of the functionality. 
 	Note that due to space restrictions only 2 blocks of 13 blocks of constraints are shown.
@@ -796,7 +819,7 @@ Note that due to space constraints, this study will focus on black box test auto
 	With the test suite of Figure~\ref{fig:tagFilterCoveringArray} generated, only one automation method had to be written and repeated for each test:
 	
 	\begin{itemize}
-		\item the method takes a single argument: a JSON parameter with a predefined string of delimited tags. For example \textit{tagTest1 = "air,cmd,sensor,temp"}; there are 14 similar varieties of tag tests. These are infinately flexible, simply a different string can be passed in for a different set of tags.
+		\item the method takes a single argument: a JSON parameter with a predefined string of delimited tags. For example \textit{tagTest1 = "air,cmd,sensor,temp"}; there are 14 similar varieties of tag tests. These are infinitely flexible, simply a different string can be passed in for a different set of tags.
 		\item in the method, the string of tags get split by the delimiter. Using these tags, the tag selection is done in an asynchronous for-loop: \emph{for await(tag of tags) \{...\}}. 
 		\item as the tags are selected, the panel \& point combinations get filtered. The tag details of the points are verified to match the tags chosen in the filter.
 	\end{itemize}
@@ -936,20 +959,64 @@ Note that due to space constraints, this study will focus on black box test auto
 	However, it can be observed that with a higher number of parameters this approach can get less cost effective. 
 	The team has not encountered such a problem yet and is looking forward to the challenge in a future study.
 	
-	\begin{figure}[!h]
-		\centering
-		\includegraphics[width=0.49\textwidth,]{sortingTestCode.pdf}
-		\caption{One of the 19 automated Protractor tests in site filtering test suite}
-		\label{fig:sortingTestCode}
-	\end{figure}
+	% \begin{figure}[!h]
+	% 	\centering
+	% 	\includegraphics[width=0.49\textwidth,]{sortingTestCode.pdf}
+	% 	\caption{One of the 19 automated Protractor tests in site filtering test suite}
+	% 	\label{fig:sortingTestCode}
+	% \end{figure}
 
-	To conclude this section, Figure~\ref{fig:sortingTestCode} displays automated Protractor test code for one of the 19 tests.
+	\lstset{
+    string=[s]{"}{"},
+    stringstyle=\color{blue},
+    comment=[l]{:},
+		commentstyle=\color{black},
+		tabsize = 1, %% Sets tab space width.
+		showstringspaces = false, %% Prevents space marking in strings, string is defined as the text that is generally printed directly to the console.
+		%numbers = left, %% Displays line numbers on the left.
+		keywordstyle = \color{blue}, %% Sets  keyword color.
+		stringstyle = \color{red}, %% Sets  string color.
+		rulecolor = \color{black}, %% Sets frame color to avoid being affected by text color.
+		basicstyle = \footnotesize  \ttfamily , %% Sets listing font and size.
+		breaklines = true, %% Enables line breaking.
+		numberstyle = \tiny,
+	}
+	\begin{lstlisting}
+    it('should setFilter_110, searchBy_siteCity, sortBy_siteStreet', () => {
+      filterAndSort.setFilter(1, 1, 0);
+      filterAndSort.textfilter(siteCity);
+      filterAndSort.sortSitesBy('Street');
+      // alarm pill assertions
+      expect(statusWorkingWell).toBeTruthy();
+      expect(statusInAlarm).toBeTruthy(); 
+      // sorting assertions
+      filterAndSort.verifyOrder(expectedOrder);
+      // alarm state assertions
+      expect(siteInfo.isPresent()).toBeTruthy();
+      // reset sorting and clear filters
+      filterAndSort.sortSitesBy('Street');
+      filterAndSort.xFilters(2);
+    });
+	\end{lstlisting}
+
+	To conclude this section, the code snippet displays automated Protractor test code for one of the 19 tests.
 	The test actions are in the sequence: \textit{search} (by text string), \textit{set site status} (dropdown) and \textit{sort} (by country). 
 	The 3 functions execute these actions.
 	After so, status pills are verified which verify the site status (In-Alarm, Disconnected, Normal).
 	Following that, the sorting and reverse sorting of the sites are verified.
 	Finally, the test oracle is verified to check the sites that are displayed as a result of the filters.
-		
+
+\section{Results}
+The tests are executed in CI pipeline environment with every code commit; if the automation suite passes the commit gets checked in and if there is a single failure it does not.
+Throughout the effort, defects preventing such check-ins have not been tracked rather fixed on the development branch causing the failure.
+On an average, 20\% of the commits run a full successful CI pipeline and get merged to the master development branch.
+At the time of writing, 157 defects have been found outside of CI pipeline executions and 32 have been found while implementing the automated tests.
+There are under 5 thousand lines of automation in Protractor (using TypeScript), more than 300 tests, executing under 600 seconds.
+The CI pipeline runs many times a day, at the time of writing there has been 6987 CI pipeline executions in the project.
+The tests were written in a 6 month period, by a single developer in test. 
+This time included CT modeling, interpreting the model in Protractor code, and all related development and CI activities.
+Interpreting the CT model into code is a costly process.To minimize cost in coding time, 2-way strength was utilized and the results achieved in defect prevention was satisfactory for the team. 
+
 \section{Conclusion and future work}
 In this paper, Siemens Building Technologies Horizon Cloud Program’s Building Operator application was studied as the SUT.
 The system architecture, continuous deployment and test system architecture were described in the paradigm of cloud computing.
@@ -957,13 +1024,13 @@ In this modern development environment, we explored a variety of combinatorial t
 
 Traditionally in software development, requirement specifications are defined and testing -automated or manual- follows these requirements.
 CT is a test design methodology that goes beyond the requirement specifications of the application and by defining an IPM it covers most possibilities of user interactions with the application, depending on model quality.
-While testing interactions of at most six input parameters are needed to find all faults in a given functionality of a software product, \emph{2-way} testing still ensures cost-effective coverage of most possible faults \cite{NISTpractical}.
+While testing interactions of at most six input parameters are needed to find nearly all faults in a given functionality of a software product, \emph{2-way} testing still ensures cost-effective coverage of most possible faults \cite{NISTpractical}.
 In this study CT was used to drive test designs ensuring not only requirement but also high fault-coverage for the functionality under test.
-CT assured that the test design process lead to writing meaningful and cost-effective automated tests that are more likely to find defects, bolstering confidence in the build quality of the SUT.
+CT assured that the test design process led to writing meaningful and cost-effective automated tests that are more likely to find defects, bolstering confidence in the build quality of the SUT.
 
 After the test design, state-based, behavior-driven acceptance scenarios were used to create descriptive e2e test scenarios with a workflow.
 This method produced acceptance and workflow coverage by bridging verbose requirements to test code.
-The significance of this was the simultaneous verification and validation of the SUT build and SUT definition, respectively, boosting certainty that the right system is being built. 
+The significance of this was the simultaneous verification and validation of the SUT build and SUT definition, respectively, strong coupling between the requirement and the test code, boosting certainty that the right system is being built and being tested accurately. 
 
 These test scenarios utilized page and panel objects, abstracting the relationship between the tests and the applicaton while reducing the coupling between them.
 Using latest features in ECMAscript, the overall test designs were interpreted to sequential looking asynchronous test code that executes as fast as the environment allows, resistant to flakey tests and stale page elements.
