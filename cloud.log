@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.12.24)  12 FEB 2019 08:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.12.24)  12 FEB 2019 12:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -530,162 +530,53 @@ Package grfext Info: Graphics extension search list:
  (c:/texlive/2018/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 )) ABD: EveryShipout initializing macros
-LaTeX Font Info:    Try loading font information for U+msa on input line 402.
+LaTeX Font Info:    Try loading font information for U+msa on input line 368.
  (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 402.
+LaTeX Font Info:    Try loading font information for U+msb on input line 368.
  (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1{c:/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-
-pdfTeX warning: pdflatex.exe (file d:/CT/2018/Paper/architecture.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<architecture.pdf, id=13, 794.97pt x 614.295pt>
-File: architecture.pdf Graphic file (type pdf)
-<use architecture.pdf>
-Package pdftex.def Info: architecture.pdf  used on input line 422.
-(pdftex.def)             Requested size: 335.39685pt x 259.1738pt.
-
-Overfull \hbox (83.39685pt too wide) in paragraph at lines 422--423
-[][] 
- []
-
-
-
-pdfTeX warning: pdflatex.exe (file d:/CT/2018/Paper/UIpipeline.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<UIpipeline.pdf, id=14, 758.835pt x 85.20499pt>
-File: UIpipeline.pdf Graphic file (type pdf)
-<use UIpipeline.pdf>
-Package pdftex.def Info: UIpipeline.pdf  used on input line 429.
-(pdftex.def)             Requested size: 516.0pt x 57.93991pt.
-[2 <d:/CT/2018/Paper/architecture.pdf>]
-
-pdfTeX warning: pdflatex.exe (file d:/CT/2018/Paper/angular.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<angular.pdf, id=23, 314.91652pt x 197.2971pt>
-File: angular.pdf Graphic file (type pdf)
-<use angular.pdf>
-Package pdftex.def Info: angular.pdf  used on input line 481.
-(pdftex.def)             Requested size: 232.19843pt x 145.47675pt.
-
-
-pdfTeX warning: pdflatex.exe (file d:/CT/2018/Paper/codeSample.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<codeSample.pdf, id=24, 715.47299pt x 204.70477pt>
-File: codeSample.pdf Graphic file (type pdf)
-<use codeSample.pdf>
-Package pdftex.def Info: codeSample.pdf  used on input line 509.
-(pdftex.def)             Requested size: 412.80157pt x 118.10725pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-
-pdfTeX warning: pdflatex.exe (file d:/CT/2018/Paper/stateBasedScenario.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<stateBasedScenario.pdf, id=25, 794.97pt x 614.295pt>
-File: stateBasedScenario.pdf Graphic file (type pdf)
-<use stateBasedScenario.pdf>
-Package pdftex.def Info: stateBasedScenario.pdf  used on input line 517.
-(pdftex.def)             Requested size: 232.19843pt x 179.42513pt.
-[3 <d:/CT/2018/Paper/UIpipeline.pdf> <d:/CT/2018/Paper/angular.pdf>]
-<commandingIPM.pdf, id=35, 471.7625pt x 273.02pt>
-File: commandingIPM.pdf Graphic file (type pdf)
-<use commandingIPM.pdf>
-Package pdftex.def Info: commandingIPM.pdf  used on input line 585.
-(pdftex.def)             Requested size: 258.0pt x 149.3116pt.
-
-Overfull \hbox (6.0pt too wide) in paragraph at lines 585--586
-[][] 
- []
-
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 606.
-(c:/texlive/2018/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 435.
+ (c:/texlive/2018/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [4 <d:/CT/2018/Paper/codeSample.pdf> <d:/CT/2018/Paper/stateBasedScenario.pdf>]
-<modelCommanding.pdf, id=45, 721.69624pt x 319.1925pt>
-File: modelCommanding.pdf Graphic file (type pdf)
-<use modelCommanding.pdf>
-Package pdftex.def Info: modelCommanding.pdf  used on input line 670.
-(pdftex.def)             Requested size: 258.0pt x 114.10558pt.
-
-Overfull \hbox (6.0pt too wide) in paragraph at lines 670--671
-[][] 
- []
-
-
+)
 
 pdfTeX warning: pdflatex.exe (file d:/CT/2018/Paper/csvOutputCommanding.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<csvOutputCommanding.pdf, id=46, 271.0125pt x 47.42719pt>
+<csvOutputCommanding.pdf, id=14, 271.0125pt x 47.42719pt>
 File: csvOutputCommanding.pdf Graphic file (type pdf)
 <use csvOutputCommanding.pdf>
-Package pdftex.def Info: csvOutputCommanding.pdf  used on input line 689.
+Package pdftex.def Info: csvOutputCommanding.pdf  used on input line 489.
 (pdftex.def)             Requested size: 232.19843pt x 40.63605pt.
-[5 <d:/CT/2018/Paper/commandingIPM.pdf> <d:/CT/2018/Paper/modelCommanding.pdf>]
-<tagFilterModel.pdf, id=55, 721.69624pt x 158.5925pt>
-File: tagFilterModel.pdf Graphic file (type pdf)
-<use tagFilterModel.pdf>
-Package pdftex.def Info: tagFilterModel.pdf  used on input line 743.
-(pdftex.def)             Requested size: 206.39685pt x 45.35419pt.
-<tagFilterCoveringArray.pdf, id=56, 299.1175pt x 542.025pt>
+[2 <d:/CT/2018/Paper/csvOutputCommanding.pdf>]
+
+pdfTeX warning: pdflatex.exe (file d:/CT/2018/Paper/tagFilterCoveringArray.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<tagFilterCoveringArray.pdf, id=22, 229.60782pt x 85.82062pt>
 File: tagFilterCoveringArray.pdf Graphic file (type pdf)
 <use tagFilterCoveringArray.pdf>
-Package pdftex.def Info: tagFilterCoveringArray.pdf  used on input line 804.
-(pdftex.def)             Requested size: 154.80157pt x 280.51477pt.
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 823.
- (c:/texlive/2018/texmf-dist/tex/latex/psnfss/omsptm.fd
+Package pdftex.def Info: tagFilterCoveringArray.pdf  used on input line 561.
+(pdftex.def)             Requested size: 154.80157pt x 57.86354pt.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 579.
+(c:/texlive/2018/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/it' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 823.
- [6 <d:/CT/2018/Paper/csvOutputCommanding.pdf> <d:/CT/2018/Paper/tagFilterModel.pdf>]
-<siteFilterModel.pdf, id=65, 470.75874pt x 542.025pt>
-File: siteFilterModel.pdf Graphic file (type pdf)
-<use siteFilterModel.pdf>
-Package pdftex.def Info: siteFilterModel.pdf  used on input line 847.
-(pdftex.def)             Requested size: 154.80157pt x 178.23196pt.
-<coverageGainPerTest.pdf, id=66, 721.69624pt x 511.9125pt>
-File: coverageGainPerTest.pdf Graphic file (type pdf)
-<use coverageGainPerTest.pdf>
-Package pdftex.def Info: coverageGainPerTest.pdf  used on input line 901.
-(pdftex.def)             Requested size: 258.0pt x 182.99951pt.
-
-Overfull \hbox (6.0pt too wide) in paragraph at lines 901--902
-[][] 
- []
-
-<coverageGainPerTest_withConstraints.pdf, id=67, 715.67375pt x 510.90875pt>
-File: coverageGainPerTest_withConstraints.pdf Graphic file (type pdf)
-<use coverageGainPerTest_withConstraints.pdf>
-Package pdftex.def Info: coverageGainPerTest_withConstraints.pdf  used on input line 907.
-(pdftex.def)             Requested size: 258.0pt x 184.18427pt.
-
-Overfull \hbox (6.0pt too wide) in paragraph at lines 907--908
-[][] 
- []
-
-<sorting.pdf, id=68, 652.4375pt x 339.2675pt>
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 579.
+<sorting.pdf, id=23, 652.4375pt x 339.2675pt>
 File: sorting.pdf Graphic file (type pdf)
 <use sorting.pdf>
-Package pdftex.def Info: sorting.pdf  used on input line 913.
+Package pdftex.def Info: sorting.pdf  used on input line 642.
 (pdftex.def)             Requested size: 258.0pt x 134.1619pt.
 
-Overfull \hbox (6.0pt too wide) in paragraph at lines 913--914
+Overfull \hbox (6.0pt too wide) in paragraph at lines 642--643
 [][] 
  []
 
-[7 <d:/CT/2018/Paper/tagFilterCoveringArray.pdf> <d:/CT/2018/Paper/siteFilterModel.pdf>]
-<CompletenessCoverage.pdf, id=78, 717.68124pt x 479.7925pt>
-File: CompletenessCoverage.pdf Graphic file (type pdf)
-<use CompletenessCoverage.pdf>
-Package pdftex.def Info: CompletenessCoverage.pdf  used on input line 937.
-(pdftex.def)             Requested size: 252.84283pt x 169.02803pt.
-
-Overfull \hbox (0.84283pt too wide) in paragraph at lines 937--938
-[][] 
- []
-
-[8 <d:/CT/2018/Paper/coverageGainPerTest.pdf> <d:/CT/2018/Paper/coverageGainPerTest_withConstraints.pdf> <d:/CT/2018/Paper/sorting.pdf> <d:/CT/2018/Paper/CompletenessCoverage.pdf>] [9] (d:/CT/2018/Paper/cloud.bbl)
+[3 <d:/CT/2018/Paper/tagFilterCoveringArray.pdf>] (d:/CT/2018/Paper/cloud.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -697,20 +588,20 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[10] (d:/CT/2018/Paper/cloud.aux) ) 
+[4 <d:/CT/2018/Paper/sorting.pdf>] (d:/CT/2018/Paper/cloud.aux) ) 
 Here is how much of TeX's memory you used:
- 15677 strings out of 492616
- 297010 string characters out of 6132767
- 538582 words of memory out of 5000000
- 19289 multiletter control sequences out of 15000+600000
- 39457 words of font info for 85 fonts, out of 8000000 for 9000
+ 15565 strings out of 492616
+ 294517 string characters out of 6132767
+ 500390 words of memory out of 5000000
+ 19196 multiletter control sequences out of 15000+600000
+ 36357 words of font info for 73 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 55i,8n,54p,811b,1564s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on d:/CT/2018/Paper/cloud.pdf (10 pages, 566860 bytes).
+ 55i,8n,54p,811b,1569s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on d:/CT/2018/Paper/cloud.pdf (4 pages, 140241 bytes).
 PDF statistics:
- 128 PDF objects out of 1000 (max. 8388607)
- 73 compressed objects within 1 object stream
+ 61 PDF objects out of 1000 (max. 8388607)
+ 40 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 88 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 28 words of extra memory for PDF output out of 10000 (max. 10000000)
 
