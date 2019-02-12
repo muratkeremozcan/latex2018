@@ -383,7 +383,7 @@ The CI environment will be described, however CT applications in the CI pipeline
 	The team uses GitLab for CI.
 	When any code is submitted, the application is built in a docker container, unit testing and linting are done, the container containing the application is deployed and run in a cloud-hosted container and finally automated UI tests are executed targeting this deployment.
 	If testing passes, the code can get merged to the master branch. 
-	This automated testing process ensures that after any code commit, the application is fully regression tested and quality is ensured. 
+	This automated testing process ensures that after any code commit, the application is fully regression tested, failing commits are not checked in to master and quality is ensured. 
 
 \subsection{Description of the Test Code}
 
@@ -633,7 +633,7 @@ The CI environment will be described, however CT applications in the CI pipeline
 	\end{lstlisting}
 
 	The \textit{search} parameter is a text-box, which is open ended. For this, possible values were contemplated to be any string as well as an assortment of address fields.
-	The \textit{sortBy} parameter simply replicates the names of the columns. 
+	The \textit{sortBy} parameter simply replicates the names of table-like columns. 
 	In order to keep the number of tests low, instead of being a parameter in the model, reverse sorting of columns gets covered in each automated test.
 	This is also utilized as a setup \& cleanup in tests since sort order of the previous column gets retained.
 	In order to have a deterministic test oracle, an array of sites was generated with varying data parameters - all stored in JSON - so that after filtering by site status and a search string, there would be at least 2 sites to test sorting with.
@@ -707,7 +707,7 @@ The CI environment will be described, however CT applications in the CI pipeline
 
 
 \section{Results, Conclusion and future work}
-The tests are executed in CI pipeline environment with every code commit; if the test suite passes, the commit gets checked in and if there is a single failure it does not.
+The tests for the SUT are executed in CI pipeline environment with every code commit; if the test suite passes, the commit gets checked in and if there is a single failure it does not.
 Throughout the effort, defects preventing such check-ins have not been tracked rather fixed on the development branch causing the failure.
 On an average, 27\% of the commits run a successful CI pipeline and get merged to the master development branch.
 At the time of writing, 157 defects have been found outside of CI pipeline executions and 32 have been found while implementing the automated tests.
@@ -716,7 +716,7 @@ The CI pipeline runs many times a day, at the time of writing there has been 698
 The tests were written in a 6 month period, by a single developer in test. 
 This time included CT modeling, interpreting the model in Protractor code, and all related development and CI activities.
 
-Interpreting the CT model into code is a costly process.To minimize cost in coding time, 2-way strength was utilized and the results achieved in defect prevention were satisfactory for the team. 
+Interpreting the CT model into test code is a time consuming process.To minimize cost in coding time, 2-way strength was utilized throughout all IPMs. The results achieved in defect prevention have been satisfactory for the team. 
 
 In this paper, a variety of CT designs driving e2e UI testing in the front-end of a cloud application have been detailed.
 CT was utilized to drive test designs ensuring not only requirement but also high fault-coverage for the functionality under test.
